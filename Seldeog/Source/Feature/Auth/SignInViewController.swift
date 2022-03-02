@@ -17,7 +17,7 @@ final class SignInViewController: UIViewController {
     let emailTextField = UITextField()
     let passwordLabel = UILabel()
     let passwordTextField = UITextField()
-    let autoLoginButton = UIButton()
+    let autoLoginButton = CheckButton()
     let autoLoginLabel = UILabel()
     let signUpButton = UIButton()
     let signInButton = UIButton()
@@ -33,10 +33,23 @@ final class SignInViewController: UIViewController {
         setProperties()
         setLayouts()
         registerForKeyboardNotification()
+        registerTarget()
+    }
+    
+    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        view.endEditing(true)
     }
     
     func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func registerTarget() {
+        [autoLoginButton, signUpButton, signInButton].forEach {
+            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+        }
     }
     
     func activateUI() {
@@ -116,9 +129,8 @@ extension SignInViewController {
         }
         
         autoLoginButton.do {
-            $0.setTitle("학교 메일 찾기", for: .normal)
-            $0.setTitleColor(.black, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            $0.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            $0.isSelected = false
         }
         
         autoLoginLabel.do {
@@ -182,6 +194,22 @@ extension SignInViewController {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(48)
         }
+        
+        autoLoginButton.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.height.equalTo(20)
+        }
+        
+        autoLoginLabel.snp.makeConstraints {
+            $0.centerY.equalTo(autoLoginButton)
+            $0.leading.equalTo(autoLoginButton.snp.trailing).offset(8)
+        }
+        
+        signUpButton.snp.makeConstraints {
+            $0.centerY.equalTo(autoLoginButton)
+            $0.trailing.equalToSuperview().offset(-20)
+        }
 
         signInButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
@@ -198,8 +226,14 @@ extension SignInViewController {
 
         let adjustmentHeight = keyboardFrame.height
 
-        signInButton.snp.updateConstraints {
-            $0.bottom.equalToSuperview().offset(-adjustmentHeight)
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            signInButton.snp.updateConstraints {
+                $0.bottom.equalToSuperview().offset(-adjustmentHeight)
+            }
+        } else {
+            signInButton.snp.updateConstraints {
+                $0.bottom.equalToSuperview()
+            }
         }
     }
     
@@ -208,6 +242,19 @@ extension SignInViewController {
             isButtonActivate = true
         } else {
             isButtonActivate = false
+        }
+    }
+    
+    @objc private func buttonTapAction(_ sender: UIButton) {
+        switch sender {
+        case autoLoginButton:
+            autoLoginButton.isSelected = !autoLoginButton.isSelected
+        case signUpButton:
+            print("sign Up")
+        case signInButton:
+            print("sign In")
+        default:
+            return
         }
     }
     
