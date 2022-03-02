@@ -16,6 +16,9 @@
 		2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */; };
 		2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */; };
 		2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0027CF4ADC0034A602 /* UIView+Extension.swift */; };
+		2D2ADF0427CF4D5B0034A602 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0327CF4D5B0034A602 /* SignInViewController.swift */; };
+		2D2ADF0627CF4D610034A602 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0527CF4D610034A602 /* SignUpController.swift */; };
+		2D2ADF0827CF58CA0034A602 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */; };
 		EAC40CB19EABBAD035E8828A /* Pods_Seldeog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,9 @@
 		2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2D2ADF0027CF4ADC0034A602 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		2D2ADF0327CF4D5B0034A602 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		2D2ADF0527CF4D610034A602 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		BC3F0E4D990966B075FCD806 /* Pods-Seldeog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.debug.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +115,7 @@
 		2D2ADEF927CF466E0034A602 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */,
+				2D2ADF0227CF4D4C0034A602 /* Auth */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -120,6 +126,7 @@
 				2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */,
 				2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */,
 				2D2ADF0027CF4ADC0034A602 /* UIView+Extension.swift */,
+				2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -129,6 +136,16 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		2D2ADF0227CF4D4C0034A602 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */,
+				2D2ADF0327CF4D5B0034A602 /* SignInViewController.swift */,
+				2D2ADF0527CF4D610034A602 /* SignUpController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		5592A7E64A1C770F8452A196 /* Pods */ = {
@@ -264,8 +281,11 @@
 			files = (
 				2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */,
 				2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */,
+				2D2ADF0627CF4D610034A602 /* SignUpController.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
 				2D246BF127BF6E0600546F28 /* SceneDelegate.swift in Sources */,
+				2D2ADF0827CF58CA0034A602 /* UITextField+Extension.swift in Sources */,
+				2D2ADF0427CF4D5B0034A602 /* SignInViewController.swift in Sources */,
 				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
 				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
 				2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */,

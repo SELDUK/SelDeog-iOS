@@ -29,6 +29,10 @@ extension StartSignInViewController {
             $0.backgroundColor = .white
         }
         
+        navigationController?.do {
+            $0.isNavigationBarHidden = true
+        }
+        
         signInButton.do {
             $0.setTitle("로그인", for: .normal)
             $0.setTitleColor(.white, for: .normal)
@@ -76,11 +80,13 @@ extension StartSignInViewController {
     }
     
     @objc private func signInButtonTap() {
-        
+        let signInViewController = SignInViewController()
+        navigationController?.pushViewController(signInViewController, animated: true)
     }
 
     @objc private func signUpButtonTap() {
-        
+        let signUpViewController = SignUpViewController()
+        navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
 }
