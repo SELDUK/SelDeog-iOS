@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BEE27BF6E0600546F28 /* AppDelegate.swift */; };
 		2D246BF127BF6E0600546F28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF027BF6E0600546F28 /* SceneDelegate.swift */; };
-		2D246BF327BF6E0600546F28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF227BF6E0600546F28 /* ViewController.swift */; };
+		2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */; };
 		2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF727BF6E0600546F28 /* Seldeog.xcdatamodeld */; };
 		2D246BFB27BF6E0700546F28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D246BFA27BF6E0700546F28 /* Assets.xcassets */; };
 		2D246BFE27BF6E0700546F28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D246BFC27BF6E0700546F28 /* LaunchScreen.storyboard */; };
+		2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */; };
+		2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */; };
+		2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0027CF4ADC0034A602 /* UIView+Extension.swift */; };
 		EAC40CB19EABBAD035E8828A /* Pods_Seldeog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,11 +25,14 @@
 		2D246BEB27BF6E0600546F28 /* Seldeog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seldeog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D246BEE27BF6E0600546F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D246BF027BF6E0600546F28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2D246BF227BF6E0600546F28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSignInViewController.swift; sourceTree = "<group>"; };
 		2D246BF827BF6E0600546F28 /* Seldeog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Seldeog.xcdatamodel; sourceTree = "<group>"; };
 		2D246BFA27BF6E0700546F28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D246BFD27BF6E0700546F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D246BFF27BF6E0700546F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2D2ADF0027CF4ADC0034A602 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		BC3F0E4D990966B075FCD806 /* Pods-Seldeog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.debug.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +90,9 @@
 		2D246C0727BF776700546F28 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				2D246BF227BF6E0600546F28 /* ViewController.swift */,
+				2D2ADEFB27CF46810034A602 /* Network */,
+				2D2ADEFA27CF46740034A602 /* Util */,
+				2D2ADEF927CF466E0034A602 /* Feature */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -96,6 +104,31 @@
 				2D246BFC27BF6E0700546F28 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		2D2ADEF927CF466E0034A602 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		2D2ADEFA27CF46740034A602 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */,
+				2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */,
+				2D2ADF0027CF4ADC0034A602 /* UIView+Extension.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		2D2ADEFB27CF46810034A602 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		5592A7E64A1C770F8452A196 /* Pods */ = {
@@ -229,9 +262,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D246BF327BF6E0600546F28 /* ViewController.swift in Sources */,
+				2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */,
+				2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
 				2D246BF127BF6E0600546F28 /* SceneDelegate.swift in Sources */,
+				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
+				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
 				2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
