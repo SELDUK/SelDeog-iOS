@@ -18,11 +18,11 @@ extension AuthAPI: BaseTargetType {
     var path: String {
         switch self {
         case .postSignIn:
-            return "auth/sign-in"
+            return "/auth/login"
         case .postSignUp:
-            return "auth/sign-up"
+            return "/auth/signup"
         case .checkEmailValid:
-            return "auth/check-mail"
+            return "/auth/signup/check"
         }
     }
 

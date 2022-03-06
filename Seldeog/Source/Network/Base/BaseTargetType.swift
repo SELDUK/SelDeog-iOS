@@ -12,7 +12,7 @@ public protocol BaseTargetType: TargetType { }
 public extension BaseTargetType {
 
     var baseURL: URL {
-        return URL(string: "https://")!
+        return URL(string: "http://3.39.74.243:3000")!
     }
 
     var headers: [String: String]? {

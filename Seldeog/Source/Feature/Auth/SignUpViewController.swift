@@ -24,6 +24,7 @@ final class SignUpViewController: UIViewController {
     let checkPasswordSameButton = CheckButton()
     let signUpButton = UIButton()
     
+    var isEmailValid: Bool = false
     var isButtonActivate: Bool = false {
         didSet {
             isButtonActivate ? activateUI() : deactivateUI()
@@ -71,6 +72,79 @@ final class SignUpViewController: UIViewController {
         emailTextField.reloadInputViews()
         passwordTextField.reloadInputViews()
     }
+    
+    func checkExistence() {
+        guard let email = self.emailTextField.text else { return }
+        checkEmailValid(email: email) { data in
+            if data.success {
+                self.isEmailValid = true
+                self.showToastMessageAlert(message: "시용가능한 이메일입니다.")
+            } else {
+                self.showToastMessageAlert(message: "이미 존재한 이메일입니다.")
+            }
+        }
+    }
+    
+    func signUp() {
+        guard let email = self.emailTextField.text else { return }
+        guard let password = self.passwordTextField.text else { return }
+        guard let passwordCheck = self.passwordConfirmTextField.text else { return }
+        
+        postSignUp(email: email, password: password) { data in
+            if data.success {
+                self.showToastMessageAlert(message: "회원가입 완료!!")
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                self.showToastMessageAlert(message: "회원가입에 실패하였습니다.")
+            }
+        }
+    }
+
+    func checkEmailValid(
+        email: String,
+        completion: @escaping (AuthResponse) -> Void
+    ) {
+        AuthRepository.shared.checkEmailValid(email: email) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? AuthResponse else { return }
+                completion(data)
+            default:
+                print("check mail error")
+            }
+        }
+    }
+
+    func postSignUp(
+        email: String,
+        password: String,
+        completion: @escaping (AuthResponse) -> Void
+    ) {
+        AuthRepository.shared.postSignUp(email: email,
+                                         password: password) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? AuthResponse else { return }
+                completion(data)
+            default:
+                print("sign up error")
+            }
+        }
+    }
+    
+    func showToastMessageAlert(message: String) {
+        let alert = UIAlertController(title: message,
+                                      message: "",
+                                      preferredStyle: .alert)
+        
+        present(alert, animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+            alert.dismiss(animated: true)
+        }
+    }
 }
 
 extension SignUpViewController {
@@ -104,6 +178,7 @@ extension SignUpViewController {
             $0.layer.borderWidth = 0
             $0.addLeftPadding()
             $0.autocapitalizationType = .none
+            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         
         checkExistenceButton.do {
@@ -121,14 +196,15 @@ extension SignUpViewController {
         
         passwordTextField.do {
             $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xF3F5F7)
+            $0.textContentType = .newPassword
             $0.isSecureTextEntry = true
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 8
             $0.clearButtonMode = .never
-            $0.keyboardType = .asciiCapable
             $0.layer.borderWidth = 0
             $0.addLeftPadding()
             $0.autocapitalizationType = .none
+            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         
         checkPasswordValidButton.do {
@@ -145,14 +221,15 @@ extension SignUpViewController {
         
         passwordConfirmTextField.do {
             $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xF3F5F7)
+            $0.textContentType = .newPassword
             $0.isSecureTextEntry = true
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 8
             $0.clearButtonMode = .never
-            $0.keyboardType = .asciiCapable
             $0.layer.borderWidth = 0
             $0.addLeftPadding()
             $0.autocapitalizationType = .none
+            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         
         checkPasswordSameButton.do {
@@ -272,7 +349,10 @@ extension SignUpViewController {
     }
     
     @objc func textFieldDidChange() {
-        if emailTextField.text != "", passwordTextField.text != "", passwordConfirmTextField.text != "" {
+        if emailTextField.text != "",
+            passwordTextField.text != "",
+            passwordConfirmTextField.text != "",
+            isEmailValid {
             isButtonActivate = true
         } else {
             isButtonActivate = false
@@ -282,9 +362,9 @@ extension SignUpViewController {
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case checkExistenceButton:
-            print("check")
+            checkExistence()
         case signUpButton:
-            print("sign Up")
+            signUp()
         default:
             return
         }
