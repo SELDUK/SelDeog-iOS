@@ -349,9 +349,24 @@ extension SignUpViewController {
     }
     
     @objc func textFieldDidChange() {
-        if emailTextField.text != "",
-            passwordTextField.text != "",
-            passwordConfirmTextField.text != "",
+        if let text = passwordTextField.text {
+            if text.count < 8 {
+                checkPasswordValidButton.isSelected = false
+            } else {
+                checkPasswordValidButton.isSelected = true
+            }
+        }
+        
+        if let passwordText = passwordTextField.text, let passwordConfirmText = passwordConfirmTextField.text {
+            if passwordText == passwordConfirmText, passwordText != "" {
+                checkPasswordSameButton.isSelected = true
+            } else {
+                checkPasswordSameButton.isSelected = false
+            }
+        }
+        
+        if checkPasswordSameButton.isSelected,
+           checkPasswordValidButton.isSelected,
             isEmailValid {
             isButtonActivate = true
         } else {
