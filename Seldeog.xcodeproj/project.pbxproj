@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9A627DF65E300EE1D96 /* Image.swift */; };
 		2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BEE27BF6E0600546F28 /* AppDelegate.swift */; };
 		2D246BF127BF6E0600546F28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF027BF6E0600546F28 /* SceneDelegate.swift */; };
 		2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */; };
@@ -25,12 +26,14 @@
 		2DBF1D9627D0829B00285A0B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */; };
 		2DBF1D9927D086EE00285A0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9827D086EE00285A0B /* NetworkResult.swift */; };
 		2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */; };
+		2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */; };
 		EAC40CB19EABBAD035E8828A /* Pods_Seldeog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seldeog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D613C9FD8BEDF1F07EAFD49 /* Pods-Seldeog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.release.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.release.xcconfig"; sourceTree = "<group>"; };
+		2D1EC9A627DF65E300EE1D96 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		2D246BEB27BF6E0600546F28 /* Seldeog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seldeog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D246BEE27BF6E0600546F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D246BF027BF6E0600546F28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		2DBF1D9827D086EE00285A0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		BC3F0E4D990966B075FCD806 /* Pods-Seldeog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.debug.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +124,7 @@
 			children = (
 				2D246BFA27BF6E0700546F28 /* Assets.xcassets */,
 				2D246BFC27BF6E0700546F28 /* LaunchScreen.storyboard */,
+				2D1EC9A627DF65E300EE1D96 /* Image.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */,
 				2D2ADF0027CF4ADC0034A602 /* UIView+Extension.swift */,
 				2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */,
+				2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */,
+				2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */,
 				2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */,
 				2D2ADF0627CF4D610034A602 /* SignUpViewController.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
@@ -351,6 +358,7 @@
 				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
 				2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */,
 				2DBF1D8A27CFA15100285A0B /* CheckButton.swift in Sources */,
+				2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */,
 				2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */,
 				2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */,
 			);

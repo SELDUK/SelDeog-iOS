@@ -80,13 +80,15 @@ extension StartSignInViewController {
     }
     
     @objc private func signInButtonTap() {
-        let signInViewController = SignInViewController()
-        navigationController?.pushViewController(signInViewController, animated: true)
+        let navigationViewController = UINavigationController(rootViewController: SignInViewController())
+        navigationViewController.modalPresentationStyle = .fullScreen
+        present(navigationViewController, animated: true, completion: nil)
     }
 
     @objc private func signUpButtonTap() {
-        let signUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpViewController, animated: true)
+        let navigationViewController = UINavigationController(rootViewController: SignUpViewController())
+        navigationViewController.modalPresentationStyle = .fullScreen
+        present(navigationViewController, animated: true, completion: nil)
     }
     
 }

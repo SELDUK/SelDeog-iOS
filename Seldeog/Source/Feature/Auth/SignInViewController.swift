@@ -21,6 +21,7 @@ final class SignInViewController: UIViewController {
     let autoLoginLabel = UILabel()
     let signUpButton = UIButton()
     let signInButton = UIButton()
+    let dismissButton = UIButton()
     
     var isButtonActivate: Bool = false {
         didSet {
@@ -47,7 +48,7 @@ final class SignInViewController: UIViewController {
     }
     
     private func registerTarget() {
-        [autoLoginButton, signUpButton, signInButton].forEach {
+        [autoLoginButton, signUpButton, signInButton, dismissButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -69,6 +70,60 @@ final class SignInViewController: UIViewController {
         emailTextField.reloadInputViews()
         passwordTextField.reloadInputViews()
     }
+    
+    func signIn() {
+        guard let email = self.emailTextField.text else { return }
+        guard let password = self.passwordTextField.text else { return }
+        
+        postSignIn(email: email, password: password) { data in
+            if data.success {
+                if self.autoLoginButton.isSelected {
+                    UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isAutoLogin)
+                } else {
+                    UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isAutoLogin)
+                }
+                
+                if let token = data.data?.token {
+                    UserDefaults.standard.setValue(token, forKey: UserDefaultKey.token)
+                }
+                
+                UserDefaults.standard.setValue(true, forKey: UserDefaultKey.loginStatus)
+                UserDefaults.standard.synchronize()
+            } else {
+                self.showToastMessageAlert(message: data.message)
+            }
+        }
+    }
+    
+    func postSignIn(
+        email: String,
+        password: String,
+        completion: @escaping (AuthResponse) -> Void
+    ) {
+        AuthRepository.shared.postSignIn(email: email,
+                                         password: password) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? AuthResponse else { return }
+                completion(data)
+            default:
+                print("sign in error")
+            }
+        }
+    }
+    
+    func showToastMessageAlert(message: String) {
+        let alert = UIAlertController(title: message,
+                                      message: "",
+                                      preferredStyle: .alert)
+        
+        present(alert, animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+            alert.dismiss(animated: true)
+        }
+    }
 
 }
 
@@ -81,6 +136,10 @@ extension SignInViewController {
         
         navigationController?.do {
             $0.isNavigationBarHidden = false
+            let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+            navigationItem.setHidesBackButton(true, animated: true)
+            navigationItem.rightBarButtonItem = dismissBarButton
+            navigationController?.navigationBar.shadowImage = UIImage()
         }
         
         signInLabel.do {
@@ -153,6 +212,10 @@ extension SignInViewController {
             $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
             $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xECEEF0), for: .disabled)
             $0.isEnabled = false
+        }
+
+        dismissButton.do {
+            $0.setImage(Image.xLine, for: .normal)
         }
     }
     
@@ -250,9 +313,11 @@ extension SignInViewController {
         case autoLoginButton:
             autoLoginButton.isSelected = !autoLoginButton.isSelected
         case signUpButton:
-            print("sign Up")
+            navigationController?.pushViewController(SignUpViewController(), animated: false)
         case signInButton:
-            print("sign In")
+            signIn()
+        case dismissButton:
+            dismiss(animated: true, completion: nil)
         default:
             return
         }

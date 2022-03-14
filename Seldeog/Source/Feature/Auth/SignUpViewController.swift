@@ -23,6 +23,7 @@ final class SignUpViewController: UIViewController {
     let passwordConfirmTextField = UITextField()
     let checkPasswordSameButton = CheckButton()
     let signUpButton = UIButton()
+    let dismissButton = UIButton()
     
     var isEmailValid: Bool = false
     var isButtonActivate: Bool = false {
@@ -50,7 +51,7 @@ final class SignUpViewController: UIViewController {
     }
     
     private func registerTarget() {
-        [checkExistenceButton, signUpButton].forEach {
+        [checkExistenceButton, signUpButton, dismissButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -88,12 +89,10 @@ final class SignUpViewController: UIViewController {
     func signUp() {
         guard let email = self.emailTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
-        guard let passwordCheck = self.passwordConfirmTextField.text else { return }
         
         postSignUp(email: email, password: password) { data in
             if data.success {
-                self.showToastMessageAlert(message: "회원가입 완료!!")
-                self.navigationController?.popViewController(animated: true)
+                self.setAlert(message: "회원가입 완료!!")
             } else {
                 self.showToastMessageAlert(message: "회원가입에 실패하였습니다.")
             }
@@ -145,6 +144,15 @@ final class SignUpViewController: UIViewController {
             alert.dismiss(animated: true)
         }
     }
+    
+    func setAlert(message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension SignUpViewController {
@@ -156,6 +164,10 @@ extension SignUpViewController {
         
         navigationController?.do {
             $0.isNavigationBarHidden = false
+            let dismissBarButton = UIBarButtonItem(customView: dismissButton)
+            navigationItem.setHidesBackButton(true, animated: true)
+            navigationItem.rightBarButtonItem = dismissBarButton
+            navigationController?.navigationBar.shadowImage = UIImage()
         }
         
         signUpLabel.do {
@@ -246,6 +258,10 @@ extension SignUpViewController {
             $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
             $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xECEEF0), for: .disabled)
             $0.isEnabled = false
+        }
+        
+        dismissButton.do {
+            $0.setImage(Image.xLine, for: .normal)
         }
     }
     
@@ -380,6 +396,8 @@ extension SignUpViewController {
             checkExistence()
         case signUpButton:
             signUp()
+        case dismissButton:
+            dismiss(animated: true, completion: nil)
         default:
             return
         }
