@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SignInViewController: UIViewController {
+final class SignInViewController: BaseViewController {
     
     let signInLabel = UILabel()
     let emailLabel = UILabel()
@@ -41,7 +41,7 @@ final class SignInViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func registerForKeyboardNotification() {
+    private func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -53,7 +53,7 @@ final class SignInViewController: UIViewController {
         }
     }
     
-    func activateUI() {
+    private func activateUI() {
         signInButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
         signInButton.isEnabled = true
         emailTextField.returnKeyType = .done
@@ -62,7 +62,7 @@ final class SignInViewController: UIViewController {
         passwordTextField.reloadInputViews()
     }
     
-    func deactivateUI() {
+    private func deactivateUI() {
         signInButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xECEEF0), for: .normal)
         signInButton.isEnabled = false
         emailTextField.returnKeyType = .default
@@ -71,7 +71,7 @@ final class SignInViewController: UIViewController {
         passwordTextField.reloadInputViews()
     }
     
-    func signIn() {
+    private func signIn() {
         guard let email = self.emailTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         
@@ -109,18 +109,6 @@ final class SignInViewController: UIViewController {
             default:
                 print("sign in error")
             }
-        }
-    }
-    
-    func showToastMessageAlert(message: String) {
-        let alert = UIAlertController(title: message,
-                                      message: "",
-                                      preferredStyle: .alert)
-        
-        present(alert, animated: true, completion: nil)
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
-            alert.dismiss(animated: true)
         }
     }
 

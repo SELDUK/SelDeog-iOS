@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SignUpViewController: UIViewController {
+final class SignUpViewController: BaseViewController {
     
     let signUpLabel = UILabel()
     let emailLabel = UILabel()
@@ -132,27 +132,7 @@ final class SignUpViewController: UIViewController {
             }
         }
     }
-    
-    func showToastMessageAlert(message: String) {
-        let alert = UIAlertController(title: message,
-                                      message: "",
-                                      preferredStyle: .alert)
-        
-        present(alert, animated: true, completion: nil)
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
-            alert.dismiss(animated: true)
-        }
-    }
-    
-    func setAlert(message: String) {
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
-        })
-        alertController.addAction(confirmAction)
-        present(alertController, animated: true, completion: nil)
-    }
+
 }
 
 extension SignUpViewController {

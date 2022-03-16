@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectShapeViewController: UIViewController {
+final class SelectShapeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

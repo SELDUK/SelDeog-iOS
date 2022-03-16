@@ -5,7 +5,7 @@
 //  Created by 권준상 on 2022/03/14.
 //
 
-import UIKit
+import UIKit.UIImage
 
 enum Image {
     static let arrowDown = UIImage(named: "ic_arrow_down_line")!
