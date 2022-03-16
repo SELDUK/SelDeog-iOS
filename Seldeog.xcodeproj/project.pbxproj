@@ -28,6 +28,9 @@
 		2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9327D081AC00285A0B /* AuthRepository.swift */; };
 		2DBF1D9627D0829B00285A0B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */; };
 		2DBF1D9927D086EE00285A0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9827D086EE00285A0B /* NetworkResult.swift */; };
+		2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */; };
+		2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */; };
+		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
 		2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */; };
 		2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */; };
 		EAC40CB19EABBAD035E8828A /* Pods_Seldeog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */; };
@@ -59,6 +62,9 @@
 		2DBF1D9327D081AC00285A0B /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		2DBF1D9827D086EE00285A0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
+		2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenB.otf; sourceTree = "<group>"; };
+		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		BC3F0E4D990966B075FCD806 /* Pods-Seldeog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.debug.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,9 +150,11 @@
 		2D246C0827BF776E00546F28 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2DDDD45027E1C0E500FC289C /* Fonts */,
 				2D246BFA27BF6E0700546F28 /* Assets.xcassets */,
 				2D246BFC27BF6E0700546F28 /* LaunchScreen.storyboard */,
 				2D1EC9A627DF65E300EE1D96 /* Image.swift */,
+				2DDDD45527E1C22900FC289C /* Font.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -237,6 +245,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		2DDDD45027E1C0E500FC289C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */,
+				2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5592A7E64A1C770F8452A196 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +331,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */,
+				2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */,
 				2D246BFE27BF6E0700546F28 /* LaunchScreen.storyboard in Resources */,
 				2D246BFB27BF6E0700546F28 /* Assets.xcassets in Resources */,
 			);
@@ -380,6 +399,7 @@
 				2DBF1D9927D086EE00285A0B /* NetworkResult.swift in Sources */,
 				2D2ADF0827CF58CA0034A602 /* UITextField+Extension.swift in Sources */,
 				2D2ADF0427CF4D5B0034A602 /* SignInViewController.swift in Sources */,
+				2DDDD45627E1C22900FC289C /* Font.swift in Sources */,
 				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
 				2D1EC9AB27DF6F2600EE1D96 /* StartMode.swift in Sources */,
 				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
