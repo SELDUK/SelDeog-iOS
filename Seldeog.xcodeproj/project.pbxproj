@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9A627DF65E300EE1D96 /* Image.swift */; };
+		2D1EC9AB27DF6F2600EE1D96 /* StartMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */; };
+		2D1EC9B127DF712D00EE1D96 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9B027DF712D00EE1D96 /* MainViewController.swift */; };
+		2D1EC9B327DF716500EE1D96 /* SelectShapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9B227DF716500EE1D96 /* SelectShapeViewController.swift */; };
 		2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BEE27BF6E0600546F28 /* AppDelegate.swift */; };
 		2D246BF127BF6E0600546F28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF027BF6E0600546F28 /* SceneDelegate.swift */; };
 		2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */; };
@@ -34,6 +37,9 @@
 		0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seldeog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D613C9FD8BEDF1F07EAFD49 /* Pods-Seldeog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.release.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.release.xcconfig"; sourceTree = "<group>"; };
 		2D1EC9A627DF65E300EE1D96 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMode.swift; sourceTree = "<group>"; };
+		2D1EC9B027DF712D00EE1D96 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2D1EC9B227DF716500EE1D96 /* SelectShapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShapeViewController.swift; sourceTree = "<group>"; };
 		2D246BEB27BF6E0600546F28 /* Seldeog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seldeog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D246BEE27BF6E0600546F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D246BF027BF6E0600546F28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +76,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D1EC9AC27DF70CA00EE1D96 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				2D1EC9B227DF716500EE1D96 /* SelectShapeViewController.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		2D1EC9AF27DF711700EE1D96 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2D1EC9B027DF712D00EE1D96 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		2D246BE227BF6E0600546F28 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +154,8 @@
 		2D2ADEF927CF466E0034A602 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				2D1EC9AF27DF711700EE1D96 /* Main */,
+				2D1EC9AC27DF70CA00EE1D96 /* OnBoarding */,
 				2DBF1D8827CFA14400285A0B /* Base */,
 				2D2ADF0227CF4D4C0034A602 /* Auth */,
 			);
@@ -175,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				2DBF1D8927CFA15100285A0B /* CheckButton.swift */,
+				2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -345,6 +370,7 @@
 			files = (
 				2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */,
 				2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */,
+				2D1EC9B327DF716500EE1D96 /* SelectShapeViewController.swift in Sources */,
 				2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */,
 				2D2ADF0627CF4D610034A602 /* SignUpViewController.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
@@ -355,11 +381,13 @@
 				2D2ADF0827CF58CA0034A602 /* UITextField+Extension.swift in Sources */,
 				2D2ADF0427CF4D5B0034A602 /* SignInViewController.swift in Sources */,
 				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
+				2D1EC9AB27DF6F2600EE1D96 /* StartMode.swift in Sources */,
 				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
 				2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */,
 				2DBF1D8A27CFA15100285A0B /* CheckButton.swift in Sources */,
 				2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */,
 				2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */,
+				2D1EC9B127DF712D00EE1D96 /* MainViewController.swift in Sources */,
 				2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

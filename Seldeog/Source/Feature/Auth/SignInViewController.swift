@@ -87,7 +87,6 @@ final class SignInViewController: UIViewController {
                     UserDefaults.standard.setValue(token, forKey: UserDefaultKey.token)
                 }
                 
-                UserDefaults.standard.setValue(true, forKey: UserDefaultKey.loginStatus)
                 UserDefaults.standard.synchronize()
             } else {
                 self.showToastMessageAlert(message: data.message)

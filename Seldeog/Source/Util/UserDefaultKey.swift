@@ -9,6 +9,6 @@ import Foundation
 
 struct UserDefaultKey {
     static let isAutoLogin: String = "AutoLogin"
-    static let loginStatus: String = "LoginStatus"
+    static let isNotFirstTime: String = "NotFirstTime"
     static let token: String = "Token"
 }
