@@ -87,7 +87,9 @@ final class SignInViewController: BaseViewController {
                     UserDefaults.standard.setValue(token, forKey: UserDefaultKey.token)
                 }
                 
+                UserDefaults.standard.setValue(true, forKey: UserDefaultKey.loginStatus)
                 UserDefaults.standard.synchronize()
+                LoginSwitcher.updateRootVC()
             } else {
                 self.showToastMessageAlert(message: data.message)
             }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D16DDF027E31F8200A43E5D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16DDEF27E31F8200A43E5D /* SplashViewController.swift */; };
+		2D16DDF327E321DD00A43E5D /* LoginSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16DDF227E321DD00A43E5D /* LoginSwitcher.swift */; };
 		2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9A627DF65E300EE1D96 /* Image.swift */; };
 		2D1EC9AB27DF6F2600EE1D96 /* StartMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */; };
 		2D1EC9B127DF712D00EE1D96 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9B027DF712D00EE1D96 /* MainViewController.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seldeog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D613C9FD8BEDF1F07EAFD49 /* Pods-Seldeog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.release.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.release.xcconfig"; sourceTree = "<group>"; };
+		2D16DDEF27E31F8200A43E5D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		2D16DDF227E321DD00A43E5D /* LoginSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwitcher.swift; sourceTree = "<group>"; };
 		2D1EC9A627DF65E300EE1D96 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMode.swift; sourceTree = "<group>"; };
 		2D1EC9B027DF712D00EE1D96 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				2D1EC9AC27DF70CA00EE1D96 /* OnBoarding */,
 				2DBF1D8827CFA14400285A0B /* Base */,
 				2D2ADF0227CF4D4C0034A602 /* Auth */,
+				2D16DDEF27E31F8200A43E5D /* SplashViewController.swift */,
+				2D16DDF227E321DD00A43E5D /* LoginSwitcher.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -405,7 +411,9 @@
 				2D2ADF0427CF4D5B0034A602 /* SignInViewController.swift in Sources */,
 				2DDDD45627E1C22900FC289C /* Font.swift in Sources */,
 				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
+				2D16DDF027E31F8200A43E5D /* SplashViewController.swift in Sources */,
 				2D1EC9AB27DF6F2600EE1D96 /* StartMode.swift in Sources */,
+				2D16DDF327E321DD00A43E5D /* LoginSwitcher.swift in Sources */,
 				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
 				2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */,
 				2DBF1D8A27CFA15100285A0B /* CheckButton.swift in Sources */,

@@ -11,6 +11,6 @@ final class SelectShapeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .blue
     }
 }

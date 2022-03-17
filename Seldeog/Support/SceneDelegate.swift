@@ -15,31 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-
-//        UserDefaults.standard.startMode = StartMode.onBoarding.rawValue
-        var startViewController: UINavigationController
-        let startModeString = UserDefaults.standard.startMode
-        var startMode = StartMode(rawValue: startModeString) ?? .auth
-        
-        if isAutoLogin() {
-            if isNotFirstTime() {
-                startMode = .main
-            } else {
-                startMode = .onBoarding
-            }
-        } else {
-            startMode = .auth
-        }
-        
-        switch startMode {
-            case .onBoarding:
-                startViewController = UINavigationController(rootViewController: SelectShapeViewController())
-            case .auth:
-                startViewController = UINavigationController(rootViewController: StartSignInViewController())
-            case .main:
-                startViewController = UINavigationController(rootViewController: MainViewController())
-        }
-        window?.rootViewController = startViewController
+        window?.rootViewController = SplashViewController()
         window?.makeKeyAndVisible()
     }
 
@@ -55,12 +31,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
-    private func isAutoLogin() -> Bool {
-        return UserDefaults.standard.bool(forKey: UserDefaultKey.isAutoLogin)
+    func goToMain() {
+        window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+        window?.makeKeyAndVisible()
+      }
+      
+    func goToSignIn() {
+        window?.rootViewController = StartSignInViewController()
+        window?.makeKeyAndVisible()
     }
     
-    private func isNotFirstTime() -> Bool {
-        return UserDefaults.standard.bool(forKey: UserDefaultKey.isNotFirstTime)
+    func goToOnboard() {
+        window?.rootViewController = UINavigationController(rootViewController: SelectShapeViewController())
+        window?.makeKeyAndVisible()
     }
 
 
