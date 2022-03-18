@@ -16,6 +16,8 @@ enum Image {
     static let personFilled = UIImage(named: "ic_person_filled")!
     static let personLine = UIImage(named: "ic_person_line")!
     static let xLine = UIImage(named: "ic_x_line")!
+    static let checkPattern = UIImage(named: "checkPattern")!
+    static let progressBar = UIImage(named: "progressBar")!
     
     // 캐릭터 모양
     static let shapeCircle = UIImage(named: "shape_circle")!

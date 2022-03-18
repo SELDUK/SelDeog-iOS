@@ -10,13 +10,21 @@ import UIKit.UIFont
 extension UIFont {
 
     enum Family: String {
-        case B, R
+        case bold, regular
     }
 
     static func nanumPen(size: CGFloat, family: Family) -> UIFont {
-        guard let font = UIFont(name: "NanumBarunpen\(family)", size: size) else {
-            return UIFont.systemFont(ofSize: size)
+        switch family {
+        case .bold:
+            guard let font = UIFont(name: "NanumBarunpenOTF-Bold", size: size) else {
+                return UIFont.systemFont(ofSize: size)
+            }
+            return font
+        case .regular:
+            guard let font = UIFont(name: "NanumBarunpenOTF", size: size) else {
+                return UIFont.systemFont(ofSize: size)
+            }
+            return font
         }
-        return font
     }
 }
