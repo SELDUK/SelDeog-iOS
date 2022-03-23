@@ -18,6 +18,7 @@ enum Image {
     static let xLine = UIImage(named: "ic_x_line")!
     static let checkPattern = UIImage(named: "checkPattern")!
     static let progressBar = UIImage(named: "progressBar")!
+    static let progressBar2 = UIImage(named: "progressBar2")!
     
     // 캐릭터 모양
     static let shapeCircle = UIImage(named: "shape_circle")!
@@ -32,4 +33,10 @@ enum Image {
     static let expressionSad = UIImage(named: "expression_sad")!
     static let expressionConfidence = UIImage(named: "expression_confidence")!
     static let expressionBlank = UIImage(named: "expression_blank")!
+    
+    // 캐릭터 특징
+    static let featureNecklace = UIImage(named: "feature_necklace")!
+    static let featureHair = UIImage(named: "feature_hair")!
+    static let featureScar = UIImage(named: "feature_scar")!
+    static let featureHat = UIImage(named: "feature_hat")!
 }

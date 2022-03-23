@@ -60,7 +60,7 @@ extension StartSignInViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubViews(signInButton, signUpButton)
+        view.addSubviews(signInButton, signUpButton)
     }
     
     private func setConstraints() {

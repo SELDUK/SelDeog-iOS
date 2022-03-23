@@ -214,7 +214,7 @@ extension SignInViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubViews(signInLabel, emailLabel, emailTextField, passwordLabel, passwordTextField, autoLoginButton, autoLoginLabel, signUpButton, signInButton)
+        view.addSubviews(signInLabel, emailLabel, emailTextField, passwordLabel, passwordTextField, autoLoginButton, autoLoginLabel, signUpButton, signInButton)
     }
     
     private func setConstraints() {

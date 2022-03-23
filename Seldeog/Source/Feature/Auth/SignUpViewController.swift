@@ -251,7 +251,7 @@ extension SignUpViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubViews(signUpLabel, emailLabel, emailTextField, checkExistenceButton, passwordLabel, passwordTextField, checkPasswordValidButton, passwordConfirmLabel, passwordConfirmTextField, checkPasswordSameButton, signUpButton)
+        view.addSubviews(signUpLabel, emailLabel, emailTextField, checkExistenceButton, passwordLabel, passwordTextField, checkPasswordValidButton, passwordConfirmLabel, passwordConfirmTextField, checkPasswordSameButton, signUpButton)
     }
     
     private func setConstraints() {
