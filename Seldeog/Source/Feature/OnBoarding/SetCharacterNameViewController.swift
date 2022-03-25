@@ -197,6 +197,8 @@ extension SetCharacterNameViewController {
         switch sender {
         case nextButton:
             CharacterData.nickname = nameTextField.text
+            let confirmCharacterViewController = ConfirmCharacterViewController()
+            navigationController?.pushViewController(confirmCharacterViewController, animated: true)
         case popButton:
             navigationController?.popViewController(animated: true)
         default:

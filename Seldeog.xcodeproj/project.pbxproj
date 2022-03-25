@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D05767627EDAFEE00705AB7 /* ConfirmCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05767527EDAFEE00705AB7 /* ConfirmCharacterViewController.swift */; };
 		2D16DDF027E31F8200A43E5D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16DDEF27E31F8200A43E5D /* SplashViewController.swift */; };
 		2D16DDF327E321DD00A43E5D /* LoginSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16DDF227E321DD00A43E5D /* LoginSwitcher.swift */; };
 		2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC9A627DF65E300EE1D96 /* Image.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Seldeog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D613C9FD8BEDF1F07EAFD49 /* Pods-Seldeog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.release.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.release.xcconfig"; sourceTree = "<group>"; };
+		2D05767527EDAFEE00705AB7 /* ConfirmCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCharacterViewController.swift; sourceTree = "<group>"; };
 		2D16DDEF27E31F8200A43E5D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2D16DDF227E321DD00A43E5D /* LoginSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwitcher.swift; sourceTree = "<group>"; };
 		2D1EC9A627DF65E300EE1D96 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				2D1EC9B227DF716500EE1D96 /* SelectShapeViewController.swift */,
 				2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */,
 				2D97E6F027EAFD900029DE35 /* SetCharacterNameViewController.swift */,
+				2D05767527EDAFEE00705AB7 /* ConfirmCharacterViewController.swift */,
 				2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */,
 				2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */,
 			);
@@ -437,6 +440,7 @@
 				2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */,
 				2D1EC9B127DF712D00EE1D96 /* MainViewController.swift in Sources */,
 				2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */,
+				2D05767627EDAFEE00705AB7 /* ConfirmCharacterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
