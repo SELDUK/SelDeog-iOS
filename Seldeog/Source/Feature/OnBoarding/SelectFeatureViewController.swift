@@ -199,7 +199,8 @@ extension SelectFeatureViewController {
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case nextButton:
-            print()
+            let setCharacterNameViewController = SetCharacterNameViewController()
+            navigationController?.pushViewController(setCharacterNameViewController, animated: false)
         case popButton:
             navigationController?.popViewController(animated: true)
         default:

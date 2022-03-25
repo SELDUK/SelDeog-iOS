@@ -28,6 +28,7 @@
 		2D47BA2E27E6FAC1007D83F1 /* MakeCharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */; };
 		2D97E6ED27EAE8400029DE35 /* SelectFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */; };
 		2D97E6EF27EAE9D30029DE35 /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */; };
+		2D97E6F127EAFD900029DE35 /* SetCharacterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6F027EAFD900029DE35 /* SetCharacterNameViewController.swift */; };
 		2DBF1D8A27CFA15100285A0B /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D8927CFA15100285A0B /* CheckButton.swift */; };
 		2DBF1D9027D0819300285A0B /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D8F27D0819300285A0B /* AuthAPI.swift */; };
 		2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9327D081AC00285A0B /* AuthRepository.swift */; };
@@ -68,6 +69,7 @@
 		2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCharacterViewCell.swift; sourceTree = "<group>"; };
 		2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeatureViewController.swift; sourceTree = "<group>"; };
 		2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
+		2D97E6F027EAFD900029DE35 /* SetCharacterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCharacterNameViewController.swift; sourceTree = "<group>"; };
 		2DBF1D8927CFA15100285A0B /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		2DBF1D8F27D0819300285A0B /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		2DBF1D9327D081AC00285A0B /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				2D1EC9B227DF716500EE1D96 /* SelectShapeViewController.swift */,
 				2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */,
+				2D97E6F027EAFD900029DE35 /* SetCharacterNameViewController.swift */,
 				2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */,
 				2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */,
 			);
@@ -428,6 +431,7 @@
 				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
 				2D97E6EF27EAE9D30029DE35 /* CharacterData.swift in Sources */,
 				2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */,
+				2D97E6F127EAFD900029DE35 /* SetCharacterNameViewController.swift in Sources */,
 				2DBF1D8A27CFA15100285A0B /* CheckButton.swift in Sources */,
 				2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */,
 				2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */,
