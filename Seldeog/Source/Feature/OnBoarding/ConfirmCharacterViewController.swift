@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Lottie
 import SnapKit
 
 final class ConfirmCharacterViewController: BaseViewController {
@@ -18,11 +19,13 @@ final class ConfirmCharacterViewController: BaseViewController {
     let pleaseLoveMeLabel = UILabel()
     let nextButton = UIButton()
     let popButton = UIButton()
+//    let animationView = AnimationView(name: "폭죽")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setProperties()
         setLayouts()
+        registerTarget()
     }
     
     private func registerTarget() {
@@ -30,12 +33,19 @@ final class ConfirmCharacterViewController: BaseViewController {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
+
+//    private func setAnimation() {
+//        animationView.contentMode = .scaleAspectFit
+//        animationView.frame = view.bounds
+//        animationView.play()
+//        animationView.loopMode = .loop
+//    }
 }
 
 extension ConfirmCharacterViewController {
     private func setProperties() {
         view.do {
-            $0.backgroundColor = UIColor(patternImage: Image.checkPattern)
+            $0.backgroundColor = .white
         }
         
         navigationController?.do {
