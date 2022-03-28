@@ -39,4 +39,7 @@ enum Image {
     static let featureHair = UIImage(named: "feature_hair")!
     static let featureScar = UIImage(named: "feature_scar")!
     static let featureHat = UIImage(named: "feature_hat")!
+    
+    static let idImage = UIImage(named: "id_image")!
+    static let passwordImage = UIImage(named: "password_image")!
 }

@@ -13,7 +13,7 @@ class CheckButton : UIButton {
     override var isSelected: Bool {
         didSet{
             if self.isSelected {
-                self.tintColor = UIColor.colorWithRGBHex(hex: 0x4D86F5)
+                self.tintColor = UIColor.black
             }
             else{
                 self.tintColor = UIColor.colorWithRGBHex(hex: 0xF4F3F3)

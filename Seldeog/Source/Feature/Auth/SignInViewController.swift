@@ -13,15 +13,26 @@ import Then
 final class SignInViewController: BaseViewController {
     
     let signInLabel = UILabel()
-    let emailLabel = UILabel()
-    let emailTextField = UITextField()
-    let passwordLabel = UILabel()
+    let warningLabel = UILabel()
+    let idImageView = UIImageView()
+    let idTextField = UITextField()
+    let idTextFieldLineView = UIView()
+    let passwordImageView = UIImageView()
     let passwordTextField = UITextField()
+    let passwordTextFieldLineView = UIView()
     let autoLoginButton = CheckButton()
     let autoLoginLabel = UILabel()
+    let signUpContainerView = UIView()
+    let signUpLabel = UILabel()
+    let signUpLineView = UIView()
     let signUpButton = UIButton()
     let signInButton = UIButton()
     let dismissButton = UIButton()
+    let copyRightLabel = UILabel()
+    let attributes = [
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.font : UIFont.nanumPen(size: 20, family: .bold)
+    ]
     
     var isButtonActivate: Bool = false {
         didSet {
@@ -33,18 +44,11 @@ final class SignInViewController: BaseViewController {
         super.viewDidLoad()
         setProperties()
         setLayouts()
-        registerForKeyboardNotification()
         registerTarget()
     }
     
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         view.endEditing(true)
-    }
-    
-    private func registerForKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func registerTarget() {
@@ -54,25 +58,24 @@ final class SignInViewController: BaseViewController {
     }
     
     private func activateUI() {
-        signInButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
+        signInButton.setBackgroundColor(UIColor.black, for: .normal)
         signInButton.isEnabled = true
-        emailTextField.returnKeyType = .done
+        idTextField.returnKeyType = .done
         passwordTextField.returnKeyType = .done
-        emailTextField.reloadInputViews()
+        idTextField.reloadInputViews()
         passwordTextField.reloadInputViews()
     }
     
     private func deactivateUI() {
-        signInButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xECEEF0), for: .normal)
         signInButton.isEnabled = false
-        emailTextField.returnKeyType = .default
+        idTextField.returnKeyType = .default
         passwordTextField.returnKeyType = .default
-        emailTextField.reloadInputViews()
+        idTextField.reloadInputViews()
         passwordTextField.reloadInputViews()
     }
     
     private func signIn() {
-        guard let email = self.emailTextField.text else { return }
+        guard let email = self.idTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         
         postSignIn(email: email, password: password) { data in
@@ -91,7 +94,7 @@ final class SignInViewController: BaseViewController {
                 UserDefaults.standard.synchronize()
                 LoginSwitcher.updateRootVC()
             } else {
-                self.showToastMessageAlert(message: data.message)
+                self.warningLabel.textColor = UIColor.red.withAlphaComponent(1)
             }
         }
     }
@@ -133,21 +136,22 @@ extension SignInViewController {
         
         signInLabel.do {
             $0.text = "SIGN IN"
-            $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+            $0.font = .nanumPen(size: 35, family: .bold)
         }
         
-        emailLabel.do {
-            $0.text = "E-MAIL"
-            $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            $0.textColor = UIColor.colorWithRGBHex(hex: 0x3A3D40)
+        warningLabel.do {
+            $0.text = "THE ID OR PASSWORD DOES NOT MATCH"
+            $0.font = .nanumPen(size: 13, family: .bold)
+            $0.textColor = UIColor.red.withAlphaComponent(0)
         }
         
-        emailTextField.do {
-            $0.becomeFirstResponder()
+        idImageView.do {
+            $0.image = Image.idImage
+        }
+        
+        idTextField.do {
             $0.delegate = self
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xF3F5F7)
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 8
+            $0.attributedPlaceholder = NSAttributedString(string: "ID", attributes: attributes)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
             $0.layer.borderWidth = 0
@@ -155,25 +159,29 @@ extension SignInViewController {
             $0.autocapitalizationType = .none
             $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
+        
+        idTextFieldLineView.do {
+            $0.backgroundColor = .black
+        }
 
-        passwordLabel.do {
-            $0.text = "PASSWORD"
-            $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            $0.textColor = UIColor.colorWithRGBHex(hex: 0x3A3D40)
+        passwordImageView.do {
+            $0.image = Image.passwordImage
         }
         
         passwordTextField.do {
             $0.delegate = self
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xF3F5F7)
+            $0.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: attributes)
             $0.isSecureTextEntry = true
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 8
             $0.clearButtonMode = .never
             $0.keyboardType = .asciiCapable
             $0.layer.borderWidth = 0
             $0.addLeftPadding()
             $0.autocapitalizationType = .none
             $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        }
+        
+        passwordTextFieldLineView.do {
+            $0.backgroundColor = .black
         }
         
         autoLoginButton.do {
@@ -183,24 +191,39 @@ extension SignInViewController {
         
         autoLoginLabel.do {
             $0.text = "자동로그인"
-            $0.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-            $0.textColor = UIColor.colorWithRGBHex(hex: 0x3A3D40)
+            $0.font = .nanumPen(size: 13, family: .bold)
+            $0.textColor = UIColor.black
+        }
+        
+        signUpLabel.do {
+            $0.text = "DON’T HAVE AN ACCOUNT?"
+            $0.font = .nanumPen(size: 13, family: .bold)
+            $0.textColor = UIColor.colorWithRGBHex(hex: 0xAAAAAA)
+        }
+        
+        signUpLineView.do {
+            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0x005982)
         }
         
         signUpButton.do {
-            $0.setTitle("회원가입", for: .normal)
-            $0.setTitleColor(.blue, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            $0.setTitle("SIGN UP", for: .normal)
+            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0x005982), for: .normal)
+            $0.titleLabel?.font = .nanumPen(size: 15, family: .bold)
         }
 
         signInButton.do {
-            $0.setTitle("LOG IN", for: .normal)
+            $0.setTitle("SIGN IN", for: .normal)
             $0.setTitleColor(.white, for: .normal)
-            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0xB5B9BD), for: .disabled)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-            $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
-            $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xECEEF0), for: .disabled)
+            $0.titleLabel?.font = .nanumPen(size: 20, family: .bold)
+            $0.setBackgroundColor(.black, for: .normal)
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 5
             $0.isEnabled = false
+        }
+        
+        copyRightLabel.do {
+            $0.text = "Copyright 2022. KGB Co., Ltd. all rights reserved."
+            $0.font = .nanumPen(size: 10, family: .regular)
         }
 
         dismissButton.do {
@@ -214,7 +237,8 @@ extension SignInViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(signInLabel, emailLabel, emailTextField, passwordLabel, passwordTextField, autoLoginButton, autoLoginLabel, signUpButton, signInButton)
+        view.addSubviews(signInLabel, warningLabel, idImageView, idTextField, idTextFieldLineView, passwordImageView, passwordTextField, passwordTextFieldLineView, autoLoginButton, autoLoginLabel, signInButton, signUpContainerView, copyRightLabel)
+        signUpContainerView.addSubviews(signUpLabel, signUpLineView, signUpButton)
     }
     
     private func setConstraints() {
@@ -222,79 +246,108 @@ extension SignInViewController {
         
         signInLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.centerX.equalToSuperview()
         }
         
-        emailLabel.snp.makeConstraints {
-            $0.top.equalTo(signInLabel.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
+        warningLabel.snp.makeConstraints {
+            $0.top.equalTo(signInLabel.snp.bottom).offset(50)
+            $0.centerX.equalToSuperview()
+        }
+        
+        idImageView.snp.makeConstraints {
+            $0.top.equalTo(warningLabel.snp.bottom).offset(25)
+            $0.leading.equalToSuperview().inset(30)
+            $0.width.height.equalTo(25)
         }
 
-        emailTextField.snp.makeConstraints {
-            $0.top.equalTo(emailLabel.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(20)
+        idTextField.snp.makeConstraints {
+            $0.centerY.equalTo(idImageView)
+            $0.leading.equalTo(idImageView.snp.trailing).offset(16)
+            $0.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(40)
         }
+        
+        idTextFieldLineView.snp.makeConstraints {
+            $0.top.equalTo(idTextField.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(1)
+        }
 
-        passwordLabel.snp.makeConstraints {
-            $0.top.equalTo(emailTextField.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
+        passwordImageView.snp.makeConstraints {
+            $0.top.equalTo(idTextField.snp.bottom).offset(34)
+            $0.leading.equalToSuperview().inset(30)
+            $0.width.equalTo(21)
+            $0.height.equalTo(27)
         }
 
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordLabel.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalTo(passwordImageView)
+            $0.leading.equalTo(passwordImageView.snp.trailing).offset(16)
+            $0.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(40)
         }
         
+        passwordTextFieldLineView.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(1)
+        }
+        
         autoLoginButton.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(20)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(19)
+            $0.trailing.equalToSuperview().offset(-20)
             $0.width.height.equalTo(20)
         }
         
         autoLoginLabel.snp.makeConstraints {
             $0.centerY.equalTo(autoLoginButton)
-            $0.leading.equalTo(autoLoginButton.snp.trailing).offset(8)
-        }
-        
-        signUpButton.snp.makeConstraints {
-            $0.centerY.equalTo(autoLoginButton)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.trailing.equalTo(autoLoginButton.snp.leading).offset(-5)
         }
 
         signInButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(56)
+            $0.top.equalTo(autoLoginButton.snp.bottom).offset(19)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(50)
         }
-    }
-    
-    
-    @objc private func adjustView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
-
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-
-        let adjustmentHeight = keyboardFrame.height
-
-        if noti.name == UIResponder.keyboardWillShowNotification {
-            signInButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview().offset(-adjustmentHeight)
-            }
-        } else {
-            signInButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview()
-            }
+        
+        signUpContainerView.snp.makeConstraints {
+            $0.top.equalTo(signInButton.snp.bottom).offset(29)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(15)
         }
+        
+        signUpLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
+        signUpLineView.snp.makeConstraints {
+            $0.leading.equalTo(signUpLabel.snp.trailing).offset(6)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(3)
+            $0.height.equalTo(14)
+        }
+        
+        signUpButton.snp.makeConstraints {
+            $0.leading.equalTo(signUpLineView.snp.trailing).offset(6)
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
+        copyRightLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(safeArea).offset(-67)
+        }
+        
     }
     
     @objc func textFieldDidChange() {
-        if emailTextField.text != "", passwordTextField.text != "" {
+        if idTextField.text != "", passwordTextField.text != "" {
             isButtonActivate = true
         } else {
             isButtonActivate = false
         }
+        self.warningLabel.textColor = UIColor.red.withAlphaComponent(0)
     }
     
     @objc private func buttonTapAction(_ sender: UIButton) {
@@ -320,10 +373,10 @@ extension SignInViewController: UITextFieldDelegate {
             return true
         } else {
             textField.resignFirstResponder()
-            if textField == emailTextField {
+            if textField == idTextField {
                 passwordTextField.becomeFirstResponder()
             } else if textField == passwordTextField {
-                emailTextField.becomeFirstResponder()
+                idTextField.becomeFirstResponder()
             } else {
                 return false
             }
