@@ -58,7 +58,6 @@ final class SignInViewController: BaseViewController {
     }
     
     private func activateUI() {
-        signInButton.setBackgroundColor(UIColor.black, for: .normal)
         signInButton.isEnabled = true
         idTextField.returnKeyType = .done
         passwordTextField.returnKeyType = .done
@@ -202,7 +201,7 @@ extension SignInViewController {
         }
         
         signUpLineView.do {
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0x005982)
+            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xAAAAAA)
         }
         
         signUpButton.do {
@@ -282,7 +281,7 @@ extension SignInViewController {
 
         passwordTextField.snp.makeConstraints {
             $0.centerY.equalTo(passwordImageView)
-            $0.leading.equalTo(passwordImageView.snp.trailing).offset(16)
+            $0.leading.equalTo(passwordImageView.snp.trailing).offset(19)
             $0.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(40)
         }
@@ -324,7 +323,7 @@ extension SignInViewController {
         signUpLineView.snp.makeConstraints {
             $0.leading.equalTo(signUpLabel.snp.trailing).offset(6)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(3)
+            $0.width.equalTo(1)
             $0.height.equalTo(14)
         }
         

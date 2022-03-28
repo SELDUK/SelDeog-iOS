@@ -13,19 +13,31 @@ import Then
 final class SignUpViewController: BaseViewController {
     
     let signUpLabel = UILabel()
-    let emailLabel = UILabel()
-    let emailTextField = UITextField()
+    let idImageView = UIImageView()
+    let idTextField = UITextField()
+    let idTextFieldLineView = UIView()
     let checkExistenceButton = UIButton()
-    let passwordLabel = UILabel()
+    let passwordImageView = UIImageView()
     let passwordTextField = UITextField()
-    let checkPasswordValidButton = CheckButton()
-    let passwordConfirmLabel = UILabel()
+    let passwordTextFieldLineView = UIView()
+    let checkPasswordValidView = UIImageView()
+    let passwordConfirmImageView = UIImageView()
     let passwordConfirmTextField = UITextField()
-    let checkPasswordSameButton = CheckButton()
+    let passwordConfirmTextFieldLineView = UIView()
+    let checkPasswordSameView = UIImageView()
     let signUpButton = UIButton()
+    let signInContainerView = UIView()
+    let signInLabel = UILabel()
+    let signInLineView = UIView()
+    let signInButton = UIButton()
     let dismissButton = UIButton()
+    let copyRightLabel = UILabel()
+    let attributes = [
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.font : UIFont.nanumPen(size: 20, family: .bold)
+    ]
     
-    var isEmailValid: Bool = false
+    var isIDValid: Bool = false
     var isButtonActivate: Bool = false {
         didSet {
             isButtonActivate ? activateUI() : deactivateUI()
@@ -36,18 +48,11 @@ final class SignUpViewController: BaseViewController {
         super.viewDidLoad()
         setProperties()
         setLayouts()
-        registerForKeyboardNotification()
         registerTarget()
     }
     
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         view.endEditing(true)
-    }
-    
-    func registerForKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func registerTarget() {
@@ -57,28 +62,26 @@ final class SignUpViewController: BaseViewController {
     }
     
     func activateUI() {
-        signUpButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
         signUpButton.isEnabled = true
-        emailTextField.returnKeyType = .done
+        idTextField.returnKeyType = .done
         passwordTextField.returnKeyType = .done
-        emailTextField.reloadInputViews()
+        idTextField.reloadInputViews()
         passwordTextField.reloadInputViews()
     }
     
     func deactivateUI() {
-        signUpButton.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xECEEF0), for: .normal)
         signUpButton.isEnabled = false
-        emailTextField.returnKeyType = .default
+        idTextField.returnKeyType = .default
         passwordTextField.returnKeyType = .default
-        emailTextField.reloadInputViews()
+        idTextField.reloadInputViews()
         passwordTextField.reloadInputViews()
     }
     
     func checkExistence() {
-        guard let email = self.emailTextField.text else { return }
+        guard let email = self.idTextField.text else { return }
         checkEmailValid(email: email) { data in
             if data.success {
-                self.isEmailValid = true
+                self.isIDValid = true
                 self.showToastMessageAlert(message: "시용가능한 이메일입니다.")
             } else {
                 self.showToastMessageAlert(message: "이미 존재한 이메일입니다.")
@@ -87,7 +90,7 @@ final class SignUpViewController: BaseViewController {
     }
     
     func signUp() {
-        guard let email = self.emailTextField.text else { return }
+        guard let email = self.idTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         
         postSignUp(email: email, password: password) { data in
@@ -152,25 +155,20 @@ extension SignUpViewController {
         
         signUpLabel.do {
             $0.text = "SIGN UP"
-            $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+            $0.font = .nanumPen(size: 35, family: .bold)
         }
         
-        emailLabel.do {
-            $0.text = "E-MAIL"
-            $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            $0.textColor = UIColor.colorWithRGBHex(hex: 0x3A3D40)
+        idImageView.do {
+            $0.image = Image.idImage
         }
         
-        emailTextField.do {
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xF3F5F7)
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 8
+        idTextField.do {
+            $0.attributedPlaceholder = NSAttributedString(string: "ID", attributes: attributes)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
             $0.layer.borderWidth = 0
             $0.addLeftPadding()
             $0.autocapitalizationType = .none
-            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         
         checkExistenceButton.do {
@@ -180,64 +178,83 @@ extension SignUpViewController {
             $0.setBackgroundColor(.red, for: .normal)
         }
 
-        passwordLabel.do {
-            $0.text = "PASSWORD"
-            $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            $0.textColor = UIColor.colorWithRGBHex(hex: 0x3A3D40)
+        idTextFieldLineView.do {
+            $0.backgroundColor = .black
+        }
+
+        passwordImageView.do {
+            $0.image = Image.passwordImage
         }
         
         passwordTextField.do {
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xF3F5F7)
-            $0.textContentType = .newPassword
+            $0.attributedPlaceholder = NSAttributedString(string: "PASSWORD (6~10자리)", attributes: attributes)
             $0.isSecureTextEntry = true
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 8
             $0.clearButtonMode = .never
+            $0.keyboardType = .asciiCapable
             $0.layer.borderWidth = 0
             $0.addLeftPadding()
             $0.autocapitalizationType = .none
-            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         
-        checkPasswordValidButton.do {
-            $0.setBackgroundImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-            $0.isSelected = false
-            $0.isEnabled = false
+        passwordTextFieldLineView.do {
+            $0.backgroundColor = .black
         }
         
-        passwordConfirmLabel.do {
-            $0.text = "CONFIRM PASSWORD"
-            $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            $0.textColor = UIColor.colorWithRGBHex(hex: 0x3A3D40)
+        checkPasswordValidView.do {
+            $0.image = Image.checkButton
+        }
+        
+        passwordConfirmImageView.do {
+            $0.image = Image.checkPasswordImage
         }
         
         passwordConfirmTextField.do {
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xF3F5F7)
-            $0.textContentType = .newPassword
+            $0.attributedPlaceholder = NSAttributedString(string: "CONFIRM PASSWORD", attributes: attributes)
             $0.isSecureTextEntry = true
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 8
             $0.clearButtonMode = .never
+            $0.keyboardType = .asciiCapable
             $0.layer.borderWidth = 0
             $0.addLeftPadding()
             $0.autocapitalizationType = .none
-            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         
-        checkPasswordSameButton.do {
-            $0.setBackgroundImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-            $0.isSelected = false
-            $0.isEnabled = false
+        passwordConfirmTextFieldLineView.do {
+            $0.backgroundColor = .black
+        }
+        
+        checkPasswordSameView.do {
+            $0.image = Image.checkButton
         }
 
         signUpButton.do {
-            $0.setTitle("OK", for: .normal)
+            $0.setTitle("SIGN UP", for: .normal)
             $0.setTitleColor(.white, for: .normal)
-            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0xB5B9BD), for: .disabled)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-            $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
-            $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xECEEF0), for: .disabled)
+            $0.titleLabel?.font = .nanumPen(size: 20, family: .bold)
+            $0.setBackgroundColor(.black, for: .normal)
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 5
             $0.isEnabled = false
+        }
+        
+        signInLabel.do {
+            $0.text = "HAVE AN ACCOUNT?"
+            $0.font = .nanumPen(size: 13, family: .bold)
+            $0.textColor = UIColor.colorWithRGBHex(hex: 0xAAAAAA)
+        }
+        
+        signInLineView.do {
+            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0xAAAAAA)
+        }
+        
+        signInButton.do {
+            $0.setTitle("SIGN IN", for: .normal)
+            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0x005982), for: .normal)
+            $0.titleLabel?.font = .nanumPen(size: 15, family: .bold)
+        }
+        
+        copyRightLabel.do {
+            $0.text = "Copyright 2022. KGB Co., Ltd. all rights reserved."
+            $0.font = .nanumPen(size: 10, family: .regular)
         }
         
         dismissButton.do {
@@ -251,7 +268,8 @@ extension SignUpViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(signUpLabel, emailLabel, emailTextField, checkExistenceButton, passwordLabel, passwordTextField, checkPasswordValidButton, passwordConfirmLabel, passwordConfirmTextField, checkPasswordSameButton, signUpButton)
+        view.addSubviews(signUpLabel, idImageView, idTextField, idTextFieldLineView, checkExistenceButton, passwordImageView, passwordTextField, passwordTextFieldLineView, checkPasswordValidView, passwordConfirmImageView, passwordConfirmTextField, passwordConfirmTextFieldLineView, checkPasswordSameView, signUpButton, signInContainerView, copyRightLabel)
+        signInContainerView.addSubviews(signInLabel, signInLineView, signInButton)
     }
     
     private func setConstraints() {
@@ -259,115 +277,149 @@ extension SignUpViewController {
         
         signUpLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.centerX.equalToSuperview()
         }
         
-        emailLabel.snp.makeConstraints {
-            $0.top.equalTo(signUpLabel.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
+        idImageView.snp.makeConstraints {
+            $0.top.equalTo(signUpLabel.snp.bottom).offset(82)
+            $0.leading.equalToSuperview().inset(30)
+            $0.width.height.equalTo(25)
         }
 
-        emailTextField.snp.makeConstraints {
-            $0.top.equalTo(emailLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview().offset(20)
+        idTextField.snp.makeConstraints {
+            $0.centerY.equalTo(idImageView)
+            $0.leading.equalTo(idImageView.snp.trailing).offset(16)
             $0.trailing.equalTo(checkExistenceButton.snp.leading).offset(-10)
             $0.height.equalTo(40)
         }
         
+        idTextFieldLineView.snp.makeConstraints {
+            $0.top.equalTo(idTextField.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(1)
+        }
+
         checkExistenceButton.snp.makeConstraints {
-            $0.centerY.equalTo(emailTextField)
+            $0.centerY.equalTo(idTextField)
             $0.trailing.equalToSuperview().offset(-20)
             $0.width.equalTo(60)
             $0.height.equalTo(30)
         }
 
-        passwordLabel.snp.makeConstraints {
-            $0.top.equalTo(emailTextField.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
+        passwordImageView.snp.makeConstraints {
+            $0.top.equalTo(idTextField.snp.bottom).offset(34)
+            $0.leading.equalToSuperview().inset(30)
+            $0.width.equalTo(21)
+            $0.height.equalTo(27)
         }
 
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalTo(checkPasswordValidButton.snp.leading).offset(-10)
+            $0.centerY.equalTo(passwordImageView)
+            $0.leading.equalTo(passwordImageView.snp.trailing).offset(19)
+            $0.trailing.equalTo(checkPasswordValidView.snp.leading).offset(-10)
             $0.height.equalTo(40)
         }
         
-        checkPasswordValidButton.snp.makeConstraints {
-            $0.centerY.equalTo(passwordTextField)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
+        passwordTextFieldLineView.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(1)
         }
         
-        passwordConfirmLabel.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(20)
+        checkPasswordValidView.snp.makeConstraints {
+            $0.centerY.equalTo(passwordTextField)
+            $0.trailing.equalToSuperview().offset(-34)
+            $0.width.equalTo(24)
+            $0.height.equalTo(24)
+        }
+        
+        passwordConfirmImageView.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(35)
+            $0.leading.equalToSuperview().inset(30)
+            $0.width.equalTo(21)
+            $0.height.equalTo(26)
         }
 
         passwordConfirmTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordConfirmLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalTo(checkPasswordSameButton.snp.leading).offset(-10)
+            $0.centerY.equalTo(passwordConfirmImageView)
+            $0.leading.equalTo(passwordConfirmImageView.snp.trailing).offset(20)
+            $0.trailing.equalTo(checkPasswordSameView.snp.leading).offset(-10)
             $0.height.equalTo(40)
         }
         
-        checkPasswordSameButton.snp.makeConstraints {
+        passwordConfirmTextFieldLineView.snp.makeConstraints {
+            $0.top.equalTo(passwordConfirmTextField.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(1)
+        }
+        
+        checkPasswordSameView.snp.makeConstraints {
             $0.centerY.equalTo(passwordConfirmTextField)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
+            $0.trailing.equalToSuperview().offset(-34)
+            $0.width.equalTo(24)
+            $0.height.equalTo(24)
         }
 
         signUpButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(56)
+            $0.top.equalTo(checkPasswordSameView.snp.bottom).offset(54)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(50)
         }
-    }
-    
-    @objc private func adjustView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
-
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-
-        let adjustmentHeight = keyboardFrame.height
-
-        if noti.name == UIResponder.keyboardWillShowNotification {
-            signUpButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview().offset(-adjustmentHeight)
-            }
-        } else {
-            signUpButton.snp.updateConstraints {
-                $0.bottom.equalToSuperview()
-            }
+        
+        signInContainerView.snp.makeConstraints {
+            $0.top.equalTo(signUpButton.snp.bottom).offset(29)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(15)
+        }
+        
+        signInLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
+        signInLineView.snp.makeConstraints {
+            $0.leading.equalTo(signInLabel.snp.trailing).offset(9)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(1)
+            $0.height.equalTo(14)
+        }
+        
+        signInButton.snp.makeConstraints {
+            $0.leading.equalTo(signInLineView.snp.trailing).offset(10)
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
+        copyRightLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(safeArea).offset(-67)
         }
     }
     
     @objc func textFieldDidChange() {
-        if let text = passwordTextField.text {
-            if text.count < 8 {
-                checkPasswordValidButton.isSelected = false
-            } else {
-                checkPasswordValidButton.isSelected = true
-            }
-        }
-        
-        if let passwordText = passwordTextField.text, let passwordConfirmText = passwordConfirmTextField.text {
-            if passwordText == passwordConfirmText, passwordText != "" {
-                checkPasswordSameButton.isSelected = true
-            } else {
-                checkPasswordSameButton.isSelected = false
-            }
-        }
-        
-        if checkPasswordSameButton.isSelected,
-           checkPasswordValidButton.isSelected,
-            isEmailValid {
-            isButtonActivate = true
-        } else {
-            isButtonActivate = false
-        }
+//        if let text = passwordTextField.text {
+//            if text.count < 8 {
+//                checkPasswordValidButton.isSelected = false
+//            } else {
+//                checkPasswordValidButton.isSelected = true
+//            }
+//        }
+//
+//        if let passwordText = passwordTextField.text, let passwordConfirmText = passwordConfirmTextField.text {
+//            if passwordText == passwordConfirmText, passwordText != "" {
+//                checkPasswordSameButton.isSelected = true
+//            } else {
+//                checkPasswordSameButton.isSelected = false
+//            }
+//        }
+//
+//        if checkPasswordSameButton.isSelected,
+//           checkPasswordValidButton.isSelected,
+//            isIDValid {
+//            isButtonActivate = true
+//        } else {
+//            isButtonActivate = false
+//        }
     }
     
     @objc private func buttonTapAction(_ sender: UIButton) {

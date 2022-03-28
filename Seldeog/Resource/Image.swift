@@ -42,4 +42,6 @@ enum Image {
     
     static let idImage = UIImage(named: "id_image")!
     static let passwordImage = UIImage(named: "password_image")!
+    static let checkPasswordImage = UIImage(named: "checkPassword_image")!
+    static let checkButton = UIImage(named: "check_button")
 }
