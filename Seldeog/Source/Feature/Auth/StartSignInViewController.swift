@@ -12,8 +12,11 @@ import Then
 
 final class StartSignInViewController: BaseViewController {
     
+    let logoView = UIView()
+    let logoLabel = UILabel()
     let signInButton = UIButton()
     let signUpButton = UIButton()
+    let copyRightLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,24 +36,36 @@ extension StartSignInViewController {
             $0.isNavigationBarHidden = true
         }
         
+        logoLabel.do {
+            $0.text = "SELDUK"
+            $0.font = .nanumPen(size: 35, family: .bold)
+        }
+        
         signInButton.do {
-            $0.setTitle("로그인", for: .normal)
+            $0.setTitle("SIGN IN", for: .normal)
             $0.setTitleColor(.white, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+            $0.titleLabel?.font = .nanumPen(size: 20, family: .bold)
             $0.clipsToBounds = true
-            $0.layer.cornerRadius = 8
-            $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x00A3FF), for: .normal)
+            $0.layer.cornerRadius = 5
+            $0.setBackgroundColor(.black, for: .normal)
             $0.addTarget(self, action: #selector(signInButtonTap), for: .touchUpInside)
         }
         
         signUpButton.do {
-            $0.setTitle("회원가입", for: .normal)
+            $0.setTitle("SIGN UP", for: .normal)
             $0.setTitleColor(.black, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+            $0.titleLabel?.font = .nanumPen(size: 20, family: .bold)
             $0.clipsToBounds = true
-            $0.layer.cornerRadius = 8
-            $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0xE1F2FE), for: .normal)
+            $0.layer.cornerRadius = 5
+            $0.layer.borderColor = UIColor.black.cgColor
+            $0.layer.borderWidth = 1
+            $0.setBackgroundColor(.white, for: .normal)
             $0.addTarget(self, action: #selector(signUpButtonTap), for: .touchUpInside)
+        }
+        
+        copyRightLabel.do {
+            $0.text = "Copyright 2022. KGB Co., Ltd. all rights reserved."
+            $0.font = .nanumPen(size: 10, family: .regular)
         }
     }
     
@@ -60,22 +75,38 @@ extension StartSignInViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(signInButton, signUpButton)
+        view.addSubviews(logoView, signInButton, signUpButton, copyRightLabel)
+        logoView.addSubview(logoLabel)
     }
     
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
+        logoView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(signInButton.snp.top)
+        }
+        
+        logoLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
         signInButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalTo(signUpButton.snp.top).offset(-16)
-            $0.height.equalTo(48)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalTo(signUpButton.snp.top).offset(-11)
+            $0.height.equalTo(50)
         }
 
         signUpButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeArea).offset(-32)
-            $0.height.equalTo(48)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalTo(copyRightLabel.snp.top).offset(-66)
+            $0.height.equalTo(50)
+        }
+        
+        copyRightLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(safeArea).offset(-67)
         }
     }
     

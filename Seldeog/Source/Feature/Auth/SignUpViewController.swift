@@ -42,11 +42,6 @@ final class SignUpViewController: BaseViewController {
     let disposeBag = DisposeBag()
     
     var isIDValid: Bool = false
-    var isButtonActivate: Bool = false {
-        didSet {
-            isButtonActivate ? activateUI() : deactivateUI()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,27 +61,19 @@ final class SignUpViewController: BaseViewController {
         }
     }
     
-    func activateUI() {
-        signUpButton.isEnabled = true
-        idTextField.returnKeyType = .done
-        passwordTextField.returnKeyType = .done
-        idTextField.reloadInputViews()
-        passwordTextField.reloadInputViews()
-    }
-    
-    func deactivateUI() {
-        signUpButton.isEnabled = false
-        idTextField.returnKeyType = .default
-        passwordTextField.returnKeyType = .default
-        idTextField.reloadInputViews()
-        passwordTextField.reloadInputViews()
-    }
-    
     func checkValidate() {
+        let idText = idTextField.rx.text.orEmpty.distinctUntilChanged()
         let passwordText = passwordTextField.rx.text.orEmpty.distinctUntilChanged()
         let passwordConfirmText = passwordConfirmTextField.rx.text.orEmpty.distinctUntilChanged()
         let isPasswordValid = PublishRelay<Bool>()
         let isPasswordSame = PublishRelay<Bool>()
+        
+        idText
+            .map { !$0.isEmpty }
+            .bind { [weak self] isActive in
+                self?.checkExistenceButton.isEnabled = isActive
+            }
+            .disposed(by: disposeBag)
         
         passwordText
             .map { [weak self] text in
@@ -123,7 +110,7 @@ final class SignUpViewController: BaseViewController {
         Observable.combineLatest(isPasswordValid, isPasswordSame)
             .map { $0 && $1 }
             .subscribe { [weak self] isActivate in
-                self?.isButtonActivate = isActivate
+                self?.signUpButton.isEnabled = isActivate
             }
             .disposed(by: disposeBag)
     }
@@ -231,10 +218,7 @@ extension SignUpViewController {
         }
         
         checkExistenceButton.do {
-            $0.setTitle("중복확인", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-            $0.setBackgroundColor(.red, for: .normal)
+            $0.setImage(Image.checkButtonRepeat, for: .normal)
         }
 
         idTextFieldLineView.do {
@@ -361,8 +345,8 @@ extension SignUpViewController {
         checkExistenceButton.snp.makeConstraints {
             $0.centerY.equalTo(idTextField)
             $0.trailing.equalToSuperview().offset(-20)
-            $0.width.equalTo(60)
-            $0.height.equalTo(30)
+            $0.width.equalTo(50)
+            $0.height.equalTo(23)
         }
 
         passwordImageView.snp.makeConstraints {
