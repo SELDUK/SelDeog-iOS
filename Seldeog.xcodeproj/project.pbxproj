@@ -30,7 +30,6 @@
 		2D97E6ED27EAE8400029DE35 /* SelectFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */; };
 		2D97E6EF27EAE9D30029DE35 /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */; };
 		2D97E6F127EAFD900029DE35 /* SetCharacterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6F027EAFD900029DE35 /* SetCharacterNameViewController.swift */; };
-		2DBF1D8A27CFA15100285A0B /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D8927CFA15100285A0B /* CheckButton.swift */; };
 		2DBF1D9027D0819300285A0B /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D8F27D0819300285A0B /* AuthAPI.swift */; };
 		2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9327D081AC00285A0B /* AuthRepository.swift */; };
 		2DBF1D9627D0829B00285A0B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */; };
@@ -39,6 +38,7 @@
 		2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */; };
 		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
 		2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45727E1C5C300FC289C /* BaseViewController.swift */; };
+		2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8363727F42E0B00DECB35 /* ValidateButton.swift */; };
 		2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */; };
 		2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */; };
 		EAC40CB19EABBAD035E8828A /* Pods_Seldeog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */; };
@@ -72,7 +72,6 @@
 		2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeatureViewController.swift; sourceTree = "<group>"; };
 		2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
 		2D97E6F027EAFD900029DE35 /* SetCharacterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCharacterNameViewController.swift; sourceTree = "<group>"; };
-		2DBF1D8927CFA15100285A0B /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		2DBF1D8F27D0819300285A0B /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		2DBF1D9327D081AC00285A0B /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenB.otf; sourceTree = "<group>"; };
 		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		2DDDD45727E1C5C300FC289C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2DE8363727F42E0B00DECB35 /* ValidateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateButton.swift; sourceTree = "<group>"; };
 		2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		BC3F0E4D990966B075FCD806 /* Pods-Seldeog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.debug.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -229,9 +229,9 @@
 		2DBF1D8827CFA14400285A0B /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				2DBF1D8927CFA15100285A0B /* CheckButton.swift */,
 				2DDDD45727E1C5C300FC289C /* BaseViewController.swift */,
 				2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */,
+				2DE8363727F42E0B00DECB35 /* ValidateButton.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -416,6 +416,7 @@
 				2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */,
 				2D1EC9B327DF716500EE1D96 /* SelectShapeViewController.swift in Sources */,
 				2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */,
+				2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */,
 				2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */,
 				2D2ADF0627CF4D610034A602 /* SignUpViewController.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
@@ -435,7 +436,6 @@
 				2D97E6EF27EAE9D30029DE35 /* CharacterData.swift in Sources */,
 				2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */,
 				2D97E6F127EAFD900029DE35 /* SetCharacterNameViewController.swift in Sources */,
-				2DBF1D8A27CFA15100285A0B /* CheckButton.swift in Sources */,
 				2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */,
 				2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */,
 				2D1EC9B127DF712D00EE1D96 /* MainViewController.swift in Sources */,

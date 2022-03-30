@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
@@ -36,6 +38,8 @@ final class SignUpViewController: BaseViewController {
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 20, family: .bold)
     ]
+
+    let disposeBag = DisposeBag()
     
     var isIDValid: Bool = false
     var isButtonActivate: Bool = false {
@@ -49,6 +53,7 @@ final class SignUpViewController: BaseViewController {
         setProperties()
         setLayouts()
         registerTarget()
+        checkValidate()
     }
     
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -75,6 +80,60 @@ final class SignUpViewController: BaseViewController {
         passwordTextField.returnKeyType = .default
         idTextField.reloadInputViews()
         passwordTextField.reloadInputViews()
+    }
+    
+    func checkValidate() {
+        let passwordText = passwordTextField.rx.text.orEmpty.distinctUntilChanged()
+        let passwordConfirmText = passwordConfirmTextField.rx.text.orEmpty.distinctUntilChanged()
+        let isPasswordValid = PublishRelay<Bool>()
+        let isPasswordSame = PublishRelay<Bool>()
+        
+        passwordText
+            .map { [weak self] text in
+                self?.validatePassword(text: text) ?? false
+            }
+            .bind { [weak self] bool in
+                if bool {
+                    self?.checkPasswordValidView.image = Image.validPassword
+                    isPasswordValid.accept(true)
+                } else {
+                    self?.checkPasswordValidView.image = Image.invalidPassword
+                    isPasswordValid.accept(false)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(passwordText, passwordConfirmText)
+            .skip(1)
+            .map { [weak self] password, passwordConfirm -> Bool in
+                guard let self = self else { return false }
+                return password == passwordConfirm && self.validatePassword(text: passwordConfirm)
+            }
+            .bind { [weak self] bool in
+                if bool {
+                    self?.checkPasswordSameView.image = Image.validPassword
+                    isPasswordSame.accept(true)
+                } else {
+                    self?.checkPasswordSameView.image = Image.invalidPassword
+                    isPasswordSame.accept(false)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(isPasswordValid, isPasswordSame)
+            .map { $0 && $1 }
+            .subscribe { [weak self] isActivate in
+                self?.isButtonActivate = isActivate
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func validatePassword(text: String) -> Bool {
+        if text.count < 8 {
+            return false
+        } else {
+            return true
+        }
     }
     
     func checkExistence() {
@@ -201,7 +260,7 @@ extension SignUpViewController {
         }
         
         checkPasswordValidView.do {
-            $0.image = Image.checkButton
+            $0.image = Image.invalidPassword
         }
         
         passwordConfirmImageView.do {
@@ -223,7 +282,7 @@ extension SignUpViewController {
         }
         
         checkPasswordSameView.do {
-            $0.image = Image.checkButton
+            $0.image = Image.invalidPassword
         }
 
         signUpButton.do {
@@ -396,38 +455,12 @@ extension SignUpViewController {
         }
     }
     
-    @objc func textFieldDidChange() {
-//        if let text = passwordTextField.text {
-//            if text.count < 8 {
-//                checkPasswordValidButton.isSelected = false
-//            } else {
-//                checkPasswordValidButton.isSelected = true
-//            }
-//        }
-//
-//        if let passwordText = passwordTextField.text, let passwordConfirmText = passwordConfirmTextField.text {
-//            if passwordText == passwordConfirmText, passwordText != "" {
-//                checkPasswordSameButton.isSelected = true
-//            } else {
-//                checkPasswordSameButton.isSelected = false
-//            }
-//        }
-//
-//        if checkPasswordSameButton.isSelected,
-//           checkPasswordValidButton.isSelected,
-//            isIDValid {
-//            isButtonActivate = true
-//        } else {
-//            isButtonActivate = false
-//        }
-    }
-    
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case checkExistenceButton:
             checkExistence()
         case signUpButton:
-            signUp()
+            isIDValid ? signUp() : setAlert(message: "아이디 중복확인을 완료하세요.")
         case dismissButton:
             dismiss(animated: true, completion: nil)
         default:

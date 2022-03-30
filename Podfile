@@ -10,5 +10,6 @@ target 'Seldeog' do
   pod 'SnapKit'
   pod 'Then'
   pod 'lottie-ios'
-
+  pod 'RxSwift'
+  pod 'RxCocoa'
 end

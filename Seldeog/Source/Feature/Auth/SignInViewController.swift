@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
@@ -20,7 +22,7 @@ final class SignInViewController: BaseViewController {
     let passwordImageView = UIImageView()
     let passwordTextField = UITextField()
     let passwordTextFieldLineView = UIView()
-    let autoLoginButton = CheckButton()
+    let autoLoginButton = UIButton()
     let autoLoginLabel = UILabel()
     let signUpContainerView = UIView()
     let signUpLabel = UILabel()
@@ -184,7 +186,8 @@ extension SignInViewController {
         }
         
         autoLoginButton.do {
-            $0.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            $0.setImage(Image.checkButton, for: .normal)
+            $0.setImage(Image.checkButtonClicked, for: .selected)
             $0.isSelected = false
         }
         
