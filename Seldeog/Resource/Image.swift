@@ -19,6 +19,7 @@ enum Image {
     static let checkPattern = UIImage(named: "checkPattern")!
     static let progressBar = UIImage(named: "progressBar")!
     static let progressBar2 = UIImage(named: "progressBar2")!
+    static let popButton = UIImage(named: "popButton")!
     
     // 캐릭터 모양
     static let shapeCircle = UIImage(named: "shape_circle")!

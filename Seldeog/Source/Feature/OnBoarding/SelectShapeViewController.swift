@@ -32,6 +32,10 @@ final class SelectShapeViewController: BaseViewController {
         super.viewDidLoad()
         setProperties()
         setLayouts()
+        setLoadingBarAnimation()
+    }
+    
+    private func setLoadingBarAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.loadingBar.setProgress(1 / 4, animated: true)
         }
@@ -80,7 +84,7 @@ extension SelectShapeViewController {
         myCharacterLabel.do {
             $0.text = "MY CHARACTER"
             $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 30, family: .bold)
+            $0.font = .nanumPen(size: 35, family: .bold)
         }
         
         loadingBar.do {
@@ -96,7 +100,7 @@ extension SelectShapeViewController {
         titleLabel.do {
             $0.text = "1. SHAPE"
             $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 25, family: .bold)
+            $0.font = .nanumPen(size: 30, family: .bold)
         }
         
         shapeImageView.do {
@@ -118,10 +122,10 @@ extension SelectShapeViewController {
         }
         
         nextButton.do {
-            $0.setTitle("OK", for: .normal)
+            $0.setTitle("NEXT", for: .normal)
             $0.setTitleColor(.white, for: .normal)
             $0.setBackgroundColor(.black, for: .normal)
-            $0.titleLabel?.font = .nanumPen(size: 25, family: .bold)
+            $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
         
@@ -154,7 +158,7 @@ extension SelectShapeViewController {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(loadingBar.snp.bottom).offset(51)
+            $0.top.equalTo(loadingBar.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
         }
         

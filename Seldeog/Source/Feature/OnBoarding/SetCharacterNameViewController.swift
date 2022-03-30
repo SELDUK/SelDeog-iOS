@@ -12,7 +12,7 @@ import SnapKit
 final class SetCharacterNameViewController: BaseViewController {
     
     let myCharacterLabel = UILabel()
-    let loadingBar = UIImageView()
+    let loadingBar = UIProgressView()
     let titleLabel = UILabel()
     let shapeImageView = UIImageView()
     let expressionImageView = UIImageView()
@@ -28,6 +28,7 @@ final class SetCharacterNameViewController: BaseViewController {
         setProperties()
         setLayouts()
         registerTarget()
+        setLoadingBarAnimation()
     }
     
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -39,16 +40,21 @@ final class SetCharacterNameViewController: BaseViewController {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
+    
+    private func setLoadingBarAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.loadingBar.setProgress(1.0, animated: true)
+        }
+    }
 }
 
 extension SetCharacterNameViewController {
     private func setProperties() {
         view.do {
-            $0.backgroundColor = UIColor(patternImage: Image.checkPattern)
+            $0.backgroundColor = .white
         }
         
         navigationController?.do {
-            $0.navigationBar.setBackgroundImage(Image.checkPattern, for: .default)
             $0.navigationBar.shadowImage = UIImage()
             $0.navigationBar.isTranslucent = true
         }
@@ -60,29 +66,35 @@ extension SetCharacterNameViewController {
         myCharacterLabel.do {
             $0.text = "MY CHARACTER"
             $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 30, family: .bold)
+            $0.font = .nanumPen(size: 35, family: .bold)
         }
         
         loadingBar.do {
-            $0.image = Image.progressBar2
+            $0.layer.cornerRadius = 8.5
+            $0.clipsToBounds = true
+            $0.layer.sublayers![1].cornerRadius = 8.5
+            $0.subviews[1].clipsToBounds = true
+            $0.progress = 3 / 4
+            $0.progressTintColor = UIColor.colorWithRGBHex(hex: 0x178900)
+            $0.trackTintColor = .lightGray
         }
         
         titleLabel.do {
-            $0.text = "3. NAME"
+            $0.text = "4. NAME"
             $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 25, family: .bold)
+            $0.font = .nanumPen(size: 30, family: .bold)
         }
         
         startQuotationMarkLabel.do {
             $0.text = "''"
             $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 25, family: .bold)
+            $0.font = .nanumPen(size: 30, family: .bold)
         }
         
         finishQuotationMarkLabel.do {
             $0.text = "''"
             $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 25, family: .bold)
+            $0.font = .nanumPen(size: 30, family: .bold)
         }
         
         nameTextField.do {
@@ -90,7 +102,7 @@ extension SetCharacterNameViewController {
             $0.autocorrectionType = .no
             $0.inputAccessoryView = nil
             $0.textAlignment = .center
-            $0.font = .nanumPen(size: 20, family: .bold)
+            $0.font = .nanumPen(size: 30, family: .bold)
             $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         
@@ -113,11 +125,11 @@ extension SetCharacterNameViewController {
             $0.setTitle("OK", for: .normal)
             $0.setTitleColor(.white, for: .normal)
             $0.setBackgroundColor(.black, for: .normal)
-            $0.titleLabel?.font = .nanumPen(size: 25, family: .bold)
+            $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
         }
         
         popButton.do {
-            $0.setImage(Image.arrowLeft, for: .normal)
+            $0.setImage(Image.popButton, for: .normal)
         }
     }
     
@@ -142,27 +154,25 @@ extension SetCharacterNameViewController {
         }
         
         loadingBar.snp.makeConstraints {
-            $0.top.equalTo(myCharacterLabel.snp.bottom).offset(26)
-            $0.leading.equalTo(safeArea).offset(54)
-            $0.width.equalTo(222)
-            $0.height.equalTo(29)
+            $0.top.equalTo(myCharacterLabel.snp.bottom).offset(27)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(17)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(loadingBar.snp.bottom).offset(35)
+            $0.top.equalTo(loadingBar.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
         }
         
         startQuotationMarkLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(68)
             $0.trailing.equalTo(nameTextField.snp.leading).offset(-10)
         }
         
         nameTextField.snp.makeConstraints {
-            $0.top.equalTo(startQuotationMarkLabel.snp.top).offset(-5)
+            $0.centerY.equalTo(startQuotationMarkLabel)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(100)
-            $0.height.equalTo(36)
+            $0.height.equalTo(30)
         }
         
         finishQuotationMarkLabel.snp.makeConstraints {
@@ -171,19 +181,22 @@ extension SetCharacterNameViewController {
         }
         
         shapeImageView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(35)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(250)
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
         }
         
         expressionImageView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-            $0.width.height.equalTo(250)
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
         }
         
         featureImageView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-            $0.width.height.equalTo(250)
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
         }
         
         nextButton.snp.makeConstraints {

@@ -95,7 +95,7 @@ extension ConfirmCharacterViewController {
         }
         
         popButton.do {
-            $0.setImage(Image.arrowLeft, for: .normal)
+            $0.setImage(Image.popButton, for: .normal)
         }
     }
     
@@ -105,7 +105,7 @@ extension ConfirmCharacterViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(shapeImageView, sayHiLabel, pleaseLoveMeLabel, nextButton)
+        view.addSubviews(sayHiLabel, pleaseLoveMeLabel, shapeImageView, nextButton)
         shapeImageView.addSubviews(expressionImageView, featureImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
         expressionImageView.bringSubviewToFront(featureImageView)
@@ -114,30 +114,33 @@ extension ConfirmCharacterViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
-        shapeImageView.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(120)
-            $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(250)
-        }
-        
-        expressionImageView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.height.equalTo(250)
-        }
-        
-        featureImageView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.height.equalTo(250)
-        }
-        
         sayHiLabel.snp.makeConstraints {
-            $0.top.equalTo(shapeImageView.snp.bottom).offset(25)
+            $0.top.equalTo(safeArea).offset(120)
             $0.centerX.equalToSuperview()
         }
         
         pleaseLoveMeLabel.snp.makeConstraints {
-            $0.top.equalTo(sayHiLabel.snp.bottom).offset(15)
+            $0.top.equalTo(sayHiLabel.snp.bottom).offset(22)
             $0.centerX.equalToSuperview()
+        }
+        
+        shapeImageView.snp.makeConstraints {
+            $0.top.equalTo(pleaseLoveMeLabel.snp.bottom).offset(37)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
+        }
+        
+        expressionImageView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
+        }
+        
+        featureImageView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
         }
         
         nextButton.snp.makeConstraints {
