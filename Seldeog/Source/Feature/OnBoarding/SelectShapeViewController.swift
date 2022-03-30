@@ -12,8 +12,9 @@ import SnapKit
 final class SelectShapeViewController: BaseViewController {
     
     let myCharacterLabel = UILabel()
-    let loadingBar = UIImageView()
+    let loadingBar = UIProgressView()
     let titleLabel = UILabel()
+    let containerView = UIView()
     let shapeImageView = UIImageView()
     let expressionImageView = UIImageView()
     let nextButton = UIButton()
@@ -31,6 +32,9 @@ final class SelectShapeViewController: BaseViewController {
         super.viewDidLoad()
         setProperties()
         setLayouts()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.loadingBar.setProgress(1 / 4, animated: true)
+        }
     }
     
 }
@@ -61,11 +65,10 @@ extension SelectShapeViewController: UICollectionViewDelegate, UICollectionViewD
 extension SelectShapeViewController {
     private func setProperties() {
         view.do {
-            $0.backgroundColor = UIColor(patternImage: Image.checkPattern)
+            $0.backgroundColor = .white
         }
         
         navigationController?.do {
-            $0.navigationBar.setBackgroundImage(Image.checkPattern, for: .default)
             $0.navigationBar.shadowImage = UIImage()
             $0.navigationBar.isTranslucent = true
         }
@@ -81,7 +84,13 @@ extension SelectShapeViewController {
         }
         
         loadingBar.do {
-            $0.image = Image.progressBar
+            $0.layer.cornerRadius = 8.5
+            $0.clipsToBounds = true
+            $0.layer.sublayers![1].cornerRadius = 8.5
+            $0.subviews[1].clipsToBounds = true
+            $0.progress = 0
+            $0.progressTintColor = UIColor.colorWithRGBHex(hex: 0x178900)
+            $0.trackTintColor = .lightGray
         }
         
         titleLabel.do {
@@ -104,7 +113,6 @@ extension SelectShapeViewController {
             $0.register(MakeCharacterViewCell.self, forCellWithReuseIdentifier: "MakeCharacterCell")
             $0.delegate = self
             $0.dataSource = self
-            $0.backgroundColor = UIColor(patternImage: Image.checkPattern)
             $0.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
             $0.showsHorizontalScrollIndicator = false
         }
@@ -125,7 +133,8 @@ extension SelectShapeViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(myCharacterLabel, loadingBar, titleLabel, shapeImageView, collectionView, nextButton)
+        view.addSubviews(myCharacterLabel, loadingBar, titleLabel, containerView, collectionView, nextButton)
+        containerView.addSubview(shapeImageView)
         shapeImageView.addSubview(expressionImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
     }
@@ -139,31 +148,37 @@ extension SelectShapeViewController {
         }
         
         loadingBar.snp.makeConstraints {
-            $0.top.equalTo(myCharacterLabel.snp.bottom).offset(26)
-            $0.leading.equalTo(safeArea).offset(54)
-            $0.width.equalTo(74)
-            $0.height.equalTo(29)
+            $0.top.equalTo(myCharacterLabel.snp.bottom).offset(27)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(17)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(loadingBar.snp.bottom).offset(35)
+            $0.top.equalTo(loadingBar.snp.bottom).offset(51)
             $0.centerX.equalToSuperview()
+        }
+        
+        containerView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(collectionView.snp.top)
         }
         
         shapeImageView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(35)
-            $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(250)
+            $0.center.equalToSuperview()
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
         }
         
         expressionImageView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.height.equalTo(250)
+            $0.center.equalToSuperview()
+            $0.width.equalTo(236)
+            $0.height.equalTo(231)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(shapeImageView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(safeArea)
+            $0.bottom.equalTo(nextButton.snp.top).offset(-80)
             $0.height.equalTo(120)
         }
         
