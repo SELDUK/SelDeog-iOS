@@ -12,10 +12,10 @@ final class AuthRepository {
     static let shared = AuthRepository()
     private let authProvider = MoyaProvider<AuthAPI>()
     
-    public func postSignIn(email: String,
+    public func postSignIn(id: String,
                            password: String,
                            completion: @escaping (NetworkResult<Any>) -> Void) {
-        authProvider.request(.postSignIn(email: email, password: password)) { result in
+        authProvider.request(.postSignIn(id: id, password: password)) { result in
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode
@@ -30,10 +30,10 @@ final class AuthRepository {
         }
     }
     
-    public func postSignUp(email: String,
+    public func postSignUp(id: String,
                            password: String,
                            completion: @escaping (NetworkResult<Any>) -> Void) {
-        authProvider.request(.postSignUp(email: email, password: password)) { result in
+        authProvider.request(.postSignUp(id: id, password: password)) { result in
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode
@@ -48,9 +48,9 @@ final class AuthRepository {
         }
     }
     
-    public func checkEmailValid(email: String,
+    public func checkIDValid(id: String,
                            completion: @escaping (NetworkResult<Any>) -> Void) {
-        authProvider.request(.checkEmailValid(email: email)) { result in
+        authProvider.request(.checkIDValid(id: id)) { result in
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode

@@ -124,8 +124,8 @@ final class SignUpViewController: BaseViewController {
     }
     
     func checkExistence() {
-        guard let email = self.idTextField.text else { return }
-        checkEmailValid(email: email) { data in
+        guard let id = self.idTextField.text else { return }
+        checkIDValid(id: id) { data in
             if data.success {
                 self.isIDValid = true
                 self.showToastMessageAlert(message: "시용가능한 이메일입니다.")
@@ -136,10 +136,10 @@ final class SignUpViewController: BaseViewController {
     }
     
     func signUp() {
-        guard let email = self.idTextField.text else { return }
+        guard let id = self.idTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         
-        postSignUp(email: email, password: password) { data in
+        postSignUp(id: id, password: password) { data in
             if data.success {
                 self.setAlert(message: "회원가입 완료!!")
             } else {
@@ -148,11 +148,11 @@ final class SignUpViewController: BaseViewController {
         }
     }
 
-    func checkEmailValid(
-        email: String,
+    func checkIDValid(
+        id: String,
         completion: @escaping (AuthResponse) -> Void
     ) {
-        AuthRepository.shared.checkEmailValid(email: email) { result in
+        AuthRepository.shared.checkIDValid(id: id) { result in
             switch result {
             case .success(let response):
                 print(response)
@@ -165,11 +165,11 @@ final class SignUpViewController: BaseViewController {
     }
 
     func postSignUp(
-        email: String,
+        id: String,
         password: String,
         completion: @escaping (AuthResponse) -> Void
     ) {
-        AuthRepository.shared.postSignUp(email: email,
+        AuthRepository.shared.postSignUp(id: id,
                                          password: password) { result in
             switch result {
             case .success(let response):

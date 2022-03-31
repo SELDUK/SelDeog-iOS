@@ -8,9 +8,9 @@
 import Moya
 
 enum AuthAPI {
-    case postSignIn(email: String, password: String)
-    case postSignUp(email: String, password: String)
-    case checkEmailValid(email: String)
+    case postSignIn(id: String, password: String)
+    case postSignUp(id: String, password: String)
+    case checkIDValid(id: String)
 }
 
 extension AuthAPI: BaseTargetType {
@@ -21,7 +21,7 @@ extension AuthAPI: BaseTargetType {
             return "/auth/login"
         case .postSignUp:
             return "/auth/signup"
-        case .checkEmailValid:
+        case .checkIDValid:
             return "/auth/signup/check"
         }
     }
@@ -30,28 +30,28 @@ extension AuthAPI: BaseTargetType {
         switch self {
         case .postSignIn, .postSignUp:
             return .post
-        case .checkEmailValid:
+        case .checkIDValid:
             return .get
         }
     }
 
     var task: Task {
         switch self {
-        case let .postSignIn(email, password):
+        case let .postSignIn(id, password):
             let parameters = [
-                "email": email,
+                "id": id,
                 "password": password
             ]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-        case let .postSignUp(email, password):
+        case let .postSignUp(id, password):
             let parameters = [
-                "email": email,
+                "id": id,
                 "password": password
             ]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-        case let .checkEmailValid(email):
+        case let .checkIDValid(id):
             let parameters = [
-                "email": email
+                "id": id
             ]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }

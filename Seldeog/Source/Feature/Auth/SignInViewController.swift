@@ -76,10 +76,10 @@ final class SignInViewController: BaseViewController {
     }
     
     private func signIn() {
-        guard let email = self.idTextField.text else { return }
+        guard let id = self.idTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         
-        postSignIn(email: email, password: password) { data in
+        postSignIn(id: id, password: password) { data in
             if data.success {
                 if self.autoLoginButton.isSelected {
                     UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isAutoLogin)
@@ -101,11 +101,11 @@ final class SignInViewController: BaseViewController {
     }
     
     func postSignIn(
-        email: String,
+        id: String,
         password: String,
         completion: @escaping (AuthResponse) -> Void
     ) {
-        AuthRepository.shared.postSignIn(email: email,
+        AuthRepository.shared.postSignIn(id: id,
                                          password: password) { result in
             switch result {
             case .success(let response):
