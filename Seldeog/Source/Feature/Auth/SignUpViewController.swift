@@ -71,6 +71,7 @@ final class SignUpViewController: BaseViewController {
         idText
             .map { !$0.isEmpty }
             .bind { [weak self] isActive in
+                self?.isIDValid = false
                 self?.checkExistenceButton.isEnabled = isActive
             }
             .disposed(by: disposeBag)
@@ -141,7 +142,7 @@ final class SignUpViewController: BaseViewController {
         
         postSignUp(id: id, password: password) { data in
             if data.success {
-                self.setAlert(message: "회원가입 완료!!")
+                self.setAlertAndFinish(message: "회원가입 완료!!")
             } else {
                 self.showToastMessageAlert(message: "회원가입에 실패하였습니다.")
             }

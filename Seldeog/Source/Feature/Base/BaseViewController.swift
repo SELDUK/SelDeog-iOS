@@ -25,11 +25,18 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func setAlert(message: String) {
+    func setAlertAndFinish(message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .default, handler: { _ in
             self.dismiss(animated: true, completion: nil)
         })
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func setAlert(message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
     }
