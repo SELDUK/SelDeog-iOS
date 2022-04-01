@@ -104,6 +104,7 @@ extension SetCharacterNameViewController {
             $0.textAlignment = .center
             $0.font = .nanumPen(size: 30, family: .bold)
             $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+            $0.becomeFirstResponder()
         }
         
         shapeImageView.do {

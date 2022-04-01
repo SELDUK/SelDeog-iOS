@@ -21,7 +21,7 @@ final class SelectShapeViewController: BaseViewController {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 5
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100), collectionViewLayout: layout)
         return cv
     }()
@@ -196,8 +196,8 @@ extension SelectShapeViewController {
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case nextButton:
-            let selectFeatureViewController = SelectFeatureViewController()
-            navigationController?.pushViewController(selectFeatureViewController, animated: false)
+            let selectColorViewController = SelectColorViewController()
+            navigationController?.pushViewController(selectColorViewController, animated: false)
         default:
             return
         }

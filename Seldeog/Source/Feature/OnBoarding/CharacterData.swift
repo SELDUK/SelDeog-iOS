@@ -9,6 +9,7 @@ import UIKit
 
 struct CharacterData {
     static var selectedShape: UIImage?
+    static var selectedColor: UIImage?
     static var selectedFeature: UIImage?
     static var nickname: String?
     static var selfLoveScore: Int?

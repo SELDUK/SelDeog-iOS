@@ -41,6 +41,13 @@ enum Image {
     static let featureScar = UIImage(named: "feature_scar")!
     static let featureHat = UIImage(named: "feature_hat")!
     
+    // 캐릭터 색
+    static let colorNavy = UIImage(named: "color_navy")!
+    static let colorMauve = UIImage(named: "color_mauve")!
+    static let colorPink = UIImage(named: "color_pink")!
+    static let colorGreen = UIImage(named: "color_green")!
+    static let colorYellow = UIImage(named: "color_yellow")!
+    
     static let idImage = UIImage(named: "id_image")!
     static let passwordImage = UIImage(named: "password_image")!
     static let checkPasswordImage = UIImage(named: "checkPassword_image")!

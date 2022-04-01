@@ -1,15 +1,15 @@
 //
-//  SelectFeatureViewController.swift
+//  SelectColorViewController.swift
 //  Seldeog
 //
-//  Created by 권준상 on 2022/03/23.
+//  Created by 권준상 on 2022/04/01.
 //
 
 import UIKit
 
 import SnapKit
 
-final class SelectFeatureViewController: BaseViewController {
+final class SelectColorViewController: BaseViewController {
     
     let myCharacterLabel = UILabel()
     let loadingBar = UIProgressView()
@@ -17,7 +17,6 @@ final class SelectFeatureViewController: BaseViewController {
     let containerView = UIView()
     let shapeImageView = UIImageView()
     let expressionImageView = UIImageView()
-    let featureImageView = UIImageView()
     let nextButton = UIButton()
     let popButton = UIButton()
     let collectionView: UICollectionView = {
@@ -28,7 +27,7 @@ final class SelectFeatureViewController: BaseViewController {
         return cv
     }()
     
-    var cellImageList = [Image.featureHat, Image.featureHair, Image.featureScar, Image.featureNecklace]
+    var cellImageList = [Image.colorNavy, Image.colorGreen, Image.colorYellow, Image.colorPink, Image.colorMauve]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,36 +45,35 @@ final class SelectFeatureViewController: BaseViewController {
     
     private func setLoadingBarAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.loadingBar.setProgress(3 / 4, animated: true)
+            self.loadingBar.setProgress(1 / 2, animated: true)
         }
     }
-
+    
 }
 
-extension SelectFeatureViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SelectColorViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MakeCharacterCell", for: indexPath) as? MakeCharacterViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as? SelectColorCell else { return UICollectionViewCell() }
         
         cell.setImage(image: cellImageList[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.featureImageView.image = cellImageList[indexPath.item]
-        CharacterData.selectedFeature = cellImageList[indexPath.item]
+        CharacterData.selectedColor = cellImageList[indexPath.item]
     }
 }
 
-extension SelectFeatureViewController {
+extension SelectColorViewController {
     private func setProperties() {
         view.do {
             $0.backgroundColor = .white
@@ -87,7 +85,7 @@ extension SelectFeatureViewController {
         }
         
         navigationItem.do {
-            $0.leftBarButtonItem = UIBarButtonItem(customView: popButton)
+            $0.hidesBackButton = true
         }
         
         myCharacterLabel.do {
@@ -101,13 +99,13 @@ extension SelectFeatureViewController {
             $0.clipsToBounds = true
             $0.layer.sublayers![1].cornerRadius = 8.5
             $0.subviews[1].clipsToBounds = true
-            $0.progress = 1 / 2
+            $0.progress = 1 / 4
             $0.progressTintColor = UIColor.colorWithRGBHex(hex: 0x178900)
             $0.trackTintColor = .lightGray
         }
         
         titleLabel.do {
-            $0.text = "3. FEATURE"
+            $0.text = "2. Color"
             $0.textColor = UIColor.black
             $0.font = .nanumPen(size: 30, family: .bold)
         }
@@ -118,16 +116,12 @@ extension SelectFeatureViewController {
         }
         
         expressionImageView.do {
-            $0.image = Image.expressionConfidence
-            $0.contentMode = .scaleToFill
-        }
-        
-        featureImageView.do {
+            $0.image = Image.expressionBlank
             $0.contentMode = .scaleToFill
         }
         
         collectionView.do {
-            $0.register(MakeCharacterViewCell.self, forCellWithReuseIdentifier: "MakeCharacterCell")
+            $0.register(SelectColorCell.self, forCellWithReuseIdentifier: "ColorCell")
             $0.delegate = self
             $0.dataSource = self
             $0.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
@@ -141,10 +135,6 @@ extension SelectFeatureViewController {
             $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
         }
         
-        popButton.do {
-            $0.setImage(Image.popButton, for: .normal)
-        }
-        
     }
     
     private func setLayouts() {
@@ -154,9 +144,9 @@ extension SelectFeatureViewController {
     
     private func setViewHierarchy() {
         view.addSubviews(myCharacterLabel, loadingBar, titleLabel, containerView, collectionView, nextButton)
-        containerView.addSubviews(shapeImageView, expressionImageView, featureImageView)
+        containerView.addSubview(shapeImageView)
+        shapeImageView.addSubview(expressionImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
-        expressionImageView.bringSubviewToFront(featureImageView)
     }
     
     private func setConstraints() {
@@ -196,12 +186,6 @@ extension SelectFeatureViewController {
             $0.height.equalTo(231)
         }
         
-        featureImageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
-        }
-        
         collectionView.snp.makeConstraints {
             $0.leading.trailing.equalTo(safeArea)
             $0.bottom.equalTo(nextButton.snp.top).offset(-80)
@@ -218,8 +202,8 @@ extension SelectFeatureViewController {
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case nextButton:
-            let setCharacterNameViewController = SetCharacterNameViewController()
-            navigationController?.pushViewController(setCharacterNameViewController, animated: false)
+            let selectFeatureViewController = SelectFeatureViewController()
+            navigationController?.pushViewController(selectFeatureViewController, animated: false)
         case popButton:
             navigationController?.popViewController(animated: true)
         default:
