@@ -82,10 +82,10 @@ final class SignUpViewController: BaseViewController {
             }
             .bind { [weak self] bool in
                 if bool {
-                    self?.checkPasswordValidView.image = Image.validPassword
+                    self?.checkPasswordValidView.image = Image.validIcon
                     isPasswordValid.accept(true)
                 } else {
-                    self?.checkPasswordValidView.image = Image.invalidPassword
+                    self?.checkPasswordValidView.image = Image.invalidIcon
                     isPasswordValid.accept(false)
                 }
             }
@@ -99,10 +99,10 @@ final class SignUpViewController: BaseViewController {
             }
             .bind { [weak self] bool in
                 if bool {
-                    self?.checkPasswordSameView.image = Image.validPassword
+                    self?.checkPasswordSameView.image = Image.validIcon
                     isPasswordSame.accept(true)
                 } else {
-                    self?.checkPasswordSameView.image = Image.invalidPassword
+                    self?.checkPasswordSameView.image = Image.invalidIcon
                     isPasswordSame.accept(false)
                 }
             }
@@ -129,9 +129,9 @@ final class SignUpViewController: BaseViewController {
         checkIDValid(id: id) { data in
             if data.success {
                 self.isIDValid = true
-                self.showToastMessageAlert(message: "시용가능한 이메일입니다.")
+                self.showToastMessageAlert(message: data.message)
             } else {
-                self.showToastMessageAlert(message: "이미 존재한 이메일입니다.")
+                self.showToastMessageAlert(message: data.message)
             }
         }
     }
@@ -206,7 +206,7 @@ extension SignUpViewController {
         }
         
         idImageView.do {
-            $0.image = Image.idImage
+            $0.image = Image.userIcon
         }
         
         idTextField.do {
@@ -227,7 +227,7 @@ extension SignUpViewController {
         }
 
         passwordImageView.do {
-            $0.image = Image.passwordImage
+            $0.image = Image.lockIcon
         }
         
         passwordTextField.do {
@@ -245,11 +245,11 @@ extension SignUpViewController {
         }
         
         checkPasswordValidView.do {
-            $0.image = Image.invalidPassword
+            $0.image = Image.invalidIcon
         }
         
         passwordConfirmImageView.do {
-            $0.image = Image.checkPasswordImage
+            $0.image = Image.checkPasswordIcon
         }
         
         passwordConfirmTextField.do {
@@ -267,7 +267,7 @@ extension SignUpViewController {
         }
         
         checkPasswordSameView.do {
-            $0.image = Image.invalidPassword
+            $0.image = Image.invalidIcon
         }
 
         signUpButton.do {
@@ -302,7 +302,7 @@ extension SignUpViewController {
         }
         
         dismissButton.do {
-            $0.setImage(Image.xLine, for: .normal)
+            $0.setImage(Image.xLineIcon, for: .normal)
         }
     }
     

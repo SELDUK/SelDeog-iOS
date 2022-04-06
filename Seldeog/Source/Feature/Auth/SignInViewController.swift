@@ -147,7 +147,7 @@ extension SignInViewController {
         }
         
         idImageView.do {
-            $0.image = Image.idImage
+            $0.image = Image.userIcon
         }
         
         idTextField.do {
@@ -166,7 +166,7 @@ extension SignInViewController {
         }
 
         passwordImageView.do {
-            $0.image = Image.passwordImage
+            $0.image = Image.lockIcon
         }
         
         passwordTextField.do {
@@ -229,7 +229,7 @@ extension SignInViewController {
         }
 
         dismissButton.do {
-            $0.setImage(Image.xLine, for: .normal)
+            $0.setImage(Image.xLineIcon, for: .normal)
         }
     }
     

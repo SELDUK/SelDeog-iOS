@@ -49,7 +49,6 @@ extension ConfirmCharacterViewController {
         }
         
         navigationController?.do {
-            $0.navigationBar.setBackgroundImage(Image.checkPattern, for: .default)
             $0.navigationBar.shadowImage = UIImage()
             $0.navigationBar.isTranslucent = true
         }
@@ -95,7 +94,7 @@ extension ConfirmCharacterViewController {
         }
         
         popButton.do {
-            $0.setImage(Image.popButton, for: .normal)
+            $0.setImage(Image.arrowLeftIcon, for: .normal)
         }
     }
     

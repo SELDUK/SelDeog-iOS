@@ -26,7 +26,7 @@ final class SelectShapeViewController: BaseViewController {
         return cv
     }()
     
-    var cellImageList = [Image.shapeCircle, Image.shapeHeart, Image.shapeDent, Image.shapeRock, Image.shapeCloud, Image.shapeUglyHeart]
+    var cellImageList = [Image.navyShapeCircle, Image.navyShapeHeart, Image.navyShapeDent, Image.navyShapeRock, Image.navyShapeCloud, Image.navyShapeUglyHeart]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +104,7 @@ extension SelectShapeViewController {
         }
         
         shapeImageView.do {
-            $0.image = Image.shapeCircle
+            $0.image = Image.navyShapeCircle
             $0.contentMode = .scaleToFill
         }
         

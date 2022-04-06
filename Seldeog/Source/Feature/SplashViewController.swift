@@ -15,6 +15,9 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         setupViewLayout()
         
+        UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isAutoLogin)
+        UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isNotFirstTime)
+
         mTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
     }
     
@@ -26,7 +29,7 @@ class SplashViewController: UIViewController {
             make.centerY.equalToSuperview()
             make.width.height.equalTo(104)
         }
-        logoView.image = Image.shapeHeart
+        logoView.image = Image.navyShapeHeart
     }
 
     private func processCheck() {

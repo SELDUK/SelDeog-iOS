@@ -142,7 +142,7 @@ extension SelectFeatureViewController {
         }
         
         popButton.do {
-            $0.setImage(Image.popButton, for: .normal)
+            $0.setImage(Image.arrowLeftIcon, for: .normal)
         }
         
     }

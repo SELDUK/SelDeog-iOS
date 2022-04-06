@@ -11,10 +11,10 @@ final class ValidateButton: UIButton {
     override var isSelected: Bool {
         didSet{
             if self.isSelected {
-                self.setImage(Image.validPassword, for: .normal)
+                self.setImage(Image.validIcon, for: .normal)
             }
             else{
-                self.setImage(Image.invalidPassword, for: .normal)
+                self.setImage(Image.invalidIcon, for: .normal)
             }
         }
     }
