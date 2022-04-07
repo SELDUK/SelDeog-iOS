@@ -58,7 +58,7 @@ extension ConfirmCharacterViewController {
         }
         
         shapeImageView.do {
-            $0.image = CharacterData.selectedShape
+            $0.image = CharacterData.selectedColorWithShape
             $0.contentMode = .scaleToFill
         }
         

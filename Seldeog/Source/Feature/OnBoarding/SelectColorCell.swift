@@ -45,7 +45,7 @@ class SelectColorCell: UICollectionViewCell {
         cellImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(70)
+            $0.width.height.equalTo(72)
         }
     }
 }

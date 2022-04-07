@@ -80,6 +80,8 @@ enum Image {
     static let featureFrog = UIImage(named: "feature_frog")!
     static let featureSunglasses = UIImage(named: "feature_sunglasses")!
     static let featureAngel = UIImage(named: "feature_angel")!
+    static let featureHeadphone = UIImage(named: "feature_headphone")!
+    static let featureRibbon = UIImage(named: "feature_ribbon")!
     
     static let featureBarHair1 = UIImage(named: "featureBar_hair1")!
     static let featureBarHair2 = UIImage(named: "featureBar_hair2")!
@@ -88,6 +90,10 @@ enum Image {
     static let featureBarFrog = UIImage(named: "featureBar_frog")!
     static let featureBarSunglasses = UIImage(named: "featureBar_sunglasses")!
     static let featureBarAngel = UIImage(named: "featureBar_angel")!
+    static let featureBarHeadphone = UIImage(named: "featureBar_headphone")!
+    static let featureBarRibbon = UIImage(named: "featureBar_ribbon")!
+    static let featureBarNone = UIImage(named: "featureBar_none")!
+
     
     // 캐릭터 색
     static let colorNavy = UIImage(named: "color_navy")!

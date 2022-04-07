@@ -28,7 +28,9 @@ final class SelectFeatureViewController: BaseViewController {
         return cv
     }()
     
-    var cellImageList = [Image.featureHat, Image.featureHair, Image.featureScar, Image.featureNecklace]
+    var cellImageList = [Image.featureBarNone, Image.featureBarHair1, Image.featureBarAngel, Image.featureBarFrog, Image.featureBarHat, Image.featureBarSleepHat, Image.featureBarHeadphone, Image.featureBarRibbon, Image.featureBarHair2, Image.featureBarSunglasses]
+    
+    var featureImageList = [nil, Image.featureHair1, Image.featureAngel, Image.featureFrog, Image.featureHat, Image.featureSleepHat, Image.featureHeadphone, Image.featureRibbon, Image.featureHair2, Image.featureSunglasses]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +61,7 @@ extension SelectFeatureViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,8 +72,9 @@ extension SelectFeatureViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.featureImageView.image = cellImageList[indexPath.item]
-        CharacterData.selectedFeature = cellImageList[indexPath.item]
+        self.featureImageView.image = featureImageList[indexPath.item]
+        CharacterData.selectedFeature = featureImageList[indexPath.item]
+        CharacterData.selectedFeatureIndex = indexPath.item
     }
 }
 
@@ -113,7 +116,7 @@ extension SelectFeatureViewController {
         }
         
         shapeImageView.do {
-            $0.image = CharacterData.selectedShape
+            $0.image = CharacterData.selectedColorWithShape
             $0.contentMode = .scaleToFill
         }
         

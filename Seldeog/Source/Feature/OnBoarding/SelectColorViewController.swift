@@ -69,7 +69,11 @@ extension SelectColorViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        CharacterData.selectedColor = cellImageList[indexPath.item]
+        if let shapeIndex = CharacterData.selectedShapeIndex {
+            self.shapeImageView.image = CharacterData.colorShapeImageList[shapeIndex][indexPath.item]
+            CharacterData.selectedColorWithShape = CharacterData.colorShapeImageList[shapeIndex][indexPath.item]
+        }
+        CharacterData.selectedColorIndex = indexPath.item
     }
 }
 
@@ -85,7 +89,7 @@ extension SelectColorViewController {
         }
         
         navigationItem.do {
-            $0.hidesBackButton = true
+            $0.leftBarButtonItem = UIBarButtonItem(customView: popButton)
         }
         
         myCharacterLabel.do {
@@ -135,6 +139,9 @@ extension SelectColorViewController {
             $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
         }
         
+        popButton.do {
+            $0.setImage(Image.arrowLeftIcon, for: .normal)
+        }
     }
     
     private func setLayouts() {

@@ -26,7 +26,7 @@ final class SelectShapeViewController: BaseViewController {
         return cv
     }()
     
-    var cellImageList = [Image.navyShapeCircle, Image.navyShapeHeart, Image.navyShapeDent, Image.navyShapeRock, Image.navyShapeCloud, Image.navyShapeUglyHeart]
+    var cellImageList = [Image.navyShapeCircle, Image.navyShapeCloud, Image.navyShapeSharpEar, Image.navyShapeWater, Image.navyShapeBread,  Image.navyShapeRoundEar, Image.navyShapeJjang]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ extension SelectShapeViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,6 +63,7 @@ extension SelectShapeViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.shapeImageView.image = cellImageList[indexPath.item]
         CharacterData.selectedShape = cellImageList[indexPath.item]
+        CharacterData.selectedShapeIndex = indexPath.item
     }
 }
 

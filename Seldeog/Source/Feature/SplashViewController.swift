@@ -29,7 +29,7 @@ class SplashViewController: UIViewController {
             make.centerY.equalToSuperview()
             make.width.height.equalTo(104)
         }
-        logoView.image = Image.navyShapeHeart
+        logoView.image = Image.navyShapeCircle
     }
 
     private func processCheck() {
