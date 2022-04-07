@@ -63,7 +63,7 @@ extension SelectShapeViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.shapeImageView.image = cellImageList[indexPath.item]
         CharacterData.selectedShape = cellImageList[indexPath.item]
-        CharacterData.selectedShapeIndex = indexPath.item
+        CharacterData.selectedShapeIndex = indexPath.item + 1
     }
 }
 

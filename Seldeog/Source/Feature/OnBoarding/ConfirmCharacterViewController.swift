@@ -40,6 +40,42 @@ final class ConfirmCharacterViewController: BaseViewController {
 //        animationView.play()
 //        animationView.loopMode = .loop
 //    }
+    
+    private func registerCharacter() {
+        guard let name = CharacterData.nickname else { return }
+        guard let shape = CharacterData.selectedShapeIndex else { return }
+        guard let color = CharacterData.selectedColorIndex else { return }
+        guard let feature = CharacterData.selectedFeatureIndex else { return }
+        
+        postCharacterInfo(name: name, shape: shape, color: color, feature: feature) { data in
+            if data.success {
+                UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isNotFirstTime)
+                UserDefaults.standard.synchronize()
+                LoginSwitcher.updateRootVC()
+            } else {
+                self.showToastMessageAlert(message: "캐릭터 생성에 실패하였습니다.")
+            }
+        }
+    }
+    
+    func postCharacterInfo(
+        name: String,
+        shape: Int,
+        color: Int,
+        feature: Int,
+        completion: @escaping (UserDetailResponse) -> Void
+    ) {
+        UserRepository.shared.postCharacterInfo(name: name, shape: shape, color: color, feature: feature) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? UserDetailResponse else { return }
+                completion(data)
+            default:
+                print("sign in error")
+            }
+        }
+    }
 }
 
 extension ConfirmCharacterViewController {
@@ -152,7 +188,7 @@ extension ConfirmCharacterViewController {
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case nextButton:
-            print()
+            registerCharacter()
         case popButton:
             navigationController?.popViewController(animated: true)
         default:

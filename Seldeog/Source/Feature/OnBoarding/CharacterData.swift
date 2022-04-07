@@ -18,12 +18,12 @@ struct CharacterData {
     static var selfLoveScore: Int?
     
     static let colorShapeImageList = [
-        [Image.navyShapeCircle, Image.greenShapeCircle, Image.yellowShapeCircle, Image.pinkShapeCircle, Image.mauveShapeCircle],
-        [Image.navyShapeCloud, Image.greenShapeCloud, Image.yellowShapeCloud, Image.pinkShapeCloud, Image.mauveShapeCloud],
-        [Image.navyShapeSharpEar, Image.greenShapeSharpEar, Image.yellowShapeSharpEar, Image.pinkShapeSharpEar, Image.mauveShapeSharpEar],
-        [Image.navyShapeWater, Image.greenShapeWater, Image.yellowShapeWater, Image.pinkShapeWater, Image.mauveShapeWater],
-        [Image.navyShapeBread, Image.greenShapeBread, Image.yellowShapeBread, Image.pinkShapeBread, Image.mauveShapeBread],
-        [Image.navyShapeRoundEar, Image.greenShapeRoundEar, Image.yellowShapeRoundEar, Image.pinkShapeRoundEar, Image.mauveShapeRoundEar],
-        [Image.navyShapeJjang, Image.greenShapeJjang, Image.yellowShapeJjang, Image.pinkShapeJjang, Image.mauveShapeJjang]
+        [Image.navyShapeCircle, Image.yellowShapeCircle, Image.pinkShapeCircle, Image.mauveShapeCircle, Image.greenShapeCircle],
+        [Image.navyShapeCloud, Image.yellowShapeCloud, Image.pinkShapeCloud, Image.mauveShapeCloud, Image.greenShapeCloud],
+        [Image.navyShapeSharpEar, Image.yellowShapeSharpEar, Image.pinkShapeSharpEar, Image.mauveShapeSharpEar, Image.greenShapeSharpEar],
+        [Image.navyShapeWater, Image.yellowShapeWater, Image.pinkShapeWater, Image.mauveShapeWater, Image.greenShapeWater],
+        [Image.navyShapeBread, Image.yellowShapeBread, Image.pinkShapeBread, Image.mauveShapeBread, Image.greenShapeBread],
+        [Image.navyShapeRoundEar, Image.yellowShapeRoundEar, Image.pinkShapeRoundEar, Image.mauveShapeRoundEar, Image.greenShapeRoundEar],
+        [Image.navyShapeJjang, Image.yellowShapeJjang, Image.pinkShapeJjang, Image.mauveShapeJjang, Image.greenShapeJjang]
     ]
 }

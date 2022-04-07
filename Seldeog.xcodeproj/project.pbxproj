@@ -26,6 +26,9 @@
 		2D2ADF0427CF4D5B0034A602 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0327CF4D5B0034A602 /* SignInViewController.swift */; };
 		2D2ADF0627CF4D610034A602 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0527CF4D610034A602 /* SignUpViewController.swift */; };
 		2D2ADF0827CF58CA0034A602 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */; };
+		2D32068027FEC36100BFE30E /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32067F27FEC36100BFE30E /* UserAPI.swift */; };
+		2D32068227FEC92300BFE30E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068127FEC92300BFE30E /* UserRepository.swift */; };
+		2D32068427FECDB800BFE30E /* UserDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068327FECDB800BFE30E /* UserDetailResponse.swift */; };
 		2D47BA2E27E6FAC1007D83F1 /* MakeCharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */; };
 		2D8C547C27F6BBF100308875 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */; };
 		2D8C547E27F6BF3800308875 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547D27F6BF3800308875 /* SelectColorCell.swift */; };
@@ -85,6 +88,9 @@
 		2D2ADF0327CF4D5B0034A602 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		2D2ADF0527CF4D610034A602 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		2D32067F27FEC36100BFE30E /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		2D32068127FEC92300BFE30E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		2D32068327FECDB800BFE30E /* UserDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailResponse.swift; sourceTree = "<group>"; };
 		2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCharacterViewCell.swift; sourceTree = "<group>"; };
 		2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		2D8C547D27F6BF3800308875 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
@@ -307,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				2DBF1D8F27D0819300285A0B /* AuthAPI.swift */,
+				2D32067F27FEC36100BFE30E /* UserAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -315,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */,
+				2D32068327FECDB800BFE30E /* UserDetailResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				2DBF1D9327D081AC00285A0B /* AuthRepository.swift */,
+				2D32068127FEC92300BFE30E /* UserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -486,6 +495,7 @@
 				2D94DEA827FD76A5006C6A01 /* SettingViewController.swift in Sources */,
 				2D1EC9B327DF716500EE1D96 /* SelectShapeViewController.swift in Sources */,
 				2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */,
+				2D32068427FECDB800BFE30E /* UserDetailResponse.swift in Sources */,
 				2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */,
 				2D94DE9E27FD48D7006C6A01 /* CalendarView+DataSource.swift in Sources */,
 				2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */,
@@ -495,6 +505,7 @@
 				2D94DEAE27FD815A006C6A01 /* SettingInfo.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
 				2D94DEB127FDC0A9006C6A01 /* SettingSwitchCell.swift in Sources */,
+				2D32068027FEC36100BFE30E /* UserAPI.swift in Sources */,
 				2D94DEA127FD48D7006C6A01 /* CalendarView+Extensions.swift in Sources */,
 				2D94DE9F27FD48D7006C6A01 /* EventsManager.swift in Sources */,
 				2D97E6ED27EAE8400029DE35 /* SelectFeatureViewController.swift in Sources */,
@@ -508,6 +519,7 @@
 				2D2ADF0827CF58CA0034A602 /* UITextField+Extension.swift in Sources */,
 				2D94DEAC27FD7C55006C6A01 /* SettingNextCell.swift in Sources */,
 				2D2ADF0427CF4D5B0034A602 /* SignInViewController.swift in Sources */,
+				2D32068227FEC92300BFE30E /* UserRepository.swift in Sources */,
 				2DDDD45627E1C22900FC289C /* Font.swift in Sources */,
 				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
 				2D94DEB327FDC9CB006C6A01 /* SettingTextCell.swift in Sources */,

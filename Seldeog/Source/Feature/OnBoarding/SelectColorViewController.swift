@@ -27,7 +27,7 @@ final class SelectColorViewController: BaseViewController {
         return cv
     }()
     
-    var cellImageList = [Image.colorNavy, Image.colorGreen, Image.colorYellow, Image.colorPink, Image.colorMauve]
+    var cellImageList = [Image.colorNavy, Image.colorYellow, Image.colorPink, Image.colorMauve, Image.colorGreen]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,10 +70,10 @@ extension SelectColorViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let shapeIndex = CharacterData.selectedShapeIndex {
-            self.shapeImageView.image = CharacterData.colorShapeImageList[shapeIndex][indexPath.item]
-            CharacterData.selectedColorWithShape = CharacterData.colorShapeImageList[shapeIndex][indexPath.item]
+            self.shapeImageView.image = CharacterData.colorShapeImageList[shapeIndex - 1][indexPath.item]
+            CharacterData.selectedColorWithShape = CharacterData.colorShapeImageList[shapeIndex - 1][indexPath.item]
         }
-        CharacterData.selectedColorIndex = indexPath.item
+        CharacterData.selectedColorIndex = indexPath.item + 1
     }
 }
 
