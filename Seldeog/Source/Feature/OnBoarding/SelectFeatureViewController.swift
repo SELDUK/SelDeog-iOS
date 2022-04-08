@@ -11,7 +11,6 @@ import SnapKit
 
 final class SelectFeatureViewController: BaseViewController {
     
-    let myCharacterLabel = UILabel()
     let loadingBar = UIProgressView()
     let titleLabel = UILabel()
     let containerView = UIView()
@@ -84,21 +83,6 @@ extension SelectFeatureViewController {
             $0.backgroundColor = .white
         }
         
-        navigationController?.do {
-            $0.navigationBar.shadowImage = UIImage()
-            $0.navigationBar.isTranslucent = true
-        }
-        
-        navigationItem.do {
-            $0.leftBarButtonItem = UIBarButtonItem(customView: popButton)
-        }
-        
-        myCharacterLabel.do {
-            $0.text = "MY CHARACTER"
-            $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 35, family: .bold)
-        }
-        
         loadingBar.do {
             $0.layer.cornerRadius = 8.5
             $0.clipsToBounds = true
@@ -156,7 +140,7 @@ extension SelectFeatureViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(myCharacterLabel, loadingBar, titleLabel, containerView, collectionView, nextButton)
+        view.addSubviews(loadingBar, titleLabel, containerView, collectionView, nextButton)
         containerView.addSubviews(shapeImageView, expressionImageView, featureImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
         expressionImageView.bringSubviewToFront(featureImageView)
@@ -165,13 +149,8 @@ extension SelectFeatureViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
 
-        myCharacterLabel.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(8)
-            $0.centerX.equalToSuperview()
-        }
-        
         loadingBar.snp.makeConstraints {
-            $0.top.equalTo(myCharacterLabel.snp.bottom).offset(27)
+            $0.top.equalTo(safeArea).offset(27)
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(17)
         }
@@ -189,25 +168,22 @@ extension SelectFeatureViewController {
         
         shapeImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         expressionImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         featureImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         collectionView.snp.makeConstraints {
             $0.leading.trailing.equalTo(safeArea)
-            $0.bottom.equalTo(nextButton.snp.top).offset(-80)
+            $0.bottom.equalTo(nextButton.snp.top).offset(-50)
             $0.height.equalTo(120)
         }
         

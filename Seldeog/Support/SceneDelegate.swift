@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func goToMain() {
-        window?.rootViewController = UINavigationController(rootViewController: SettingViewController())
+        window?.rootViewController = BaseNavigationController(rootViewController: CalendarViewController())
         window?.makeKeyAndVisible()
       }
       
@@ -42,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func goToOnboard() {
-        window?.rootViewController = UINavigationController(rootViewController: SelectShapeViewController())
+        window?.rootViewController = BaseNavigationController(title: "MY CHARACTER", rootViewController: SelectShapeViewController())
         window?.makeKeyAndVisible()
     }
 

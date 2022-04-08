@@ -11,7 +11,6 @@ import SnapKit
 
 final class SetCharacterNameViewController: BaseViewController {
     
-    let myCharacterLabel = UILabel()
     let loadingBar = UIProgressView()
     let titleLabel = UILabel()
     let shapeImageView = UIImageView()
@@ -29,6 +28,14 @@ final class SetCharacterNameViewController: BaseViewController {
         setLayouts()
         registerTarget()
         setLoadingBarAnimation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.do {
+            $0.title = "MY CHARACTER"
+        }
     }
     
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -52,21 +59,6 @@ extension SetCharacterNameViewController {
     private func setProperties() {
         view.do {
             $0.backgroundColor = .white
-        }
-        
-        navigationController?.do {
-            $0.navigationBar.shadowImage = UIImage()
-            $0.navigationBar.isTranslucent = true
-        }
-        
-        navigationItem.do {
-            $0.leftBarButtonItem = UIBarButtonItem(customView: popButton)
-        }
-        
-        myCharacterLabel.do {
-            $0.text = "MY CHARACTER"
-            $0.textColor = UIColor.black
-            $0.font = .nanumPen(size: 35, family: .bold)
         }
         
         loadingBar.do {
@@ -140,7 +132,7 @@ extension SetCharacterNameViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(myCharacterLabel, loadingBar, titleLabel, shapeImageView, startQuotationMarkLabel, finishQuotationMarkLabel, nameTextField, nextButton)
+        view.addSubviews(loadingBar, titleLabel, shapeImageView, startQuotationMarkLabel, finishQuotationMarkLabel, nameTextField, nextButton)
         shapeImageView.addSubviews(expressionImageView, featureImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
         expressionImageView.bringSubviewToFront(featureImageView)
@@ -149,13 +141,8 @@ extension SetCharacterNameViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
 
-        myCharacterLabel.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(8)
-            $0.centerX.equalToSuperview()
-        }
-        
         loadingBar.snp.makeConstraints {
-            $0.top.equalTo(myCharacterLabel.snp.bottom).offset(27)
+            $0.top.equalTo(safeArea).offset(27)
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(17)
         }
@@ -184,20 +171,17 @@ extension SetCharacterNameViewController {
         shapeImageView.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         expressionImageView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         featureImageView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         nextButton.snp.makeConstraints {

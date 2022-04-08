@@ -59,6 +59,7 @@
 		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
 		2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45727E1C5C300FC289C /* BaseViewController.swift */; };
 		2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8363727F42E0B00DECB35 /* ValidateButton.swift */; };
+		2DF0B11927FFF891002F37E1 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */; };
 		2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */; };
 		2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */; };
 		EAC40CB19EABBAD035E8828A /* Pods_Seldeog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */; };
@@ -121,6 +122,7 @@
 		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		2DDDD45727E1C5C300FC289C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2DE8363727F42E0B00DECB35 /* ValidateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateButton.swift; sourceTree = "<group>"; };
+		2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		BC3F0E4D990966B075FCD806 /* Pods-Seldeog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.debug.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				2DDDD45727E1C5C300FC289C /* BaseViewController.swift */,
+				2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */,
 				2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */,
 				2DE8363727F42E0B00DECB35 /* ValidateButton.swift */,
 			);
@@ -532,6 +535,7 @@
 				2D97E6EF27EAE9D30029DE35 /* CharacterData.swift in Sources */,
 				2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */,
 				2D97E6F127EAFD900029DE35 /* SetCharacterNameViewController.swift in Sources */,
+				2DF0B11927FFF891002F37E1 /* BaseNavigationController.swift in Sources */,
 				2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */,
 				2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */,
 				2D1EC9B127DF712D00EE1D96 /* CalendarViewController.swift in Sources */,

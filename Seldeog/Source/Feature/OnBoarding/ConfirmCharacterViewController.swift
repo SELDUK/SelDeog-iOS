@@ -85,12 +85,7 @@ extension ConfirmCharacterViewController {
         }
         
         navigationController?.do {
-            $0.navigationBar.shadowImage = UIImage()
-            $0.navigationBar.isTranslucent = true
-        }
-        
-        navigationItem.do {
-            $0.leftBarButtonItem = UIBarButtonItem(customView: popButton)
+            $0.title = ""
         }
         
         shapeImageView.do {
@@ -162,20 +157,17 @@ extension ConfirmCharacterViewController {
         shapeImageView.snp.makeConstraints {
             $0.top.equalTo(pleaseLoveMeLabel.snp.bottom).offset(37)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         expressionImageView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         featureImageView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(236)
-            $0.height.equalTo(231)
+            $0.width.height.equalTo(290)
         }
         
         nextButton.snp.makeConstraints {
