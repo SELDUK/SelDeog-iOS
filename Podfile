@@ -12,4 +12,6 @@ target 'Seldeog' do
   pod 'lottie-ios'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'PanModal'
+  pod 'Kingfisher'
 end

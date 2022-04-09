@@ -21,6 +21,10 @@ final class CalendarViewController: BaseViewController {
         $0.font = UIFont.nanumPen(size: 35, family: .bold)
     }
     
+    var selectMonthButton = UIButton().then {
+        $0.setImage(Image.arrowDownIcon, for: .normal)
+    }
+    
     var calendarView: CalendarView!
     
     var datePicker = UIDatePicker()
@@ -146,7 +150,7 @@ extension CalendarViewController {
     private func setLayout() {
         let safeArea = view.safeAreaLayoutGuide
 
-        view.addSubviews(yearLabel, monthLabel, calendarView)
+        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView)
         
         yearLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea).offset(10)
@@ -158,6 +162,13 @@ extension CalendarViewController {
             $0.centerX.equalToSuperview()
         }
         
+        selectMonthButton.snp.makeConstraints {
+            $0.centerY.equalTo(monthLabel)
+            $0.leading.equalTo(monthLabel.snp.trailing).offset(8)
+            $0.width.equalTo(14)
+            $0.height.equalTo(9)
+        }
+
         calendarView.snp.makeConstraints {
             $0.top.equalTo(monthLabel.snp.bottom).offset(25)
             $0.leading.trailing.equalToSuperview().inset(20)

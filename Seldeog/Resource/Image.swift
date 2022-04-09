@@ -9,7 +9,7 @@ import UIKit.UIImage
 
 enum Image {
     // 기본 아이콘
-    static let arrowDownIcon = UIImage(named: "ic_arrow_down_line")!
+    static let arrowDownIcon = UIImage(named: "ic_arrow_down")!
     static let arrowLeftIcon = UIImage(named: "ic_arrow_left")!
     static let arrowRightIcon = UIImage(named: "ic_arrow_right")!
     static let arrowUpIcon = UIImage(named: "ic_arrow_up_line")!
