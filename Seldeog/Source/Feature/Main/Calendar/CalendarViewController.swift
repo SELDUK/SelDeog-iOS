@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 import Then
+import PanModal
+
+protocol MoveCalendarDate {
+    func setCalendarDate(date: Date)
+}
 
 final class CalendarViewController: BaseViewController {
     
@@ -23,6 +28,7 @@ final class CalendarViewController: BaseViewController {
     
     var selectMonthButton = UIButton().then {
         $0.setImage(Image.arrowDownIcon, for: .normal)
+        $0.addTarget(self, action: #selector(openDatePickerView), for: .touchUpInside)
     }
     
     var calendarView: CalendarView!
@@ -74,21 +80,7 @@ final class CalendarViewController: BaseViewController {
         calendarView.backgroundColor = UIColor.white
 
         let today = Date()
-        self.calendarView.selectDate(today)
-        self.calendarView.setDisplayDate(today)
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        yearLabel.text = dateFormatter.string(from: today).uppercased()
-        
-        dateFormatter.dateFormat = "MMMM"
-        monthLabel.text = dateFormatter.string(from: today)
-
-        dateFormatter.dateFormat = "yyyy-MM"
-        let yearMonth = dateFormatter.string(from: today)
-        calendarView.yearMonth = yearMonth
+        setCalendarDate(date: today)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,6 +93,24 @@ final class CalendarViewController: BaseViewController {
         self.datePicker.setDate(today, animated: false)
     }
     
+    func setCalendarDate(date: Date) {
+        self.calendarView.selectDate(date)
+        self.calendarView.setDisplayDate(date)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        yearLabel.text = dateFormatter.string(from: date).uppercased()
+        
+        dateFormatter.dateFormat = "MMMM"
+        monthLabel.text = dateFormatter.string(from: date)
+
+        dateFormatter.dateFormat = "yyyy-MM"
+        let yearMonth = dateFormatter.string(from: date)
+        calendarView.yearMonth = yearMonth
+    }
+    
 }
 
 extension CalendarViewController: CalendarViewDataSource {
@@ -110,17 +120,17 @@ extension CalendarViewController: CalendarViewDataSource {
 
     func startDate() -> Date {
         var dateComponents = DateComponents()
-        dateComponents.month = -12
+        dateComponents.month = -24
 
         let today = Date()
-        let threeMonthsAgo = self.calendarView.calendar.date(byAdding: dateComponents, to: today)!
+        let twoYearsAgo = self.calendarView.calendar.date(byAdding: dateComponents, to: today)!
 
-        return threeMonthsAgo
+        return twoYearsAgo
     }
 
     func endDate() -> Date {
         var dateComponents = DateComponents()
-        dateComponents.month = 12
+        dateComponents.month = 24
 
         let today = Date()
         let twoYearsFromNow = self.calendarView.calendar.date(byAdding: dateComponents, to: today)!
@@ -174,5 +184,11 @@ extension CalendarViewController {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(self.view.frame.size.width + 30)
         }
+    }
+    
+    @objc func openDatePickerView() {
+        let datePickerViewController = DatePickerViewController()
+        datePickerViewController.dateDelegate = self
+        self.presentPanModal(datePickerViewController)
     }
 }
