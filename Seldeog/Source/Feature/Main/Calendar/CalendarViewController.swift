@@ -26,10 +26,12 @@ final class CalendarViewController: BaseViewController {
         $0.font = UIFont.nanumPen(size: 35, family: .bold)
     }
     
-    var selectMonthButton = UIButton().then {
+    let selectMonthButton = UIButton().then {
         $0.setImage(Image.arrowDownIcon, for: .normal)
         $0.addTarget(self, action: #selector(openDatePickerView), for: .touchUpInside)
     }
+    
+    let baseTabBarView = BaseTabBarView()
     
     var calendarView: CalendarView!
     
@@ -111,6 +113,12 @@ final class CalendarViewController: BaseViewController {
         calendarView.yearMonth = yearMonth
     }
     
+//    private func registerTarget() {
+//        [selectMonthButton, baseTabBarView.].forEach {
+//            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+//        }
+//    }
+    
 }
 
 extension CalendarViewController: CalendarViewDataSource {
@@ -160,7 +168,7 @@ extension CalendarViewController {
     private func setLayout() {
         let safeArea = view.safeAreaLayoutGuide
 
-        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView)
+        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, baseTabBarView)
         
         yearLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea).offset(10)
@@ -184,6 +192,12 @@ extension CalendarViewController {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(self.view.frame.size.width + 30)
         }
+        
+        baseTabBarView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(111)
+        }
     }
     
     @objc func openDatePickerView() {
@@ -191,4 +205,19 @@ extension CalendarViewController {
         datePickerViewController.dateDelegate = self
         self.presentPanModal(datePickerViewController)
     }
+    
+//    @objc private func buttonTapAction(_ sender: UIButton) {
+//        switch sender {
+//        case autoLoginButton:
+//            autoLoginButton.isSelected = !autoLoginButton.isSelected
+//        case signUpButton:
+//            navigationController?.pushViewController(SignUpViewController(), animated: false)
+//        case signInButton:
+//            signIn()
+//        case dismissButton:
+//            dismiss(animated: true, completion: nil)
+//        default:
+//            return
+//        }
+//    }
 }
