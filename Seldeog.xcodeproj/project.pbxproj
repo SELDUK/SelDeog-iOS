@@ -64,6 +64,7 @@
 		2DF0B11D28016EEF002F37E1 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B11C28016EEF002F37E1 /* MonthYearPickerView.swift */; };
 		2DF0B11F280176E3002F37E1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B11E280176E3002F37E1 /* String+Extension.swift */; };
 		2DF0B121280418C3002F37E1 /* BaseTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B120280418C3002F37E1 /* BaseTabBarView.swift */; };
+		2DF0B12528055A4E002F37E1 /* TodayComplimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B12428055A4E002F37E1 /* TodayComplimentViewController.swift */; };
 		2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */; };
 		2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */; };
 		EAC40CB19EABBAD035E8828A /* Pods_Seldeog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAF0B56B4CC1C934DB74212 /* Pods_Seldeog.framework */; };
@@ -131,6 +132,7 @@
 		2DF0B11C28016EEF002F37E1 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		2DF0B11E280176E3002F37E1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2DF0B120280418C3002F37E1 /* BaseTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarView.swift; sourceTree = "<group>"; };
+		2DF0B12428055A4E002F37E1 /* TodayComplimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayComplimentViewController.swift; sourceTree = "<group>"; };
 		2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		BC3F0E4D990966B075FCD806 /* Pods-Seldeog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Seldeog.debug.xcconfig"; path = "Target Support Files/Pods-Seldeog/Pods-Seldeog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		2D1EC9AF27DF711700EE1D96 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2DF0B123280558F6002F37E1 /* Compliment */,
 				2D94DEA627FD7693006C6A01 /* Setting */,
 				2D94DE9127FD48BA006C6A01 /* Calendar */,
 				2DF0B120280418C3002F37E1 /* BaseTabBarView.swift */,
@@ -369,6 +372,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2DF0B123280558F6002F37E1 /* Compliment */ = {
+			isa = PBXGroup;
+			children = (
+				2DF0B12428055A4E002F37E1 /* TodayComplimentViewController.swift */,
+			);
+			path = Compliment;
+			sourceTree = "<group>";
+		};
 		5592A7E64A1C770F8452A196 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +535,7 @@
 				2D94DEA127FD48D7006C6A01 /* CalendarView+Extensions.swift in Sources */,
 				2D94DE9F27FD48D7006C6A01 /* EventsManager.swift in Sources */,
 				2D97E6ED27EAE8400029DE35 /* SelectFeatureViewController.swift in Sources */,
+				2DF0B12528055A4E002F37E1 /* TodayComplimentViewController.swift in Sources */,
 				2D94DE9B27FD48D7006C6A01 /* CalendarView+Style.swift in Sources */,
 				2DBF1D9027D0819300285A0B /* AuthAPI.swift in Sources */,
 				2DBF1D9627D0829B00285A0B /* BaseTargetType.swift in Sources */,

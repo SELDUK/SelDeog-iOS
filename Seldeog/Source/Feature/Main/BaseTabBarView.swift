@@ -14,13 +14,9 @@ final class BaseTabBarView: UIView {
     
     let tabBarView = UIView()
     let calendarButton = UIButton()
-    let calendarLabel = UILabel()
     let selfLoveButton = UIButton()
-    let selfLoveLabel = UILabel()
     let aboutMeButton = UIButton()
-    let aboutMeLabel = UILabel()
     let settingButton = UIButton()
-    let settingLabel = UILabel()
     
     public init() {
         super.init(frame: .zero)

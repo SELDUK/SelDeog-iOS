@@ -28,7 +28,6 @@ final class CalendarViewController: BaseViewController {
     
     let selectMonthButton = UIButton().then {
         $0.setImage(Image.arrowDownIcon, for: .normal)
-        $0.addTarget(self, action: #selector(openDatePickerView), for: .touchUpInside)
     }
     
     let baseTabBarView = BaseTabBarView()
@@ -45,6 +44,7 @@ final class CalendarViewController: BaseViewController {
         calendarView = CalendarView()
         calendarView.cvc = self
         setLayout()
+        registerTarget()
         
         let myStyle = CalendarView.Style()
 
@@ -113,11 +113,11 @@ final class CalendarViewController: BaseViewController {
         calendarView.yearMonth = yearMonth
     }
     
-//    private func registerTarget() {
-//        [selectMonthButton, baseTabBarView.].forEach {
-//            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
-//        }
-//    }
+    private func registerTarget() {
+        [selectMonthButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
+            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+        }
+    }
     
 }
 
@@ -171,7 +171,7 @@ extension CalendarViewController {
         view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, baseTabBarView)
         
         yearLabel.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(10)
+            $0.top.equalTo(safeArea)
             $0.centerX.equalToSuperview()
         }
         
@@ -199,25 +199,21 @@ extension CalendarViewController {
             $0.height.equalTo(111)
         }
     }
-    
-    @objc func openDatePickerView() {
-        let datePickerViewController = DatePickerViewController()
-        datePickerViewController.dateDelegate = self
-        self.presentPanModal(datePickerViewController)
+        
+    @objc private func buttonTapAction(_ sender: UIButton) {
+        switch sender {
+        case selectMonthButton:
+            let datePickerViewController = DatePickerViewController()
+            datePickerViewController.dateDelegate = self
+            self.presentPanModal(datePickerViewController)
+        case baseTabBarView.aboutMeButton:
+            navigationController?.pushViewController(SignUpViewController(), animated: false)
+        case baseTabBarView.selfLoveButton:
+            navigationController?.pushViewController(SignUpViewController(), animated: false)
+        case baseTabBarView.settingButton:
+            navigationController?.pushViewController(SettingViewController(), animated: false)
+        default:
+            return
+        }
     }
-    
-//    @objc private func buttonTapAction(_ sender: UIButton) {
-//        switch sender {
-//        case autoLoginButton:
-//            autoLoginButton.isSelected = !autoLoginButton.isSelected
-//        case signUpButton:
-//            navigationController?.pushViewController(SignUpViewController(), animated: false)
-//        case signInButton:
-//            signIn()
-//        case dismissButton:
-//            dismiss(animated: true, completion: nil)
-//        default:
-//            return
-//        }
-//    }
 }
