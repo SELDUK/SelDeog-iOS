@@ -34,7 +34,7 @@ final class CalendarViewController: BaseViewController {
     let baseTabBarView = BaseTabBarView()
     let writeComplimentButton =  UIButton(type: .custom).then {
         $0.imageView?.contentMode = .scaleAspectFill
-        guard let imgURLString = CharacterData.finalCharacter else {
+        guard let imgURLString = UserDefaults.standard.string(forKey: UserDefaultKey.userCharacter) else {
             return
         }
         if let imgURL = URL(string: imgURLString) {
@@ -126,7 +126,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     private func registerTarget() {
-        [selectMonthButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
+        [selectMonthButton, writeComplimentButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -224,8 +224,11 @@ extension CalendarViewController {
             let datePickerViewController = DatePickerViewController()
             datePickerViewController.dateDelegate = self
             self.presentPanModal(datePickerViewController)
+        case writeComplimentButton:
+            let todayComplimentViewController = TodayComplimentViewController()
+            navigationController?.pushViewController(todayComplimentViewController, animated: false)
         case baseTabBarView.aboutMeButton:
-            navigationController?.pushViewController(SignUpViewController(), animated: false)
+            navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
         case baseTabBarView.selfLoveButton:
             navigationController?.pushViewController(SignUpViewController(), animated: false)
         case baseTabBarView.settingButton:

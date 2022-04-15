@@ -12,4 +12,5 @@ struct UserDefaultKey {
     static let isNotFirstTime: String = "NotFirstTime"
     static let loginStatus: String = "LoginStatus"
     static let token: String = "Token"
+    static let userCharacter: String = "UserCharacter"
 }

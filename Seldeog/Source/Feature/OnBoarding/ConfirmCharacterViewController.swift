@@ -49,7 +49,7 @@ final class ConfirmCharacterViewController: BaseViewController {
         
         postCharacterInfo(name: name, shape: shape, color: color, feature: feature) { data in
             if data.success {
-                CharacterData.finalCharacter = data.data?.usrChrImgDft
+                UserDefaults.standard.setValue(data.data?.usrChrImgDft, forKey: UserDefaultKey.userCharacter)
                 UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isNotFirstTime)
                 UserDefaults.standard.synchronize()
                 LoginSwitcher.updateRootVC()

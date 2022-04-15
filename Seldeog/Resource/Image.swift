@@ -29,6 +29,9 @@ enum Image {
     static let loveIcon = UIImage(named: "ic_love")!
     static let settingIcon = UIImage(named: "ic_setting")!
     static let tabBarBG = UIImage(named: "bg_tabbar")!
+    static let hashTagIcon = UIImage(named: "ic_hashtag")!
+    static let deleteIcon = UIImage(named: "ic_delete")!
+    static let modifyIcon = UIImage(named: "ic_modify")!
     
     // 캐릭터 모양
     static let navyShapeCircle = UIImage(named: "shape_navy_circle")!
