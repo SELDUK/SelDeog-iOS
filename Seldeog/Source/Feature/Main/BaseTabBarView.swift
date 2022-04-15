@@ -82,7 +82,7 @@ final class BaseTabBarView: UIView {
         }
         
         calendarButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(49)
+            $0.top.equalToSuperview().offset(18)
             $0.leading.equalToSuperview().offset(23)
             $0.width.equalTo(44)
             $0.height.equalTo(38)
@@ -96,7 +96,7 @@ final class BaseTabBarView: UIView {
         }
         
         settingButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(49)
+            $0.top.equalToSuperview().offset(18)
             $0.trailing.equalToSuperview().offset(-23)
             $0.width.height.equalTo(38)
         }

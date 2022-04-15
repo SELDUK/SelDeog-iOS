@@ -43,12 +43,13 @@ final class ConfirmCharacterViewController: BaseViewController {
     
     private func registerCharacter() {
         guard let name = CharacterData.nickname else { return }
-        guard let shape = CharacterData.selectedShapeIndex else { return }
-        guard let color = CharacterData.selectedColorIndex else { return }
-        guard let feature = CharacterData.selectedFeatureIndex else { return }
+        let shape = CharacterData.selectedShapeIndex
+        let color = CharacterData.selectedColorIndex
+        let feature = CharacterData.selectedFeatureIndex
         
         postCharacterInfo(name: name, shape: shape, color: color, feature: feature) { data in
             if data.success {
+                CharacterData.finalCharacter = data.data?.usrChrImgDft
                 UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isNotFirstTime)
                 UserDefaults.standard.synchronize()
                 LoginSwitcher.updateRootVC()

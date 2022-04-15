@@ -68,10 +68,9 @@ extension SelectColorViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let shapeIndex = CharacterData.selectedShapeIndex {
-            self.shapeImageView.image = CharacterData.colorShapeImageList[shapeIndex - 1][indexPath.item]
-            CharacterData.selectedColorWithShape = CharacterData.colorShapeImageList[shapeIndex - 1][indexPath.item]
-        }
+        let shapeIndex = CharacterData.selectedShapeIndex
+        self.shapeImageView.image = CharacterData.colorShapeImageList[shapeIndex - 1][indexPath.item]
+        CharacterData.selectedColorWithShape = CharacterData.colorShapeImageList[shapeIndex - 1][indexPath.item]
         CharacterData.selectedColorIndex = indexPath.item + 1
     }
 }

@@ -11,4 +11,9 @@ struct UserDetailResponse: Decodable {
     let status: Int
     let success: Bool
     let message: String
+    let data: UserCharacter?
+}
+
+struct UserCharacter: Decodable {
+    let usrChrImgDft: String
 }

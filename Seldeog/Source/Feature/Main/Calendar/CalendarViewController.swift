@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import PanModal
+import Kingfisher
 
 protocol MoveCalendarDate {
     func setCalendarDate(date: Date)
@@ -31,6 +32,17 @@ final class CalendarViewController: BaseViewController {
     }
     
     let baseTabBarView = BaseTabBarView()
+    let writeComplimentButton =  UIButton(type: .custom).then {
+        $0.imageView?.contentMode = .scaleAspectFill
+        guard let imgURLString = CharacterData.finalCharacter else {
+            return
+        }
+        if let imgURL = URL(string: imgURLString) {
+            $0.kf.setBackgroundImage(with: imgURL, for: .normal)
+        } else {
+            $0.setImage(Image.navyShapeCircle, for: .normal)
+        }
+    }
     
     var calendarView: CalendarView!
     
@@ -58,7 +70,7 @@ final class CalendarViewController: BaseViewController {
         myStyle.headerHeight             = 45
 
         myStyle.cellTextColorDefault     = UIColor.black
-        myStyle.cellTextColorToday       = UIColor.black
+        myStyle.cellTextColorToday       = UIColor.white
         myStyle.cellColorOutOfRange      = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
         myStyle.cellSelectedTextColor    = UIColor.black
 
@@ -168,7 +180,7 @@ extension CalendarViewController {
     private func setLayout() {
         let safeArea = view.safeAreaLayoutGuide
 
-        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, baseTabBarView)
+        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, writeComplimentButton, baseTabBarView)
         
         yearLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea)
@@ -193,10 +205,16 @@ extension CalendarViewController {
             $0.height.equalTo(self.view.frame.size.width + 30)
         }
         
+        writeComplimentButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-35)
+            $0.width.height.equalTo(95)
+        }
+        
         baseTabBarView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(111)
+            $0.height.equalTo(80)
         }
     }
         

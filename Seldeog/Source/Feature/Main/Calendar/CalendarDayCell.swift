@@ -60,18 +60,23 @@ open class CalendarDayCell: UICollectionViewCell {
     func updateTextColor() {
         if isSelected {
             self.textLabel.textColor = style.cellSelectedTextColor
+            self.textBackView.backgroundColor = .white
         }
         else if isToday {
-            self.textLabel.textColor = style.cellSelectedTextColor
+            self.textLabel.textColor = .white
+            self.textBackView.backgroundColor = .black
         }
         else if isOutOfRange {
             self.textLabel.textColor = style.cellColorOutOfRange
+            self.textBackView.backgroundColor = .white
         }
         else if isAdjacent {
             self.textLabel.textColor = style.cellColorAdjacent
+            self.textBackView.backgroundColor = .white
         }
         else {
             self.textLabel.textColor = style.cellTextColorDefault
+            self.textBackView.backgroundColor = .white
         }
     }
 
@@ -129,7 +134,7 @@ open class CalendarDayCell: UICollectionViewCell {
     }
 
     let characterBackView = UIView().then {
-        $0.backgroundColor = .gray
+        $0.backgroundColor = .white
     }
 
     let characterImageView = UIImageView()
@@ -137,7 +142,13 @@ open class CalendarDayCell: UICollectionViewCell {
     let textLabel = UILabel().then {
         $0.textAlignment = .center
         $0.font = UIFont.nanumPen(size: 11, family: .regular)
-        $0.textColor = .gray
+        $0.textColor = .white
+    }
+    
+    let textBackView = UIView().then {
+        $0.backgroundColor = .white
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 5.5
     }
 
     override init(frame: CGRect) {
@@ -152,15 +163,24 @@ open class CalendarDayCell: UICollectionViewCell {
 
     func setLayout() {
         self.addSubviews(
-            textLabel,
+            textBackView,
             characterBackView)
+        
+        textBackView.addSubview(textLabel)
+        textBackView.bringSubviewToFront(textLabel)
 
         characterBackView.addSubview(
             characterImageView)
         
+        textBackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(2)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(25)
+            $0.height.equalTo(12)
+        }
+        
         textLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(6)
-            $0.leading.trailing.equalToSuperview()
+            $0.center.equalToSuperview()
         }
 
         characterBackView.snp.makeConstraints {
@@ -176,7 +196,7 @@ open class CalendarDayCell: UICollectionViewCell {
 
     open override func prepareForReuse() {
         super.prepareForReuse()
-        characterBackView.backgroundColor = .gray
+        characterBackView.backgroundColor = .white
         textLabel.text = nil
         characterImageView.image = nil
     }
