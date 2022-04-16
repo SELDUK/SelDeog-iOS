@@ -16,6 +16,7 @@ struct CharacterData {
     static var selectedFeatureIndex: Int = 0
     static var nickname: String?
     static var selfLoveScore: Int?
+    static var characterIndex: Int?
     
     static let colorShapeImageList = [
         [Image.navyShapeCircle, Image.yellowShapeCircle, Image.pinkShapeCircle, Image.mauveShapeCircle, Image.greenShapeCircle],

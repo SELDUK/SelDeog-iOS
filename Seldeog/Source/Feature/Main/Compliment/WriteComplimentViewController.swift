@@ -9,21 +9,26 @@ import UIKit
 
 import SnapKit
 
-final class WriteComplimentViewController: UIViewController {
+final class WriteComplimentViewController: BaseViewController {
     
     let commentLabel = UILabel()
     let commentTextView = UITextView()
+    let wordCountLabel = UILabel()
     let tagLabel = UILabel()
     let tag1ImageView = UIImageView()
     let tag1TextField = UITextField()
+    let tag1WordCountLabel = UILabel()
     let separateView1 = UIView()
     let tag2ImageView = UIImageView()
     let tag2TextField = UITextField()
+    let tag2WordCountLabel = UILabel()
     let separateView2 = UIView()
+    let registerButton = UIButton()
     let attributes = [
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 15, family: .bold)
     ]
+    var isTextViewEmpty: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +39,40 @@ final class WriteComplimentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.title = ""
+    }
+    
+    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    private func postComment(comment: String, tag: [String]) {
+        if let index = CharacterData.characterIndex {
+            postComment(usrChrIdx: index, comment: comment, tag: tag) { data in
+                if data.success {
+                    self.navigationController?.popViewController(animated: false)
+                } else {
+                    self.showToastMessageAlert(message: "코멘트 작성에 실패하였습니다.")
+                }
+            }
+        }
+    }
+    
+    func postComment(
+        usrChrIdx: Int,
+        comment: String,
+        tag: [String],
+        completion: @escaping (UserDetailResponse) -> Void
+    ) {
+        UserRepository.shared.postComment(usrChrIdx: usrChrIdx, comment: comment, tag: tag) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? UserDetailResponse else { return }
+                completion(data)
+            default:
+                print("sign in error")
+            }
+        }
     }
     
 }
@@ -50,11 +89,20 @@ extension WriteComplimentViewController {
         }
         
         commentTextView.do {
-            $0.textColor = .black
+            $0.delegate = self
+            $0.text = "OO이를 칭찬해봐요!"
+            $0.backgroundColor = .white
+            $0.textColor = UIColor.lightGray
             $0.font = .nanumPen(size: 15, family: .bold)
             $0.isScrollEnabled = false
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        wordCountLabel.do {
+            $0.textColor = .black
+            $0.text = "0/50자"
+            $0.font = .nanumPen(size: 11, family: .bold)
         }
         
         tagLabel.do {
@@ -67,11 +115,19 @@ extension WriteComplimentViewController {
         }
         
         tag1TextField.do {
+            $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "귀여워", attributes: attributes)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
+            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        }
+        
+        tag1WordCountLabel.do {
+            $0.textColor = .black
+            $0.text = "0/10자"
+            $0.font = .nanumPen(size: 11, family: .bold)
         }
         
         separateView1.do {
@@ -83,15 +139,30 @@ extension WriteComplimentViewController {
         }
         
         tag2TextField.do {
+            $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "너무너무기특해", attributes: attributes)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
+            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        }
+        
+        tag2WordCountLabel.do {
+            $0.textColor = .black
+            $0.text = "0/10자"
+            $0.font = .nanumPen(size: 11, family: .bold)
         }
         
         separateView2.do {
             $0.backgroundColor = .black
+        }
+        
+        registerButton.do {
+            $0.backgroundColor = .black
+            $0.setTitle("OK", for: .normal)
+            $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
+            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
     
@@ -101,7 +172,9 @@ extension WriteComplimentViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(commentLabel, commentTextView, tagLabel, tag1ImageView, tag1TextField, separateView1, tag2ImageView, tag2TextField, separateView2)
+        view.addSubviews(commentLabel, commentTextView, wordCountLabel, tagLabel, tag1ImageView, tag1TextField, separateView1, tag2ImageView, tag2TextField, separateView2, registerButton)
+        tag1TextField.addSubview(tag1WordCountLabel)
+        tag2TextField.addSubview(tag2WordCountLabel)
     }
     
     private func setConstraints() {
@@ -116,8 +189,13 @@ extension WriteComplimentViewController {
             $0.height.equalTo(108)
         }
         
+        wordCountLabel.snp.makeConstraints {
+            $0.trailing.equalTo(commentTextView.snp.trailing).offset(-11)
+            $0.bottom.equalTo(commentTextView.snp.bottom).offset(-11)
+        }
+        
         tagLabel.snp.makeConstraints {
-            $0.top.equalTo(commentTextView.snp.bottom).offset(68)
+            $0.top.equalTo(commentTextView.snp.bottom).offset(48)
             $0.centerX.equalToSuperview()
         }
         
@@ -132,6 +210,11 @@ extension WriteComplimentViewController {
             $0.leading.equalTo(tag1ImageView.snp.trailing).offset(9)
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(30)
+        }
+        
+        tag1WordCountLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-10)
         }
         
         separateView1.snp.makeConstraints {
@@ -149,9 +232,14 @@ extension WriteComplimentViewController {
         
         tag2TextField.snp.makeConstraints {
             $0.centerY.equalTo(tag2ImageView)
-            $0.leading.equalTo(tag1ImageView.snp.trailing).offset(9)
+            $0.leading.equalTo(tag2ImageView.snp.trailing).offset(9)
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(30)
+        }
+        
+        tag2WordCountLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-10)
         }
         
         separateView2.snp.makeConstraints {
@@ -160,6 +248,93 @@ extension WriteComplimentViewController {
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(1)
         }
+        
+        registerButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(80)
+            $0.bottom.equalToSuperview()
+        }
     }
     
+    @objc func textFieldDidChange(_ sender: UITextField) {
+        switch sender {
+        case tag1TextField:
+            tag1WordCountLabel.text = "\(tag1TextField.text?.count ?? 0)/10자"
+        case tag2TextField:
+            tag2WordCountLabel.text = "\(tag2TextField.text?.count ?? 0)/10자"
+        default:
+            return
+        }
+    }
+    
+    @objc private func buttonTapAction(_ sender: UIButton) {
+        switch sender {
+        case registerButton:
+            var tag: [String] = []
+            
+            var commentTrimText = ""
+            
+            if isTextViewEmpty {
+                self.showToastMessageAlert(message: "칭찬을 작성해주세요")
+                return
+            } else {
+                commentTrimText = commentTextView.text.trimmingCharacters(in: .whitespaces)
+            }
+            
+            if let tag1 = tag1TextField.text {
+                if !tag1.isEmpty {
+                    tag.append(tag1.trimmingCharacters(in: .whitespaces))
+                }
+            }
+            
+            if let tag2 = tag2TextField.text {
+                if !tag2.isEmpty {
+                    tag.append(tag2.trimmingCharacters(in: .whitespaces))
+                }
+            }
+            
+            postComment(comment: commentTrimText, tag: tag)
+        default:
+            return
+        }
+    }
+}
+
+extension WriteComplimentViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+      if commentTextView.textColor == UIColor.lightGray {
+          commentTextView.text = nil
+          commentTextView.textColor = UIColor.black
+          isTextViewEmpty = false
+      }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+      if commentTextView.text.isEmpty {
+        commentTextView.text = "OO이를 칭찬해봐요!"
+        commentTextView.textColor = UIColor.lightGray
+        isTextViewEmpty = true
+      }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        wordCountLabel.text = "\(changedText.count)/50자"
+        return changedText.count <= 49
+    }
+}
+
+extension WriteComplimentViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else { return false }
+         
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+         
+            return updatedText.count <= 10
+        }
 }

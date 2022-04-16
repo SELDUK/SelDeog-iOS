@@ -10,6 +10,7 @@ import Moya
 enum UserAPI {
     case registerCharacter(name: String, shape: Int, color: Int, feature: Int)
     case getComplimentList(date: String)
+    case createComment(usrChrIdx: Int, comment: String, tag: [String])
 }
 
 extension UserAPI: BaseTargetType {
@@ -20,12 +21,14 @@ extension UserAPI: BaseTargetType {
             return "/userDetail"
         case .getComplimentList:
             return "/character"
+        case let .createComment(usrChrIdx,_ ,_ ):
+            return "/character/\(usrChrIdx)/comment"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .registerCharacter:
+        case .registerCharacter, .createComment:
             return .post
         case .getComplimentList:
             return .get
@@ -56,7 +59,12 @@ extension UserAPI: BaseTargetType {
                 "date": date
             ]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
-
+        case let .createComment(_, comment, tag):
+            let parameters = [
+                "comment": comment,
+                "tag": tag
+            ] as [String: Any]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
         }
     }
 

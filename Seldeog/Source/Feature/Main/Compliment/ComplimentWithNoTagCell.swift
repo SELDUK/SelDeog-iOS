@@ -11,14 +11,19 @@ import Then
 
 final class ComplimentWithNoTagCell: UICollectionViewCell {
     
-    let indexLabel = UILabel()
+    let cellIndexLabel = UILabel()
     let complimentLabel = UILabel()
     let lineView = UIView()
     let modifyButton = UIButton()
     let deleteButton = UIButton()
+    var commentIndex: Int?
 
-    public func setIndex(index: Int) {
-        indexLabel.text = "0\(index)"
+    public func setCellIndex(index: Int) {
+        cellIndexLabel.text = "0\(index)"
+    }
+    
+    public func setCommentIndex(index: Int) {
+        commentIndex = index
     }
     
     public func setCompliment(text: String) {
@@ -37,7 +42,7 @@ final class ComplimentWithNoTagCell: UICollectionViewCell {
     }
 
     private func setProperties() {
-        indexLabel.do {
+        cellIndexLabel.do {
             $0.font = .nanumPen(size: 20, family: .bold)
         }
         
@@ -66,18 +71,18 @@ final class ComplimentWithNoTagCell: UICollectionViewCell {
     }
 
     private func setViewHierarchy() {
-        contentView.addSubviews(indexLabel, complimentLabel, lineView, modifyButton, deleteButton)
+        contentView.addSubviews(cellIndexLabel, complimentLabel, lineView, modifyButton, deleteButton)
     }
 
     private func setConstraints() {
-        indexLabel.snp.makeConstraints {
+        cellIndexLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
             $0.leading.equalToSuperview().offset(20)
         }
         
         complimentLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
-            $0.leading.equalTo(indexLabel.snp.trailing).offset(12)
+            $0.leading.equalTo(cellIndexLabel.snp.trailing).offset(12)
             $0.trailing.equalToSuperview().offset(-30)
         }
         

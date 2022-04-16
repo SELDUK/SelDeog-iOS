@@ -30,7 +30,6 @@ final class TodayComplimentViewController: BaseViewController {
         super.viewDidLoad()
         setProperties()
         setLayouts()
-        getComplimentList()
         registerTarget()
     }
     
@@ -42,9 +41,10 @@ final class TodayComplimentViewController: BaseViewController {
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         navigationController?.title = dateFormatter.string(from: today).uppercased()
+        getComplimentList()
     }
+    
     private func getComplimentList() {
-        
         let today = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -58,6 +58,7 @@ final class TodayComplimentViewController: BaseViewController {
                     let data = try Data(contentsOf: imgURL!)
                     self.myCharacterImageView.image = UIImage(data: data)
                 } catch { print("image error") }
+                CharacterData.characterIndex = data.data.usrChrIdx
                 self.commentsList = data.data.usrChrCmts
                 self.collectionView.reloadData()
             } else {
@@ -106,21 +107,24 @@ extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionV
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComplimentNoTagCell", for: indexPath) as? ComplimentWithNoTagCell else { return UICollectionViewCell() }
             
-            cell.setIndex(index: indexPath.item + 1)
+            cell.setCellIndex(index: indexPath.item + 1)
             cell.setCompliment(text: commentsList[indexPath.item].usrChrCmt)
+            cell.setCommentIndex(index: commentsList[indexPath.item].usrChrCmtIdx)
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComplimentOneTagCell", for: indexPath) as? ComplimentWithOneTagCell else { return UICollectionViewCell() }
             
-            cell.setIndex(index: indexPath.item + 1)
+            cell.setCellIndex(index: indexPath.item + 1)
             cell.setCompliment(text: commentsList[indexPath.item].usrChrCmt)
+            cell.setCommentIndex(index: commentsList[indexPath.item].usrChrCmtIdx)
             cell.tag1View.text = commentsList[indexPath.item].usrCmtTags[0]
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComplimentTwoTagCell", for: indexPath) as? ComplimentWithTwoTagCell else { return UICollectionViewCell() }
             
-            cell.setIndex(index: indexPath.item + 1)
+            cell.setCellIndex(index: indexPath.item + 1)
             cell.setCompliment(text: commentsList[indexPath.item].usrChrCmt)
+            cell.setCommentIndex(index: commentsList[indexPath.item].usrChrCmtIdx)
             cell.tag1View.text = commentsList[indexPath.item].usrCmtTags[0]
             cell.tag2View.text = commentsList[indexPath.item].usrCmtTags[1]
             return cell

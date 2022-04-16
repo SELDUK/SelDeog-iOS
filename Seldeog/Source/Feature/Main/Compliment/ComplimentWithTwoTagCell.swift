@@ -18,9 +18,14 @@ final class ComplimentWithTwoTagCell: UICollectionViewCell {
     let tag2View = HashTagView()
     let modifyButton = UIButton()
     let deleteButton = UIButton()
+    var commentIndex: Int?
 
-    public func setIndex(index: Int) {
-        indexLabel.text = "0\(index)"
+    public func setCellIndex(index: Int) {
+        cellIndexLabel.text = "0\(index)"
+    }
+    
+    public func setCommentIndex(index: Int) {
+        commentIndex = index
     }
     
     public func setCompliment(text: String) {

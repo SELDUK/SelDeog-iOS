@@ -23,7 +23,7 @@ final class UserRepository {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgePostCharacterInfoStatus(by: statusCode, data)
+                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let error):
@@ -48,9 +48,26 @@ final class UserRepository {
             }
         }
     }
+    
+    public func postComment(usrChrIdx: Int, comment: String, tag: [String],
+                            completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.createComment(usrChrIdx: usrChrIdx, comment: comment, tag: tag)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
     
-    private func judgePostCharacterInfoStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+    private func judgeUserDetailStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 
             let decoder = JSONDecoder()
 
