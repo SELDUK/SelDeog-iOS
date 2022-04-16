@@ -17,6 +17,7 @@ final class ComplimentWithNoTagCell: UICollectionViewCell {
     let modifyButton = UIButton()
     let deleteButton = UIButton()
     var commentIndex: Int?
+    var buttonDelegate: CommentButtonProtocol?
 
     public func setCellIndex(index: Int) {
         cellIndexLabel.text = "0\(index)"
@@ -34,11 +35,18 @@ final class ComplimentWithNoTagCell: UICollectionViewCell {
         super.init(frame: frame)
         setProperties()
         setLayouts()
+        registerTarget()
     }
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func registerTarget() {
+        [modifyButton, deleteButton].forEach {
+            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+        }
     }
 
     private func setProperties() {
@@ -104,6 +112,22 @@ final class ComplimentWithNoTagCell: UICollectionViewCell {
             $0.top.equalTo(lineView.snp.bottom).offset(8)
             $0.trailing.equalTo(deleteButton.snp.leading).offset(-9)
             $0.width.height.equalTo(18)
+        }
+    }
+    
+    @objc
+    private func buttonTapAction(_ sender: UIButton) {
+        switch sender {
+        case modifyButton:
+            if let index = commentIndex {
+                self.buttonDelegate?.modifyComment(index: index)
+            }
+        case deleteButton:
+            if let index = commentIndex {
+                self.buttonDelegate?.deleteComment(index: index)
+            }
+        default:
+            return
         }
     }
 }

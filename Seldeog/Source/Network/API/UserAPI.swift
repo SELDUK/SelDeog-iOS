@@ -11,6 +11,7 @@ enum UserAPI {
     case registerCharacter(name: String, shape: Int, color: Int, feature: Int)
     case getComplimentList(date: String)
     case createComment(usrChrIdx: Int, comment: String, tag: [String])
+    case deleteComment(usrChrIdx: Int, usrChrCmtIdx: Int)
 }
 
 extension UserAPI: BaseTargetType {
@@ -21,7 +22,7 @@ extension UserAPI: BaseTargetType {
             return "/userDetail"
         case .getComplimentList:
             return "/character"
-        case let .createComment(usrChrIdx,_ ,_ ):
+        case let .createComment(usrChrIdx,_ ,_ ), let .deleteComment(usrChrIdx, _):
             return "/character/\(usrChrIdx)/comment"
         }
     }
@@ -32,6 +33,8 @@ extension UserAPI: BaseTargetType {
             return .post
         case .getComplimentList:
             return .get
+        case .deleteComment:
+            return .delete
         }
     }
     
@@ -64,6 +67,11 @@ extension UserAPI: BaseTargetType {
                 "comment": comment,
                 "tag": tag
             ] as [String: Any]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        case let .deleteComment(_, usrChrCmtIdx):
+            let parameters = [
+                "usrChrCmtIdx": usrChrCmtIdx
+            ]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
         }
     }

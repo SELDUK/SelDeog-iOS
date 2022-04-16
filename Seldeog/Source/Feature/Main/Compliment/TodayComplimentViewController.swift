@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+protocol CommentButtonProtocol {
+    func modifyComment(index: Int)
+    func deleteComment(index: Int)
+}
+
 final class TodayComplimentViewController: BaseViewController {
     
     let todayLabel = UILabel()
@@ -83,6 +88,35 @@ final class TodayComplimentViewController: BaseViewController {
         }
     }
     
+    private func deleteCommentIndex(usrChrCmtIdx: Int) {
+        if let index = CharacterData.characterIndex {
+            deleteComment(usrChrIdx: index, usrChrCmtIdx: usrChrCmtIdx) { data in
+                if data.success {
+                    self.getComplimentList()
+                } else {
+                    self.showToastMessageAlert(message: "코멘트 작성에 실패하였습니다.")
+                }
+            }
+        }
+    }
+    
+    func deleteComment(
+        usrChrIdx: Int,
+        usrChrCmtIdx: Int,
+        completion: @escaping (UserDetailResponse) -> Void
+    ) {
+        UserRepository.shared.deleteComment(usrChrIdx: usrChrIdx, usrChrCmtIdx: usrChrCmtIdx) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? UserDetailResponse else { return }
+                completion(data)
+            default:
+                print("sign in error")
+            }
+        }
+    }
+    
     private func registerTarget() {
         [writeButton, baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
@@ -91,7 +125,16 @@ final class TodayComplimentViewController: BaseViewController {
     
 }
 
-extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CommentButtonProtocol {
+    
+    func modifyComment(index: Int) {
+        print("modify")
+    }
+    
+    func deleteComment(index: Int) {
+        setAlertConfirmAndCancel(index: index, message: "삭제된 칭찬은 복구되지 않습니다. 칭찬을 정말 삭제하시겠습니까?")
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 370, height: 80)
@@ -110,6 +153,7 @@ extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionV
             cell.setCellIndex(index: indexPath.item + 1)
             cell.setCompliment(text: commentsList[indexPath.item].usrChrCmt)
             cell.setCommentIndex(index: commentsList[indexPath.item].usrChrCmtIdx)
+            cell.buttonDelegate = self
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComplimentOneTagCell", for: indexPath) as? ComplimentWithOneTagCell else { return UICollectionViewCell() }
@@ -118,6 +162,7 @@ extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionV
             cell.setCompliment(text: commentsList[indexPath.item].usrChrCmt)
             cell.setCommentIndex(index: commentsList[indexPath.item].usrChrCmtIdx)
             cell.tag1View.text = commentsList[indexPath.item].usrCmtTags[0]
+            cell.buttonDelegate = self
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComplimentTwoTagCell", for: indexPath) as? ComplimentWithTwoTagCell else { return UICollectionViewCell() }
@@ -127,6 +172,7 @@ extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionV
             cell.setCommentIndex(index: commentsList[indexPath.item].usrChrCmtIdx)
             cell.tag1View.text = commentsList[indexPath.item].usrCmtTags[0]
             cell.tag2View.text = commentsList[indexPath.item].usrCmtTags[1]
+            cell.buttonDelegate = self
             return cell
         default:
             return UICollectionViewCell()
@@ -214,6 +260,18 @@ extension TodayComplimentViewController {
         }
         
     }
+    
+    func setAlertConfirmAndCancel(index: Int, message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.deleteCommentIndex(usrChrCmtIdx: index)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {

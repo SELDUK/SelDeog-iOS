@@ -65,6 +65,23 @@ final class UserRepository {
             }
         }
     }
+    
+    public func deleteComment(usrChrIdx: Int, usrChrCmtIdx: Int,
+                            completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.deleteComment(usrChrIdx: usrChrIdx, usrChrCmtIdx: usrChrCmtIdx)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
     
     private func judgeUserDetailStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {

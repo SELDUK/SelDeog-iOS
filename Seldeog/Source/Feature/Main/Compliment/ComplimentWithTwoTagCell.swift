@@ -11,7 +11,7 @@ import Then
 
 final class ComplimentWithTwoTagCell: UICollectionViewCell {
     
-    let indexLabel = UILabel()
+    let cellIndexLabel = UILabel()
     let complimentLabel = UILabel()
     let lineView = UIView()
     let tag1View = HashTagView()
@@ -19,6 +19,7 @@ final class ComplimentWithTwoTagCell: UICollectionViewCell {
     let modifyButton = UIButton()
     let deleteButton = UIButton()
     var commentIndex: Int?
+    var buttonDelegate: CommentButtonProtocol?
 
     public func setCellIndex(index: Int) {
         cellIndexLabel.text = "0\(index)"
@@ -36,15 +37,22 @@ final class ComplimentWithTwoTagCell: UICollectionViewCell {
         super.init(frame: frame)
         setProperties()
         setLayouts()
+        registerTarget()
     }
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func registerTarget() {
+        [modifyButton, deleteButton].forEach {
+            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+        }
+    }
 
     private func setProperties() {
-        indexLabel.do {
+        cellIndexLabel.do {
             $0.font = .nanumPen(size: 20, family: .bold)
         }
         
@@ -73,18 +81,18 @@ final class ComplimentWithTwoTagCell: UICollectionViewCell {
     }
 
     private func setViewHierarchy() {
-        contentView.addSubviews(indexLabel, complimentLabel, lineView, tag1View, tag2View, modifyButton, deleteButton)
+        contentView.addSubviews(cellIndexLabel, complimentLabel, lineView, tag1View, tag2View, modifyButton, deleteButton)
     }
 
     private func setConstraints() {
-        indexLabel.snp.makeConstraints {
+        cellIndexLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
             $0.leading.equalToSuperview().offset(20)
         }
         
         complimentLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
-            $0.leading.equalTo(indexLabel.snp.trailing).offset(12)
+            $0.leading.equalTo(cellIndexLabel.snp.trailing).offset(12)
             $0.trailing.equalToSuperview().offset(-30)
         }
         
@@ -116,6 +124,22 @@ final class ComplimentWithTwoTagCell: UICollectionViewCell {
             $0.top.equalTo(lineView.snp.bottom).offset(8)
             $0.trailing.equalTo(deleteButton.snp.leading).offset(-9)
             $0.width.height.equalTo(18)
+        }
+    }
+    
+    @objc
+    private func buttonTapAction(_ sender: UIButton) {
+        switch sender {
+        case modifyButton:
+            if let index = commentIndex {
+                self.buttonDelegate?.modifyComment(index: index)
+            }
+        case deleteButton:
+            if let index = commentIndex {
+                self.buttonDelegate?.deleteComment(index: index)
+            }
+        default:
+            return
         }
     }
 }
