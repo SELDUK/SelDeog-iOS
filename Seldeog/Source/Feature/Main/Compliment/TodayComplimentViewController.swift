@@ -10,7 +10,7 @@ import SnapKit
 import Kingfisher
 
 protocol CommentButtonProtocol {
-    func modifyComment(index: Int)
+    func modifyComment(serverIndex: Int, cellIndex: Int)
     func deleteComment(index: Int)
 }
 
@@ -127,8 +127,22 @@ final class TodayComplimentViewController: BaseViewController {
 
 extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CommentButtonProtocol {
     
-    func modifyComment(index: Int) {
-        print("modify")
+    func modifyComment(serverIndex: Int, cellIndex: Int) {
+        var tag1 = ""
+        var tag2 = ""
+        switch commentsList[cellIndex - 1].usrCmtTags.count {
+        case 1:
+            tag1 = commentsList[cellIndex - 1].usrCmtTags[0]
+        case 2:
+            tag1 = commentsList[cellIndex - 1].usrCmtTags[0]
+            tag2 = commentsList[cellIndex - 1].usrCmtTags[1]
+        default:
+            return
+        }
+        
+        let modifyComplimentViewController = ModifyComplimentViewController(previousComment: commentsList[cellIndex-1].usrChrCmt, previousTag1: tag1, previousTag2: tag2, commentIndex: serverIndex)
+        navigationController?.pushViewController(modifyComplimentViewController, animated: false)
+        
     }
     
     func deleteComment(index: Int) {

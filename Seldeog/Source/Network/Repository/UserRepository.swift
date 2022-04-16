@@ -82,6 +82,24 @@ final class UserRepository {
             }
         }
     }
+    
+    public func putComment(usrChrIdx: Int, usrChrCmtIdx: Int,
+                           comment: String, tag: [String],
+                            completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.putComment(usrChrIdx: usrChrIdx, usrChrCmtIdx: usrChrCmtIdx, comment: comment, tag: tag)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
     
     private func judgeUserDetailStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {

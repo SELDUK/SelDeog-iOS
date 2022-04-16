@@ -19,10 +19,12 @@ final class ComplimentWithOneTagCell: UICollectionViewCell {
     let modifyButton = UIButton()
     let deleteButton = UIButton()
     var commentIndex: Int?
+    var cellIndex: Int?
     var buttonDelegate: CommentButtonProtocol?
 
     public func setCellIndex(index: Int) {
         cellIndexLabel.text = "0\(index)"
+        cellIndex = index
     }
     
     public func setCommentIndex(index: Int) {
@@ -126,8 +128,8 @@ final class ComplimentWithOneTagCell: UICollectionViewCell {
     private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case modifyButton:
-            if let index = commentIndex {
-                self.buttonDelegate?.modifyComment(index: index)
+            if let commentIndex = commentIndex, let cellIndex = cellIndex {
+                self.buttonDelegate?.modifyComment(serverIndex: commentIndex, cellIndex: cellIndex)
             }
         case deleteButton:
             if let index = commentIndex {

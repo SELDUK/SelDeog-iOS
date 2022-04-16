@@ -12,6 +12,7 @@ enum UserAPI {
     case getComplimentList(date: String)
     case createComment(usrChrIdx: Int, comment: String, tag: [String])
     case deleteComment(usrChrIdx: Int, usrChrCmtIdx: Int)
+    case putComment(usrChrIdx: Int, usrChrCmtIdx: Int, comment: String, tag: [String])
 }
 
 extension UserAPI: BaseTargetType {
@@ -22,7 +23,9 @@ extension UserAPI: BaseTargetType {
             return "/userDetail"
         case .getComplimentList:
             return "/character"
-        case let .createComment(usrChrIdx,_ ,_ ), let .deleteComment(usrChrIdx, _):
+        case let .createComment(usrChrIdx,_ ,_ ),
+            let .deleteComment(usrChrIdx, _),
+            let .putComment(usrChrIdx, _, _, _):
             return "/character/\(usrChrIdx)/comment"
         }
     }
@@ -35,6 +38,8 @@ extension UserAPI: BaseTargetType {
             return .get
         case .deleteComment:
             return .delete
+        case .putComment:
+            return .put
         }
     }
     
@@ -72,6 +77,13 @@ extension UserAPI: BaseTargetType {
             let parameters = [
                 "usrChrCmtIdx": usrChrCmtIdx
             ]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        case let .putComment(_, usrChrCmtIdx, comment, tag):
+            let parameters = [
+                "usrChrCmtIdx": usrChrCmtIdx,
+                "comment": comment,
+                "tag": tag
+            ] as [String: Any]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
         }
     }

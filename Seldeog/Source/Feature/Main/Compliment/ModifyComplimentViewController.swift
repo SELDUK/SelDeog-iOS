@@ -1,15 +1,15 @@
 //
-//  WriteComplimentViewController.swift
+//  ModifyComplimentViewController.swift
 //  Seldeog
 //
-//  Created by 권준상 on 2022/04/15.
+//  Created by 권준상 on 2022/04/16.
 //
 
 import UIKit
 
 import SnapKit
 
-final class WriteComplimentViewController: BaseViewController {
+final class ModifyComplimentViewController: BaseViewController {
     
     let commentLabel = UILabel()
     let commentTextView = UITextView()
@@ -28,6 +28,22 @@ final class WriteComplimentViewController: BaseViewController {
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 15, family: .bold)
     ]
+    var previousComment: String
+    var previousTag1: String?
+    var previousTag2: String?
+    var commentIndex: Int
+    
+    init(previousComment: String, previousTag1: String? = nil, previousTag2: String? = nil, commentIndex: Int) {
+        self.previousComment = previousComment
+        self.previousTag1 = previousTag1
+        self.previousTag2 = previousTag2
+        self.commentIndex = commentIndex
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,25 +60,26 @@ final class WriteComplimentViewController: BaseViewController {
         view.endEditing(true)
     }
     
-    private func postComment(comment: String, tag: [String]) {
+    private func putComment(usrChrCmtIdx: Int, comment: String, tag: [String]) {
         if let index = CharacterData.characterIndex {
-            postComment(usrChrIdx: index, comment: comment, tag: tag) { data in
+            putComment(usrChrIdx: index, usrChrCmtIdx: usrChrCmtIdx, comment: comment, tag: tag) { data in
                 if data.success {
                     self.navigationController?.popViewController(animated: false)
                 } else {
-                    self.showToastMessageAlert(message: "코멘트 작성에 실패하였습니다.")
+                    self.showToastMessageAlert(message: "코멘트 수정에 실패하였습니다.")
                 }
             }
         }
     }
     
-    func postComment(
+    func putComment(
         usrChrIdx: Int,
+        usrChrCmtIdx: Int,
         comment: String,
         tag: [String],
         completion: @escaping (UserDetailResponse) -> Void
     ) {
-        UserRepository.shared.postComment(usrChrIdx: usrChrIdx, comment: comment, tag: tag) { result in
+        UserRepository.shared.putComment(usrChrIdx: usrChrIdx, usrChrCmtIdx: usrChrCmtIdx, comment: comment, tag: tag) { result in
             switch result {
             case .success(let response):
                 print(response)
@@ -76,7 +93,7 @@ final class WriteComplimentViewController: BaseViewController {
     
 }
 
-extension WriteComplimentViewController {
+extension ModifyComplimentViewController {
     
     private func setProperties() {
         
@@ -89,9 +106,9 @@ extension WriteComplimentViewController {
         
         commentTextView.do {
             $0.delegate = self
-            $0.text = "OO이를 칭찬해봐요!"
+            $0.text = previousComment
             $0.backgroundColor = .white
-            $0.textColor = UIColor.lightGray
+            $0.textColor = UIColor.black
             $0.font = .nanumPen(size: 15, family: .bold)
             $0.isScrollEnabled = false
             $0.layer.borderWidth = 1
@@ -100,7 +117,7 @@ extension WriteComplimentViewController {
         
         wordCountLabel.do {
             $0.textColor = .black
-            $0.text = "0/50자"
+            $0.text = "\(previousComment.count)/50자"
             $0.font = .nanumPen(size: 11, family: .bold)
         }
         
@@ -116,6 +133,8 @@ extension WriteComplimentViewController {
         tag1TextField.do {
             $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "귀여워", attributes: attributes)
+            $0.text = previousTag1
+            $0.font = .nanumPen(size: 15, family: .bold)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
             $0.layer.borderWidth = 0
@@ -125,7 +144,7 @@ extension WriteComplimentViewController {
         
         tag1WordCountLabel.do {
             $0.textColor = .black
-            $0.text = "0/10자"
+            $0.text = "\(previousTag1?.count ?? 0)/10자"
             $0.font = .nanumPen(size: 11, family: .bold)
         }
         
@@ -139,6 +158,8 @@ extension WriteComplimentViewController {
         
         tag2TextField.do {
             $0.delegate = self
+            $0.text = previousTag2
+            $0.font = .nanumPen(size: 15, family: .bold)
             $0.attributedPlaceholder = NSAttributedString(string: "너무너무기특해", attributes: attributes)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
@@ -149,7 +170,7 @@ extension WriteComplimentViewController {
         
         tag2WordCountLabel.do {
             $0.textColor = .black
-            $0.text = "0/10자"
+            $0.text = "\(previousTag2?.count ?? 0)/10자"
             $0.font = .nanumPen(size: 11, family: .bold)
         }
         
@@ -292,14 +313,14 @@ extension WriteComplimentViewController {
                 }
             }
             
-            postComment(comment: commentTrimText, tag: tag)
+            putComment(usrChrCmtIdx: commentIndex, comment: commentTrimText, tag: tag)
         default:
             return
         }
     }
 }
 
-extension WriteComplimentViewController: UITextViewDelegate {
+extension ModifyComplimentViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
       if commentTextView.textColor == UIColor.lightGray {
@@ -325,7 +346,7 @@ extension WriteComplimentViewController: UITextViewDelegate {
     }
 }
 
-extension WriteComplimentViewController: UITextFieldDelegate {
+extension ModifyComplimentViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
