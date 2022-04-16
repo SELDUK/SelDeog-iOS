@@ -9,6 +9,7 @@ import Moya
 
 enum UserAPI {
     case registerCharacter(name: String, shape: Int, color: Int, feature: Int)
+    case getComplimentList(date: String)
 }
 
 extension UserAPI: BaseTargetType {
@@ -17,6 +18,8 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .registerCharacter:
             return "/userDetail"
+        case .getComplimentList:
+            return "/character"
         }
     }
 
@@ -24,6 +27,8 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .registerCharacter:
             return .post
+        case .getComplimentList:
+            return .get
         }
     }
     
@@ -46,6 +51,12 @@ extension UserAPI: BaseTargetType {
                 "feature": feature
             ] as [String : Any]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        case let .getComplimentList(date):
+            let parameters = [
+                "date": date
+            ]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+
         }
     }
 

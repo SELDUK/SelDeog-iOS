@@ -31,12 +31,10 @@ final class CalendarViewController: BaseViewController {
         $0.setImage(Image.arrowDownIcon, for: .normal)
     }
     
-    let baseTabBarView = BaseTabBarView()
+    let calendarTabBarView = CalendarTabBarView()
     let writeComplimentButton =  UIButton(type: .custom).then {
         $0.imageView?.contentMode = .scaleAspectFill
-        guard let imgURLString = UserDefaults.standard.string(forKey: UserDefaultKey.userCharacter) else {
-            return
-        }
+        guard let imgURLString = UserDefaults.standard.string(forKey: UserDefaultKey.userCharacter) else { return }
         if let imgURL = URL(string: imgURLString) {
             $0.kf.setBackgroundImage(with: imgURL, for: .normal)
         } else {
@@ -97,6 +95,11 @@ final class CalendarViewController: BaseViewController {
         setCalendarDate(date: today)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.title = ""
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -126,7 +129,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     private func registerTarget() {
-        [selectMonthButton, writeComplimentButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
+        [selectMonthButton, writeComplimentButton, calendarTabBarView.aboutMeButton, calendarTabBarView.selfLoveButton, calendarTabBarView.settingButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -180,7 +183,7 @@ extension CalendarViewController {
     private func setLayout() {
         let safeArea = view.safeAreaLayoutGuide
 
-        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, writeComplimentButton, baseTabBarView)
+        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, writeComplimentButton, calendarTabBarView)
         
         yearLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea)
@@ -211,7 +214,7 @@ extension CalendarViewController {
             $0.width.height.equalTo(95)
         }
         
-        baseTabBarView.snp.makeConstraints {
+        calendarTabBarView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(80)
@@ -225,13 +228,18 @@ extension CalendarViewController {
             datePickerViewController.dateDelegate = self
             self.presentPanModal(datePickerViewController)
         case writeComplimentButton:
-            let todayComplimentViewController = TodayComplimentViewController()
-            navigationController?.pushViewController(todayComplimentViewController, animated: false)
-        case baseTabBarView.aboutMeButton:
+            let today = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM dd"
+            dateFormatter.locale = Locale(identifier: "en_US")
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            navigationController?.title = dateFormatter.string(from: today).uppercased()
+            navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
+        case calendarTabBarView.aboutMeButton:
             navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
-        case baseTabBarView.selfLoveButton:
+        case calendarTabBarView.selfLoveButton:
             navigationController?.pushViewController(SignUpViewController(), animated: false)
-        case baseTabBarView.settingButton:
+        case calendarTabBarView.settingButton:
             navigationController?.pushViewController(SettingViewController(), animated: false)
         default:
             return

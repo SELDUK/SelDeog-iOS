@@ -45,7 +45,6 @@ public class BaseNavigationController: UINavigationController {
         super.viewDidLoad()
 
         setupView()
-        setupFullWidthBackGesture()
     }
 
     private func setupView() {
@@ -112,28 +111,4 @@ extension BaseNavigationController {
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-}
-
-
-extension BaseNavigationController: UIGestureRecognizerDelegate {
-    
-    private func setupFullWidthBackGesture() {
-        guard
-            let interactivePopGestureRecognizer = interactivePopGestureRecognizer,
-            let targets = interactivePopGestureRecognizer.value(forKey: "targets")
-        else {
-            return
-        }
-
-        fullWidthBackGestureRecognizer.setValue(targets, forKey: "targets")
-        fullWidthBackGestureRecognizer.delegate = self
-        view.addGestureRecognizer(fullWidthBackGestureRecognizer)
-    }
-    
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        let isSystemSwipeToBackEnabled = interactivePopGestureRecognizer?.isEnabled == true
-        let isThereStackedViewControllers = viewControllers.count > 1
-        return isSystemSwipeToBackEnabled && isThereStackedViewControllers
-    }
-    
 }

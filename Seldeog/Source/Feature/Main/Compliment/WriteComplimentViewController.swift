@@ -31,6 +31,11 @@ final class WriteComplimentViewController: UIViewController {
         setLayouts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.title = ""
+    }
+    
 }
 
 extension WriteComplimentViewController {

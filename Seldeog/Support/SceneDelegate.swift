@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func goToMain() {
-        window?.rootViewController = BaseNavigationController(rootViewController: CalendarViewController())
+        window?.rootViewController = BaseNavigationController(title: "", rootViewController: CalendarViewController())
         window?.makeKeyAndVisible()
       }
       

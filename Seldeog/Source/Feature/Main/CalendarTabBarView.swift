@@ -1,8 +1,8 @@
 //
-//  BaseTabBarView.swift
+//  CalendarTabBarView.swift
 //  Seldeog
 //
-//  Created by 권준상 on 2022/04/16.
+//  Created by 권준상 on 2022/04/11.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class BaseTabBarView: UIView {
+final class CalendarTabBarView: UIView {
     
     let tabBarView = UIView()
     let calendarButton = UIButton()
@@ -30,7 +30,7 @@ final class BaseTabBarView: UIView {
     
     func setProperties() {
         tabBarView.do {
-            $0.backgroundColor = .black
+            $0.backgroundColor = UIColor(patternImage: Image.tabBarBG)
         }
         
         calendarButton.do {
@@ -83,27 +83,27 @@ final class BaseTabBarView: UIView {
         
         calendarButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(18)
-            $0.leading.equalToSuperview().offset(41)
+            $0.leading.equalToSuperview().offset(23)
             $0.width.equalTo(44)
             $0.height.equalTo(38)
         }
         
         selfLoveButton.snp.makeConstraints {
             $0.centerY.equalTo(calendarButton)
-            $0.leading.equalTo(calendarButton.snp.trailing).offset(44)
+            $0.leading.equalTo(calendarButton.snp.trailing).offset(25)
             $0.width.equalTo(47)
             $0.height.equalTo(38)
         }
         
         settingButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(18)
-            $0.trailing.equalToSuperview().offset(-45)
+            $0.trailing.equalToSuperview().offset(-23)
             $0.width.height.equalTo(38)
         }
         
         aboutMeButton.snp.makeConstraints {
             $0.centerY.equalTo(settingButton)
-            $0.trailing.equalTo(settingButton.snp.leading).offset(-46)
+            $0.trailing.equalTo(settingButton.snp.leading).offset(-31)
             $0.width.equalTo(44)
             $0.height.equalTo(38)
         }
