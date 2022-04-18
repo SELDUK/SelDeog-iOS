@@ -32,15 +32,6 @@ final class CalendarViewController: BaseViewController {
     }
     
     let calendarTabBarView = CalendarTabBarView()
-    let writeComplimentButton =  UIButton(type: .custom).then {
-        $0.imageView?.contentMode = .scaleAspectFill
-        guard let imgURLString = UserDefaults.standard.string(forKey: UserDefaultKey.userCharacter) else { return }
-        if let imgURL = URL(string: imgURLString) {
-            $0.kf.setBackgroundImage(with: imgURL, for: .normal)
-        } else {
-            $0.setImage(Image.navyShapeCircle, for: .normal)
-        }
-    }
     
     var calendarView: CalendarView!
     
@@ -129,7 +120,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     private func registerTarget() {
-        [selectMonthButton, writeComplimentButton, calendarTabBarView.aboutMeButton, calendarTabBarView.selfLoveButton, calendarTabBarView.settingButton].forEach {
+        [selectMonthButton, calendarTabBarView.writeComplimentButton, calendarTabBarView.aboutMeButton, calendarTabBarView.selfLoveButton, calendarTabBarView.settingButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -183,7 +174,7 @@ extension CalendarViewController {
     private func setLayout() {
         let safeArea = view.safeAreaLayoutGuide
 
-        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, writeComplimentButton, calendarTabBarView)
+        view.addSubviews(yearLabel, monthLabel, selectMonthButton, calendarView, calendarTabBarView)
         
         yearLabel.snp.makeConstraints {
             $0.top.equalTo(safeArea)
@@ -208,16 +199,10 @@ extension CalendarViewController {
             $0.height.equalTo(self.view.frame.size.width + 30)
         }
         
-        writeComplimentButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-35)
-            $0.width.height.equalTo(95)
-        }
-        
         calendarTabBarView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(80)
+            $0.height.equalTo(140)
         }
     }
         
@@ -227,7 +212,7 @@ extension CalendarViewController {
             let datePickerViewController = DatePickerViewController()
             datePickerViewController.dateDelegate = self
             self.presentPanModal(datePickerViewController)
-        case writeComplimentButton:
+        case calendarTabBarView.writeComplimentButton:
             let today = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMMM dd"

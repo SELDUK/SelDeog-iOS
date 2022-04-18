@@ -17,6 +17,7 @@ final class CalendarTabBarView: UIView {
     let selfLoveButton = UIButton()
     let aboutMeButton = UIButton()
     let settingButton = UIButton()
+    let writeComplimentButton = UIButton(type: .custom)
     
     public init() {
         super.init(frame: .zero)
@@ -64,6 +65,16 @@ final class CalendarTabBarView: UIView {
             $0.titleLabel?.font = .nanumPen(size: 10, family: .bold)
             $0.alignTextBelow()
         }
+        
+        writeComplimentButton.do {
+            $0.imageView?.contentMode = .scaleAspectFill
+            guard let imgURLString = UserDefaults.standard.string(forKey: UserDefaultKey.userCharacter) else { return }
+            if let imgURL = URL(string: imgURLString) {
+                $0.kf.setBackgroundImage(with: imgURL, for: .normal)
+            } else {
+                $0.setImage(Image.navyShapeCircle, for: .normal)
+            }
+        }
     }
     
     func setLayouts() {
@@ -73,12 +84,21 @@ final class CalendarTabBarView: UIView {
     
     func setViewHierarchy() {
         addSubview(tabBarView)
+        addSubview(writeComplimentButton)
         tabBarView.addSubviews(calendarButton, selfLoveButton, aboutMeButton, settingButton)
     }
     
     func setConstraints() {
         tabBarView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.height.equalTo(80)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        writeComplimentButton.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-35)
+            $0.width.height.equalTo(95)
         }
         
         calendarButton.snp.makeConstraints {
