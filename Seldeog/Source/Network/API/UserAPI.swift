@@ -13,6 +13,7 @@ enum UserAPI {
     case createComment(usrChrIdx: Int, comment: String, tag: [String])
     case deleteComment(usrChrIdx: Int, usrChrCmtIdx: Int)
     case putComment(usrChrIdx: Int, usrChrCmtIdx: Int, comment: String, tag: [String])
+    case createTodayCharacter(color: Int)
 }
 
 extension UserAPI: BaseTargetType {
@@ -21,7 +22,7 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .registerCharacter:
             return "/userDetail"
-        case .getComplimentList:
+        case .getComplimentList, .createTodayCharacter:
             return "/character"
         case let .createComment(usrChrIdx,_ ,_ ),
             let .deleteComment(usrChrIdx, _),
@@ -32,7 +33,7 @@ extension UserAPI: BaseTargetType {
 
     var method: Moya.Method {
         switch self {
-        case .registerCharacter, .createComment:
+        case .registerCharacter, .createComment, .createTodayCharacter:
             return .post
         case .getComplimentList:
             return .get
@@ -84,6 +85,11 @@ extension UserAPI: BaseTargetType {
                 "comment": comment,
                 "tag": tag
             ] as [String: Any]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        case let .createTodayCharacter(color):
+            let parameters = [
+                "color": color
+            ]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
         }
     }

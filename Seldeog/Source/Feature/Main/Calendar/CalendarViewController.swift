@@ -171,6 +171,7 @@ final class CalendarViewController: BaseViewController {
             $0.width.equalTo(270)
             $0.height.equalTo(110)
         }
+        
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: { self.selectColorView.alpha = 1.0 }, completion: nil)
     }
     
@@ -183,6 +184,7 @@ final class CalendarViewController: BaseViewController {
         
         getTodayComplimentList(date: dateFormatter.string(from: today)) { data in
             if data.success {
+                self.navigationController?.title = dateFormatter.string(from: today).uppercased()
                 self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
             } else {
                 self.showToastMessageAlert(message: "칭찬 리스트 로드에 실패하였습니다.")
@@ -203,7 +205,42 @@ final class CalendarViewController: BaseViewController {
             case .dateDoesNotExist:
                 self.showSelectColorView()
             default:
-                print("sign in error")
+                print("API error")
+            }
+        }
+    }
+    
+    private func makeTodayCharacter(color: Int) {
+        let today = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        makeTodayCharacter(color: color) { data in
+            if data.success {
+                self.navigationController?.title = dateFormatter.string(from: today).uppercased()
+                self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
+            } else {
+                self.showToastMessageAlert(message: "색 선택에 실패하였습니다.")
+            }
+        }
+    }
+    
+    func makeTodayCharacter(
+        color: Int,
+        completion: @escaping (UserDetailResponse) -> Void
+    ) {
+        UserRepository.shared.createTodayCharacter(color: color) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? UserDetailResponse else { return }
+                completion(data)
+            case .dateDoesNotExist:
+                self.showSelectColorView()
+            default:
+                print("API error")
             }
         }
     }
@@ -303,21 +340,13 @@ extension CalendarViewController {
             navigationController?.pushViewController(SignUpViewController(), animated: false)
         case calendarTabBarView.settingButton:
             navigationController?.pushViewController(SettingViewController(), animated: false)
-        case selectColorView.navyColor:
+        case selectColorView.navyColor,
+            selectColorView.yellowColor,
+            selectColorView.pinkColor,
+            selectColorView.mauveColor,
+            selectColorView.greenColor:
+            makeTodayCharacter(color: sender.tag)
             resetView()
-            print(sender.tag)
-        case selectColorView.yellowColor:
-            resetView()
-            print(sender.tag)
-        case selectColorView.pinkColor:
-            resetView()
-            print(sender.tag)
-        case selectColorView.mauveColor:
-            resetView()
-            print(sender.tag)
-        case selectColorView.greenColor:
-            resetView()
-            print(sender.tag)
         default:
             return
         }

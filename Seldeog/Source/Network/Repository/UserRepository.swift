@@ -100,7 +100,23 @@ final class UserRepository {
             }
         }
     }
-
+    
+    public func createTodayCharacter(color: Int,
+                            completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.createTodayCharacter(color: color)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     private func judgeUserDetailStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 

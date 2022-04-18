@@ -191,8 +191,6 @@
 				2DF0B123280558F6002F37E1 /* Compliment */,
 				2D94DEA627FD7693006C6A01 /* Setting */,
 				2D94DE9127FD48BA006C6A01 /* Calendar */,
-				2DF0B120280418C3002F37E1 /* CalendarTabBarView.swift */,
-				2D05C123280A92FC00925681 /* BaseTabBarView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -342,7 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				2DDDD45727E1C5C300FC289C /* BaseViewController.swift */,
+				2D05C123280A92FC00925681 /* BaseTabBarView.swift */,
 				2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */,
+				2DF0B120280418C3002F37E1 /* CalendarTabBarView.swift */,
 				2DC52118280AE82600A983FA /* HideBackButtonNavigationController.swift */,
 				2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */,
 				2DE8363727F42E0B00DECB35 /* ValidateButton.swift */,
