@@ -130,7 +130,7 @@ final class UserRepository {
                 }
                 return .success(decodedData)
             case 400:
-                return .serverErr
+                return .dateDoesNotExist
             default:
                 return .networkFail
             }

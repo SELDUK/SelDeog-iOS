@@ -31,7 +31,13 @@ final class CalendarViewController: BaseViewController {
         $0.setImage(Image.arrowDownIcon, for: .normal)
     }
     
+    let blackBackgroundView = UIView().then {
+        $0.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    }
+    
     let calendarTabBarView = CalendarTabBarView()
+    
+    let selectColorView = SelectColorView()
     
     var calendarView: CalendarView!
     
@@ -120,8 +126,85 @@ final class CalendarViewController: BaseViewController {
     }
     
     private func registerTarget() {
-        [selectMonthButton, calendarTabBarView.writeComplimentButton, calendarTabBarView.aboutMeButton, calendarTabBarView.selfLoveButton, calendarTabBarView.settingButton].forEach {
+        [selectMonthButton, calendarTabBarView.writeComplimentButton, calendarTabBarView.aboutMeButton, calendarTabBarView.selfLoveButton, calendarTabBarView.settingButton, selectColorView.navyColor, selectColorView.yellowColor, selectColorView.pinkColor, selectColorView.mauveColor, selectColorView.greenColor].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+        }
+    }
+    
+    private func setNavigationBackgroundBlack() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+    }
+    
+    private func resetNavigationBackground() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = nil
+        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+    }
+    
+    private func resetView() {
+        blackBackgroundView.removeFromSuperview()
+        selectColorView.alpha = 0.0
+    }
+    
+    private func showSelectColorView() {
+        setNavigationBackgroundBlack()
+        view.addSubview(blackBackgroundView)
+        blackBackgroundView.addSubview(selectColorView)
+        
+        blackBackgroundView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        selectColorView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(calendarTabBarView.snp.top)
+            $0.width.equalTo(270)
+            $0.height.equalTo(110)
+        }
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: { self.selectColorView.alpha = 1.0 }, completion: nil)
+    }
+    
+    private func getComplimentList() {
+        let today = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        getTodayComplimentList(date: dateFormatter.string(from: today)) { data in
+            if data.success {
+                self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
+            } else {
+                self.showToastMessageAlert(message: "칭찬 리스트 로드에 실패하였습니다.")
+            }
+        }
+    }
+    
+    func getTodayComplimentList(
+        date: String,
+        completion: @escaping (ComplimentListResponse) -> Void
+    ) {
+        UserRepository.shared.getUserComplimentList(date: date) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? ComplimentListResponse else { return }
+                completion(data)
+            case .dateDoesNotExist:
+                self.showSelectColorView()
+            default:
+                print("sign in error")
+            }
         }
     }
     
@@ -198,11 +281,11 @@ extension CalendarViewController {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(self.view.frame.size.width + 30)
         }
-        
+                
         calendarTabBarView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(140)
+            $0.height.equalTo(125)
         }
     }
         
@@ -213,21 +296,31 @@ extension CalendarViewController {
             datePickerViewController.dateDelegate = self
             self.presentPanModal(datePickerViewController)
         case calendarTabBarView.writeComplimentButton:
-            let today = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMMM dd"
-            dateFormatter.locale = Locale(identifier: "en_US")
-            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            navigationController?.title = dateFormatter.string(from: today).uppercased()
-            navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
+            getComplimentList()
         case calendarTabBarView.aboutMeButton:
             navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
         case calendarTabBarView.selfLoveButton:
             navigationController?.pushViewController(SignUpViewController(), animated: false)
         case calendarTabBarView.settingButton:
             navigationController?.pushViewController(SettingViewController(), animated: false)
+        case selectColorView.navyColor:
+            resetView()
+            print(sender.tag)
+        case selectColorView.yellowColor:
+            resetView()
+            print(sender.tag)
+        case selectColorView.pinkColor:
+            resetView()
+            print(sender.tag)
+        case selectColorView.mauveColor:
+            resetView()
+            print(sender.tag)
+        case selectColorView.greenColor:
+            resetView()
+            print(sender.tag)
         default:
             return
         }
     }
 }
+
