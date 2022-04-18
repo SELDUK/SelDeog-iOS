@@ -62,6 +62,7 @@
 		2DBF1D9627D0829B00285A0B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */; };
 		2DBF1D9927D086EE00285A0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF1D9827D086EE00285A0B /* NetworkResult.swift */; };
 		2DC52117280AD81300A983FA /* ModifyComplimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52116280AD81300A983FA /* ModifyComplimentViewController.swift */; };
+		2DC52119280AE82600A983FA /* HideBackButtonNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52118280AE82600A983FA /* HideBackButtonNavigationController.swift */; };
 		2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */; };
 		2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */; };
 		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
@@ -138,6 +139,7 @@
 		2DBF1D9527D0829B00285A0B /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		2DBF1D9827D086EE00285A0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		2DC52116280AD81300A983FA /* ModifyComplimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyComplimentViewController.swift; sourceTree = "<group>"; };
+		2DC52118280AE82600A983FA /* HideBackButtonNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBackButtonNavigationController.swift; sourceTree = "<group>"; };
 		2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
 		2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenB.otf; sourceTree = "<group>"; };
 		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			children = (
 				2DDDD45727E1C5C300FC289C /* BaseViewController.swift */,
 				2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */,
+				2DC52118280AE82600A983FA /* HideBackButtonNavigationController.swift */,
 				2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */,
 				2DE8363727F42E0B00DECB35 /* ValidateButton.swift */,
 			);
@@ -562,6 +565,7 @@
 				2D94DE9F27FD48D7006C6A01 /* EventsManager.swift in Sources */,
 				2D97E6ED27EAE8400029DE35 /* SelectFeatureViewController.swift in Sources */,
 				2DF0B12528055A4E002F37E1 /* TodayComplimentViewController.swift in Sources */,
+				2DC52119280AE82600A983FA /* HideBackButtonNavigationController.swift in Sources */,
 				2D94DE9B27FD48D7006C6A01 /* CalendarView+Style.swift in Sources */,
 				2D05C11A280A590800925681 /* ComplimentWithOneTagCell.swift in Sources */,
 				2DBF1D9027D0819300285A0B /* AuthAPI.swift in Sources */,

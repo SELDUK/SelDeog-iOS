@@ -24,6 +24,7 @@ final class WriteComplimentViewController: BaseViewController {
     let tag2WordCountLabel = UILabel()
     let separateView2 = UIView()
     let registerButton = UIButton()
+    let popButton = UIButton()
     let attributes = [
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 15, family: .bold)
@@ -81,6 +82,10 @@ extension WriteComplimentViewController {
     private func setProperties() {
         
         view.backgroundColor = .white
+        
+        navigationItem.do {
+            $0.setLeftBarButtonItems([UIBarButtonItem(customView: popButton)], animated: false)
+        }
 
         commentLabel.do {
             $0.text = "COMMENT"
@@ -161,6 +166,11 @@ extension WriteComplimentViewController {
             $0.backgroundColor = .black
             $0.setTitle("OK", for: .normal)
             $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
+            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+        }
+        
+        popButton.do {
+            $0.setImage(Image.arrowLeftIcon, for: .normal)
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -266,6 +276,17 @@ extension WriteComplimentViewController {
         }
     }
     
+    func setAlertConfirmAndCancel(message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.navigationController?.popViewController(animated: false)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case registerButton:
@@ -293,6 +314,8 @@ extension WriteComplimentViewController {
             }
             
             postComment(comment: commentTrimText, tag: tag)
+        case popButton:
+            self.setAlertConfirmAndCancel(message: "해당 페이지를 벗어나면 작성 중인 내용이 저장되지 않습니다. 정말 나가시겠습니까?")
         default:
             return
         }
