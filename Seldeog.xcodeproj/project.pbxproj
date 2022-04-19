@@ -65,6 +65,11 @@
 		2DC52119280AE82600A983FA /* HideBackButtonNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52118280AE82600A983FA /* HideBackButtonNavigationController.swift */; };
 		2DC5211B280D3EF700A983FA /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5211A280D3EF700A983FA /* SelectColorView.swift */; };
 		2DC5211D280E4E0D00A983FA /* CalendarResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5211C280E4E0D00A983FA /* CalendarResponse.swift */; };
+		2DC52120280E807100A983FA /* AboutMeVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5211F280E807100A983FA /* AboutMeVIewController.swift */; };
+		2DC52122280E900B00A983FA /* PastComplimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52121280E900B00A983FA /* PastComplimentViewController.swift */; };
+		2DC52125280E94DE00A983FA /* PastComplimentWithNoTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52124280E94DE00A983FA /* PastComplimentWithNoTagCell.swift */; };
+		2DC52127280E953D00A983FA /* PastComplimentWithOneTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52126280E953D00A983FA /* PastComplimentWithOneTagCell.swift */; };
+		2DC52129280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */; };
 		2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */; };
 		2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */; };
 		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
@@ -144,6 +149,11 @@
 		2DC52118280AE82600A983FA /* HideBackButtonNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBackButtonNavigationController.swift; sourceTree = "<group>"; };
 		2DC5211A280D3EF700A983FA /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
 		2DC5211C280E4E0D00A983FA /* CalendarResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarResponse.swift; sourceTree = "<group>"; };
+		2DC5211F280E807100A983FA /* AboutMeVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeVIewController.swift; sourceTree = "<group>"; };
+		2DC52121280E900B00A983FA /* PastComplimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentViewController.swift; sourceTree = "<group>"; };
+		2DC52124280E94DE00A983FA /* PastComplimentWithNoTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWithNoTagCell.swift; sourceTree = "<group>"; };
+		2DC52126280E953D00A983FA /* PastComplimentWithOneTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWithOneTagCell.swift; sourceTree = "<group>"; };
+		2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWIthTwoTagCell.swift; sourceTree = "<group>"; };
 		2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
 		2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenB.otf; sourceTree = "<group>"; };
 		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 		2D1EC9AF27DF711700EE1D96 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2DC5211E280E805F00A983FA /* AboutMe */,
 				2DF0B123280558F6002F37E1 /* Compliment */,
 				2D94DEA627FD7693006C6A01 /* Setting */,
 				2D94DE9127FD48BA006C6A01 /* Calendar */,
@@ -390,6 +401,27 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		2DC5211E280E805F00A983FA /* AboutMe */ = {
+			isa = PBXGroup;
+			children = (
+				2DC5211F280E807100A983FA /* AboutMeVIewController.swift */,
+			);
+			path = AboutMe;
+			sourceTree = "<group>";
+		};
+		2DC52123280E927D00A983FA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2D05C11F280A6B0800925681 /* ComplimentWithNoTagCell.swift */,
+				2D05C119280A590800925681 /* ComplimentWithOneTagCell.swift */,
+				2D05C11D280A6A9200925681 /* ComplimentWithTwoTagCell.swift */,
+				2DC52124280E94DE00A983FA /* PastComplimentWithNoTagCell.swift */,
+				2DC52126280E953D00A983FA /* PastComplimentWithOneTagCell.swift */,
+				2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		2DDDD45027E1C0E500FC289C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,12 +434,11 @@
 		2DF0B123280558F6002F37E1 /* Compliment */ = {
 			isa = PBXGroup;
 			children = (
+				2DC52123280E927D00A983FA /* Cell */,
 				2DF0B12428055A4E002F37E1 /* TodayComplimentViewController.swift */,
+				2DC52121280E900B00A983FA /* PastComplimentViewController.swift */,
 				2DC52116280AD81300A983FA /* ModifyComplimentViewController.swift */,
 				2D05C115280956E500925681 /* WriteComplimentViewController.swift */,
-				2D05C11F280A6B0800925681 /* ComplimentWithNoTagCell.swift */,
-				2D05C119280A590800925681 /* ComplimentWithOneTagCell.swift */,
-				2D05C11D280A6A9200925681 /* ComplimentWithTwoTagCell.swift */,
 				2D05C117280A541E00925681 /* HashTagView.swift */,
 			);
 			path = Compliment;
@@ -552,9 +583,11 @@
 				2D94DEA227FD48D7006C6A01 /* CalendarFlowLayout.swift in Sources */,
 				2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */,
 				2D94DEA827FD76A5006C6A01 /* SettingViewController.swift in Sources */,
+				2DC52120280E807100A983FA /* AboutMeVIewController.swift in Sources */,
 				2D1EC9B327DF716500EE1D96 /* SelectShapeViewController.swift in Sources */,
 				2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */,
 				2D05C126280A96FF00925681 /* ComplimentListResponse.swift in Sources */,
+				2DC52122280E900B00A983FA /* PastComplimentViewController.swift in Sources */,
 				2D32068427FECDB800BFE30E /* UserDetailResponse.swift in Sources */,
 				2D05C124280A92FC00925681 /* BaseTabBarView.swift in Sources */,
 				2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */,
@@ -591,6 +624,8 @@
 				2DDDD45627E1C22900FC289C /* Font.swift in Sources */,
 				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
 				2D05C120280A6B0800925681 /* ComplimentWithNoTagCell.swift in Sources */,
+				2DC52125280E94DE00A983FA /* PastComplimentWithNoTagCell.swift in Sources */,
+				2DC52127280E953D00A983FA /* PastComplimentWithOneTagCell.swift in Sources */,
 				2D94DEB327FDC9CB006C6A01 /* SettingTextCell.swift in Sources */,
 				2D16DDF027E31F8200A43E5D /* SplashViewController.swift in Sources */,
 				2D94DE9D27FD48D7006C6A01 /* CalendarHeaderView.swift in Sources */,
@@ -609,6 +644,7 @@
 				2DF0B11927FFF891002F37E1 /* BaseNavigationController.swift in Sources */,
 				2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */,
 				2DF8C72E27D49D1F002BEA1D /* AuthResponse.swift in Sources */,
+				2DC52129280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift in Sources */,
 				2D1EC9B127DF712D00EE1D96 /* CalendarViewController.swift in Sources */,
 				2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */,
 				2D05767627EDAFEE00705AB7 /* ConfirmCharacterViewController.swift in Sources */,

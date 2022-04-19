@@ -217,7 +217,7 @@ final class CalendarViewController: BaseViewController {
             }
         }
     }
-    
+        
     private func makeTodayCharacter(color: Int) {
         let today = Date()
         let dateFormatter = DateFormatter()
@@ -299,18 +299,20 @@ extension CalendarViewController: CalendarViewDataSource {
 extension CalendarViewController: CalendarViewDelegate {
     
     func calendar(_ calendar: CalendarView, didSelectDate date : Date, withEvents events: [CalendarEvent]) {
-           
-           print("Did Select: \(date) with \(events.count) events")
-           for event in events {
-               print("\t\"\(event.title)\" - Starting at:\(event.startDate)")
-           }
-           
-       }
+        let selectedDate = date.toString()
+        for character in charactersForCalendar {
+            if selectedDate == character.usrChrDateCrt {
+                self.navigationController?.title = selectedDate
+                self.navigationController?.pushViewController(PastComplimentViewController(date: selectedDate), animated: false)
+                break
+            }
+        }
+    }
        
-       func calendar(_ calendar: CalendarView, didScrollToMonth date : Date) {
-           self.datePicker.setDate(date, animated: true)
-           getCharacterForCalendar(date: date.toYearMonth(date))
-       }
+    func calendar(_ calendar: CalendarView, didScrollToMonth date : Date) {
+        self.datePicker.setDate(date, animated: true)
+        getCharacterForCalendar(date: date.toYearMonth(date))
+    }
 }
 
 extension CalendarViewController {
