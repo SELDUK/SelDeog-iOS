@@ -41,22 +41,14 @@ final class TodayComplimentViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let today = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        navigationController?.title = dateFormatter.string(from: today).uppercased()
+        navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
         getComplimentList()
     }
     
     private func getComplimentList() {
         let today = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
-        getTodayComplimentList(date: dateFormatter.string(from: today)) { data in
+        getTodayComplimentList(date: DateFormatters.fullDateFormatter.string(from: today)) { data in
             if data.success {
                 let imgURL = URL(string: data.data.usrChrImg)
                 do {
@@ -112,7 +104,7 @@ final class TodayComplimentViewController: BaseViewController {
                 guard let data = response as? UserDetailResponse else { return }
                 completion(data)
             default:
-                print("sign in error")
+                print("API error")
             }
         }
     }

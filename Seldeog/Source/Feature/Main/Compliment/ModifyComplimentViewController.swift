@@ -87,7 +87,7 @@ final class ModifyComplimentViewController: BaseViewController {
                 guard let data = response as? UserDetailResponse else { return }
                 completion(data)
             default:
-                print("sign in error")
+                print("API error")
             }
         }
     }

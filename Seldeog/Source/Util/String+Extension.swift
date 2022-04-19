@@ -16,12 +16,12 @@ extension String {
         if let date = dateFormatter.date(from: self) { return date } else { return nil }
     }
     
-    func toDate() -> Date? {
+    func toDate() -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        if let date = dateFormatter.date(from: self) { return date } else { return nil }
+        return dateFormatter.date(from: self)!
     }
 }
 

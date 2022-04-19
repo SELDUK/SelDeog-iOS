@@ -24,6 +24,7 @@ public class HideBackButtonNavigationController: UINavigationController {
         let label = UILabel()
         label.textColor = .black
         label.font = .nanumPen(size: 35, family: .bold)
+        label.textAlignment = .center
         return label
     }()
     

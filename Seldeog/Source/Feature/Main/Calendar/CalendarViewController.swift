@@ -117,20 +117,13 @@ final class CalendarViewController: BaseViewController {
         self.calendarView.selectDate(date)
         self.calendarView.setDisplayDate(date)
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        yearLabel.text = dateFormatter.string(from: date).uppercased()
-        
-        dateFormatter.dateFormat = "MMMM"
-        monthLabel.text = dateFormatter.string(from: date)
-
-        dateFormatter.dateFormat = "yyyy-MM"
-        let yearMonth = dateFormatter.string(from: date)
+        yearLabel.text = DateFormatters.yearFormatter.string(from: date)
+        monthLabel.text = DateFormatters.monthFormatter.string(from: date).uppercased()
+        let yearMonth = DateFormatters.yearAndMonthFormatter.string(from: date)
         calendarView.yearMonth = yearMonth
         
         getCharacterForCalendar(date: yearMonth)
+        print(yearMonth)
     }
     
     private func registerTarget() {
@@ -185,14 +178,10 @@ final class CalendarViewController: BaseViewController {
     
     private func getComplimentList() {
         let today = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
-        getTodayComplimentList(date: dateFormatter.string(from: today)) { data in
+        getTodayComplimentList(date: DateFormatters.fullDateFormatter.string(from: today)) { data in
             if data.success {
-                self.navigationController?.title = dateFormatter.string(from: today).uppercased()
+                self.navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
                 self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
             } else {
                 self.showToastMessageAlert(message: "칭찬 리스트 로드에 실패하였습니다.")
@@ -220,14 +209,10 @@ final class CalendarViewController: BaseViewController {
         
     private func makeTodayCharacter(color: Int) {
         let today = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         makeTodayCharacter(color: color) { data in
             if data.success {
-                self.navigationController?.title = dateFormatter.string(from: today).uppercased()
+                self.navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
                 self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
             } else {
                 self.showToastMessageAlert(message: "색 선택에 실패하였습니다.")

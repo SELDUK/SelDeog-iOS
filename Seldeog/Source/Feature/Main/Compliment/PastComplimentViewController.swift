@@ -43,6 +43,11 @@ final class PastComplimentViewController: BaseViewController {
         getComplimentList(date: date)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: date.toDate()).uppercased()
+    }
+    
     private func getComplimentList(date: String) {
         
         getPastComplimentList(date: date) { data in
