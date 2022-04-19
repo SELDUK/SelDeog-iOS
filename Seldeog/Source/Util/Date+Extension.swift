@@ -44,16 +44,15 @@ extension Date {
         return weekRange!.count
    }
 
-    func startOfMonth() -> String {
+    func toYearMonth(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
 
-        let date = dateFormatter.string(from: Date())
-        let start = date + "-01"
+        let date = dateFormatter.string(from: date)
 
-        return start
+        return date
     }
 
     func endOfMonth() -> String {

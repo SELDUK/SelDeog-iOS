@@ -101,7 +101,7 @@ extension DatePickerViewController {
     
     @objc func sendDate() {
         dismiss(animated: true) {
-            let selectedDate = self.dateString?.toDate()
+            let selectedDate = self.dateString?.toDateTime()
             self.dateDelegate?.setCalendarDate(date: selectedDate ?? Date())
         }
     }

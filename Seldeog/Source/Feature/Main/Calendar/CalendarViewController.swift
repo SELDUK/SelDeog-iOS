@@ -17,6 +17,12 @@ protocol MoveCalendarDate {
 
 final class CalendarViewController: BaseViewController {
     
+    var charactersForCalendar: [UserCharacterImage] = [] {
+        didSet {
+            self.calendarView.reloadData()
+        }
+    }
+    
     var yearLabel = UILabel().then {
         $0.textColor = .black
         $0.font = UIFont.nanumPen(size: 15, family: .bold)
@@ -123,6 +129,8 @@ final class CalendarViewController: BaseViewController {
         dateFormatter.dateFormat = "yyyy-MM"
         let yearMonth = dateFormatter.string(from: date)
         calendarView.yearMonth = yearMonth
+        
+        getCharacterForCalendar(date: yearMonth)
     }
     
     private func registerTarget() {
@@ -245,6 +253,21 @@ final class CalendarViewController: BaseViewController {
         }
     }
     
+    func getCharacterForCalendar(date: String) {
+        UserRepository.shared.getCharacterForCalendar(date: date) { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let data = response as? CalendarResponse else { return }
+                self?.charactersForCalendar = data.data.usrChrImgs
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+            default:
+                print("calendar getGoalsForCalendar - error")
+            }
+        }
+    }
+
+    
 }
 
 extension CalendarViewController: CalendarViewDataSource {
@@ -285,8 +308,8 @@ extension CalendarViewController: CalendarViewDelegate {
        }
        
        func calendar(_ calendar: CalendarView, didScrollToMonth date : Date) {
-           print(self.calendarView.selectedDates)
            self.datePicker.setDate(date, animated: true)
+           getCharacterForCalendar(date: date.toYearMonth(date))
        }
 }
 

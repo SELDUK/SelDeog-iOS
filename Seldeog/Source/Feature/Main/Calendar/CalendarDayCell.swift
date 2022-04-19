@@ -26,6 +26,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 open class CalendarDayCell: UICollectionViewCell {
 
@@ -33,6 +34,8 @@ open class CalendarDayCell: UICollectionViewCell {
     var yearMonth: String?
 
     var style: CalendarView.Style = CalendarView.Style.Default
+    
+    static var characterIndex = 0
 
     override open var description: String {
         let dayString = self.textLabel.text ?? " "
@@ -49,7 +52,19 @@ open class CalendarDayCell: UICollectionViewCell {
     var day: Int? {
         set {
             guard let value = newValue else { return self.textLabel.text = nil }
+            guard let cvc = cvc else { return }
+
             self.textLabel.text = String(value)
+            for character in cvc.charactersForCalendar {
+                let index = String.Index(utf16Offset: 8, in: character.usrChrDateCrt)
+                if let characterDay = Int(character.usrChrDateCrt[index...]) {
+                    if value == characterDay {
+                        let imgURL = URL(string: character.usrChrImg)
+                        self.characterImageView.kf.setImage(with: imgURL)
+                        break
+                    }
+                }
+            }
         }
         get {
             guard let value = self.textLabel.text else { return nil }
@@ -106,23 +121,6 @@ open class CalendarDayCell: UICollectionViewCell {
 
     override open var isSelected : Bool {
         didSet {
-            switch isSelected {
-            case true:
-                textLabel.font = UIFont.nanumPen(size: 11, family: .bold)
-                let text = String(day ?? 0)
-                let textRange = NSRange(location: 0, length: text.count)
-                let attributedText = NSMutableAttributedString(string: text)
-                attributedText.addAttribute(.underlineStyle,
-                                            value: NSUnderlineStyle.single.rawValue,
-                                            range: textRange)
-                textLabel.attributedText = attributedText
-            case false:
-                textLabel.font = UIFont.nanumPen(size: 11, family: .regular)
-                let text = String(day ?? 0)
-                let attributedText = NSMutableAttributedString(string: text)
-                textLabel.attributedText = attributedText
-            }
-
             updateTextColor()
         }
     }
@@ -184,9 +182,9 @@ open class CalendarDayCell: UICollectionViewCell {
         }
 
         characterBackView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(10)
+            $0.top.equalTo(textBackView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(characterBackView.snp.width)
-            $0.bottom.equalToSuperview().offset(-6)
         }
 
         characterImageView.snp.makeConstraints {

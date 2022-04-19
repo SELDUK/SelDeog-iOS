@@ -277,7 +277,7 @@ public class CalendarView: UIView {
             x: 0.0,
             y: style.headerHeight,
             width: self.frame.size.width,
-            height: self.frame.size.width
+            height: self.frame.size.width + 40
         )
         
         flowLayout.itemSize = self.cellSize(in: self.bounds)
