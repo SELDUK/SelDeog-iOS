@@ -73,6 +73,7 @@
 		2DC5212B280E98F600A983FA /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212A280E98F600A983FA /* DateFormatters.swift */; };
 		2DC5212D280FCFC700A983FA /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212C280FCFC700A983FA /* AboutMeCell.swift */; };
 		2DC5212F280FED7200A983FA /* FeatureFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */; };
+		2DC52132280FFD6100A983FA /* WriteFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */; };
 		2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */; };
 		2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */; };
 		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
@@ -160,6 +161,7 @@
 		2DC5212A280E98F600A983FA /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		2DC5212C280FCFC700A983FA /* AboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
 		2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlowLayout.swift; sourceTree = "<group>"; };
+		2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFeatureViewController.swift; sourceTree = "<group>"; };
 		2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
 		2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenB.otf; sourceTree = "<group>"; };
 		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				2DC5211F280E807100A983FA /* AboutMeVIewController.swift */,
 				2DC5212C280FCFC700A983FA /* AboutMeCell.swift */,
 				2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */,
+				2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */,
 			);
 			path = AboutMe;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				2D32068227FEC92300BFE30E /* UserRepository.swift in Sources */,
 				2DDDD45627E1C22900FC289C /* Font.swift in Sources */,
 				2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */,
+				2DC52132280FFD6100A983FA /* WriteFeatureViewController.swift in Sources */,
 				2D05C120280A6B0800925681 /* ComplimentWithNoTagCell.swift in Sources */,
 				2DC52125280E94DE00A983FA /* PastComplimentWithNoTagCell.swift in Sources */,
 				2DC52127280E953D00A983FA /* PastComplimentWithOneTagCell.swift in Sources */,

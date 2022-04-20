@@ -206,7 +206,7 @@ extension AboutMeViewController {
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case writeButton:
-            navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
+            navigationController?.pushViewController(WriteFeatureViewController(), animated: false)
         case baseTabBarView.calendarButton:
             navigationController?.popViewController(animated: false)
         case baseTabBarView.aboutMeButton:
