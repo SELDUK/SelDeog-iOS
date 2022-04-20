@@ -24,7 +24,7 @@ final class AboutMeViewController: BaseViewController {
     let newFilterButton = UIButton()
     let tableView = UITableView()
     let baseTabBarView = BaseTabBarView()
-    var featureList: [UserCharacterComment] = [UserCharacterComment(usrChrCmtIdx: 1, usrChrCmt: "가나다라마바사아자차카타파하아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아ㅏ아아아아아아아아ㅏ아ㅏ아아아아아아아아아아아아아아아아아아아아아아ㅏ아아아",usrCmtTags: ["1"]), UserCharacterComment(usrChrCmtIdx: 2, usrChrCmt: "하이", usrCmtTags: ["2"])]
+    var featureList: [MyFeatures] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,37 @@ final class AboutMeViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getFeatureList()
+    }
+    
+    private func getFeatureList() {
+        
+        getFeatureList(order: "old") { data in
+            if data.success {
+                self.titleLabel.text = "ABOUT \(data.data.usrChrName)"
+                self.countLabel.text = "총 \(data.data.usrChrDicts.count)개"
+                self.featureList = data.data.usrChrDicts
+                self.tableView.reloadData()
+            } else {
+                self.showToastMessageAlert(message: "칭찬 리스트 로드에 실패하였습니다.")
+            }
+        }
+    }
+    
+    func getFeatureList(
+        order: String,
+        completion: @escaping (AboutMeResponse) -> Void
+    ) {
+        UserRepository.shared.getAboutMe(order: order) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? AboutMeResponse else { return }
+                completion(data)
+            default:
+                print("API error")
+            }
+        }
     }
 
     private func registerTarget() {
@@ -67,9 +98,9 @@ extension AboutMeViewController: UITableViewDelegate, UITableViewDataSource, Com
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AboutMeCell", for: indexPath) as? AboutMeCell else { return UITableViewCell() }
         
         cell.setCellIndex(index: indexPath.item + 1)
-        cell.setCommentIndex(index: featureList[indexPath.item].usrChrCmtIdx)
-        cell.setCompliment(text: featureList[indexPath.item].usrChrCmt)
-        cell.setDate(text: "2022-04-20")
+        cell.setCommentIndex(index: featureList[indexPath.item].usrChrDictIdx)
+        cell.setCompliment(text: featureList[indexPath.item].usrChrDictCont)
+        cell.setDate(text: featureList[indexPath.item].date)
         cell.buttonDelegate = self
         cell.selectionStyle = .none
         return cell
@@ -90,7 +121,6 @@ extension AboutMeViewController {
         }
         
         titleLabel.do {
-            $0.text = "ABOUT ME"
             $0.font = .nanumPen(size: 35, family: .bold)
         }
 

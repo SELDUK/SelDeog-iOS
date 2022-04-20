@@ -15,6 +15,7 @@ enum UserAPI {
     case putComment(usrChrIdx: Int, usrChrCmtIdx: Int, comment: String, tag: [String])
     case createTodayCharacter(color: Int)
     case getCalendarData(date: String)
+    case getAboutMe(order: String)
 }
 
 extension UserAPI: BaseTargetType {
@@ -31,6 +32,8 @@ extension UserAPI: BaseTargetType {
             return "/character/\(usrChrIdx)/comment"
         case .getCalendarData:
             return "/calendar"
+        case .getAboutMe:
+            return "/aboutMe"
         }
     }
 
@@ -38,7 +41,7 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .registerCharacter, .createComment, .createTodayCharacter:
             return .post
-        case .getComplimentList, .getCalendarData:
+        case .getComplimentList, .getCalendarData, .getAboutMe:
             return .get
         case .deleteComment:
             return .delete
@@ -97,6 +100,11 @@ extension UserAPI: BaseTargetType {
         case let .getCalendarData(date):
             let parameters = [
                 "date": date
+            ]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case let .getAboutMe(order):
+            let parameters = [
+                "order": order
             ]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
