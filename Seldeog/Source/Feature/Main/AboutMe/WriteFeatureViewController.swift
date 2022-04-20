@@ -34,31 +34,27 @@ final class WriteFeatureViewController: BaseViewController {
     }
     
     private func postFeature(content: String) {
-//        if let index = CharacterData.characterIndex {
-//            postComment(usrChrIdx: index, comment: comment, tag: tag) { data in
-//                if data.success {
-//                    self.navigationController?.popViewController(animated: false)
-//                } else {
-//                    self.showToastMessageAlert(message: "코멘트 작성에 실패하였습니다.")
-//                }
-//            }
-//        }
+        postFeature(content: content) { data in
+            if data.success {
+                self.navigationController?.popViewController(animated: false)
+            } else {
+                self.showToastMessageAlert(message: "ABOUT ME 작성에 실패하였습니다.")
+            }
+        }
     }
     
-    func postComment(
-        usrChrIdx: Int,
-        comment: String,
-        tag: [String],
+    func postFeature(
+        content: String,
         completion: @escaping (UserResponse) -> Void
     ) {
-        UserRepository.shared.postComment(usrChrIdx: usrChrIdx, comment: comment, tag: tag) { result in
+        UserRepository.shared.postFeature(content: content) { result in
             switch result {
             case .success(let response):
                 print(response)
                 guard let data = response as? UserResponse else { return }
                 completion(data)
             default:
-                print("sign in error")
+                print("API error")
             }
         }
     }
@@ -167,7 +163,7 @@ extension WriteFeatureViewController {
                 commentTrimText = commentTextView.text.trimmingCharacters(in: .whitespaces)
             }
             
-//            postComment(comment: commentTrimText, tag: tag)
+            postFeature(content: commentTrimText)
         case popButton:
             self.setAlertConfirmAndCancel(message: "해당 페이지를 벗어나면 작성 중인 내용이 저장되지 않습니다. 정말 나가시겠습니까?")
         default:
