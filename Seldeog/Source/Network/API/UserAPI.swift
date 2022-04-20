@@ -16,6 +16,9 @@ enum UserAPI {
     case createTodayCharacter(color: Int)
     case getCalendarData(date: String)
     case getAboutMe(order: String)
+    case createFeature(content: String)
+    case putFeature(usrChrDictIdx: Int, content: String)
+    case deleteFeature(usrChrDictIdx: Int)
 }
 
 extension UserAPI: BaseTargetType {
@@ -32,20 +35,20 @@ extension UserAPI: BaseTargetType {
             return "/character/\(usrChrIdx)/comment"
         case .getCalendarData:
             return "/calendar"
-        case .getAboutMe:
+        case .getAboutMe, .createFeature, .putFeature, .deleteFeature:
             return "/aboutMe"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .registerCharacter, .createComment, .createTodayCharacter:
+        case .registerCharacter, .createComment, .createTodayCharacter, .createFeature:
             return .post
         case .getComplimentList, .getCalendarData, .getAboutMe:
             return .get
-        case .deleteComment:
+        case .deleteComment, .deleteFeature:
             return .delete
-        case .putComment:
+        case .putComment, .putFeature:
             return .put
         }
     }
@@ -107,6 +110,22 @@ extension UserAPI: BaseTargetType {
                 "order": order
             ]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case let .createFeature(content):
+            let parameters = [
+                "content": content
+            ]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        case let .putFeature(usrChrDictIdx, content):
+            let parameters = [
+                "usrChrDictIdx": usrChrDictIdx,
+                "content": content
+            ] as [String : Any]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        case let .deleteFeature(usrChrDictIdx):
+            let parameters = [
+                "usrChrDictIdx": usrChrDictIdx
+            ]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
         }
     }
 

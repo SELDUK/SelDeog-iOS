@@ -95,13 +95,13 @@ final class TodayComplimentViewController: BaseViewController {
     func deleteComment(
         usrChrIdx: Int,
         usrChrCmtIdx: Int,
-        completion: @escaping (UserDetailResponse) -> Void
+        completion: @escaping (UserResponse) -> Void
     ) {
         UserRepository.shared.deleteComment(usrChrIdx: usrChrIdx, usrChrCmtIdx: usrChrCmtIdx) { result in
             switch result {
             case .success(let response):
                 print(response)
-                guard let data = response as? UserDetailResponse else { return }
+                guard let data = response as? UserResponse else { return }
                 completion(data)
             default:
                 print("API error")

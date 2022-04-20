@@ -23,7 +23,7 @@ final class UserRepository {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let error):
@@ -57,7 +57,7 @@ final class UserRepository {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let error):
@@ -74,7 +74,7 @@ final class UserRepository {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let error):
@@ -92,7 +92,7 @@ final class UserRepository {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let error):
@@ -109,7 +109,7 @@ final class UserRepository {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgeUserDetailStatus(by: statusCode, data)
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let error):
@@ -150,13 +150,65 @@ final class UserRepository {
         }
     }
     
-    private func judgeUserDetailStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+    public func postFeature(content: String,
+                            completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.createFeature(content: content)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    public func deleteFeature(usrChrDictIdx: Int,
+                            completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.deleteFeature(usrChrDictIdx: usrChrDictIdx)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    public func putComment(usrChrDictIdx: Int,
+                           content: String,
+                            completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.putFeature(usrChrDictIdx: usrChrDictIdx, content: content)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeUserStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func judgeUserStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 
             let decoder = JSONDecoder()
 
             switch statusCode {
             case 200..<300:
-                guard let decodedData = try? decoder.decode(UserDetailResponse.self, from: data) else {
+                guard let decodedData = try? decoder.decode(UserResponse.self, from: data) else {
                     return .pathErr
                 }
                 return .success(decodedData)

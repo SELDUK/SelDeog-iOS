@@ -33,29 +33,29 @@ final class WriteFeatureViewController: BaseViewController {
         view.endEditing(true)
     }
     
-    private func postComment(comment: String, tag: [String]) {
-        if let index = CharacterData.characterIndex {
-            postComment(usrChrIdx: index, comment: comment, tag: tag) { data in
-                if data.success {
-                    self.navigationController?.popViewController(animated: false)
-                } else {
-                    self.showToastMessageAlert(message: "코멘트 작성에 실패하였습니다.")
-                }
-            }
-        }
+    private func postFeature(content: String) {
+//        if let index = CharacterData.characterIndex {
+//            postComment(usrChrIdx: index, comment: comment, tag: tag) { data in
+//                if data.success {
+//                    self.navigationController?.popViewController(animated: false)
+//                } else {
+//                    self.showToastMessageAlert(message: "코멘트 작성에 실패하였습니다.")
+//                }
+//            }
+//        }
     }
     
     func postComment(
         usrChrIdx: Int,
         comment: String,
         tag: [String],
-        completion: @escaping (UserDetailResponse) -> Void
+        completion: @escaping (UserResponse) -> Void
     ) {
         UserRepository.shared.postComment(usrChrIdx: usrChrIdx, comment: comment, tag: tag) { result in
             switch result {
             case .success(let response):
                 print(response)
-                guard let data = response as? UserDetailResponse else { return }
+                guard let data = response as? UserResponse else { return }
                 completion(data)
             default:
                 print("sign in error")

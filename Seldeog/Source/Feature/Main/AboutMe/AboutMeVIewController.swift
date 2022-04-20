@@ -39,7 +39,6 @@ final class AboutMeViewController: BaseViewController {
     }
     
     private func getFeatureList() {
-        
         getFeatureList(order: "old") { data in
             if data.success {
                 self.titleLabel.text = "ABOUT \(data.data.usrChrName)"

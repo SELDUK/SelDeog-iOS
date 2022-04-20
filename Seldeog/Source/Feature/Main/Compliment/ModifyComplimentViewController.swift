@@ -78,13 +78,13 @@ final class ModifyComplimentViewController: BaseViewController {
         usrChrCmtIdx: Int,
         comment: String,
         tag: [String],
-        completion: @escaping (UserDetailResponse) -> Void
+        completion: @escaping (UserResponse) -> Void
     ) {
         UserRepository.shared.putComment(usrChrIdx: usrChrIdx, usrChrCmtIdx: usrChrCmtIdx, comment: comment, tag: tag) { result in
             switch result {
             case .success(let response):
                 print(response)
-                guard let data = response as? UserDetailResponse else { return }
+                guard let data = response as? UserResponse else { return }
                 completion(data)
             default:
                 print("API error")

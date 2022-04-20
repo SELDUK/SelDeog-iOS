@@ -222,13 +222,13 @@ final class CalendarViewController: BaseViewController {
     
     func makeTodayCharacter(
         color: Int,
-        completion: @escaping (UserDetailResponse) -> Void
+        completion: @escaping (UserResponse) -> Void
     ) {
         UserRepository.shared.createTodayCharacter(color: color) { result in
             switch result {
             case .success(let response):
                 print(response)
-                guard let data = response as? UserDetailResponse else { return }
+                guard let data = response as? UserResponse else { return }
                 completion(data)
             case .dateDoesNotExist:
                 self.showSelectColorView()

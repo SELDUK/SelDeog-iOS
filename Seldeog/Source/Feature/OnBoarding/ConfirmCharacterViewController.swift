@@ -64,13 +64,13 @@ final class ConfirmCharacterViewController: BaseViewController {
         shape: Int,
         color: Int,
         feature: Int,
-        completion: @escaping (UserDetailResponse) -> Void
+        completion: @escaping (UserResponse) -> Void
     ) {
         UserRepository.shared.postCharacterInfo(name: name, shape: shape, color: color, feature: feature) { result in
             switch result {
             case .success(let response):
                 print(response)
-                guard let data = response as? UserDetailResponse else { return }
+                guard let data = response as? UserResponse else { return }
                 completion(data)
             default:
                 print("sign in error")

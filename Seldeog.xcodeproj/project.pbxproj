@@ -35,7 +35,7 @@
 		2D2ADF0827CF58CA0034A602 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */; };
 		2D32068027FEC36100BFE30E /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32067F27FEC36100BFE30E /* UserAPI.swift */; };
 		2D32068227FEC92300BFE30E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068127FEC92300BFE30E /* UserRepository.swift */; };
-		2D32068427FECDB800BFE30E /* UserDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068327FECDB800BFE30E /* UserDetailResponse.swift */; };
+		2D32068427FECDB800BFE30E /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068327FECDB800BFE30E /* UserResponse.swift */; };
 		2D47BA2E27E6FAC1007D83F1 /* MakeCharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */; };
 		2D8C547C27F6BBF100308875 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */; };
 		2D8C547E27F6BF3800308875 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547D27F6BF3800308875 /* SelectColorCell.swift */; };
@@ -124,7 +124,7 @@
 		2D2ADF0727CF58CA0034A602 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		2D32067F27FEC36100BFE30E /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		2D32068127FEC92300BFE30E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		2D32068327FECDB800BFE30E /* UserDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailResponse.swift; sourceTree = "<group>"; };
+		2D32068327FECDB800BFE30E /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCharacterViewCell.swift; sourceTree = "<group>"; };
 		2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		2D8C547D27F6BF3800308875 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
@@ -387,7 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				2DF8C72D27D49D1F002BEA1D /* AuthResponse.swift */,
-				2D32068327FECDB800BFE30E /* UserDetailResponse.swift */,
+				2D32068327FECDB800BFE30E /* UserResponse.swift */,
 				2D05C125280A96FF00925681 /* ComplimentListResponse.swift */,
 				2DC5211C280E4E0D00A983FA /* CalendarResponse.swift */,
 				2DC52133281001DE00A983FA /* AboutMeResponse.swift */,
@@ -605,7 +605,7 @@
 				2D05C126280A96FF00925681 /* ComplimentListResponse.swift in Sources */,
 				2DC52122280E900B00A983FA /* PastComplimentViewController.swift in Sources */,
 				2DC5212B280E98F600A983FA /* DateFormatters.swift in Sources */,
-				2D32068427FECDB800BFE30E /* UserDetailResponse.swift in Sources */,
+				2D32068427FECDB800BFE30E /* UserResponse.swift in Sources */,
 				2D05C124280A92FC00925681 /* BaseTabBarView.swift in Sources */,
 				2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */,
 				2D94DE9E27FD48D7006C6A01 /* CalendarView+DataSource.swift in Sources */,
