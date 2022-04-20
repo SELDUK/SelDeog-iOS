@@ -262,7 +262,7 @@ extension CalendarViewController: CalendarViewDataSource {
 
     func startDate() -> Date {
         var dateComponents = DateComponents()
-        dateComponents.month = -24
+        dateComponents.month = -36
 
         let today = Date()
         let twoYearsAgo = self.calendarView.calendar.date(byAdding: dateComponents, to: today)!
@@ -272,7 +272,7 @@ extension CalendarViewController: CalendarViewDataSource {
 
     func endDate() -> Date {
         var dateComponents = DateComponents()
-        dateComponents.month = 24
+        dateComponents.month = 36
 
         let today = Date()
         let twoYearsFromNow = self.calendarView.calendar.date(byAdding: dateComponents, to: today)!

@@ -15,7 +15,6 @@ protocol AboutMeButtonProtocol {
 }
 
 final class AboutMeViewController: BaseViewController {
-
     let titleLabel = UILabel()
     let writeButton = UIButton()
     let lineView = UIView()
@@ -39,7 +38,7 @@ final class AboutMeViewController: BaseViewController {
     }
     
     private func getFeatureList() {
-        getFeatureList(order: "old") { data in
+        getFeatureList(order: checkFilterButtonSelected()) { data in
             if data.success {
                 self.titleLabel.text = "ABOUT \(data.data.usrChrName)"
                 self.countLabel.text = "총 \(data.data.usrChrDicts.count)개"
@@ -92,9 +91,17 @@ final class AboutMeViewController: BaseViewController {
             }
         }
     }
+    
+    private func checkFilterButtonSelected() -> String {
+        if newFilterButton.isSelected {
+            return "new"
+        } else {
+            return "old"
+        }
+    }
 
     private func registerTarget() {
-        [writeButton, baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
+        [writeButton, newFilterButton, baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -264,6 +271,9 @@ extension AboutMeViewController {
         switch sender {
         case writeButton:
             navigationController?.pushViewController(WriteFeatureViewController(), animated: false)
+        case newFilterButton:
+            newFilterButton.isSelected = !newFilterButton.isSelected
+            getFeatureList()
         case baseTabBarView.calendarButton:
             navigationController?.popViewController(animated: false)
         case baseTabBarView.aboutMeButton:
