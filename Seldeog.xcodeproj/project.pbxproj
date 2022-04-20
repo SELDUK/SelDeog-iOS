@@ -71,6 +71,8 @@
 		2DC52127280E953D00A983FA /* PastComplimentWithOneTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52126280E953D00A983FA /* PastComplimentWithOneTagCell.swift */; };
 		2DC52129280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */; };
 		2DC5212B280E98F600A983FA /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212A280E98F600A983FA /* DateFormatters.swift */; };
+		2DC5212D280FCFC700A983FA /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212C280FCFC700A983FA /* AboutMeCell.swift */; };
+		2DC5212F280FED7200A983FA /* FeatureFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */; };
 		2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */; };
 		2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */; };
 		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
@@ -156,6 +158,8 @@
 		2DC52126280E953D00A983FA /* PastComplimentWithOneTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWithOneTagCell.swift; sourceTree = "<group>"; };
 		2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWIthTwoTagCell.swift; sourceTree = "<group>"; };
 		2DC5212A280E98F600A983FA /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		2DC5212C280FCFC700A983FA /* AboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
+		2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlowLayout.swift; sourceTree = "<group>"; };
 		2DDDD45127E1C0FD00FC289C /* NanumBarunpenR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenR.otf; sourceTree = "<group>"; };
 		2DDDD45227E1C0FD00FC289C /* NanumBarunpenB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunpenB.otf; sourceTree = "<group>"; };
 		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -408,6 +412,8 @@
 			isa = PBXGroup;
 			children = (
 				2DC5211F280E807100A983FA /* AboutMeVIewController.swift */,
+				2DC5212C280FCFC700A983FA /* AboutMeCell.swift */,
+				2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */,
 			);
 			path = AboutMe;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				2D94DEA227FD48D7006C6A01 /* CalendarFlowLayout.swift in Sources */,
 				2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */,
 				2D94DEA827FD76A5006C6A01 /* SettingViewController.swift in Sources */,
+				2DC5212F280FED7200A983FA /* FeatureFlowLayout.swift in Sources */,
 				2DC52120280E807100A983FA /* AboutMeVIewController.swift in Sources */,
 				2D1EC9B327DF716500EE1D96 /* SelectShapeViewController.swift in Sources */,
 				2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */,
@@ -639,6 +646,7 @@
 				2D1EC9AB27DF6F2600EE1D96 /* StartMode.swift in Sources */,
 				2D94DEA027FD48D7006C6A01 /* CalendarView+Delegate.swift in Sources */,
 				2DF0B11B2801669A002F37E1 /* DatePickerViewController.swift in Sources */,
+				2DC5212D280FCFC700A983FA /* AboutMeCell.swift in Sources */,
 				2D16DDF327E321DD00A43E5D /* LoginSwitcher.swift in Sources */,
 				2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */,
 				2D97E6EF27EAE9D30029DE35 /* CharacterData.swift in Sources */,

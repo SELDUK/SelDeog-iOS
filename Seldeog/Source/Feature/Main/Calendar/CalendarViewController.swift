@@ -345,7 +345,7 @@ extension CalendarViewController {
         case calendarTabBarView.writeComplimentButton:
             getComplimentList()
         case calendarTabBarView.aboutMeButton:
-            navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
+            navigationController?.pushViewController(AboutMeViewController(), animated: false)
         case calendarTabBarView.selfLoveButton:
             navigationController?.pushViewController(SignUpViewController(), animated: false)
         case calendarTabBarView.settingButton:
