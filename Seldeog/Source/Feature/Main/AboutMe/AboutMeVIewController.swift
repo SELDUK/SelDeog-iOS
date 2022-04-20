@@ -66,6 +66,32 @@ final class AboutMeViewController: BaseViewController {
             }
         }
     }
+    
+    private func deleteFeature(usrChrDictIdx: Int) {
+            deleteFeature(usrChrDictIdx: usrChrDictIdx) { data in
+                if data.success {
+                    self.getFeatureList()
+                } else {
+                    self.showToastMessageAlert(message: "코멘트 작성에 실패하였습니다.")
+                }
+            }
+    }
+    
+    func deleteFeature(
+        usrChrDictIdx: Int,
+        completion: @escaping (UserResponse) -> Void
+    ) {
+        UserRepository.shared.deleteFeature(usrChrDictIdx: usrChrDictIdx) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? UserResponse else { return }
+                completion(data)
+            default:
+                print("API error")
+            }
+        }
+    }
 
     private func registerTarget() {
         [writeButton, baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
@@ -78,11 +104,13 @@ final class AboutMeViewController: BaseViewController {
 extension AboutMeViewController: UITableViewDelegate, UITableViewDataSource, CommentButtonProtocol {
 
     func modifyComment(serverIndex: Int, cellIndex: Int) {
-
+        
+        let modifyComplimentViewController = ModifyFeatureViewController(previousContent: featureList[cellIndex-1].usrChrDictCont, contentIndex: serverIndex)
+        navigationController?.pushViewController(modifyComplimentViewController, animated: false)
     }
 
     func deleteComment(index: Int) {
-        setAlertConfirmAndCancel(index: index, message: "삭제된 칭찬은 복구되지 않습니다. 칭찬을 정말 삭제하시겠습니까?")
+        setAlertConfirmAndCancel(index: index, message: "삭제된 정보는 복구되지 않습니다. 정보를 정말 삭제하시겠습니까?")
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -97,8 +125,8 @@ extension AboutMeViewController: UITableViewDelegate, UITableViewDataSource, Com
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AboutMeCell", for: indexPath) as? AboutMeCell else { return UITableViewCell() }
         
         cell.setCellIndex(index: indexPath.item + 1)
-        cell.setCommentIndex(index: featureList[indexPath.item].usrChrDictIdx)
-        cell.setCompliment(text: featureList[indexPath.item].usrChrDictCont)
+        cell.setServerIndex(index: featureList[indexPath.item].usrChrDictIdx)
+        cell.setFeature(text: featureList[indexPath.item].usrChrDictCont)
         cell.setDate(text: featureList[indexPath.item].date)
         cell.buttonDelegate = self
         cell.selectionStyle = .none
@@ -223,7 +251,7 @@ extension AboutMeViewController {
     func setAlertConfirmAndCancel(index: Int, message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
-//            self.deleteCommentIndex(usrChrCmtIdx: index)
+            self.deleteFeature(usrChrDictIdx: index)
         }
         let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
         alertController.addAction(confirmAction)

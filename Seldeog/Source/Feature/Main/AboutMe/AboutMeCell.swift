@@ -18,7 +18,7 @@ final class AboutMeCell: UITableViewCell {
     let dateLabel = UILabel()
     let modifyButton = UIButton()
     let deleteButton = UIButton()
-    var commentIndex: Int?
+    var serverIndex: Int?
     var cellIndex: Int?
     var buttonDelegate: CommentButtonProtocol?
 
@@ -27,12 +27,12 @@ final class AboutMeCell: UITableViewCell {
         cellIndex = index
     }
     
-    public func setCompliment(text: String) {
+    public func setFeature(text: String) {
         featureLabel.text = text
     }
     
-    public func setCommentIndex(index: Int) {
-        commentIndex = index
+    public func setServerIndex(index: Int) {
+        serverIndex = index
     }
     
     public func setDate(text: String) {
@@ -152,11 +152,11 @@ final class AboutMeCell: UITableViewCell {
     private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case modifyButton:
-            if let commentIndex = commentIndex, let cellIndex = cellIndex {
-                self.buttonDelegate?.modifyComment(serverIndex: commentIndex, cellIndex: cellIndex)
+            if let serverIndex = serverIndex, let cellIndex = cellIndex {
+                self.buttonDelegate?.modifyComment(serverIndex: serverIndex, cellIndex: cellIndex)
             }
         case deleteButton:
-            if let index = commentIndex {
+            if let index = serverIndex {
                 self.buttonDelegate?.deleteComment(index: index)
             }
         default:

@@ -184,7 +184,7 @@ final class UserRepository {
         }
     }
     
-    public func putComment(usrChrDictIdx: Int,
+    public func putFeature(usrChrDictIdx: Int,
                            content: String,
                             completion: @escaping (NetworkResult<Any>) -> Void) {
         userProvider.request(.putFeature(usrChrDictIdx: usrChrDictIdx, content: content)) { result in
