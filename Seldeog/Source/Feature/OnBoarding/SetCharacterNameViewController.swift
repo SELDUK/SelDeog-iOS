@@ -90,6 +90,7 @@ extension SetCharacterNameViewController {
         }
         
         nameTextField.do {
+            $0.delegate = self
             $0.autocapitalizationType = .none
             $0.autocorrectionType = .no
             $0.inputAccessoryView = nil
@@ -194,9 +195,16 @@ extension SetCharacterNameViewController {
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case nextButton:
-            CharacterData.nickname = nameTextField.text
-            let confirmCharacterViewController = ConfirmCharacterViewController()
-            navigationController?.pushViewController(confirmCharacterViewController, animated: true)
+            if let name = nameTextField.text {
+                if name.trimmingCharacters(in: .whitespaces).count == 0 {
+                       showToastMessageAlert(message: "닉네임을 입력해주세요")
+                    nameTextField.text = name.trimmingCharacters(in: .whitespaces)
+                } else {
+                    CharacterData.nickname = name.trimmingCharacters(in: .whitespaces)
+                    let confirmCharacterViewController = ConfirmCharacterViewController()
+                    navigationController?.pushViewController(confirmCharacterViewController, animated: true)
+                }
+            }
         case popButton:
             navigationController?.popViewController(animated: true)
         default:
@@ -207,4 +215,15 @@ extension SetCharacterNameViewController {
     @objc func textFieldDidChange() {
         
     }
+}
+
+extension SetCharacterNameViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else { return false }
+         
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+         
+            return updatedText.count <= 10
+        }
 }
