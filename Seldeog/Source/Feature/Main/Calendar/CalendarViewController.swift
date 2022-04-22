@@ -114,7 +114,7 @@ final class CalendarViewController: BaseViewController {
     }
     
     func setCalendarDate(date: Date) {
-        self.calendarView.selectDate(date)
+        //self.calendarView.selectDate(date)
         self.calendarView.setDisplayDate(date)
 
         yearLabel.text = DateFormatters.yearFormatter.string(from: date)
@@ -285,11 +285,18 @@ extension CalendarViewController: CalendarViewDelegate {
     
     func calendar(_ calendar: CalendarView, didSelectDate date : Date, withEvents events: [CalendarEvent]) {
         let selectedDate = date.toString()
-        for character in charactersForCalendar {
-            if selectedDate == character.usrChrDateCrt {
-                self.navigationController?.title = selectedDate
-                self.navigationController?.pushViewController(PastComplimentViewController(date: selectedDate), animated: false)
-                break
+        let today = Date().toString()
+        
+        if selectedDate == today {
+            getComplimentList()
+        } else {
+            let selectedDate = date.toString()
+            for character in charactersForCalendar {
+                if selectedDate == character.usrChrDateCrt {
+                    self.navigationController?.title = selectedDate
+                    self.navigationController?.pushViewController(PastComplimentViewController(date: selectedDate), animated: false)
+                    break
+                }
             }
         }
     }

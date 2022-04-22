@@ -74,8 +74,10 @@ open class CalendarDayCell: UICollectionViewCell {
 
     func updateTextColor() {
         if isSelected {
-            self.textLabel.textColor = style.cellSelectedTextColor
-            self.textBackView.backgroundColor = .white
+            if !isToday {
+                self.textLabel.textColor = style.cellSelectedTextColor
+                self.textBackView.backgroundColor = .white
+            }
         }
         else if isToday {
             self.textLabel.textColor = .white
