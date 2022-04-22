@@ -9,11 +9,24 @@ import UIKit
 
 class LoginSwitcher {
 
-    static func updateRootVC() {
+    static func updateRootVC(root: UpdateRoot) {
         if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
             if UserDefaults.standard.bool(forKey: UserDefaultKey.loginStatus) {
                 if UserDefaults.standard.bool(forKey: UserDefaultKey.isNotFirstTime) {
-                    sceneDelegate.goToMain()
+                    switch root {
+                    case .calendar:
+                        sceneDelegate.goToCalendarVC()
+                    case .setting:
+                        sceneDelegate.goToSettingVC()
+                    case .aboutMe:
+                        sceneDelegate.goToAboutMeVC()
+                    case .selfLove:
+                        sceneDelegate.goToSelfLoveVC()
+                    case .signIn:
+                        sceneDelegate.goToSignIn()
+                    case .onBoard:
+                        sceneDelegate.goToOnboard()
+                    }
                 } else {
                     sceneDelegate.goToOnboard()
                 }
@@ -22,4 +35,13 @@ class LoginSwitcher {
             }
         }
     }
+}
+
+public enum UpdateRoot {
+    case calendar
+    case setting
+    case aboutMe
+    case selfLove
+    case signIn
+    case onBoard
 }

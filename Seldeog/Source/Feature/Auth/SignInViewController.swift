@@ -93,7 +93,7 @@ final class SignInViewController: BaseViewController {
                 
                 UserDefaults.standard.setValue(true, forKey: UserDefaultKey.loginStatus)
                 UserDefaults.standard.synchronize()
-                LoginSwitcher.updateRootVC()
+                LoginSwitcher.updateRootVC(root: .calendar)
             } else {
                 self.warningLabel.textColor = UIColor.red.withAlphaComponent(1)
             }

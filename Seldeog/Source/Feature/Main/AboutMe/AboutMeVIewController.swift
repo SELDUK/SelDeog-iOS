@@ -101,7 +101,7 @@ final class AboutMeViewController: BaseViewController {
     }
 
     private func registerTarget() {
-        [writeButton, newFilterButton, baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
+        [writeButton, newFilterButton, baseTabBarView.calendarButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -196,6 +196,11 @@ extension AboutMeViewController {
             $0.showsHorizontalScrollIndicator = false
             $0.isScrollEnabled = true
         }
+        
+        baseTabBarView.aboutMeButton.do {
+            $0.setImage(Image.aboutMeIconClicked, for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+        }
     }
 
     private func setLayouts() {
@@ -275,13 +280,11 @@ extension AboutMeViewController {
             newFilterButton.isSelected = !newFilterButton.isSelected
             getFeatureList()
         case baseTabBarView.calendarButton:
-            navigationController?.popViewController(animated: false)
-        case baseTabBarView.aboutMeButton:
-            navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .calendar)
         case baseTabBarView.selfLoveButton:
-            navigationController?.pushViewController(SignUpViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .selfLove)
         case baseTabBarView.settingButton:
-            navigationController?.pushViewController(SettingViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .setting)
         default:
             return
         }

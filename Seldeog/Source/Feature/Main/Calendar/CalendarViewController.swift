@@ -54,6 +54,8 @@ final class CalendarViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        calendarTabBarView.calendarButton.setImage(Image.calendarIconClicked, for: .normal)
+        calendarTabBarView.calendarButton.setTitleColor(.white, for: .normal)
         calendarView = CalendarView()
         calendarView.cvc = self
         setLayout()
@@ -352,11 +354,11 @@ extension CalendarViewController {
         case calendarTabBarView.writeComplimentButton:
             getComplimentList()
         case calendarTabBarView.aboutMeButton:
-            navigationController?.pushViewController(AboutMeViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .aboutMe)
         case calendarTabBarView.selfLoveButton:
-            navigationController?.pushViewController(SignUpViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .selfLove)
         case calendarTabBarView.settingButton:
-            navigationController?.pushViewController(SettingViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .setting)
         case selectColorView.navyColor,
             selectColorView.yellowColor,
             selectColorView.pinkColor,

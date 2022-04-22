@@ -37,7 +37,7 @@ final class CalendarTabBarView: UIView {
         calendarButton.do {
             $0.setImage(Image.calendarIcon, for: .normal)
             $0.setTitle("CALENDAR", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
+            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0x707070), for: .normal)
             $0.titleLabel?.font = .nanumPen(size: 10, family: .bold)
             $0.alignTextBelow()
         }
@@ -45,7 +45,7 @@ final class CalendarTabBarView: UIView {
         selfLoveButton.do {
             $0.setImage(Image.loveIcon, for: .normal)
             $0.setTitle("SELF-LOVE", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
+            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0x707070), for: .normal)
             $0.titleLabel?.font = .nanumPen(size: 10, family: .bold)
             $0.alignTextBelow()
         }
@@ -53,7 +53,7 @@ final class CalendarTabBarView: UIView {
         aboutMeButton.do {
             $0.setImage(Image.aboutMeIcon, for: .normal)
             $0.setTitle("ABOUT ME", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
+            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0x707070), for: .normal)
             $0.titleLabel?.font = .nanumPen(size: 10, family: .bold)
             $0.alignTextBelow()
         }
@@ -61,7 +61,7 @@ final class CalendarTabBarView: UIView {
         settingButton.do {
             $0.setImage(Image.settingIcon, for: .normal)
             $0.setTitle("SETTING", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
+            $0.setTitleColor(UIColor.colorWithRGBHex(hex: 0x707070), for: .normal)
             $0.titleLabel?.font = .nanumPen(size: 10, family: .bold)
             $0.alignTextBelow()
         }

@@ -222,6 +222,11 @@ extension TodayComplimentViewController {
             $0.showsHorizontalScrollIndicator = false
             $0.isScrollEnabled = true
         }
+        
+        baseTabBarView.calendarButton.do {
+            $0.setImage(Image.calendarIconClicked, for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+        }
     }
     
     private func setLayouts() {
@@ -286,11 +291,11 @@ extension TodayComplimentViewController {
         case baseTabBarView.calendarButton:
             navigationController?.popViewController(animated: false)
         case baseTabBarView.aboutMeButton:
-            navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .aboutMe)
         case baseTabBarView.selfLoveButton:
-            navigationController?.pushViewController(SignUpViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .selfLove)
         case baseTabBarView.settingButton:
-            navigationController?.pushViewController(SettingViewController(), animated: false)
+            LoginSwitcher.updateRootVC(root: .setting)
         default:
             return
         }

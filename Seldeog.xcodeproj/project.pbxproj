@@ -72,7 +72,6 @@
 		2DC52129280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */; };
 		2DC5212B280E98F600A983FA /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212A280E98F600A983FA /* DateFormatters.swift */; };
 		2DC5212D280FCFC700A983FA /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212C280FCFC700A983FA /* AboutMeCell.swift */; };
-		2DC5212F280FED7200A983FA /* FeatureFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */; };
 		2DC52132280FFD6100A983FA /* WriteFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */; };
 		2DC52134281001DE00A983FA /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52133281001DE00A983FA /* AboutMeResponse.swift */; };
 		2DC5213628101A7100A983FA /* ModifyFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5213528101A7100A983FA /* ModifyFeatureViewController.swift */; };
@@ -162,7 +161,6 @@
 		2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWIthTwoTagCell.swift; sourceTree = "<group>"; };
 		2DC5212A280E98F600A983FA /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		2DC5212C280FCFC700A983FA /* AboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
-		2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlowLayout.swift; sourceTree = "<group>"; };
 		2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFeatureViewController.swift; sourceTree = "<group>"; };
 		2DC52133281001DE00A983FA /* AboutMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
 		2DC5213528101A7100A983FA /* ModifyFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyFeatureViewController.swift; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 			children = (
 				2DC5211F280E807100A983FA /* AboutMeVIewController.swift */,
 				2DC5212C280FCFC700A983FA /* AboutMeCell.swift */,
-				2DC5212E280FED7200A983FA /* FeatureFlowLayout.swift */,
 				2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */,
 				2DC5213528101A7100A983FA /* ModifyFeatureViewController.swift */,
 			);
@@ -601,7 +598,6 @@
 				2D94DEA227FD48D7006C6A01 /* CalendarFlowLayout.swift in Sources */,
 				2D1EC9A727DF65E300EE1D96 /* Image.swift in Sources */,
 				2D94DEA827FD76A5006C6A01 /* SettingViewController.swift in Sources */,
-				2DC5212F280FED7200A983FA /* FeatureFlowLayout.swift in Sources */,
 				2DC52120280E807100A983FA /* AboutMeVIewController.swift in Sources */,
 				2D1EC9B327DF716500EE1D96 /* SelectShapeViewController.swift in Sources */,
 				2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */,

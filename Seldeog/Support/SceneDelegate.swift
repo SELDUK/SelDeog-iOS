@@ -31,10 +31,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
-    func goToMain() {
+    func goToCalendarVC() {
         window?.rootViewController = HideBackButtonNavigationController(title: "", rootViewController: CalendarViewController())
         window?.makeKeyAndVisible()
-      }
+    }
+    
+    func goToSettingVC() {
+        window?.rootViewController = BaseNavigationController(title: "", rootViewController: SettingViewController())
+        window?.makeKeyAndVisible()
+    }
+    
+    func goToAboutMeVC() {
+        window?.rootViewController = BaseNavigationController(title: "", rootViewController: AboutMeViewController())
+        window?.makeKeyAndVisible()
+    }
+    
+    func goToSelfLoveVC() {
+        window?.rootViewController = BaseNavigationController(title: "", rootViewController: CalendarViewController())
+        window?.makeKeyAndVisible()
+    }
       
     func goToSignIn() {
         window?.rootViewController = StartSignInViewController()

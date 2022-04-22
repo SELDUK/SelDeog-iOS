@@ -13,6 +13,7 @@ final class SettingViewController: BaseViewController {
     let titleLabel = UILabel()
     let lineView = UIView()
     let tableView = UITableView()
+    let baseTabBarView = BaseTabBarView()
     let settingInfoList: [SettingInfo] = [SettingInfo(settingIcon: Image.notificationIcon, settingTitle: "NOTIFICATION"),
                                           SettingInfo(settingIcon: Image.lockIcon, settingTitle: "LOCK"),
                                           SettingInfo(settingIcon: Image.guideIcon, settingTitle: "GUIDE"),
@@ -23,6 +24,13 @@ final class SettingViewController: BaseViewController {
         super.viewDidLoad()
         setProperties()
         setLayouts()
+        registerTarget()
+    }
+    
+    private func registerTarget() {
+        [baseTabBarView.calendarButton, baseTabBarView.selfLoveButton, baseTabBarView.aboutMeButton].forEach {
+            $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
+        }
     }
 }
 
@@ -86,6 +94,11 @@ extension SettingViewController {
             $0.isScrollEnabled = false
             $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         }
+        
+        baseTabBarView.settingButton.do {
+            $0.setImage(Image.settingIconClicked, for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+        }
     }
     
     private func setLayouts() {
@@ -94,7 +107,7 @@ extension SettingViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(titleLabel, lineView, tableView)
+        view.addSubviews(titleLabel, lineView, tableView, baseTabBarView)
     }
     
     private func setConstraints() {
@@ -115,7 +128,25 @@ extension SettingViewController {
         tableView.snp.makeConstraints {
             $0.top.equalTo(lineView.snp.bottom)
             $0.leading.trailing.equalTo(safeArea)
-            $0.bottom.equalTo(safeArea)
+            $0.bottom.equalTo(baseTabBarView.snp.top)
+        }
+        
+        baseTabBarView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(80)
+        }
+    }
+    
+    @objc private func buttonTapAction(_ sender: UIButton) {
+        switch sender {
+        case baseTabBarView.calendarButton:
+            LoginSwitcher.updateRootVC(root: .calendar)
+        case baseTabBarView.selfLoveButton:
+            LoginSwitcher.updateRootVC(root: .selfLove)
+        case baseTabBarView.aboutMeButton:
+            LoginSwitcher.updateRootVC(root: .aboutMe)
+        default:
+            return
         }
     }
     
