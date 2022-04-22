@@ -122,7 +122,6 @@ extension WriteComplimentViewController {
             $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "귀여워", attributes: attributes)
             $0.clearButtonMode = .never
-            $0.keyboardType = .alphabet
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
             $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -146,7 +145,6 @@ extension WriteComplimentViewController {
             $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "너무너무기특해", attributes: attributes)
             $0.clearButtonMode = .never
-            $0.keyboardType = .alphabet
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
             $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

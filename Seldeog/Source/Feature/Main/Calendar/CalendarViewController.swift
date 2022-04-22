@@ -247,7 +247,7 @@ final class CalendarViewController: BaseViewController {
             case .requestErr(let errorResponse):
                 dump(errorResponse)
             default:
-                print("calendar getGoalsForCalendar - error")
+                print("calendar getCharacterForCalendar - error")
             }
         }
     }
