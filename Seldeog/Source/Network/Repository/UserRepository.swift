@@ -202,6 +202,22 @@ final class UserRepository {
         }
     }
     
+    public func getSelfLove(completion: @escaping (NetworkResult<Any>) -> Void) {
+        userProvider.request(.getSelfLove) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeGetSelfLoveStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     private func judgeUserStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 
             let decoder = JSONDecoder()
@@ -260,6 +276,23 @@ final class UserRepository {
             switch statusCode {
             case 200..<300:
                 guard let decodedData = try? decoder.decode(AboutMeResponse.self, from: data) else {
+                    return .pathErr
+                }
+                return .success(decodedData)
+            case 400:
+                return .serverErr
+            default:
+                return .networkFail
+            }
+        }
+    
+    private func judgeGetSelfLoveStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+
+            let decoder = JSONDecoder()
+
+            switch statusCode {
+            case 200..<300:
+                guard let decodedData = try? decoder.decode(SelfLoveResponse.self, from: data) else {
                     return .pathErr
                 }
                 return .success(decodedData)

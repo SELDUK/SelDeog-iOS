@@ -24,6 +24,36 @@ final class SelfLoveViewController: BaseViewController {
         registerTarget()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getLovePercentage()
+    }
+    
+    private func getLovePercentage() {
+        getSelfLove() { data in
+            if data.success {
+                self.percentageLabel.text = "\(data.data?.usrChrLove ?? 0)%"
+            } else {
+                self.showToastMessageAlert(message: "Self Love 로드에 실패하였습니다.")
+            }
+        }
+    }
+    
+    func getSelfLove(
+        completion: @escaping (SelfLoveResponse) -> Void
+    ) {
+        UserRepository.shared.getSelfLove() { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? SelfLoveResponse else { return }
+                completion(data)
+            default:
+                print("API error")
+            }
+        }
+    }
+    
     private func registerTarget() {
         [baseTabBarView.calendarButton, baseTabBarView.settingButton, baseTabBarView.aboutMeButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
@@ -54,7 +84,6 @@ extension SelfLoveViewController {
         }
         
         percentageLabel.do {
-            $0.text = "25%"
             $0.font = .nanumPen(size: 50, family: .bold)
             $0.textColor = .black
             $0.textAlignment = .center

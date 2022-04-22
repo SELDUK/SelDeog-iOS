@@ -80,6 +80,7 @@
 		2DDDD45627E1C22900FC289C /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45527E1C22900FC289C /* Font.swift */; };
 		2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45727E1C5C300FC289C /* BaseViewController.swift */; };
 		2DE2B289281287ED00300B24 /* SelfLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B288281287ED00300B24 /* SelfLoveViewController.swift */; };
+		2DE2B28B2812927800300B24 /* SelfLoveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B28A2812927800300B24 /* SelfLoveResponse.swift */; };
 		2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8363727F42E0B00DECB35 /* ValidateButton.swift */; };
 		2DF0B11927FFF891002F37E1 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */; };
 		2DF0B11B2801669A002F37E1 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B11A2801669A002F37E1 /* DatePickerViewController.swift */; };
@@ -170,6 +171,7 @@
 		2DDDD45527E1C22900FC289C /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		2DDDD45727E1C5C300FC289C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2DE2B288281287ED00300B24 /* SelfLoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLoveViewController.swift; sourceTree = "<group>"; };
+		2DE2B28A2812927800300B24 /* SelfLoveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLoveResponse.swift; sourceTree = "<group>"; };
 		2DE8363727F42E0B00DECB35 /* ValidateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateButton.swift; sourceTree = "<group>"; };
 		2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		2DF0B11A2801669A002F37E1 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				2D05C125280A96FF00925681 /* ComplimentListResponse.swift */,
 				2DC5211C280E4E0D00A983FA /* CalendarResponse.swift */,
 				2DC52133281001DE00A983FA /* AboutMeResponse.swift */,
+				2DE2B28A2812927800300B24 /* SelfLoveResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */,
 				2D94DE9E27FD48D7006C6A01 /* CalendarView+DataSource.swift in Sources */,
 				2D2ADF0127CF4ADC0034A602 /* UIView+Extension.swift in Sources */,
+				2DE2B28B2812927800300B24 /* SelfLoveResponse.swift in Sources */,
 				2D2ADF0627CF4D610034A602 /* SignUpViewController.swift in Sources */,
 				2D94DEA527FD5423006C6A01 /* Date+Extension.swift in Sources */,
 				2D94DEA327FD48D7006C6A01 /* CalendarView.swift in Sources */,
