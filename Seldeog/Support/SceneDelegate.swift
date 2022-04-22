@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func goToSelfLoveVC() {
-        window?.rootViewController = BaseNavigationController(title: "", rootViewController: CalendarViewController())
+        window?.rootViewController = BaseNavigationController(title: "", rootViewController: SelfLoveViewController())
         window?.makeKeyAndVisible()
     }
       
