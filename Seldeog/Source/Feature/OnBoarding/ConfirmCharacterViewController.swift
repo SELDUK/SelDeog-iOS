@@ -19,7 +19,7 @@ final class ConfirmCharacterViewController: BaseViewController {
     let pleaseLoveMeLabel = UILabel()
     let nextButton = UIButton()
     let popButton = UIButton()
-//    let animationView = AnimationView(name: "폭죽")
+    let animationView = Animation.confetti1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +28,25 @@ final class ConfirmCharacterViewController: BaseViewController {
         registerTarget()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setAnimation()
+    }
+
     private func registerTarget() {
         [nextButton, popButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
 
-//    private func setAnimation() {
-//        animationView.contentMode = .scaleAspectFit
-//        animationView.frame = view.bounds
-//        animationView.play()
-//        animationView.loopMode = .loop
-//    }
+    private func setAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.animationView.contentMode = .scaleAspectFill
+            self.animationView.frame = self.view.bounds
+            self.animationView.play()
+            self.animationView.loopMode = .loop
+        }
+    }
     
     private func registerCharacter() {
         guard let name = CharacterData.nickname else { return }
@@ -136,7 +143,7 @@ extension ConfirmCharacterViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(sayHiLabel, pleaseLoveMeLabel, shapeImageView, nextButton)
+        view.addSubviews(sayHiLabel, pleaseLoveMeLabel, shapeImageView, nextButton, animationView)
         shapeImageView.addSubviews(expressionImageView, featureImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
         expressionImageView.bringSubviewToFront(featureImageView)
@@ -153,6 +160,11 @@ extension ConfirmCharacterViewController {
         pleaseLoveMeLabel.snp.makeConstraints {
             $0.top.equalTo(sayHiLabel.snp.bottom).offset(22)
             $0.centerX.equalToSuperview()
+        }
+        
+        animationView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(animationView.snp.width)
         }
         
         shapeImageView.snp.makeConstraints {

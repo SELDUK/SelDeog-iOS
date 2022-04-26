@@ -11,10 +11,10 @@ struct SelfLoveResponse: Decodable {
     let status: Int
     let success: Bool
     let message: String
-    let data: UserSelfLove?
+    let data: UserSelfLove
 }
 
 struct UserSelfLove: Decodable {
     let usrChrName: String
-    let usrChrLove: Float
+    let usrChrLove: Int
 }

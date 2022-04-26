@@ -14,7 +14,7 @@ final class SelfLoveViewController: BaseViewController {
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
     let percentageLabel = UILabel()
-    let animationView = AnimationView()
+    var animationView: AnimationView?
     let baseTabBarView = BaseTabBarView()
     
     override func viewDidLoad() {
@@ -29,10 +29,52 @@ final class SelfLoveViewController: BaseViewController {
         getLovePercentage()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        pauseAnimation()
+    }
+    
     private func getLovePercentage() {
         getSelfLove() { data in
             if data.success {
-                self.percentageLabel.text = "\(data.data?.usrChrLove ?? 0)%"
+                self.percentageLabel.text = "\(data.data.usrChrLove)%"
+                switch data.data.usrChrLove {
+                case 98:
+                    self.animationView = Animation.ninetyeightPercentage
+                case 90:
+                    self.animationView = Animation.ninetyPercentage
+                case 80:
+                    self.animationView = Animation.eightyPercentage
+                case 70:
+                    self.animationView = Animation.seventyPercentage
+                case 60:
+                    self.animationView = Animation.sixtyPercentage
+                case 50:
+                    self.animationView = Animation.fiftyPercentage
+                case 40:
+                    self.animationView = Animation.fourtyPercentage
+                case 30:
+                    self.animationView = Animation.thirtyPercentage
+                case 20:
+                    self.animationView = Animation.twentyPercentage
+                default:
+                    self.animationView = Animation.tenPercentage
+                }
+                
+                guard let animationView = self.animationView else { return }
+
+                self.view.addSubview(animationView)
+                
+                animationView.snp.makeConstraints {
+                    $0.top.equalTo(self.descriptionLabel.snp.bottom)
+                    $0.leading.trailing.equalToSuperview().inset(20)
+                    $0.width.equalTo(281)
+                    $0.height.equalTo(293)
+                }
+                animationView.contentMode = .scaleAspectFill
+                animationView.play()
+                animationView.loopMode = .playOnce
+                animationView.layer.zPosition = -1
             } else {
                 self.showToastMessageAlert(message: "Self Love 로드에 실패하였습니다.")
             }
@@ -52,6 +94,11 @@ final class SelfLoveViewController: BaseViewController {
                 print("API error")
             }
         }
+    }
+    
+    private func pauseAnimation() {
+        guard let animationView = self.animationView else { return }
+        animationView.removeFromSuperview()
     }
     
     private func registerTarget() {
@@ -115,9 +162,9 @@ extension SelfLoveViewController {
             $0.top.equalTo(titleLabel.snp.bottom).offset(14)
             $0.centerX.equalToSuperview()
         }
-        
+                
         percentageLabel.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(147)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(137)
             $0.centerX.equalToSuperview()
         }
         

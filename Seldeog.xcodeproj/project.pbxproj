@@ -81,6 +81,19 @@
 		2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45727E1C5C300FC289C /* BaseViewController.swift */; };
 		2DE2B289281287ED00300B24 /* SelfLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B288281287ED00300B24 /* SelfLoveViewController.swift */; };
 		2DE2B28B2812927800300B24 /* SelfLoveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B28A2812927800300B24 /* SelfLoveResponse.swift */; };
+		2DE2B2972816854300300B24 /* 50per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B28D2816854200300B24 /* 50per.json */; };
+		2DE2B2982816854300300B24 /* 80per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B28E2816854200300B24 /* 80per.json */; };
+		2DE2B2992816854300300B24 /* 70per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B28F2816854200300B24 /* 70per.json */; };
+		2DE2B29A2816854300300B24 /* 90per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2902816854200300B24 /* 90per.json */; };
+		2DE2B29B2816854300300B24 /* 10per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2912816854200300B24 /* 10per.json */; };
+		2DE2B29C2816854300300B24 /* 30per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2922816854200300B24 /* 30per.json */; };
+		2DE2B29D2816854300300B24 /* 20per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2932816854200300B24 /* 20per.json */; };
+		2DE2B29E2816854300300B24 /* 98per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2942816854200300B24 /* 98per.json */; };
+		2DE2B29F2816854300300B24 /* 60per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2952816854200300B24 /* 60per.json */; };
+		2DE2B2A02816854300300B24 /* 40per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2962816854200300B24 /* 40per.json */; };
+		2DE2B2A22816877300300B24 /* confetti1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2A12816877300300B24 /* confetti1.json */; };
+		2DE2B2A4281687A000300B24 /* confetti2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2A3281687A000300B24 /* confetti2.json */; };
+		2DE2B2A82816884400300B24 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B2A72816884400300B24 /* Animation.swift */; };
 		2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8363727F42E0B00DECB35 /* ValidateButton.swift */; };
 		2DF0B11927FFF891002F37E1 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */; };
 		2DF0B11B2801669A002F37E1 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0B11A2801669A002F37E1 /* DatePickerViewController.swift */; };
@@ -172,6 +185,19 @@
 		2DDDD45727E1C5C300FC289C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2DE2B288281287ED00300B24 /* SelfLoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLoveViewController.swift; sourceTree = "<group>"; };
 		2DE2B28A2812927800300B24 /* SelfLoveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLoveResponse.swift; sourceTree = "<group>"; };
+		2DE2B28D2816854200300B24 /* 50per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 50per.json; path = "../../../../Desktop/졸작/애정도애니메이션/50per.json"; sourceTree = "<group>"; };
+		2DE2B28E2816854200300B24 /* 80per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 80per.json; path = "../../../../Desktop/졸작/애정도애니메이션/80per.json"; sourceTree = "<group>"; };
+		2DE2B28F2816854200300B24 /* 70per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 70per.json; path = "../../../../Desktop/졸작/애정도애니메이션/70per.json"; sourceTree = "<group>"; };
+		2DE2B2902816854200300B24 /* 90per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 90per.json; path = "../../../../Desktop/졸작/애정도애니메이션/90per.json"; sourceTree = "<group>"; };
+		2DE2B2912816854200300B24 /* 10per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 10per.json; path = "../../../../Desktop/졸작/애정도애니메이션/10per.json"; sourceTree = "<group>"; };
+		2DE2B2922816854200300B24 /* 30per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 30per.json; path = "../../../../Desktop/졸작/애정도애니메이션/30per.json"; sourceTree = "<group>"; };
+		2DE2B2932816854200300B24 /* 20per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 20per.json; path = "../../../../Desktop/졸작/애정도애니메이션/20per.json"; sourceTree = "<group>"; };
+		2DE2B2942816854200300B24 /* 98per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 98per.json; path = "../../../../Desktop/졸작/애정도애니메이션/98per.json"; sourceTree = "<group>"; };
+		2DE2B2952816854200300B24 /* 60per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 60per.json; path = "../../../../Desktop/졸작/애정도애니메이션/60per.json"; sourceTree = "<group>"; };
+		2DE2B2962816854200300B24 /* 40per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 40per.json; path = "../../../../Desktop/졸작/애정도애니메이션/40per.json"; sourceTree = "<group>"; };
+		2DE2B2A12816877300300B24 /* confetti1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = confetti1.json; sourceTree = "<group>"; };
+		2DE2B2A3281687A000300B24 /* confetti2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = confetti2.json; sourceTree = "<group>"; };
+		2DE2B2A72816884400300B24 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		2DE8363727F42E0B00DECB35 /* ValidateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateButton.swift; sourceTree = "<group>"; };
 		2DF0B11827FFF891002F37E1 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		2DF0B11A2801669A002F37E1 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -275,10 +301,12 @@
 		2D246C0827BF776E00546F28 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2DE2B28C2816852B00300B24 /* Animations */,
 				2DDDD45027E1C0E500FC289C /* Fonts */,
 				2D246BFA27BF6E0700546F28 /* Assets.xcassets */,
 				2D246BFC27BF6E0700546F28 /* LaunchScreen.storyboard */,
 				2D1EC9A627DF65E300EE1D96 /* Image.swift */,
+				2DE2B2A72816884400300B24 /* Animation.swift */,
 				2DDDD45527E1C22900FC289C /* Font.swift */,
 			);
 			path = Resource;
@@ -460,6 +488,25 @@
 			path = SelfLove;
 			sourceTree = "<group>";
 		};
+		2DE2B28C2816852B00300B24 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				2DE2B2912816854200300B24 /* 10per.json */,
+				2DE2B2932816854200300B24 /* 20per.json */,
+				2DE2B2922816854200300B24 /* 30per.json */,
+				2DE2B2962816854200300B24 /* 40per.json */,
+				2DE2B28D2816854200300B24 /* 50per.json */,
+				2DE2B2952816854200300B24 /* 60per.json */,
+				2DE2B28F2816854200300B24 /* 70per.json */,
+				2DE2B28E2816854200300B24 /* 80per.json */,
+				2DE2B2902816854200300B24 /* 90per.json */,
+				2DE2B2942816854200300B24 /* 98per.json */,
+				2DE2B2A12816877300300B24 /* confetti1.json */,
+				2DE2B2A3281687A000300B24 /* confetti2.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		2DF0B123280558F6002F37E1 /* Compliment */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,10 +597,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE2B29B2816854300300B24 /* 10per.json in Resources */,
+				2DE2B2A02816854300300B24 /* 40per.json in Resources */,
 				2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */,
 				2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */,
+				2DE2B2A4281687A000300B24 /* confetti2.json in Resources */,
+				2DE2B2A22816877300300B24 /* confetti1.json in Resources */,
+				2DE2B29A2816854300300B24 /* 90per.json in Resources */,
+				2DE2B2972816854300300B24 /* 50per.json in Resources */,
+				2DE2B2982816854300300B24 /* 80per.json in Resources */,
 				2D246BFE27BF6E0700546F28 /* LaunchScreen.storyboard in Resources */,
+				2DE2B29D2816854300300B24 /* 20per.json in Resources */,
 				2D246BFB27BF6E0700546F28 /* Assets.xcassets in Resources */,
+				2DE2B29C2816854300300B24 /* 30per.json in Resources */,
+				2DE2B29F2816854300300B24 /* 60per.json in Resources */,
+				2DE2B29E2816854300300B24 /* 98per.json in Resources */,
+				2DE2B2992816854300300B24 /* 70per.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +723,7 @@
 				2D94DE9D27FD48D7006C6A01 /* CalendarHeaderView.swift in Sources */,
 				2DF0B121280418C3002F37E1 /* CalendarTabBarView.swift in Sources */,
 				2D05C118280A541E00925681 /* HashTagView.swift in Sources */,
+				2DE2B2A82816884400300B24 /* Animation.swift in Sources */,
 				2D05C11E280A6A9200925681 /* ComplimentWithTwoTagCell.swift in Sources */,
 				2DE2B289281287ED00300B24 /* SelfLoveViewController.swift in Sources */,
 				2D1EC9AB27DF6F2600EE1D96 /* StartMode.swift in Sources */,
