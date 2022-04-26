@@ -11,6 +11,7 @@ import SnapKit
 
 final class SelectShapeViewController: BaseViewController {
     
+    let characterLabel = UILabel()
     let loadingBar = UIProgressView()
     let titleLabel = UILabel()
     let containerView = UIView()
@@ -20,15 +21,16 @@ final class SelectShapeViewController: BaseViewController {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 20
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100), collectionViewLayout: layout)
         return cv
     }()
     
-    var cellImageList = [Image.navyShapeCircle, Image.navyShapeCloud, Image.navyShapeSharpEar, Image.navyShapeWater, Image.navyShapeBread,  Image.navyShapeRoundEar, Image.navyShapeJjang]
+    var cellImageList = [Image.navyShapeCircle, Image.navyShapeCloud, Image.navyShapeSharpEar, Image.navyShapeBread, Image.navyShapeRoundEar, Image.navyShapeJjang]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.title = ""
         setProperties()
         setLayouts()
         setLoadingBarAnimation()
@@ -45,11 +47,11 @@ final class SelectShapeViewController: BaseViewController {
 extension SelectShapeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: 90, height: 90)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -74,6 +76,11 @@ extension SelectShapeViewController {
         
         navigationItem.do {
             $0.hidesBackButton = true
+        }
+        
+        characterLabel.do {
+            $0.text = "MY CHARACTER"
+            $0.font = .nanumPen(size: 35, family: .bold)
         }
         
         loadingBar.do {
@@ -106,7 +113,7 @@ extension SelectShapeViewController {
             $0.register(MakeCharacterViewCell.self, forCellWithReuseIdentifier: "MakeCharacterCell")
             $0.delegate = self
             $0.dataSource = self
-            $0.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+            $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
             $0.showsHorizontalScrollIndicator = false
         }
         
@@ -126,7 +133,7 @@ extension SelectShapeViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(loadingBar, titleLabel, containerView, collectionView, nextButton)
+        view.addSubviews(characterLabel, loadingBar, titleLabel, containerView, collectionView, nextButton)
         containerView.addSubview(shapeImageView)
         shapeImageView.addSubview(expressionImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
@@ -135,8 +142,13 @@ extension SelectShapeViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
+        characterLabel.snp.makeConstraints {
+            $0.top.equalTo(safeArea)
+            $0.centerX.equalToSuperview()
+        }
+        
         loadingBar.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(27)
+            $0.top.equalTo(characterLabel.snp.bottom).offset(27)
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(17)
         }
@@ -154,14 +166,12 @@ extension SelectShapeViewController {
         
         shapeImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.equalTo(290)
-            $0.height.equalTo(290)
+            $0.width.height.equalTo(250)
         }
         
         expressionImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.equalTo(290)
-            $0.height.equalTo(290)
+            $0.width.height.equalTo(250)
         }
         
         collectionView.snp.makeConstraints {

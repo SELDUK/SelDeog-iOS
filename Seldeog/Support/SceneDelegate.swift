@@ -57,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func goToOnboard() {
-        window?.rootViewController = BaseNavigationController(title: "MY CHARACTER", rootViewController: SelectShapeViewController())
+        window?.rootViewController = BaseNavigationController(title: "", rootViewController: SelectShapeViewController())
         window?.makeKeyAndVisible()
     }
 

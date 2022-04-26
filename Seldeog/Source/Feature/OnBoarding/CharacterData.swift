@@ -22,7 +22,6 @@ struct CharacterData {
         [Image.navyShapeCircle, Image.yellowShapeCircle, Image.pinkShapeCircle, Image.mauveShapeCircle, Image.greenShapeCircle],
         [Image.navyShapeCloud, Image.yellowShapeCloud, Image.pinkShapeCloud, Image.mauveShapeCloud, Image.greenShapeCloud],
         [Image.navyShapeSharpEar, Image.yellowShapeSharpEar, Image.pinkShapeSharpEar, Image.mauveShapeSharpEar, Image.greenShapeSharpEar],
-        [Image.navyShapeWater, Image.yellowShapeWater, Image.pinkShapeWater, Image.mauveShapeWater, Image.greenShapeWater],
         [Image.navyShapeBread, Image.yellowShapeBread, Image.pinkShapeBread, Image.mauveShapeBread, Image.greenShapeBread],
         [Image.navyShapeRoundEar, Image.yellowShapeRoundEar, Image.pinkShapeRoundEar, Image.mauveShapeRoundEar, Image.greenShapeRoundEar],
         [Image.navyShapeJjang, Image.yellowShapeJjang, Image.pinkShapeJjang, Image.mauveShapeJjang, Image.greenShapeJjang]

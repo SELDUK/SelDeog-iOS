@@ -11,6 +11,7 @@ import SnapKit
 
 final class SetCharacterNameViewController: BaseViewController {
     
+    let characterLabel = UILabel()
     let loadingBar = UIProgressView()
     let titleLabel = UILabel()
     let shapeImageView = UIImageView()
@@ -28,14 +29,6 @@ final class SetCharacterNameViewController: BaseViewController {
         setLayouts()
         registerTarget()
         setLoadingBarAnimation()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.do {
-            $0.title = "MY CHARACTER"
-        }
     }
     
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -59,6 +52,11 @@ extension SetCharacterNameViewController {
     private func setProperties() {
         view.do {
             $0.backgroundColor = .white
+        }
+        
+        characterLabel.do {
+            $0.text = "MY CHARACTER"
+            $0.font = .nanumPen(size: 35, family: .bold)
         }
         
         loadingBar.do {
@@ -106,7 +104,7 @@ extension SetCharacterNameViewController {
         }
         
         expressionImageView.do {
-            $0.image = Image.expressionSmile
+            $0.image = Image.expressionWink
             $0.contentMode = .scaleToFill
         }
         
@@ -133,7 +131,7 @@ extension SetCharacterNameViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(loadingBar, titleLabel, shapeImageView, startQuotationMarkLabel, finishQuotationMarkLabel, nameTextField, nextButton)
+        view.addSubviews(characterLabel, loadingBar, titleLabel, shapeImageView, startQuotationMarkLabel, finishQuotationMarkLabel, nameTextField, nextButton)
         shapeImageView.addSubviews(expressionImageView, featureImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
         expressionImageView.bringSubviewToFront(featureImageView)
@@ -142,8 +140,13 @@ extension SetCharacterNameViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
 
+        characterLabel.snp.makeConstraints {
+            $0.top.equalTo(safeArea)
+            $0.centerX.equalToSuperview()
+        }
+        
         loadingBar.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(27)
+            $0.top.equalTo(characterLabel.snp.bottom).offset(27)
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(17)
         }

@@ -102,7 +102,7 @@ extension ConfirmCharacterViewController {
         }
         
         expressionImageView.do {
-            $0.image = Image.expressionSmile
+            $0.image = Image.expressionExciting
             $0.contentMode = .scaleToFill
         }
         
@@ -163,8 +163,9 @@ extension ConfirmCharacterViewController {
         }
         
         animationView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(animationView.snp.width)
+            $0.bottom.equalTo(nextButton.snp.top)
         }
         
         shapeImageView.snp.makeConstraints {

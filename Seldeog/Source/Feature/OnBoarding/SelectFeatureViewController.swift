@@ -11,6 +11,7 @@ import SnapKit
 
 final class SelectFeatureViewController: BaseViewController {
     
+    let characterLabel = UILabel()
     let loadingBar = UIProgressView()
     let titleLabel = UILabel()
     let containerView = UIView()
@@ -22,7 +23,7 @@ final class SelectFeatureViewController: BaseViewController {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 20
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100), collectionViewLayout: layout)
         return cv
     }()
@@ -83,6 +84,11 @@ extension SelectFeatureViewController {
             $0.backgroundColor = .white
         }
         
+        characterLabel.do {
+            $0.text = "MY CHARACTER"
+            $0.font = .nanumPen(size: 35, family: .bold)
+        }
+        
         loadingBar.do {
             $0.layer.cornerRadius = 8.5
             $0.clipsToBounds = true
@@ -105,7 +111,7 @@ extension SelectFeatureViewController {
         }
         
         expressionImageView.do {
-            $0.image = Image.expressionConfidence
+            $0.image = Image.expressionLaugh
             $0.contentMode = .scaleToFill
         }
         
@@ -117,7 +123,7 @@ extension SelectFeatureViewController {
             $0.register(MakeCharacterViewCell.self, forCellWithReuseIdentifier: "MakeCharacterCell")
             $0.delegate = self
             $0.dataSource = self
-            $0.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+            $0.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
             $0.showsHorizontalScrollIndicator = false
         }
         
@@ -140,7 +146,7 @@ extension SelectFeatureViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(loadingBar, titleLabel, containerView, collectionView, nextButton)
+        view.addSubviews(characterLabel, loadingBar, titleLabel, containerView, collectionView, nextButton)
         containerView.addSubviews(shapeImageView, expressionImageView, featureImageView)
         shapeImageView.bringSubviewToFront(expressionImageView)
         expressionImageView.bringSubviewToFront(featureImageView)
@@ -149,8 +155,13 @@ extension SelectFeatureViewController {
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
 
+        characterLabel.snp.makeConstraints {
+            $0.top.equalTo(safeArea)
+            $0.centerX.equalToSuperview()
+        }
+        
         loadingBar.snp.makeConstraints {
-            $0.top.equalTo(safeArea).offset(27)
+            $0.top.equalTo(characterLabel.snp.bottom).offset(27)
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.height.equalTo(17)
         }
@@ -168,17 +179,17 @@ extension SelectFeatureViewController {
         
         shapeImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.height.equalTo(290)
+            $0.width.height.equalTo(250)
         }
         
         expressionImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.height.equalTo(290)
+            $0.width.height.equalTo(250)
         }
         
         featureImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.width.height.equalTo(290)
+            $0.width.height.equalTo(250)
         }
         
         collectionView.snp.makeConstraints {
