@@ -17,7 +17,6 @@ protocol CommentButtonProtocol {
 final class TodayComplimentViewController: BaseViewController {
     
     let todayLabel = UILabel()
-    let characterNameLabel = UILabel()
     let myCharacterImageView = UIImageView()
     let writeButton = UIButton()
     let lineView = UIView()
@@ -41,7 +40,7 @@ final class TodayComplimentViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let today = Date()
-        navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
+        todayLabel.text = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
         getComplimentList()
     }
     
@@ -200,6 +199,10 @@ extension TodayComplimentViewController {
             $0.hidesBackButton = true
         }
         
+        todayLabel.do {
+            $0.font = .nanumPen(size: 35, family: .bold)
+        }
+        
         writeButton.do {
             $0.setBackgroundColor(.black, for: .normal)
             $0.setImage(UIImage(systemName: "plus"), for: .normal)
@@ -235,16 +238,20 @@ extension TodayComplimentViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(todayLabel, characterNameLabel, myCharacterImageView, writeButton, lineView, collectionView, baseTabBarView)
+        view.addSubviews(todayLabel, myCharacterImageView, writeButton, lineView, collectionView, baseTabBarView)
     }
     
     private func setConstraints() {
+        todayLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.centerX.equalToSuperview()
+        }
         
         myCharacterImageView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(15)
+            $0.top.equalTo(todayLabel.snp.bottom).offset(15)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(290)
-            $0.height.equalTo(290)
+            $0.width.equalTo(250)
+            $0.height.equalTo(250)
         }
         
         writeButton.snp.makeConstraints {

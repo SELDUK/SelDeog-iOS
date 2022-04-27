@@ -12,6 +12,7 @@ import Kingfisher
 
 final class PastComplimentViewController: BaseViewController {
     
+    let todayLabel = UILabel()
     let myCharacterImageView = UIImageView()
     let lineView = UIView()
     let collectionView: UICollectionView = {
@@ -45,7 +46,7 @@ final class PastComplimentViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: date.toDate()).uppercased()
+        todayLabel.text = DateFormatters.monthAndDayFormatter.string(from: date.toDate()).uppercased()
     }
     
     private func getComplimentList(date: String) {
@@ -143,6 +144,10 @@ extension PastComplimentViewController {
             $0.hidesBackButton = true
         }
         
+        todayLabel.do {
+            $0.font = .nanumPen(size: 35, family: .bold)
+        }
+        
         lineView.do {
             $0.backgroundColor = .lightGray
         }
@@ -170,16 +175,21 @@ extension PastComplimentViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(myCharacterImageView, lineView, collectionView, baseTabBarView)
+        view.addSubviews(todayLabel, myCharacterImageView, lineView, collectionView, baseTabBarView)
     }
     
     private func setConstraints() {
         
-        myCharacterImageView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(15)
+        todayLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(290)
-            $0.height.equalTo(290)
+        }
+        
+        myCharacterImageView.snp.makeConstraints {
+            $0.top.equalTo(todayLabel.snp.bottom).offset(15)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(250)
+            $0.height.equalTo(250)
         }
         
         lineView.snp.makeConstraints {

@@ -102,7 +102,8 @@ final class CalendarViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.title = ""
+        let today = Date()
+        setCalendarDate(date: today)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -183,7 +184,6 @@ final class CalendarViewController: BaseViewController {
         
         getTodayComplimentList(date: DateFormatters.fullDateFormatter.string(from: today)) { data in
             if data.success {
-                self.navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
                 self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
             } else {
                 self.showToastMessageAlert(message: "칭찬 리스트 로드에 실패하였습니다.")
@@ -210,11 +210,8 @@ final class CalendarViewController: BaseViewController {
     }
         
     private func makeTodayCharacter(color: Int) {
-        let today = Date()
-        
         makeTodayCharacter(color: color) { data in
             if data.success {
-                self.navigationController?.title = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
                 self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
             } else {
                 self.showToastMessageAlert(message: "색 선택에 실패하였습니다.")
@@ -295,7 +292,6 @@ extension CalendarViewController: CalendarViewDelegate {
             let selectedDate = date.toString()
             for character in charactersForCalendar {
                 if selectedDate == character.usrChrDateCrt {
-                    self.navigationController?.title = selectedDate
                     self.navigationController?.pushViewController(PastComplimentViewController(date: selectedDate), animated: false)
                     break
                 }
