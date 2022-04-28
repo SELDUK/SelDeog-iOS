@@ -14,9 +14,7 @@ final class SettingViewController: BaseViewController {
     let lineView = UIView()
     let tableView = UITableView()
     let baseTabBarView = BaseTabBarView()
-    let settingInfoList: [SettingInfo] = [SettingInfo(settingIcon: Image.notificationIcon, settingTitle: "NOTIFICATION"),
-                                          SettingInfo(settingIcon: Image.lockIcon, settingTitle: "LOCK"),
-                                          SettingInfo(settingIcon: Image.guideIcon, settingTitle: "GUIDE"),
+    let settingInfoList: [SettingInfo] = [SettingInfo(settingIcon: Image.guideIcon, settingTitle: "GUIDE"),
                                           SettingInfo(settingIcon: Image.logoutIcon, settingTitle: "LOG OUT"),
                                           SettingInfo(settingIcon: Image.informationIcon, settingTitle: "APP VERSION")]
 
@@ -43,12 +41,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0, 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell", for: indexPath) as? SettingSwitchCell else { return UITableViewCell() }
-            cell.setImage(image: settingInfoList[indexPath.row].settingIcon)
-            cell.setTitle(title: settingInfoList[indexPath.row].settingTitle)
-            cell.selectionStyle = .none
-            return cell
-        case 2, 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingNextCell", for: indexPath) as? SettingNextCell else { return UITableViewCell() }
             cell.setImage(image: settingInfoList[indexPath.row].settingIcon)
             cell.setTitle(title: settingInfoList[indexPath.row].settingTitle)
@@ -69,9 +61,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 2:
+        case 0:
             print("guide")
-        case 3:
+        case 1:
             UserDefaults.standard.setValue("", forKey: UserDefaultKey.token)
             LoginSwitcher.updateRootVC(root: .signIn)
         default:
@@ -100,7 +92,6 @@ extension SettingViewController {
             $0.delegate = self
             $0.dataSource = self
             $0.register(SettingNextCell.self, forCellReuseIdentifier: "SettingNextCell")
-            $0.register(SettingSwitchCell.self, forCellReuseIdentifier: "SettingSwitchCell")
             $0.register(SettingTextCell.self, forCellReuseIdentifier: "SettingTextCell")
             $0.separatorStyle = .none
             $0.isScrollEnabled = false

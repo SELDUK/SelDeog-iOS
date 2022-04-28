@@ -52,7 +52,6 @@
 		2D94DEA827FD76A5006C6A01 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94DEA727FD76A5006C6A01 /* SettingViewController.swift */; };
 		2D94DEAC27FD7C55006C6A01 /* SettingNextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94DEAB27FD7C55006C6A01 /* SettingNextCell.swift */; };
 		2D94DEAE27FD815A006C6A01 /* SettingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94DEAD27FD815A006C6A01 /* SettingInfo.swift */; };
-		2D94DEB127FDC0A9006C6A01 /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94DEB027FDC0A9006C6A01 /* SettingSwitchCell.swift */; };
 		2D94DEB327FDC9CB006C6A01 /* SettingTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94DEB227FDC9CB006C6A01 /* SettingTextCell.swift */; };
 		2D97E6ED27EAE8400029DE35 /* SelectFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */; };
 		2D97E6EF27EAE9D30029DE35 /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */; };
@@ -156,7 +155,6 @@
 		2D94DEA727FD76A5006C6A01 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2D94DEAB27FD7C55006C6A01 /* SettingNextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNextCell.swift; sourceTree = "<group>"; };
 		2D94DEAD27FD815A006C6A01 /* SettingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInfo.swift; sourceTree = "<group>"; };
-		2D94DEB027FDC0A9006C6A01 /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		2D94DEB227FDC9CB006C6A01 /* SettingTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTextCell.swift; sourceTree = "<group>"; };
 		2D97E6EC27EAE8400029DE35 /* SelectFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeatureViewController.swift; sourceTree = "<group>"; };
 		2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
@@ -386,7 +384,6 @@
 			children = (
 				2D94DEA727FD76A5006C6A01 /* SettingViewController.swift */,
 				2D94DEAB27FD7C55006C6A01 /* SettingNextCell.swift */,
-				2D94DEB027FDC0A9006C6A01 /* SettingSwitchCell.swift */,
 				2D94DEB227FDC9CB006C6A01 /* SettingTextCell.swift */,
 				2D94DEAD27FD815A006C6A01 /* SettingInfo.swift */,
 			);
@@ -688,7 +685,6 @@
 				2D94DEA327FD48D7006C6A01 /* CalendarView.swift in Sources */,
 				2D94DEAE27FD815A006C6A01 /* SettingInfo.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
-				2D94DEB127FDC0A9006C6A01 /* SettingSwitchCell.swift in Sources */,
 				2D32068027FEC36100BFE30E /* UserAPI.swift in Sources */,
 				2D94DEA127FD48D7006C6A01 /* CalendarView+Extensions.swift in Sources */,
 				2D94DE9F27FD48D7006C6A01 /* EventsManager.swift in Sources */,
