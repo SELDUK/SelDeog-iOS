@@ -67,6 +67,18 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         return 60
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 2:
+            print("guide")
+        case 3:
+            UserDefaults.standard.setValue("", forKey: UserDefaultKey.token)
+            LoginSwitcher.updateRootVC(root: .signIn)
+        default:
+            return
+        }
+    }
+    
 }
 
 extension SettingViewController {

@@ -95,9 +95,9 @@ final class CalendarTabBarView: UIView {
         }
         
         writeComplimentButton.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
             $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(95)
+            $0.width.height.equalTo(75)
         }
         
         calendarButton.snp.makeConstraints {

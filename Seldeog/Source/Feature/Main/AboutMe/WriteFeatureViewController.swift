@@ -78,7 +78,7 @@ extension WriteFeatureViewController {
         
         commentTextView.do {
             $0.delegate = self
-            $0.text = "OO이를 칭찬해봐요!"
+            $0.text = "칭찬을 작성해주세요"
             $0.backgroundColor = .white
             $0.textColor = UIColor.lightGray
             $0.font = .nanumPen(size: 15, family: .bold)
@@ -183,7 +183,7 @@ extension WriteFeatureViewController: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
       if commentTextView.text.isEmpty {
-        commentTextView.text = "OO이를 칭찬해봐요!"
+        commentTextView.text = "칭찬을 작성해주세요"
         commentTextView.textColor = UIColor.lightGray
       }
     }

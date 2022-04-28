@@ -203,8 +203,5 @@ open class CalendarDayCell: UICollectionViewCell {
 
     override open func layoutSubviews() {
         super.layoutSubviews()
-
-        characterBackView.layer.cornerRadius = characterBackView.frame.height/2
-        characterBackView.layer.masksToBounds = true
     }
 }

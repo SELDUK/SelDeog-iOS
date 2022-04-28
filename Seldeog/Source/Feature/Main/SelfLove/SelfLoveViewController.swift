@@ -41,21 +41,21 @@ final class SelfLoveViewController: BaseViewController {
                 switch data.data.usrChrLove {
                 case 98:
                     self.animationView = Animation.ninetyeightPercentage
-                case 90:
+                case 90...97:
                     self.animationView = Animation.ninetyPercentage
-                case 80:
+                case 80...89:
                     self.animationView = Animation.eightyPercentage
-                case 70:
+                case 70...79:
                     self.animationView = Animation.seventyPercentage
-                case 60:
+                case 60...69:
                     self.animationView = Animation.sixtyPercentage
-                case 50:
+                case 50...59:
                     self.animationView = Animation.fiftyPercentage
-                case 40:
+                case 40...49:
                     self.animationView = Animation.fourtyPercentage
-                case 30:
+                case 30...39:
                     self.animationView = Animation.thirtyPercentage
-                case 20:
+                case 20...29:
                     self.animationView = Animation.twentyPercentage
                 default:
                     self.animationView = Animation.tenPercentage

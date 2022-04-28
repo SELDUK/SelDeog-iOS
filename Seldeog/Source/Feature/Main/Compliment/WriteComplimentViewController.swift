@@ -94,7 +94,7 @@ extension WriteComplimentViewController {
         
         commentTextView.do {
             $0.delegate = self
-            $0.text = "OO이를 칭찬해봐요!"
+            $0.text = "칭찬을 작성해주세요"
             $0.backgroundColor = .white
             $0.textColor = UIColor.lightGray
             $0.font = .nanumPen(size: 15, family: .bold)
@@ -121,6 +121,7 @@ extension WriteComplimentViewController {
         tag1TextField.do {
             $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "귀여워", attributes: attributes)
+            $0.font = .nanumPen(size: 15, family: .bold)
             $0.clearButtonMode = .never
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
@@ -144,6 +145,7 @@ extension WriteComplimentViewController {
         tag2TextField.do {
             $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "너무너무기특해", attributes: attributes)
+            $0.font = .nanumPen(size: 15, family: .bold)
             $0.clearButtonMode = .never
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
@@ -331,7 +333,7 @@ extension WriteComplimentViewController: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
       if commentTextView.text.isEmpty {
-        commentTextView.text = "OO이를 칭찬해봐요!"
+        commentTextView.text = "칭찬을 작성해주세요"
         commentTextView.textColor = UIColor.lightGray
       }
     }

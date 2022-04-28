@@ -197,7 +197,7 @@ extension ModifyFeatureViewController: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
       if commentTextView.text.isEmpty {
-        commentTextView.text = "OO이를 칭찬해봐요!"
+        commentTextView.text = "칭찬을 작성해주세요"
         commentTextView.textColor = UIColor.lightGray
       }
     }
