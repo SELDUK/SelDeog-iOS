@@ -14,7 +14,7 @@ final class PastComplimentViewController: BaseViewController {
     
     let todayLabel = UILabel()
     let myCharacterImageView = UIImageView()
-    let lineView = UIView()
+    let lineView = UIImageView()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -149,7 +149,7 @@ extension PastComplimentViewController {
         }
         
         lineView.do {
-            $0.backgroundColor = .lightGray
+            $0.image = Image.gradientLine
         }
         
         collectionView.do {
@@ -195,7 +195,7 @@ extension PastComplimentViewController {
         lineView.snp.makeConstraints {
             $0.top.equalTo(myCharacterImageView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(4)
+            $0.height.equalTo(7)
         }
         
         collectionView.snp.makeConstraints {

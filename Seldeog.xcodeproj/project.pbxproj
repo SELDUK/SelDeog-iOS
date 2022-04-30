@@ -37,6 +37,18 @@
 		2D32068227FEC92300BFE30E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068127FEC92300BFE30E /* UserRepository.swift */; };
 		2D32068427FECDB800BFE30E /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068327FECDB800BFE30E /* UserResponse.swift */; };
 		2D47BA2E27E6FAC1007D83F1 /* MakeCharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */; };
+		2D7F12CF281D06DF00016DF3 /* 10percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12C5281D06DE00016DF3 /* 10percent.json */; };
+		2D7F12D0281D06DF00016DF3 /* 90percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12C6281D06DE00016DF3 /* 90percent.json */; };
+		2D7F12D1281D06DF00016DF3 /* 40percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12C7281D06DE00016DF3 /* 40percent.json */; };
+		2D7F12D2281D06DF00016DF3 /* 50percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12C8281D06DF00016DF3 /* 50percent.json */; };
+		2D7F12D3281D06DF00016DF3 /* 80percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12C9281D06DF00016DF3 /* 80percent.json */; };
+		2D7F12D4281D06DF00016DF3 /* 98percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12CA281D06DF00016DF3 /* 98percent.json */; };
+		2D7F12D5281D06DF00016DF3 /* 70percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12CB281D06DF00016DF3 /* 70percent.json */; };
+		2D7F12D6281D06DF00016DF3 /* 20percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12CC281D06DF00016DF3 /* 20percent.json */; };
+		2D7F12D7281D06DF00016DF3 /* 30percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12CD281D06DF00016DF3 /* 30percent.json */; };
+		2D7F12D8281D06DF00016DF3 /* 60percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12CE281D06DF00016DF3 /* 60percent.json */; };
+		2D7F12DD281D5B0300016DF3 /* GIF+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F12DC281D5B0300016DF3 /* GIF+Extension.swift */; };
+		2D7F12DF281D74B200016DF3 /* seldukGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12DE281D74B200016DF3 /* seldukGIF.gif */; };
 		2D8C547C27F6BBF100308875 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */; };
 		2D8C547E27F6BF3800308875 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547D27F6BF3800308875 /* SelectColorCell.swift */; };
 		2D94DE9B27FD48D7006C6A01 /* CalendarView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94DE9227FD48D7006C6A01 /* CalendarView+Style.swift */; };
@@ -80,16 +92,6 @@
 		2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDD45727E1C5C300FC289C /* BaseViewController.swift */; };
 		2DE2B289281287ED00300B24 /* SelfLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B288281287ED00300B24 /* SelfLoveViewController.swift */; };
 		2DE2B28B2812927800300B24 /* SelfLoveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B28A2812927800300B24 /* SelfLoveResponse.swift */; };
-		2DE2B2972816854300300B24 /* 50per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B28D2816854200300B24 /* 50per.json */; };
-		2DE2B2982816854300300B24 /* 80per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B28E2816854200300B24 /* 80per.json */; };
-		2DE2B2992816854300300B24 /* 70per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B28F2816854200300B24 /* 70per.json */; };
-		2DE2B29A2816854300300B24 /* 90per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2902816854200300B24 /* 90per.json */; };
-		2DE2B29B2816854300300B24 /* 10per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2912816854200300B24 /* 10per.json */; };
-		2DE2B29C2816854300300B24 /* 30per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2922816854200300B24 /* 30per.json */; };
-		2DE2B29D2816854300300B24 /* 20per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2932816854200300B24 /* 20per.json */; };
-		2DE2B29E2816854300300B24 /* 98per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2942816854200300B24 /* 98per.json */; };
-		2DE2B29F2816854300300B24 /* 60per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2952816854200300B24 /* 60per.json */; };
-		2DE2B2A02816854300300B24 /* 40per.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2962816854200300B24 /* 40per.json */; };
 		2DE2B2A22816877300300B24 /* confetti1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2A12816877300300B24 /* confetti1.json */; };
 		2DE2B2A4281687A000300B24 /* confetti2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE2B2A3281687A000300B24 /* confetti2.json */; };
 		2DE2B2A82816884400300B24 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE2B2A72816884400300B24 /* Animation.swift */; };
@@ -140,6 +142,18 @@
 		2D32068127FEC92300BFE30E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		2D32068327FECDB800BFE30E /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCharacterViewCell.swift; sourceTree = "<group>"; };
+		2D7F12C5281D06DE00016DF3 /* 10percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 10percent.json; sourceTree = "<group>"; };
+		2D7F12C6281D06DE00016DF3 /* 90percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 90percent.json; sourceTree = "<group>"; };
+		2D7F12C7281D06DE00016DF3 /* 40percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 40percent.json; sourceTree = "<group>"; };
+		2D7F12C8281D06DF00016DF3 /* 50percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 50percent.json; sourceTree = "<group>"; };
+		2D7F12C9281D06DF00016DF3 /* 80percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 80percent.json; sourceTree = "<group>"; };
+		2D7F12CA281D06DF00016DF3 /* 98percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 98percent.json; sourceTree = "<group>"; };
+		2D7F12CB281D06DF00016DF3 /* 70percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 70percent.json; sourceTree = "<group>"; };
+		2D7F12CC281D06DF00016DF3 /* 20percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 20percent.json; sourceTree = "<group>"; };
+		2D7F12CD281D06DF00016DF3 /* 30percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 30percent.json; sourceTree = "<group>"; };
+		2D7F12CE281D06DF00016DF3 /* 60percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 60percent.json; sourceTree = "<group>"; };
+		2D7F12DC281D5B0300016DF3 /* GIF+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF+Extension.swift"; sourceTree = "<group>"; };
+		2D7F12DE281D74B200016DF3 /* seldukGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = seldukGIF.gif; sourceTree = "<group>"; };
 		2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		2D8C547D27F6BF3800308875 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		2D94DE9227FD48D7006C6A01 /* CalendarView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarView+Style.swift"; sourceTree = "<group>"; };
@@ -183,16 +197,6 @@
 		2DDDD45727E1C5C300FC289C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2DE2B288281287ED00300B24 /* SelfLoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLoveViewController.swift; sourceTree = "<group>"; };
 		2DE2B28A2812927800300B24 /* SelfLoveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLoveResponse.swift; sourceTree = "<group>"; };
-		2DE2B28D2816854200300B24 /* 50per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 50per.json; sourceTree = "<group>"; };
-		2DE2B28E2816854200300B24 /* 80per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 80per.json; sourceTree = "<group>"; };
-		2DE2B28F2816854200300B24 /* 70per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 70per.json; sourceTree = "<group>"; };
-		2DE2B2902816854200300B24 /* 90per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 90per.json; sourceTree = "<group>"; };
-		2DE2B2912816854200300B24 /* 10per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 10per.json; sourceTree = "<group>"; };
-		2DE2B2922816854200300B24 /* 30per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 30per.json; sourceTree = "<group>"; };
-		2DE2B2932816854200300B24 /* 20per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 20per.json; sourceTree = "<group>"; };
-		2DE2B2942816854200300B24 /* 98per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 98per.json; sourceTree = "<group>"; };
-		2DE2B2952816854200300B24 /* 60per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 60per.json; sourceTree = "<group>"; };
-		2DE2B2962816854200300B24 /* 40per.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 40per.json; sourceTree = "<group>"; };
 		2DE2B2A12816877300300B24 /* confetti1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = confetti1.json; sourceTree = "<group>"; };
 		2DE2B2A3281687A000300B24 /* confetti2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = confetti2.json; sourceTree = "<group>"; };
 		2DE2B2A72816884400300B24 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				2D1EC9A627DF65E300EE1D96 /* Image.swift */,
 				2DE2B2A72816884400300B24 /* Animation.swift */,
 				2DDDD45527E1C22900FC289C /* Font.swift */,
+				2D7F12DE281D74B200016DF3 /* seldukGIF.gif */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				2D94DEA427FD5423006C6A01 /* Date+Extension.swift */,
 				2DF0B11E280176E3002F37E1 /* String+Extension.swift */,
 				2DC5212A280E98F600A983FA /* DateFormatters.swift */,
+				2D7F12DC281D5B0300016DF3 /* GIF+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -488,16 +494,16 @@
 		2DE2B28C2816852B00300B24 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				2DE2B2912816854200300B24 /* 10per.json */,
-				2DE2B2932816854200300B24 /* 20per.json */,
-				2DE2B2922816854200300B24 /* 30per.json */,
-				2DE2B2962816854200300B24 /* 40per.json */,
-				2DE2B28D2816854200300B24 /* 50per.json */,
-				2DE2B2952816854200300B24 /* 60per.json */,
-				2DE2B28F2816854200300B24 /* 70per.json */,
-				2DE2B28E2816854200300B24 /* 80per.json */,
-				2DE2B2902816854200300B24 /* 90per.json */,
-				2DE2B2942816854200300B24 /* 98per.json */,
+				2D7F12C5281D06DE00016DF3 /* 10percent.json */,
+				2D7F12CC281D06DF00016DF3 /* 20percent.json */,
+				2D7F12CD281D06DF00016DF3 /* 30percent.json */,
+				2D7F12C7281D06DE00016DF3 /* 40percent.json */,
+				2D7F12C8281D06DF00016DF3 /* 50percent.json */,
+				2D7F12CE281D06DF00016DF3 /* 60percent.json */,
+				2D7F12CB281D06DF00016DF3 /* 70percent.json */,
+				2D7F12C9281D06DF00016DF3 /* 80percent.json */,
+				2D7F12C6281D06DE00016DF3 /* 90percent.json */,
+				2D7F12CA281D06DF00016DF3 /* 98percent.json */,
 				2DE2B2A12816877300300B24 /* confetti1.json */,
 				2DE2B2A3281687A000300B24 /* confetti2.json */,
 			);
@@ -594,22 +600,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DE2B29B2816854300300B24 /* 10per.json in Resources */,
-				2DE2B2A02816854300300B24 /* 40per.json in Resources */,
+				2D7F12D2281D06DF00016DF3 /* 50percent.json in Resources */,
+				2D7F12D0281D06DF00016DF3 /* 90percent.json in Resources */,
 				2DDDD45327E1C0FD00FC289C /* NanumBarunpenR.otf in Resources */,
+				2D7F12D3281D06DF00016DF3 /* 80percent.json in Resources */,
+				2D7F12D4281D06DF00016DF3 /* 98percent.json in Resources */,
 				2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */,
 				2DE2B2A4281687A000300B24 /* confetti2.json in Resources */,
+				2D7F12D5281D06DF00016DF3 /* 70percent.json in Resources */,
 				2DE2B2A22816877300300B24 /* confetti1.json in Resources */,
-				2DE2B29A2816854300300B24 /* 90per.json in Resources */,
-				2DE2B2972816854300300B24 /* 50per.json in Resources */,
-				2DE2B2982816854300300B24 /* 80per.json in Resources */,
+				2D7F12DF281D74B200016DF3 /* seldukGIF.gif in Resources */,
 				2D246BFE27BF6E0700546F28 /* LaunchScreen.storyboard in Resources */,
-				2DE2B29D2816854300300B24 /* 20per.json in Resources */,
+				2D7F12D7281D06DF00016DF3 /* 30percent.json in Resources */,
 				2D246BFB27BF6E0700546F28 /* Assets.xcassets in Resources */,
-				2DE2B29C2816854300300B24 /* 30per.json in Resources */,
-				2DE2B29F2816854300300B24 /* 60per.json in Resources */,
-				2DE2B29E2816854300300B24 /* 98per.json in Resources */,
-				2DE2B2992816854300300B24 /* 70per.json in Resources */,
+				2D7F12D1281D06DF00016DF3 /* 40percent.json in Resources */,
+				2D7F12D8281D06DF00016DF3 /* 60percent.json in Resources */,
+				2D7F12CF281D06DF00016DF3 /* 10percent.json in Resources */,
+				2D7F12D6281D06DF00016DF3 /* 20percent.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +681,7 @@
 				2D05C126280A96FF00925681 /* ComplimentListResponse.swift in Sources */,
 				2DC52122280E900B00A983FA /* PastComplimentViewController.swift in Sources */,
 				2DC5212B280E98F600A983FA /* DateFormatters.swift in Sources */,
+				2D7F12DD281D5B0300016DF3 /* GIF+Extension.swift in Sources */,
 				2D32068427FECDB800BFE30E /* UserResponse.swift in Sources */,
 				2D05C124280A92FC00925681 /* BaseTabBarView.swift in Sources */,
 				2DE8363827F42E0B00DECB35 /* ValidateButton.swift in Sources */,

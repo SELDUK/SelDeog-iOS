@@ -19,7 +19,7 @@ final class TodayComplimentViewController: BaseViewController {
     let todayLabel = UILabel()
     let myCharacterImageView = UIImageView()
     let writeButton = UIButton()
-    let lineView = UIView()
+    let lineView = UIImageView()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -212,7 +212,7 @@ extension TodayComplimentViewController {
         }
         
         lineView.do {
-            $0.backgroundColor = .lightGray
+            $0.image = Image.gradientLine
         }
         
         collectionView.do {
@@ -263,7 +263,7 @@ extension TodayComplimentViewController {
         lineView.snp.makeConstraints {
             $0.top.equalTo(writeButton.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(4)
+            $0.height.equalTo(7)
         }
         
         collectionView.snp.makeConstraints {

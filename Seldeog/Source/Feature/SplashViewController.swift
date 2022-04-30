@@ -9,26 +9,45 @@ import UIKit
 
 class SplashViewController: UIViewController {
     private let logoView = UIImageView()
+    private let logoImageView = UIImageView(image: Image.logoGIF)
+    private let seldukImageView = UIImageView(image: Image.selduk)
+
     private var mTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewLayout()
-        UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isAutoLogin)
-        UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isNotFirstTime)
 
-        mTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
+        mTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
     }
     
     private func setupViewLayout() {
+
         view.backgroundColor = .white
+        logoImageView.backgroundColor = .white
+        
         view.addSubview(logoView)
-        logoView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(104)
+        logoView.addSubviews(logoImageView, seldukImageView)
+        
+        logoView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(112)
+            $0.height.equalTo(116)
         }
-        logoView.image = Image.navyShapeCircle
+        
+        logoImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(76)
+        }
+        
+        seldukImageView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(112)
+            $0.height.equalTo(29)
+        }
     }
 
     private func processCheck() {

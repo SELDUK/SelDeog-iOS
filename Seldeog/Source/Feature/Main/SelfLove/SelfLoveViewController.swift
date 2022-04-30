@@ -73,7 +73,7 @@ final class SelfLoveViewController: BaseViewController {
                 }
                 animationView.contentMode = .scaleAspectFill
                 animationView.play()
-                animationView.loopMode = .playOnce
+                animationView.loopMode = .autoReverse
                 animationView.layer.zPosition = -1
             } else {
                 self.showToastMessageAlert(message: "Self Love 로드에 실패하였습니다.")

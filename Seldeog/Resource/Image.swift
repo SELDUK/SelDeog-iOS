@@ -37,6 +37,7 @@ enum Image {
     static let hashTagIcon = UIImage(named: "ic_hashtag")!
     static let deleteIcon = UIImage(named: "ic_delete")!
     static let modifyIcon = UIImage(named: "ic_modify")!
+    static let gradientLine = UIImage(named: "gradient_line")!
     
     // 캐릭터 모양
     static let navyShapeCircle = UIImage(named: "shape_navy_circle")!
@@ -114,4 +115,7 @@ enum Image {
     static let checkButton = UIImage(named: "checkButton_normal")!
     static let checkButtonClicked = UIImage(named: "checkButton_clicked")!
     static let checkButtonRepeat = UIImage(named: "checkButton_repeat")!
+    
+    static let logoGIF = UIImage.gifImageWithName("seldukGIF")
+    static let selduk = UIImage(named: "selduk")
 }
