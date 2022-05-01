@@ -24,6 +24,8 @@ class LoginSwitcher {
                         sceneDelegate.goToSelfLoveVC()
                     case .signIn:
                         sceneDelegate.goToSignIn()
+                    case .guide:
+                        sceneDelegate.goToGuide()
                     case .onBoard:
                         sceneDelegate.goToOnboard()
                     }
@@ -44,4 +46,5 @@ public enum UpdateRoot {
     case selfLove
     case signIn
     case onBoard
+    case guide
 }

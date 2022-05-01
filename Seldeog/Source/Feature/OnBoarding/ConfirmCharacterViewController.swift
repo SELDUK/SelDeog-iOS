@@ -59,7 +59,7 @@ final class ConfirmCharacterViewController: BaseViewController {
                 UserDefaults.standard.setValue(data.data?.usrChrImgDft, forKey: UserDefaultKey.userCharacter)
                 UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isNotFirstTime)
                 UserDefaults.standard.synchronize()
-                LoginSwitcher.updateRootVC(root: .calendar)
+                LoginSwitcher.updateRootVC(root: .guide)
             } else {
                 self.showToastMessageAlert(message: "캐릭터 생성에 실패하였습니다.")
             }

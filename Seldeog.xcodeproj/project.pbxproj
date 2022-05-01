@@ -49,6 +49,9 @@
 		2D7F12D8281D06DF00016DF3 /* 60percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12CE281D06DF00016DF3 /* 60percent.json */; };
 		2D7F12DD281D5B0300016DF3 /* GIF+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F12DC281D5B0300016DF3 /* GIF+Extension.swift */; };
 		2D7F12DF281D74B200016DF3 /* seldukGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12DE281D74B200016DF3 /* seldukGIF.gif */; };
+		2D7F12E5281E82C800016DF3 /* GuideMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F12E4281E82C800016DF3 /* GuideMainViewController.swift */; };
+		2D7F12E7281E858A00016DF3 /* GuideWithImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F12E6281E858A00016DF3 /* GuideWithImageViewController.swift */; };
+		2D7F12E9281E8BB100016DF3 /* GuideWithButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F12E8281E8BB100016DF3 /* GuideWithButtonViewController.swift */; };
 		2D8C547C27F6BBF100308875 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */; };
 		2D8C547E27F6BF3800308875 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C547D27F6BF3800308875 /* SelectColorCell.swift */; };
 		2D94DE9B27FD48D7006C6A01 /* CalendarView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94DE9227FD48D7006C6A01 /* CalendarView+Style.swift */; };
@@ -154,6 +157,9 @@
 		2D7F12CE281D06DF00016DF3 /* 60percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 60percent.json; sourceTree = "<group>"; };
 		2D7F12DC281D5B0300016DF3 /* GIF+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF+Extension.swift"; sourceTree = "<group>"; };
 		2D7F12DE281D74B200016DF3 /* seldukGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = seldukGIF.gif; sourceTree = "<group>"; };
+		2D7F12E4281E82C800016DF3 /* GuideMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideMainViewController.swift; sourceTree = "<group>"; };
+		2D7F12E6281E858A00016DF3 /* GuideWithImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideWithImageViewController.swift; sourceTree = "<group>"; };
+		2D7F12E8281E8BB100016DF3 /* GuideWithButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideWithButtonViewController.swift; sourceTree = "<group>"; };
 		2D8C547B27F6BBF100308875 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		2D8C547D27F6BF3800308875 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		2D94DE9227FD48D7006C6A01 /* CalendarView+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalendarView+Style.swift"; sourceTree = "<group>"; };
@@ -235,6 +241,9 @@
 				2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */,
 				2D8C547D27F6BF3800308875 /* SelectColorCell.swift */,
 				2D97E6EE27EAE9D30029DE35 /* CharacterData.swift */,
+				2D7F12E4281E82C800016DF3 /* GuideMainViewController.swift */,
+				2D7F12E6281E858A00016DF3 /* GuideWithImageViewController.swift */,
+				2D7F12E8281E8BB100016DF3 /* GuideWithButtonViewController.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -690,6 +699,7 @@
 				2DE2B28B2812927800300B24 /* SelfLoveResponse.swift in Sources */,
 				2D2ADF0627CF4D610034A602 /* SignUpViewController.swift in Sources */,
 				2D94DEA527FD5423006C6A01 /* Date+Extension.swift in Sources */,
+				2D7F12E7281E858A00016DF3 /* GuideWithImageViewController.swift in Sources */,
 				2D94DEA327FD48D7006C6A01 /* CalendarView.swift in Sources */,
 				2D94DEAE27FD815A006C6A01 /* SettingInfo.swift in Sources */,
 				2D246BEF27BF6E0600546F28 /* AppDelegate.swift in Sources */,
@@ -701,12 +711,14 @@
 				2DC52119280AE82600A983FA /* HideBackButtonNavigationController.swift in Sources */,
 				2D94DE9B27FD48D7006C6A01 /* CalendarView+Style.swift in Sources */,
 				2DC5213628101A7100A983FA /* ModifyFeatureViewController.swift in Sources */,
+				2D7F12E9281E8BB100016DF3 /* GuideWithButtonViewController.swift in Sources */,
 				2D05C11A280A590800925681 /* ComplimentWithOneTagCell.swift in Sources */,
 				2DBF1D9027D0819300285A0B /* AuthAPI.swift in Sources */,
 				2DBF1D9627D0829B00285A0B /* BaseTargetType.swift in Sources */,
 				2D246BF127BF6E0600546F28 /* SceneDelegate.swift in Sources */,
 				2DC5211D280E4E0D00A983FA /* CalendarResponse.swift in Sources */,
 				2DC52117280AD81300A983FA /* ModifyComplimentViewController.swift in Sources */,
+				2D7F12E5281E82C800016DF3 /* GuideMainViewController.swift in Sources */,
 				2DC5211B280D3EF700A983FA /* SelectColorView.swift in Sources */,
 				2DBF1D9927D086EE00285A0B /* NetworkResult.swift in Sources */,
 				2D05C116280956E600925681 /* WriteComplimentViewController.swift in Sources */,

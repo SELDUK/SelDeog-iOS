@@ -118,4 +118,10 @@ enum Image {
     
     static let logoGIF = UIImage.gifImageWithName("seldukGIF")
     static let selduk = UIImage(named: "selduk")
+    
+    static let guide1 = UIImage(named: "user_guide1")!
+    static let guide2 = UIImage(named: "user_guide2")!
+    static let guide3 = UIImage(named: "user_guide3")!
+    static let guide4 = UIImage(named: "user_guide4")!
+
 }

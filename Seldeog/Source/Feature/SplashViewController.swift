@@ -17,7 +17,8 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewLayout()
-
+        UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isAutoLogin)
+        UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isNotFirstTime)
         mTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
     }
     
@@ -57,7 +58,7 @@ class SplashViewController: UIViewController {
             UserDefaults.standard.setValue(false, forKey: UserDefaultKey.loginStatus)
         }
 
-        LoginSwitcher.updateRootVC(root: .calendar)
+        LoginSwitcher.updateRootVC(root: .guide)
     }
     
     @objc func timerAction(timer _: Timer) {

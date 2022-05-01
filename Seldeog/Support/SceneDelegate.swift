@@ -60,6 +60,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = BaseNavigationController(title: "", rootViewController: SelectShapeViewController())
         window?.makeKeyAndVisible()
     }
+    
+    func goToGuide() {
+        window?.rootViewController = GuideMainViewController()
+        window?.makeKeyAndVisible()
+    }
 
 
 }

@@ -70,7 +70,10 @@ final class CalendarTabBarView: UIView {
             $0.imageView?.contentMode = .scaleAspectFill
             guard let imgURLString = UserDefaults.standard.string(forKey: UserDefaultKey.userCharacter) else { return }
             if let imgURL = URL(string: imgURLString) {
-                $0.kf.setBackgroundImage(with: imgURL, for: .normal)
+                do {
+                    let data = try Data(contentsOf: imgURL)
+                    $0.setBackgroundImage(UIImage(data: data), for: .normal)
+                } catch { print("image error") }
             } else {
                 $0.setImage(Image.navyShapeCircle, for: .normal)
             }
