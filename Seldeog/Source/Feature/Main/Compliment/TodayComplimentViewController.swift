@@ -20,6 +20,7 @@ final class TodayComplimentViewController: BaseViewController {
     let myCharacterImageView = UIImageView()
     let writeButton = UIButton()
     let lineView = UIImageView()
+    let dismissButton = UIButton()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -67,6 +68,7 @@ final class TodayComplimentViewController: BaseViewController {
         date: String,
         completion: @escaping (ComplimentListResponse) -> Void
     ) {
+        print(date)
         UserRepository.shared.getUserComplimentList(date: date) { result in
             switch result {
             case .success(let response):
@@ -109,7 +111,7 @@ final class TodayComplimentViewController: BaseViewController {
     }
     
     private func registerTarget() {
-        [writeButton, baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
+        [writeButton, baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton, dismissButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -197,6 +199,7 @@ extension TodayComplimentViewController {
         
         navigationItem.do {
             $0.hidesBackButton = true
+            $0.rightBarButtonItem = UIBarButtonItem(customView: dismissButton)
         }
         
         todayLabel.do {
@@ -229,6 +232,10 @@ extension TodayComplimentViewController {
         baseTabBarView.calendarButton.do {
             $0.setImage(Image.calendarIconClicked, for: .normal)
             $0.setTitleColor(.white, for: .normal)
+        }
+        
+        dismissButton.do {
+            $0.setImage(Image.xLineIcon, for: .normal)
         }
     }
     
@@ -295,7 +302,7 @@ extension TodayComplimentViewController {
         switch sender {
         case writeButton:
             navigationController?.pushViewController(WriteComplimentViewController(), animated: false)
-        case baseTabBarView.calendarButton:
+        case baseTabBarView.calendarButton, dismissButton:
             navigationController?.popViewController(animated: false)
         case baseTabBarView.aboutMeButton:
             LoginSwitcher.updateRootVC(root: .aboutMe)

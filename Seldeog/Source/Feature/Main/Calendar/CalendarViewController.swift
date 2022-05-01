@@ -80,7 +80,7 @@ final class CalendarViewController: BaseViewController {
         myStyle.headerBackgroundColor    = UIColor.white
         myStyle.weekdaysBackgroundColor  = UIColor.white
         myStyle.firstWeekday             = .sunday
-        myStyle.locale                   = Locale(identifier: "en_US")
+        myStyle.locale                   = Locale(identifier: "ko_KR")
 
         myStyle.cellFont = UIFont.systemFont(ofSize: 16, weight: .heavy)
         myStyle.headerFont = UIFont.systemFont(ofSize: 17, weight: .bold)
@@ -98,6 +98,7 @@ final class CalendarViewController: BaseViewController {
 
         let today = Date()
         setCalendarDate(date: today)
+        getMyCharacter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -250,7 +251,30 @@ final class CalendarViewController: BaseViewController {
             }
         }
     }
-
+    
+    private func getMyCharacter() {
+        UserRepository.shared.getCalendarButton() { [weak self] result in
+            switch result {
+            case .success(let response):
+                print(response)
+                guard let data = response as? UserResponse else { return }
+                CharacterData.myCharacterURLstring = data.data?.usrChrImgDft
+                guard let imgURLString = CharacterData.myCharacterURLstring else { return }
+                if let imgURL = URL(string: imgURLString) {
+                    do {
+                        let data = try Data(contentsOf: imgURL)
+                        self?.calendarTabBarView.writeComplimentButton.setBackgroundImage(UIImage(data: data), for: .normal)
+                    } catch { print("image error") }
+                } else {
+                    self?.calendarTabBarView.writeComplimentButton.setImage(Image.navyShapeCircle, for: .normal)
+                }
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+            default:
+                print("setMyCharacter - error")
+            }
+        }
+    }
     
 }
 

@@ -56,9 +56,7 @@ final class ConfirmCharacterViewController: BaseViewController {
         
         postCharacterInfo(name: name, shape: shape, color: color, feature: feature) { data in
             if data.success {
-                UserDefaults.standard.setValue(data.data?.usrChrImgDft, forKey: UserDefaultKey.userCharacter)
-                UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isNotFirstTime)
-                UserDefaults.standard.synchronize()
+                CharacterData.myCharacterURLstring = data.data?.usrChrImgDft
                 LoginSwitcher.updateRootVC(root: .guide)
             } else {
                 self.showToastMessageAlert(message: "캐릭터 생성에 실패하였습니다.")

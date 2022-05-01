@@ -15,6 +15,7 @@ final class PastComplimentViewController: BaseViewController {
     let todayLabel = UILabel()
     let myCharacterImageView = UIImageView()
     let lineView = UIImageView()
+    let dismissButton = UIButton()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -83,7 +84,7 @@ final class PastComplimentViewController: BaseViewController {
     }
     
     private func registerTarget() {
-        [baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton].forEach {
+        [baseTabBarView.calendarButton, baseTabBarView.aboutMeButton, baseTabBarView.selfLoveButton, baseTabBarView.settingButton, dismissButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -142,6 +143,7 @@ extension PastComplimentViewController {
         
         navigationItem.do {
             $0.hidesBackButton = true
+            $0.rightBarButtonItem = UIBarButtonItem(customView: dismissButton)
         }
         
         todayLabel.do {
@@ -166,6 +168,10 @@ extension PastComplimentViewController {
         baseTabBarView.calendarButton.do {
             $0.setImage(Image.calendarIconClicked, for: .normal)
             $0.setTitleColor(.white, for: .normal)
+        }
+        
+        dismissButton.do {
+            $0.setImage(Image.xLineIcon, for: .normal)
         }
     }
     
@@ -213,7 +219,7 @@ extension PastComplimentViewController {
     
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
-        case baseTabBarView.calendarButton:
+        case baseTabBarView.calendarButton, dismissButton:
             navigationController?.popViewController(animated: false)
         case baseTabBarView.aboutMeButton:
             LoginSwitcher.updateRootVC(root: .aboutMe)

@@ -35,6 +35,7 @@ final class SignInViewController: BaseViewController {
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 20, family: .bold)
     ]
+    var isCharacterExist: Bool = false
     
     var isButtonActivate: Bool = false {
         didSet {
@@ -93,7 +94,13 @@ final class SignInViewController: BaseViewController {
                 
                 UserDefaults.standard.setValue(true, forKey: UserDefaultKey.loginStatus)
                 UserDefaults.standard.synchronize()
-                LoginSwitcher.updateRootVC(root: .calendar)
+                
+                print(self.isCharacterExist)
+                if self.isCharacterExist {
+                    LoginSwitcher.updateRootVC(root: .calendar)
+                } else {
+                    LoginSwitcher.updateRootVC(root: .onBoard)
+                }
             } else {
                 self.warningLabel.textColor = UIColor.red.withAlphaComponent(1)
             }
@@ -111,6 +118,12 @@ final class SignInViewController: BaseViewController {
             case .success(let response):
                 print(response)
                 guard let data = response as? AuthResponse else { return }
+                self.isCharacterExist = true
+                completion(data)
+            case .characterDoesNotExist(let response):
+                print(response)
+                guard let data = response as? AuthResponse else { return }
+                self.isCharacterExist = false
                 completion(data)
             default:
                 print("sign in error")

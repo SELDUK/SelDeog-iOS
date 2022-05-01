@@ -68,7 +68,7 @@ final class CalendarTabBarView: UIView {
         
         writeComplimentButton.do {
             $0.imageView?.contentMode = .scaleAspectFill
-            guard let imgURLString = UserDefaults.standard.string(forKey: UserDefaultKey.userCharacter) else { return }
+            guard let imgURLString = CharacterData.myCharacterURLstring else { return }
             if let imgURL = URL(string: imgURLString) {
                 do {
                     let data = try Data(contentsOf: imgURL)

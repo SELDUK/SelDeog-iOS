@@ -47,8 +47,8 @@ extension Date {
     func toYearMonth(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
 
         let date = dateFormatter.string(from: date)
 

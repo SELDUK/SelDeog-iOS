@@ -20,8 +20,8 @@ final class AuthRepository {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
-                
-                let networkResult = self.judgeStatus(by: statusCode, data)
+                print(statusCode)
+                let networkResult = self.judgeSignInStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let error):
@@ -71,6 +71,35 @@ final class AuthRepository {
 
             switch statusCode {
             case 200..<300:
+                guard let decodedData = try? decoder.decode(AuthResponse.self, from: data) else {
+                    return .pathErr
+                }
+                return .success(decodedData)
+            case 400..<405:
+                guard let decodedData = try? decoder.decode(AuthResponse.self, from: data) else {
+                    return .pathErr
+                }
+                return .characterDoesNotExist(decodedData)
+            case 500:
+                return .serverErr
+            default:
+                return .networkFail
+            }
+        }
+    
+    private func judgeSignInStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+
+            let decoder = JSONDecoder()
+
+            switch statusCode {
+            case 210:
+                print("여기2")
+                guard let decodedData = try? decoder.decode(AuthResponse.self, from: data) else {
+                    return .pathErr
+                }
+                return .characterDoesNotExist(decodedData)
+            case 200, 211:
+                print("여기1")
                 guard let decodedData = try? decoder.decode(AuthResponse.self, from: data) else {
                     return .pathErr
                 }

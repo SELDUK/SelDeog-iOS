@@ -18,7 +18,6 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         setupViewLayout()
         UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isAutoLogin)
-        UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isNotFirstTime)
         mTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
     }
     

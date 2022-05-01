@@ -20,6 +20,7 @@ enum UserAPI {
     case putFeature(usrChrDictIdx: Int, content: String)
     case deleteFeature(usrChrDictIdx: Int)
     case getSelfLove
+    case getCalendarButton
 }
 
 extension UserAPI: BaseTargetType {
@@ -40,6 +41,8 @@ extension UserAPI: BaseTargetType {
             return "/aboutMe"
         case .getSelfLove:
             return "/selfLove"
+        case .getCalendarButton:
+            return "/calendar/button"
         }
     }
 
@@ -47,7 +50,7 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .registerCharacter, .createComment, .createTodayCharacter, .createFeature:
             return .post
-        case .getComplimentList, .getCalendarData, .getAboutMe, .getSelfLove:
+        case .getComplimentList, .getCalendarData, .getAboutMe, .getSelfLove, .getCalendarButton:
             return .get
         case .deleteComment, .deleteFeature:
             return .delete
@@ -130,6 +133,8 @@ extension UserAPI: BaseTargetType {
             ]
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
         case .getSelfLove:
+            return .requestPlain
+        case .getCalendarButton:
             return .requestPlain
         }
     }

@@ -12,4 +12,5 @@ enum NetworkResult<T> {
     case serverErr
     case networkFail
     case dateDoesNotExist
+    case characterDoesNotExist(T)
 }
