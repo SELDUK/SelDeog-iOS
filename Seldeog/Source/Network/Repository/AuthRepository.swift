@@ -20,7 +20,6 @@ final class AuthRepository {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
-                print(statusCode)
                 let networkResult = self.judgeSignInStatus(by: statusCode, data)
                 completion(networkResult)
                 
@@ -93,13 +92,11 @@ final class AuthRepository {
 
             switch statusCode {
             case 210:
-                print("여기2")
                 guard let decodedData = try? decoder.decode(AuthResponse.self, from: data) else {
                     return .pathErr
                 }
                 return .characterDoesNotExist(decodedData)
             case 200, 211:
-                print("여기1")
                 guard let decodedData = try? decoder.decode(AuthResponse.self, from: data) else {
                     return .pathErr
                 }

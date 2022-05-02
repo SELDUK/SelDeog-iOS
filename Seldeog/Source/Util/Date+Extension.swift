@@ -23,7 +23,7 @@ extension Date {
     func toString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter.string(from: self)
     }
@@ -32,7 +32,7 @@ extension Date {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.locale = Locale(identifier: "en_US")
         formatter.timeZone = TimeZone(abbreviation: "KST")
         return formatter.string(from: date)
     }
@@ -47,7 +47,7 @@ extension Date {
     func toYearMonth(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
 
         let date = dateFormatter.string(from: date)

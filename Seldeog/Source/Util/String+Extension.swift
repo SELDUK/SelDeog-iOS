@@ -19,7 +19,7 @@ extension String {
     func toDate() -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter.date(from: self)!
     }

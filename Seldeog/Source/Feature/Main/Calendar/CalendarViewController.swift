@@ -80,7 +80,7 @@ final class CalendarViewController: BaseViewController {
         myStyle.headerBackgroundColor    = UIColor.white
         myStyle.weekdaysBackgroundColor  = UIColor.white
         myStyle.firstWeekday             = .sunday
-        myStyle.locale                   = Locale(identifier: "ko_KR")
+        myStyle.locale                   = Locale(identifier: "en_US")
 
         myStyle.cellFont = UIFont.systemFont(ofSize: 16, weight: .heavy)
         myStyle.headerFont = UIFont.systemFont(ofSize: 17, weight: .bold)

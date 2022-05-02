@@ -12,7 +12,7 @@ struct DateFormatters {
     static var monthAndDayFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter
     }()
@@ -20,7 +20,7 @@ struct DateFormatters {
     static var monthAndDayBarFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM-dd"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter
     }()
@@ -28,7 +28,7 @@ struct DateFormatters {
     static var fullDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter
     }()
@@ -36,7 +36,7 @@ struct DateFormatters {
     static var yearFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter
     }()
@@ -44,7 +44,7 @@ struct DateFormatters {
     static var monthFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter
     }()
@@ -52,7 +52,7 @@ struct DateFormatters {
     static var yearAndMonthFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         return dateFormatter
     }()
