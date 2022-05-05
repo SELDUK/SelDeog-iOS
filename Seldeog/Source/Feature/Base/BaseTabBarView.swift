@@ -13,6 +13,7 @@ import Then
 final class BaseTabBarView: UIView {
     
     let tabBarView = UIView()
+    let stackView = UIStackView()
     let calendarButton = UIButton()
     let selfLoveButton = UIButton()
     let aboutMeButton = UIButton()
@@ -29,8 +30,17 @@ final class BaseTabBarView: UIView {
     }
     
     func setProperties() {
-        tabBarView.do {
+        stackView.do {
             $0.backgroundColor = .black
+            $0.axis = .horizontal
+            $0.spacing = 45
+            $0.alignment = .fill
+
+            $0.isLayoutMarginsRelativeArrangement = true
+            $0.layoutMargins = .init(top: 0,
+                                     left: 40,
+                                     bottom: 0,
+                                     right: 40)
         }
         
         calendarButton.do {
@@ -72,12 +82,12 @@ final class BaseTabBarView: UIView {
     }
     
     func setViewHierarchy() {
-        addSubview(tabBarView)
-        tabBarView.addSubviews(calendarButton, selfLoveButton, aboutMeButton, settingButton)
+        addSubview(stackView)
+        stackView.addArrangedSubviews(calendarButton, selfLoveButton, aboutMeButton, settingButton)
     }
     
     func setConstraints() {
-        tabBarView.snp.makeConstraints {
+        stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         

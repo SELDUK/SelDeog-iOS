@@ -56,7 +56,7 @@ final class SignUpViewController: BaseViewController {
     }
     
     private func registerTarget() {
-        [checkExistenceButton, signUpButton, dismissButton].forEach {
+        [checkExistenceButton, signUpButton, dismissButton, signInButton].forEach {
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
     }
@@ -453,6 +453,8 @@ extension SignUpViewController {
             isIDValid ? signUp() : setAlert(message: "아이디 중복확인을 완료하세요.")
         case dismissButton:
             dismiss(animated: true, completion: nil)
+        case signInButton:
+            navigationController?.pushViewController(SignInViewController(), animated: false)
         default:
             return
         }

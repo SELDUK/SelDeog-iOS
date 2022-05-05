@@ -58,7 +58,7 @@ final class SelfLoveViewController: BaseViewController {
                 case 20...29:
                     self.animationView = Animation.twentyPercentage
                 default:
-                    self.animationView = Animation.tenPercentage
+                    self.animationView = Animation.eightyPercentage
                 }
                 
                 guard let animationView = self.animationView else { return }
@@ -68,8 +68,8 @@ final class SelfLoveViewController: BaseViewController {
                 animationView.snp.makeConstraints {
                     $0.top.equalTo(self.descriptionLabel.snp.bottom)
                     $0.leading.trailing.equalToSuperview().inset(20)
-                    $0.width.equalTo(281)
-                    $0.height.equalTo(293)
+                    $0.width.equalTo(300)
+                    $0.height.equalTo(330)
                 }
                 animationView.contentMode = .scaleAspectFill
                 animationView.play()
@@ -164,7 +164,7 @@ extension SelfLoveViewController {
         }
                 
         percentageLabel.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(137)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(150)
             $0.centerX.equalToSuperview()
         }
         

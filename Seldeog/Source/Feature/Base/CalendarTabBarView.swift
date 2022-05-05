@@ -12,6 +12,8 @@ import Then
 
 final class CalendarTabBarView: UIView {
     
+    let leftTabBackgroundView = UIView()
+    let rightTabBackgroundView = UIView()
     let tabBarView = UIView()
     let calendarButton = UIButton()
     let selfLoveButton = UIButton()
@@ -30,6 +32,16 @@ final class CalendarTabBarView: UIView {
     }
     
     func setProperties() {
+        leftTabBackgroundView.do {
+            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0x1b1b1b)
+            $0.layer.zPosition = -1
+        }
+        
+        rightTabBackgroundView.do {
+            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0x1b1b1b)
+            $0.layer.zPosition = -1
+        }
+        
         tabBarView.do {
             $0.backgroundColor = UIColor(patternImage: Image.tabBarBG)
         }
@@ -86,15 +98,28 @@ final class CalendarTabBarView: UIView {
     }
     
     func setViewHierarchy() {
-        addSubview(tabBarView)
-        addSubview(writeComplimentButton)
+        addSubviews(leftTabBackgroundView, tabBarView, rightTabBackgroundView, writeComplimentButton)
         tabBarView.addSubviews(calendarButton, selfLoveButton, aboutMeButton, settingButton)
     }
     
     func setConstraints() {
-        tabBarView.snp.makeConstraints {
+        leftTabBackgroundView.snp.makeConstraints {
+            $0.leading.bottom.equalToSuperview()
+            $0.width.equalTo(30)
             $0.height.equalTo(80)
-            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        rightTabBackgroundView.snp.makeConstraints {
+            $0.trailing.bottom.equalToSuperview()
+            $0.width.equalTo(30)
+            $0.height.equalTo(80)
+        }
+        
+        tabBarView.snp.makeConstraints {
+            $0.width.equalTo(390)
+            $0.height.equalTo(80)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         writeComplimentButton.snp.makeConstraints {
