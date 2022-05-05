@@ -234,7 +234,7 @@ extension SignUpViewController {
         
         passwordTextField.do {
             $0.textColor = .black
-            $0.attributedPlaceholder = NSAttributedString(string: "PASSWORD (6~10자리)", attributes: attributes)
+            $0.attributedPlaceholder = NSAttributedString(string: "PASSWORD (8자리 이상)", attributes: attributes)
             $0.isSecureTextEntry = true
             $0.clearButtonMode = .never
             $0.keyboardType = .asciiCapable

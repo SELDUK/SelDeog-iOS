@@ -96,7 +96,6 @@ extension SetCharacterNameViewController {
             $0.inputAccessoryView = nil
             $0.textAlignment = .center
             $0.font = .nanumPen(size: 30, family: .bold)
-            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
             $0.becomeFirstResponder()
         }
         
@@ -159,14 +158,14 @@ extension SetCharacterNameViewController {
         }
         
         startQuotationMarkLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(68)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(48)
             $0.trailing.equalTo(nameTextField.snp.leading).offset(-10)
         }
         
         nameTextField.snp.makeConstraints {
             $0.centerY.equalTo(startQuotationMarkLabel)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(30)
+            $0.height.equalTo(40)
         }
         
         finishQuotationMarkLabel.snp.makeConstraints {
@@ -175,7 +174,7 @@ extension SetCharacterNameViewController {
         }
         
         shapeImageView.snp.makeConstraints {
-            $0.top.equalTo(nameTextField.snp.bottom).offset(30)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(290)
         }
@@ -216,10 +215,7 @@ extension SetCharacterNameViewController {
             return
         }
     }
-    
-    @objc func textFieldDidChange() {
-        
-    }
+
 }
 
 extension SetCharacterNameViewController: UITextFieldDelegate {

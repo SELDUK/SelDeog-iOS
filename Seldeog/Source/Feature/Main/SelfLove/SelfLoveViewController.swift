@@ -58,7 +58,7 @@ final class SelfLoveViewController: BaseViewController {
                 case 20...29:
                     self.animationView = Animation.twentyPercentage
                 default:
-                    self.animationView = Animation.eightyPercentage
+                    self.animationView = Animation.tenPercentage
                 }
                 
                 guard let animationView = self.animationView else { return }
