@@ -81,6 +81,7 @@ extension SettingViewController {
         
         titleLabel.do {
             $0.text = "SETTING"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -89,6 +90,7 @@ extension SettingViewController {
         }
         
         tableView.do {
+            $0.backgroundColor = .white
             $0.delegate = self
             $0.dataSource = self
             $0.register(SettingNextCell.self, forCellReuseIdentifier: "SettingNextCell")

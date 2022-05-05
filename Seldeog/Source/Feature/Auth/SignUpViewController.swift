@@ -202,6 +202,7 @@ extension SignUpViewController {
         
         signUpLabel.do {
             $0.text = "SIGN UP"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -210,6 +211,7 @@ extension SignUpViewController {
         }
         
         idTextField.do {
+            $0.textColor = .black
             $0.attributedPlaceholder = NSAttributedString(string: "ID", attributes: attributes)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
@@ -231,6 +233,7 @@ extension SignUpViewController {
         }
         
         passwordTextField.do {
+            $0.textColor = .black
             $0.attributedPlaceholder = NSAttributedString(string: "PASSWORD (6~10자리)", attributes: attributes)
             $0.isSecureTextEntry = true
             $0.clearButtonMode = .never
@@ -253,6 +256,7 @@ extension SignUpViewController {
         }
         
         passwordConfirmTextField.do {
+            $0.textColor = .black
             $0.attributedPlaceholder = NSAttributedString(string: "CONFIRM PASSWORD", attributes: attributes)
             $0.isSecureTextEntry = true
             $0.clearButtonMode = .never
@@ -298,6 +302,7 @@ extension SignUpViewController {
         
         copyRightLabel.do {
             $0.text = "Copyright 2022. KGB Co., Ltd. all rights reserved."
+            $0.textColor = .black
             $0.font = .nanumPen(size: 10, family: .regular)
         }
         

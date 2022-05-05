@@ -203,6 +203,7 @@ extension TodayComplimentViewController {
         }
         
         todayLabel.do {
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -219,6 +220,7 @@ extension TodayComplimentViewController {
         }
         
         collectionView.do {
+            $0.backgroundColor = .white
             $0.register(ComplimentWithNoTagCell.self, forCellWithReuseIdentifier: "ComplimentNoTagCell")
             $0.register(ComplimentWithOneTagCell.self, forCellWithReuseIdentifier: "ComplimentOneTagCell")
             $0.register(ComplimentWithTwoTagCell.self, forCellWithReuseIdentifier: "ComplimentTwoTagCell")

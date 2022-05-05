@@ -38,11 +38,17 @@ final class PastComplimentWithNoTagCell: UICollectionViewCell {
     }
 
     private func setProperties() {
+        contentView.do {
+            $0.backgroundColor = .white
+        }
+        
         cellIndexLabel.do {
+            $0.textColor = .black
             $0.font = .nanumPen(size: 20, family: .bold)
         }
         
         complimentLabel.do {
+            $0.textColor = .black
             $0.font = .nanumPen(size: 15, family: .bold)
             $0.numberOfLines = 0
             $0.lineBreakMode = NSLineBreakMode.byWordWrapping

@@ -89,6 +89,7 @@ extension WriteComplimentViewController {
 
         commentLabel.do {
             $0.text = "COMMENT"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -111,6 +112,7 @@ extension WriteComplimentViewController {
         
         tagLabel.do {
             $0.text = "TAG"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -122,6 +124,7 @@ extension WriteComplimentViewController {
             $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "귀여워", attributes: attributes)
             $0.font = .nanumPen(size: 15, family: .bold)
+            $0.textColor = .black
             $0.clearButtonMode = .never
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
@@ -146,6 +149,7 @@ extension WriteComplimentViewController {
             $0.delegate = self
             $0.attributedPlaceholder = NSAttributedString(string: "너무너무기특해", attributes: attributes)
             $0.font = .nanumPen(size: 15, family: .bold)
+            $0.textColor = .black
             $0.clearButtonMode = .never
             $0.layer.borderWidth = 0
             $0.autocapitalizationType = .none
@@ -166,6 +170,7 @@ extension WriteComplimentViewController {
             $0.backgroundColor = .black
             $0.setTitle("OK", for: .normal)
             $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
+            $0.setTitleColor(.white, for: .normal)
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
         

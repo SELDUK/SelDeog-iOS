@@ -58,7 +58,12 @@ final class AboutMeCell: UITableViewCell {
     }
 
     private func setProperties() {
+        contentView.do {
+            $0.backgroundColor = .white
+        }
+        
         cellView.do {
+            $0.backgroundColor = .white
             $0.layer.borderWidth = 1
             $0.layer.borderColor = UIColor.black.cgColor
             $0.clipsToBounds = true
@@ -66,10 +71,12 @@ final class AboutMeCell: UITableViewCell {
         }
         
         cellIndexLabel.do {
+            $0.textColor = .black
             $0.font = .nanumPen(size: 20, family: .bold)
         }
         
         featureLabel.do {
+            $0.textColor = .black
             $0.font = .nanumPen(size: 15, family: .bold)
             $0.numberOfLines = 0
             $0.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -80,6 +87,7 @@ final class AboutMeCell: UITableViewCell {
         }
         
         dateLabel.do {
+            $0.textColor = .black
             $0.font = .nanumPen(size: 11, family: .bold)
         }
         

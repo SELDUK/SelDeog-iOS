@@ -23,6 +23,7 @@ final class HashTagView: UIView {
     }
     
     private let textLabel = UILabel().then {
+        $0.textColor = .black
         $0.font = .nanumPen(size: 12, family: .bold)
     }
 

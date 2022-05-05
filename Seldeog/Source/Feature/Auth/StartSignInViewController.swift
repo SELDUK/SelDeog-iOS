@@ -38,6 +38,7 @@ extension StartSignInViewController {
         
         logoLabel.do {
             $0.text = "SELDUK"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -65,6 +66,7 @@ extension StartSignInViewController {
         
         copyRightLabel.do {
             $0.text = "Copyright 2022. KGB Co., Ltd. all rights reserved."
+            $0.textColor = .black
             $0.font = .nanumPen(size: 10, family: .regular)
         }
     }
@@ -111,13 +113,13 @@ extension StartSignInViewController {
     }
     
     @objc private func signInButtonTap() {
-        let navigationViewController = UINavigationController(rootViewController: SignInViewController())
+        let navigationViewController = BaseNavigationController(rootViewController: SignInViewController())
         navigationViewController.modalPresentationStyle = .fullScreen
         present(navigationViewController, animated: true, completion: nil)
     }
 
     @objc private func signUpButtonTap() {
-        let navigationViewController = UINavigationController(rootViewController: SignUpViewController())
+        let navigationViewController = BaseNavigationController(rootViewController: SignUpViewController())
         navigationViewController.modalPresentationStyle = .fullScreen
         present(navigationViewController, animated: true, completion: nil)
     }

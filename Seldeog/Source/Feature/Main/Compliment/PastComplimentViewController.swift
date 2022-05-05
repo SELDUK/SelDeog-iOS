@@ -155,6 +155,7 @@ extension PastComplimentViewController {
         }
         
         collectionView.do {
+            $0.backgroundColor = .white
             $0.register(PastComplimentWithNoTagCell.self, forCellWithReuseIdentifier: "PastComplimentNoTagCell")
             $0.register(PastComplimentWithOneTagCell.self, forCellWithReuseIdentifier: "PastComplimentOneTagCell")
             $0.register(PastComplimentWithTwoTagCell.self, forCellWithReuseIdentifier: "PastComplimentTwoTagCell")

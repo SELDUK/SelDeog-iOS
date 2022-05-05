@@ -61,6 +61,8 @@ class MonthYearPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         }
         self.months = months
         
+        self.setValue(UIColor.black, forKeyPath: "textColor")
+        
         delegate = self
         dataSource = self
     }

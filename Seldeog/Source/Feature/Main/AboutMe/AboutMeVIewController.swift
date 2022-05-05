@@ -155,6 +155,7 @@ extension AboutMeViewController {
         }
         
         titleLabel.do {
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
 
@@ -172,11 +173,13 @@ extension AboutMeViewController {
         
         countLabel.do {
             $0.font = .nanumPen(size: 15, family: .bold)
+            $0.textColor = .black
             $0.text = "총 2개"
         }
         
         newFilterLabel.do {
             $0.text = "최신순으로 보기"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 13, family: .bold)
         }
         
@@ -186,6 +189,7 @@ extension AboutMeViewController {
         }
         
         tableView.do {
+            $0.backgroundColor = .white
             $0.register(AboutMeCell.self, forCellReuseIdentifier: "AboutMeCell")
             $0.delegate = self
             $0.dataSource = self

@@ -150,6 +150,7 @@ extension SignInViewController {
         
         signInLabel.do {
             $0.text = "SIGN IN"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -165,6 +166,7 @@ extension SignInViewController {
         
         idTextField.do {
             $0.delegate = self
+            $0.textColor = .black
             $0.attributedPlaceholder = NSAttributedString(string: "ID", attributes: attributes)
             $0.clearButtonMode = .never
             $0.keyboardType = .alphabet
@@ -184,6 +186,7 @@ extension SignInViewController {
         
         passwordTextField.do {
             $0.delegate = self
+            $0.textColor = .black
             $0.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: attributes)
             $0.isSecureTextEntry = true
             $0.clearButtonMode = .never
@@ -238,6 +241,7 @@ extension SignInViewController {
         
         copyRightLabel.do {
             $0.text = "Copyright 2022. KGB Co., Ltd. all rights reserved."
+            $0.textColor = .black
             $0.font = .nanumPen(size: 10, family: .regular)
         }
 

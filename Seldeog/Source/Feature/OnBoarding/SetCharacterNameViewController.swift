@@ -56,6 +56,7 @@ extension SetCharacterNameViewController {
         
         characterLabel.do {
             $0.text = "MY CHARACTER"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -89,6 +90,7 @@ extension SetCharacterNameViewController {
         
         nameTextField.do {
             $0.delegate = self
+            $0.textColor = .black
             $0.autocapitalizationType = .none
             $0.autocorrectionType = .no
             $0.inputAccessoryView = nil

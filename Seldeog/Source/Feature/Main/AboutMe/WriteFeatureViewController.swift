@@ -73,6 +73,7 @@ extension WriteFeatureViewController {
 
         commentLabel.do {
             $0.text = "COMMENT"
+            $0.textColor = .black
             $0.font = .nanumPen(size: 35, family: .bold)
         }
         
@@ -96,6 +97,7 @@ extension WriteFeatureViewController {
         registerButton.do {
             $0.backgroundColor = .black
             $0.setTitle("OK", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
             $0.addTarget(self, action: #selector(buttonTapAction(_:)), for: .touchUpInside)
         }
