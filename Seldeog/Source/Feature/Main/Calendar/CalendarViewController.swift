@@ -163,6 +163,10 @@ final class CalendarViewController: BaseViewController {
     
     private func showSelectColorView() {
         setNavigationBackgroundBlack()
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer()
+        tapGesture.delegate = self
+                
+        blackBackgroundView.addGestureRecognizer(tapGesture)
         view.addSubview(blackBackgroundView)
         blackBackgroundView.addSubview(selectColorView)
         
@@ -392,3 +396,9 @@ extension CalendarViewController {
     }
 }
 
+extension CalendarViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        resetView()
+        return true
+    }
+}
