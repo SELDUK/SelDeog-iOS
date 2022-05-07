@@ -65,6 +65,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             LoginSwitcher.updateRootVC(root: .guide)
         case 1:
             UserDefaults.standard.setValue("", forKey: UserDefaultKey.token)
+            UserDefaults.standard.setValue(false, forKey: UserDefaultKey.isAutoLogin)
             LoginSwitcher.updateRootVC(root: .signIn)
         default:
             return

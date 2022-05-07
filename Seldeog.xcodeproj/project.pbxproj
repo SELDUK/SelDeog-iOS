@@ -36,6 +36,7 @@
 		2D32068027FEC36100BFE30E /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32067F27FEC36100BFE30E /* UserAPI.swift */; };
 		2D32068227FEC92300BFE30E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068127FEC92300BFE30E /* UserRepository.swift */; };
 		2D32068427FECDB800BFE30E /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32068327FECDB800BFE30E /* UserResponse.swift */; };
+		2D3685C52826309A00467C17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D3685C72826309A00467C17 /* InfoPlist.strings */; };
 		2D47BA2E27E6FAC1007D83F1 /* MakeCharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */; };
 		2D7F12CF281D06DF00016DF3 /* 10percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12C5281D06DE00016DF3 /* 10percent.json */; };
 		2D7F12D0281D06DF00016DF3 /* 90percent.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D7F12C6281D06DE00016DF3 /* 90percent.json */; };
@@ -145,6 +146,7 @@
 		2D32067F27FEC36100BFE30E /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		2D32068127FEC92300BFE30E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		2D32068327FECDB800BFE30E /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		2D3685C62826309A00467C17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D47BA2D27E6FAC1007D83F1 /* MakeCharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCharacterViewCell.swift; sourceTree = "<group>"; };
 		2D7F12C5281D06DE00016DF3 /* 10percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 10percent.json; sourceTree = "<group>"; };
 		2D7F12C6281D06DE00016DF3 /* 90percent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 90percent.json; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				2D246BEE27BF6E0600546F28 /* AppDelegate.swift */,
 				2D246BF027BF6E0600546F28 /* SceneDelegate.swift */,
 				2D246BFF27BF6E0700546F28 /* Info.plist */,
+				2D3685C72826309A00467C17 /* InfoPlist.strings */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				2D7F12D4281D06DF00016DF3 /* 98percent.json in Resources */,
 				2DDDD45427E1C0FD00FC289C /* NanumBarunpenB.otf in Resources */,
 				2DE2B2A4281687A000300B24 /* confetti2.json in Resources */,
+				2D3685C52826309A00467C17 /* InfoPlist.strings in Resources */,
 				2D7F12D5281D06DF00016DF3 /* 70percent.json in Resources */,
 				2DE2B2A22816877300300B24 /* confetti1.json in Resources */,
 				2D7F12DF281D74B200016DF3 /* seldukGIF.gif in Resources */,
@@ -777,6 +781,14 @@
 				2D246BFD27BF6E0700546F28 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2D3685C72826309A00467C17 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D3685C62826309A00467C17 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

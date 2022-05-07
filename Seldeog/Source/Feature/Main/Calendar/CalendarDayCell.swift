@@ -60,10 +60,7 @@ open class CalendarDayCell: UICollectionViewCell {
                 if let characterDay = Int(character.usrChrDateCrt[index...]) {
                     if value == characterDay {
                         let imgURL = URL(string: character.usrChrImg)
-                        do {
-                            let data = try Data(contentsOf: imgURL!)
-                            self.characterImageView.image = UIImage(data: data)
-                        } catch { print("image error") }
+                        self.characterImageView.kf.setImage(with: imgURL)
                         break
                     }
                 }

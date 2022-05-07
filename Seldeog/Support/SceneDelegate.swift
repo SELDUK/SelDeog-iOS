@@ -57,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func goToOnboard() {
-        window?.rootViewController = BaseNavigationController(title: "", rootViewController: SelectShapeViewController())
+        window?.rootViewController = HideBackButtonNavigationController(title: "", rootViewController: SelectShapeViewController())
         window?.makeKeyAndVisible()
     }
     

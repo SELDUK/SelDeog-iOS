@@ -130,7 +130,8 @@ extension TodayComplimentViewController: UICollectionViewDelegate, UICollectionV
             tag1 = commentsList[cellIndex - 1].usrCmtTags[0]
             tag2 = commentsList[cellIndex - 1].usrCmtTags[1]
         default:
-            return
+            tag1 = ""
+            tag2 = ""
         }
         
         let modifyComplimentViewController = ModifyComplimentViewController(previousComment: commentsList[cellIndex-1].usrChrCmt, previousTag1: tag1, previousTag2: tag2, commentIndex: serverIndex)

@@ -26,6 +26,7 @@ final class SelectColorViewController: BaseViewController {
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100), collectionViewLayout: layout)
         return cv
     }()
+    let popBarButton = UIBarButtonItem()
     
     var cellImageList = [Image.colorNavy, Image.colorYellow, Image.colorPink, Image.colorMauve, Image.colorGreen]
     
@@ -82,8 +83,15 @@ extension SelectColorViewController {
             $0.backgroundColor = .white
         }
         
-        navigationItem.do {
-            $0.hidesBackButton = false
+        popBarButton.do {
+            $0.customView = popButton
+            $0.customView?.translatesAutoresizingMaskIntoConstraints = false
+            $0.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+            $0.customView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        }
+        
+        navigationItem.do{
+            $0.leftBarButtonItem = popBarButton
         }
         
         characterLabel.do {
@@ -205,6 +213,9 @@ extension SelectColorViewController {
             let selectFeatureViewController = SelectFeatureViewController()
             navigationController?.pushViewController(selectFeatureViewController, animated: false)
         case popButton:
+            CharacterData.selectedColorWithShape = CharacterData.colorShapeImageList[0][0]
+            CharacterData.selectedShape = Image.navyShapeCircle
+            CharacterData.selectedShapeIndex = 1
             navigationController?.popViewController(animated: true)
         default:
             return

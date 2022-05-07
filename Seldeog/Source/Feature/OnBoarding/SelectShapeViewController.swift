@@ -74,10 +74,6 @@ extension SelectShapeViewController {
             $0.backgroundColor = .white
         }
         
-        navigationItem.do {
-            $0.hidesBackButton = true
-        }
-        
         characterLabel.do {
             $0.text = "MY CHARACTER"
             $0.textColor = .black

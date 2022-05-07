@@ -22,6 +22,7 @@ final class SetCharacterNameViewController: BaseViewController {
     let nameTextField = UITextField()
     let nextButton = UIButton()
     let popButton = UIButton()
+    let popBarButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,17 @@ extension SetCharacterNameViewController {
     private func setProperties() {
         view.do {
             $0.backgroundColor = .white
+        }
+        
+        popBarButton.do {
+            $0.customView = popButton
+            $0.customView?.translatesAutoresizingMaskIntoConstraints = false
+            $0.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+            $0.customView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        }
+        
+        navigationItem.do{
+            $0.leftBarButtonItem = popBarButton
         }
         
         characterLabel.do {

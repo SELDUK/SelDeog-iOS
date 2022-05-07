@@ -20,6 +20,7 @@ final class ConfirmCharacterViewController: BaseViewController {
     let nextButton = UIButton()
     let popButton = UIButton()
     let animationView = Animation.confetti1
+    let popBarButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,8 +91,15 @@ extension ConfirmCharacterViewController {
             $0.backgroundColor = .white
         }
         
-        navigationController?.do {
-            $0.title = ""
+        popBarButton.do {
+            $0.customView = popButton
+            $0.customView?.translatesAutoresizingMaskIntoConstraints = false
+            $0.customView?.heightAnchor.constraint(equalToConstant: 35).isActive = true
+            $0.customView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        }
+        
+        navigationItem.do{
+            $0.leftBarButtonItem = popBarButton
         }
         
         shapeImageView.do {
