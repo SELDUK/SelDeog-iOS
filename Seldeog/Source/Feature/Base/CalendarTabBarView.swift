@@ -33,12 +33,12 @@ final class CalendarTabBarView: UIView {
     
     func setProperties() {
         leftTabBackgroundView.do {
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0x1b1b1b)
+            $0.backgroundColor = .black
             $0.layer.zPosition = -1
         }
         
         rightTabBackgroundView.do {
-            $0.backgroundColor = UIColor.colorWithRGBHex(hex: 0x1b1b1b)
+            $0.backgroundColor = .black
             $0.layer.zPosition = -1
         }
         

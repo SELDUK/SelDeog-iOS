@@ -38,6 +38,7 @@ enum Image {
     static let deleteIcon = UIImage(named: "ic_delete")!
     static let modifyIcon = UIImage(named: "ic_modify")!
     static let gradientLine = UIImage(named: "gradient_line")!
+    static let greenCheckButton = UIImage(named: "green_check")!
     
     // 캐릭터 모양
     static let navyShapeCircle = UIImage(named: "shape_navy_circle")!
