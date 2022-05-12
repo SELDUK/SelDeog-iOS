@@ -16,6 +16,7 @@ final class PastComplimentViewController: BaseViewController {
     let myCharacterImageView = UIImageView()
     let lineView = UIImageView()
     let dismissButton = UIButton()
+    let checkImageView = UIImageView()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -60,6 +61,7 @@ final class PastComplimentViewController: BaseViewController {
                     self.myCharacterImageView.image = UIImage(data: data)
                 } catch { print("image error") }
                 self.commentsList = data.data.usrChrCmts
+                self.checkImageView.isHidden = !data.data.usrChrCheck
                 self.collectionView.reloadData()
             } else {
                 self.showToastMessageAlert(message: "칭찬 리스트 로드에 실패하였습니다.")
@@ -148,6 +150,12 @@ extension PastComplimentViewController {
         
         todayLabel.do {
             $0.font = .nanumPen(size: 35, family: .bold)
+            $0.textColor = .black
+        }
+        
+        checkImageView.do {
+            $0.image = Image.greenCheck
+            $0.isHidden = true
         }
         
         lineView.do {
@@ -182,7 +190,7 @@ extension PastComplimentViewController {
     }
     
     private func setViewHierarchy() {
-        view.addSubviews(todayLabel, myCharacterImageView, lineView, collectionView, baseTabBarView)
+        view.addSubviews(todayLabel, checkImageView, myCharacterImageView, lineView, collectionView, baseTabBarView)
     }
     
     private func setConstraints() {
@@ -190,6 +198,13 @@ extension PastComplimentViewController {
         todayLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
+        }
+        
+        checkImageView.snp.makeConstraints {
+            $0.centerY.equalTo(todayLabel)
+            $0.leading.equalTo(todayLabel.snp.trailing).offset(10)
+            $0.width.equalTo(34)
+            $0.height.equalTo(32)
         }
         
         myCharacterImageView.snp.makeConstraints {

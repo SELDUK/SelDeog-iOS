@@ -19,6 +19,7 @@ struct UserData: Decodable {
     let usrChrImg: String
     let usrChrName: String
     let usrChrDateCrt: String
+    let usrChrCheck: Bool
     let usrChrCmts: [UserCharacterComment]
 }
 
