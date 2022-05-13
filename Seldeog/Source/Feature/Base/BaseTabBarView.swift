@@ -14,10 +14,10 @@ final class BaseTabBarView: UIView {
     
     let tabBarView = UIView()
     let stackView = UIStackView()
-    let calendarButton = UIButton()
-    let selfLoveButton = UIButton()
-    let aboutMeButton = UIButton()
-    let settingButton = UIButton()
+    let calendarButton = ExpandButton()
+    let selfLoveButton = ExpandButton()
+    let aboutMeButton = ExpandButton()
+    let settingButton = ExpandButton()
     
     public init() {
         super.init(frame: .zero)

@@ -26,6 +26,7 @@
 		2D246BF327BF6E0600546F28 /* StartSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */; };
 		2D246BF927BF6E0600546F28 /* Seldeog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BF727BF6E0600546F28 /* Seldeog.xcdatamodeld */; };
 		2D246BFB27BF6E0700546F28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D246BFA27BF6E0700546F28 /* Assets.xcassets */; };
+		2D246BFB282E0B380081CD0C /* ExpandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D246BFA282E0B380081CD0C /* ExpandButton.swift */; };
 		2D246BFE27BF6E0700546F28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D246BFC27BF6E0700546F28 /* LaunchScreen.storyboard */; };
 		2D2ADEFD27CF47620034A602 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */; };
 		2D2ADEFF27CF47ED0034A602 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2ADEFE27CF47ED0034A602 /* UIColor+Extension.swift */; };
@@ -135,6 +136,7 @@
 		2D246BF227BF6E0600546F28 /* StartSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSignInViewController.swift; sourceTree = "<group>"; };
 		2D246BF827BF6E0600546F28 /* Seldeog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Seldeog.xcdatamodel; sourceTree = "<group>"; };
 		2D246BFA27BF6E0700546F28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D246BFA282E0B380081CD0C /* ExpandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandButton.swift; sourceTree = "<group>"; };
 		2D246BFD27BF6E0700546F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D246BFF27BF6E0700546F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D2ADEFC27CF47620034A602 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				2DC52118280AE82600A983FA /* HideBackButtonNavigationController.swift */,
 				2D1EC9AA27DF6F2600EE1D96 /* StartMode.swift */,
 				2DE8363727F42E0B00DECB35 /* ValidateButton.swift */,
+				2D246BFA282E0B380081CD0C /* ExpandButton.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				2DBF1D9427D081AC00285A0B /* AuthRepository.swift in Sources */,
 				2D97E6F127EAFD900029DE35 /* SetCharacterNameViewController.swift in Sources */,
 				2DF0B11F280176E3002F37E1 /* String+Extension.swift in Sources */,
+				2D246BFB282E0B380081CD0C /* ExpandButton.swift in Sources */,
 				2DF0B11927FFF891002F37E1 /* BaseNavigationController.swift in Sources */,
 				2DC52134281001DE00A983FA /* AboutMeResponse.swift in Sources */,
 				2DF8C73627D5061A002BEA1D /* UserDefaultKey.swift in Sources */,
