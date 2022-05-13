@@ -33,14 +33,14 @@ final class BaseTabBarView: UIView {
         stackView.do {
             $0.backgroundColor = .black
             $0.axis = .horizontal
-            $0.spacing = 45
             $0.alignment = .fill
+            $0.distribution = .equalSpacing
 
             $0.isLayoutMarginsRelativeArrangement = true
-            $0.layoutMargins = .init(top: 0,
-                                     left: 40,
-                                     bottom: 0,
-                                     right: 40)
+            $0.layoutMargins = .init(top: 25,
+                                     left: 30,
+                                     bottom: 20,
+                                     right: 30)
         }
         
         calendarButton.do {
@@ -90,34 +90,6 @@ final class BaseTabBarView: UIView {
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        calendarButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(18)
-            $0.leading.equalToSuperview().offset(41)
-            $0.width.equalTo(44)
-            $0.height.equalTo(38)
-        }
-        
-        selfLoveButton.snp.makeConstraints {
-            $0.centerY.equalTo(calendarButton)
-            $0.leading.equalTo(calendarButton.snp.trailing).offset(44)
-            $0.width.equalTo(47)
-            $0.height.equalTo(38)
-        }
-        
-        settingButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(18)
-            $0.trailing.equalToSuperview().offset(-45)
-            $0.width.height.equalTo(38)
-        }
-        
-        aboutMeButton.snp.makeConstraints {
-            $0.centerY.equalTo(settingButton)
-            $0.trailing.equalTo(settingButton.snp.leading).offset(-46)
-            $0.width.equalTo(44)
-            $0.height.equalTo(38)
-        }
-        
     }
     
 }

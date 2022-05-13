@@ -139,7 +139,7 @@ extension SettingViewController {
         
         baseTabBarView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(80)
+            $0.height.equalTo(90)
         }
     }
     

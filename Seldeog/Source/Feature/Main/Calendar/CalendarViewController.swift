@@ -42,11 +42,8 @@ final class CalendarViewController: BaseViewController {
     }
     
     let calendarTabBarView = CalendarTabBarView()
-    
     let selectColorView = SelectColorView()
-    
     var calendarView: CalendarView!
-    
     var datePicker = UIDatePicker()
     
     lazy var numberOfWeeks: Int = Date.numberOfWeeksInMonth(Date())
@@ -96,17 +93,15 @@ final class CalendarViewController: BaseViewController {
 
         calendarView.backgroundColor = UIColor.white
 
-        let today = Date()
-        setCalendarDate(date: today)
+        setCalendarDate()
         getMyCharacter()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let today = Date()
-        setCalendarDate(date: today)
+        setCalendarDate()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -117,13 +112,13 @@ final class CalendarViewController: BaseViewController {
         self.datePicker.setDate(today, animated: false)
     }
     
-    func setCalendarDate(date: Date) {
+    func setCalendarDate(date: Date? = Date()) {
         //self.calendarView.selectDate(date)
-        self.calendarView.setDisplayDate(date)
+        self.calendarView.setDisplayDate(date ?? Date())
 
-        yearLabel.text = DateFormatters.yearFormatter.string(from: date)
-        monthLabel.text = DateFormatters.monthFormatter.string(from: date).uppercased()
-        let yearMonth = DateFormatters.yearAndMonthFormatter.string(from: date)
+        yearLabel.text = DateFormatters.yearFormatter.string(from: date ?? Date())
+        monthLabel.text = DateFormatters.monthFormatter.string(from: date ?? Date()).uppercased()
+        let yearMonth = DateFormatters.yearAndMonthFormatter.string(from: date ?? Date())
         calendarView.yearMonth = yearMonth
         
         getCharacterForCalendar(date: yearMonth)
