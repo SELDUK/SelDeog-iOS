@@ -14,6 +14,11 @@
 자기 자신을 덕질하며 새로운 자신의 모습을 발견하고 더욱 사랑할 수 있는 계기를 만들어 줌
 
 ## 📱 상세 화면
+
+<details>
+<summary>앱 상세 화면</summary>
+<div markdown="1">
+
 ![image](https://user-images.githubusercontent.com/61138164/170425027-cf6f143c-dea1-4ddb-8aca-46e634d25bab.png)
 
 ![image](https://user-images.githubusercontent.com/61138164/170425558-78e0aa4d-de7e-4842-8c77-0c8405d110e2.png)
@@ -21,3 +26,26 @@
 ![image](https://user-images.githubusercontent.com/61138164/170426121-529ae39d-ff84-4e6d-ab40-d62790862415.png)
 
 ![image](https://user-images.githubusercontent.com/61138164/170426447-c6e697db-17db-4247-a5db-cd79ee883f84.png)
+
+![image](https://user-images.githubusercontent.com/61138164/170428366-86079768-e33f-4c1d-820d-91a27f5b9d45.png)
+
+![image](https://user-images.githubusercontent.com/61138164/170428974-8b23db34-2736-4929-b09c-c3bae0dba7ad.png)
+
+![image](https://user-images.githubusercontent.com/61138164/170430036-51ff94f6-7304-44c3-81f4-07d6adde12b9.png)
+
+</div>
+</details>
+
+## 📚 라이브러리
+|Library|
+|:---:|
+|Moya|
+|KingFisher|
+|SnapKit|
+|Then|
+|Lottie-ios|
+|RxSwift|
+|RxCocoa|
+|PanModal|
+
+
