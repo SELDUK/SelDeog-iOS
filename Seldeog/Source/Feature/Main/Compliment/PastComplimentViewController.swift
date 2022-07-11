@@ -48,7 +48,7 @@ final class PastComplimentViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        todayLabel.text = DateFormatters.monthAndDayFormatter.string(from: date.toDate()).uppercased()
+        todayLabel.text = date.toDate().toMonthDay().uppercased()
     }
     
     private func getComplimentList(date: String) {

@@ -95,7 +95,6 @@ final class SignInViewController: BaseViewController {
                 UserDefaults.standard.setValue(true, forKey: UserDefaultKey.loginStatus)
                 UserDefaults.standard.synchronize()
                 
-                print(self.isCharacterExist)
                 if self.isCharacterExist {
                     LoginSwitcher.updateRootVC(root: .calendar)
                 } else {

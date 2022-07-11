@@ -10,12 +10,6 @@ import UIKit
 
 public class HideBackButtonNavigationController: UINavigationController {
     
-    //  MARK: - 외부에서 지정할 수 있는 속성
-    
-    /**
-     RootViewController의 NavigationBar 상단에 들어가는
-     굵은 Title의 String입니다.
-     */
     public override var title: String? {
         didSet { self.titleLabel.text = title }
     }
@@ -74,12 +68,6 @@ public class HideBackButtonNavigationController: UINavigationController {
 
 extension HideBackButtonNavigationController {
     
-    /**
-     ViewController가 Push될 때
-     count가 1이라면(=root밖에 없다면) 굵은 titleLabel을 세팅합니다.
-     count가 1이 아니라면(=root 이외에 다른게 있다면) backBarButtonItem을 초기화하여
-     backButton 옆에 상위 viewController의 title이 나타나지 않도록 합니다.
-     */
     public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
         setNavigationBarItem()

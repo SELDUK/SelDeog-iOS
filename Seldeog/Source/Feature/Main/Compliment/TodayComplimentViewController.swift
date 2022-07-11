@@ -42,14 +42,14 @@ final class TodayComplimentViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let today = Date()
-        todayLabel.text = DateFormatters.monthAndDayFormatter.string(from: today).uppercased()
+        todayLabel.text = today.toMonthDay().uppercased()
         getComplimentList()
     }
     
     private func getComplimentList() {
         let today = Date()
         
-        getTodayComplimentList(date: DateFormatters.fullDateFormatter.string(from: today)) { data in
+        getTodayComplimentList(date: today.toString()) { data in
             if data.success {
                 let imgURL = URL(string: data.data.usrChrImg)
                 do {

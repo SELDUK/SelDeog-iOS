@@ -86,7 +86,6 @@
 		2DC52125280E94DE00A983FA /* PastComplimentWithNoTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52124280E94DE00A983FA /* PastComplimentWithNoTagCell.swift */; };
 		2DC52127280E953D00A983FA /* PastComplimentWithOneTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52126280E953D00A983FA /* PastComplimentWithOneTagCell.swift */; };
 		2DC52129280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */; };
-		2DC5212B280E98F600A983FA /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212A280E98F600A983FA /* DateFormatters.swift */; };
 		2DC5212D280FCFC700A983FA /* AboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5212C280FCFC700A983FA /* AboutMeCell.swift */; };
 		2DC52132280FFD6100A983FA /* WriteFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */; };
 		2DC52134281001DE00A983FA /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC52133281001DE00A983FA /* AboutMeResponse.swift */; };
@@ -197,7 +196,6 @@
 		2DC52124280E94DE00A983FA /* PastComplimentWithNoTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWithNoTagCell.swift; sourceTree = "<group>"; };
 		2DC52126280E953D00A983FA /* PastComplimentWithOneTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWithOneTagCell.swift; sourceTree = "<group>"; };
 		2DC52128280E95EF00A983FA /* PastComplimentWIthTwoTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastComplimentWIthTwoTagCell.swift; sourceTree = "<group>"; };
-		2DC5212A280E98F600A983FA /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		2DC5212C280FCFC700A983FA /* AboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeCell.swift; sourceTree = "<group>"; };
 		2DC52131280FFD6100A983FA /* WriteFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFeatureViewController.swift; sourceTree = "<group>"; };
 		2DC52133281001DE00A983FA /* AboutMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
@@ -354,7 +352,6 @@
 				2DF8C73527D5061A002BEA1D /* UserDefaultKey.swift */,
 				2D94DEA427FD5423006C6A01 /* Date+Extension.swift */,
 				2DF0B11E280176E3002F37E1 /* String+Extension.swift */,
-				2DC5212A280E98F600A983FA /* DateFormatters.swift */,
 				2D7F12DC281D5B0300016DF3 /* GIF+Extension.swift */,
 				2DF7DE642823C5B700537EB3 /* UIStackView+Extension.swift */,
 			);
@@ -699,7 +696,6 @@
 				2DDDD45827E1C5C300FC289C /* BaseViewController.swift in Sources */,
 				2D05C126280A96FF00925681 /* ComplimentListResponse.swift in Sources */,
 				2DC52122280E900B00A983FA /* PastComplimentViewController.swift in Sources */,
-				2DC5212B280E98F600A983FA /* DateFormatters.swift in Sources */,
 				2D7F12DD281D5B0300016DF3 /* GIF+Extension.swift in Sources */,
 				2D32068427FECDB800BFE30E /* UserResponse.swift in Sources */,
 				2D05C124280A92FC00925681 /* BaseTabBarView.swift in Sources */,

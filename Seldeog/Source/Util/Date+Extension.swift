@@ -28,15 +28,6 @@ extension Date {
         return dateFormatter.string(from: self)
     }
 
-    static func getTodayString() -> String {
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale(identifier: "en_US")
-        formatter.timeZone = TimeZone(abbreviation: "KST")
-        return formatter.string(from: date)
-    }
-
     static func numberOfWeeksInMonth(_ date: Date) -> Int {
         var calendar = Calendar(identifier: .gregorian)
         calendar.firstWeekday = 1
@@ -44,15 +35,36 @@ extension Date {
         return weekRange!.count
    }
 
-    func toYearMonth(_ date: Date) -> String {
+    func toYearMonth() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.timeZone = TimeZone(abbreviation: "KST")
-
-        let date = dateFormatter.string(from: date)
-
-        return date
+        return dateFormatter.string(from: self)
+    }
+    
+    func toMonthDay() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        return dateFormatter.string(from: self)
+    }
+    
+    func toYear() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        return dateFormatter.string(from: self)
+    }
+    
+    func toMonth() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        return dateFormatter.string(from: self)
     }
 
     func endOfMonth() -> String {

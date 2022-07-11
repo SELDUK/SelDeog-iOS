@@ -113,16 +113,14 @@ final class CalendarViewController: BaseViewController {
     }
     
     func setCalendarDate(date: Date? = Date()) {
-        //self.calendarView.selectDate(date)
         self.calendarView.setDisplayDate(date ?? Date())
 
-        yearLabel.text = DateFormatters.yearFormatter.string(from: date ?? Date())
-        monthLabel.text = DateFormatters.monthFormatter.string(from: date ?? Date()).uppercased()
-        let yearMonth = DateFormatters.yearAndMonthFormatter.string(from: date ?? Date())
+        yearLabel.text = date?.toYear() ?? Date().toYear()
+        monthLabel.text = date?.toMonth().uppercased() ?? Date().toMonth().uppercased()
+        let yearMonth = date?.toYearMonth() ?? Date().toYearMonth()
         calendarView.yearMonth = yearMonth
         
         getCharacterForCalendar(date: yearMonth)
-        print(yearMonth)
     }
     
     private func registerTarget() {
@@ -182,7 +180,7 @@ final class CalendarViewController: BaseViewController {
     private func getComplimentList() {
         let today = Date()
         
-        getTodayComplimentList(date: DateFormatters.fullDateFormatter.string(from: today)) { data in
+        getTodayComplimentList(date: today.toString()) { data in
             if data.success {
                 self.navigationController?.pushViewController(TodayComplimentViewController(), animated: false)
             } else {
@@ -324,7 +322,7 @@ extension CalendarViewController: CalendarViewDelegate {
        
     func calendar(_ calendar: CalendarView, didScrollToMonth date : Date) {
         self.datePicker.setDate(date, animated: true)
-        getCharacterForCalendar(date: date.toYearMonth(date))
+        getCharacterForCalendar(date: date.toYearMonth())
     }
 }
 

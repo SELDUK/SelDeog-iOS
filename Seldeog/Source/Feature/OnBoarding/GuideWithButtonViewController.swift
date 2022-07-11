@@ -15,7 +15,7 @@ final class GuideWithButtonViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
         $0.setBackgroundColor(UIColor.colorWithRGBHex(hex: 0x4c6599), for: .normal)
-        $0.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        $0.addTarget(GuideWithButtonViewController.self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
 
     init(image: UIImage) {
