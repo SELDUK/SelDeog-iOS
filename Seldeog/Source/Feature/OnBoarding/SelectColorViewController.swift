@@ -11,24 +11,24 @@ import SnapKit
 
 final class SelectColorViewController: BaseViewController {
     
-    let characterLabel = UILabel()
-    let loadingBar = UIProgressView()
-    let titleLabel = UILabel()
-    let containerView = UIView()
-    let shapeImageView = UIImageView()
-    let expressionImageView = UIImageView()
-    let nextButton = UIButton()
-    let popButton = UIButton()
-    let collectionView: UICollectionView = {
+    private let characterLabel = UILabel()
+    private let loadingBar = UIProgressView()
+    private let titleLabel = UILabel()
+    private let containerView = UIView()
+    private let shapeImageView = UIImageView()
+    private let expressionImageView = UIImageView()
+    private let nextButton = UIButton()
+    private let popButton = UIButton()
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100), collectionViewLayout: layout)
         return cv
     }()
-    let popBarButton = UIBarButtonItem()
+    private let popBarButton = UIBarButtonItem()
     
-    var cellImageList = [Image.colorNavy, Image.colorYellow, Image.colorPink, Image.colorMauve, Image.colorGreen]
+    private var cellImageList = [Image.colorNavy, Image.colorYellow, Image.colorPink, Image.colorMauve, Image.colorGreen]
     
     override func viewDidLoad() {
         super.viewDidLoad()

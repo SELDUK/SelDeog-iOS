@@ -31,7 +31,7 @@ final class CalendarTabBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setProperties() {
+    private func setProperties() {
         leftTabBackgroundView.do {
             $0.backgroundColor = .black
             $0.layer.zPosition = -1
@@ -92,17 +92,17 @@ final class CalendarTabBarView: UIView {
         }
     }
     
-    func setLayouts() {
+    private func setLayouts() {
         setViewHierarchy()
         setConstraints()
     }
     
-    func setViewHierarchy() {
+    private func setViewHierarchy() {
         addSubviews(leftTabBackgroundView, tabBarView, rightTabBackgroundView, writeComplimentButton)
         tabBarView.addSubviews(calendarButton, selfLoveButton, aboutMeButton, settingButton)
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         leftTabBackgroundView.snp.makeConstraints {
             $0.leading.bottom.equalToSuperview()
             $0.width.equalTo(30)

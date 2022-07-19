@@ -11,11 +11,11 @@ import Then
 
 final class PastComplimentWithNoTagCell: UICollectionViewCell {
     
-    let cellIndexLabel = UILabel()
-    let complimentLabel = UILabel()
-    let lineView = UIView()
-    var commentIndex: Int?
-    var cellIndex: Int?
+    private let cellIndexLabel = UILabel()
+    private let complimentLabel = UILabel()
+    private let lineView = UIView()
+    private var commentIndex: Int?
+    private var cellIndex: Int?
 
     public func setCellIndex(index: Int) {
         cellIndexLabel.text = "0\(index)"

@@ -11,11 +11,11 @@ import Lottie
 
 final class SelfLoveViewController: BaseViewController {
     
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
-    let percentageLabel = UILabel()
-    var animationView: AnimationView?
-    let baseTabBarView = BaseTabBarView()
+    private let titleLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let percentageLabel = UILabel()
+    private var animationView: AnimationView?
+    private let baseTabBarView = BaseTabBarView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +80,7 @@ final class SelfLoveViewController: BaseViewController {
         }
     }
     
-    func getSelfLove(
+    private func getSelfLove(
         completion: @escaping (SelfLoveResponse) -> Void
     ) {
         UserRepository.shared.getSelfLove() { result in

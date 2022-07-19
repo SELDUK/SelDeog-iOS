@@ -9,8 +9,8 @@ import UIKit
 
 final class GuideWithButtonViewController: UIViewController {
     
-    let backgroundImageView = UIImageView()
-    let nextButton = UIButton().then {
+    private let backgroundImageView = UIImageView()
+    private let nextButton = UIButton().then {
         $0.setTitle("START", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .nanumPen(size: 30, family: .bold)
@@ -48,7 +48,7 @@ final class GuideWithButtonViewController: UIViewController {
         }
     }
     
-    @objc func nextButtonDidTap() {
+    @objc private func nextButtonDidTap() {
         LoginSwitcher.updateRootVC(root: .calendar)
     }
     

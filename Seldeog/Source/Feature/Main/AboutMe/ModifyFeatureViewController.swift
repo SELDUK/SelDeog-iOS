@@ -11,14 +11,13 @@ import SnapKit
 
 final class ModifyFeatureViewController: BaseViewController {
     
-    let commentLabel = UILabel()
-    let commentTextView = UITextView()
-    let wordCountLabel = UILabel()
-
-    let registerButton = UIButton()
-    let popButton = UIButton()
-    var previousContent: String
-    var contentIndex: Int
+    private let commentLabel = UILabel()
+    private let commentTextView = UITextView()
+    private let wordCountLabel = UILabel()
+    private let registerButton = UIButton()
+    private let popButton = UIButton()
+    private var previousContent: String
+    private var contentIndex: Int
     
     init(previousContent: String, contentIndex: Int) {
         self.previousContent = previousContent
@@ -56,7 +55,7 @@ final class ModifyFeatureViewController: BaseViewController {
         }
     }
     
-    func putFeature(
+    private func putFeature(
         usrChrDictIdx: Int,
         content: String,
         completion: @escaping (UserResponse) -> Void
@@ -155,17 +154,6 @@ extension ModifyFeatureViewController {
         }
     }
 
-    func setAlertConfirmAndCancel(message: String) {
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
-            self.navigationController?.popViewController(animated: false)
-        }
-        let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-    }
-    
     @objc private func buttonTapAction(_ sender: UIButton) {
         switch sender {
         case registerButton:

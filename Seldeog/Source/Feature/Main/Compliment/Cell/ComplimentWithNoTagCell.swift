@@ -11,13 +11,13 @@ import Then
 
 final class ComplimentWithNoTagCell: UICollectionViewCell {
     
-    let cellIndexLabel = UILabel()
-    let complimentLabel = UILabel()
-    let lineView = UIView()
-    let modifyButton = UIButton()
-    let deleteButton = UIButton()
-    var commentIndex: Int?
-    var cellIndex: Int?
+    private let cellIndexLabel = UILabel()
+    private let complimentLabel = UILabel()
+    private let lineView = UIView()
+    private let modifyButton = UIButton()
+    private let deleteButton = UIButton()
+    private var commentIndex: Int?
+    private var cellIndex: Int?
     var buttonDelegate: CommentButtonProtocol?
 
     public func setCellIndex(index: Int) {

@@ -12,15 +12,15 @@ import SnapKit
 
 final class ConfirmCharacterViewController: BaseViewController {
     
-    let shapeImageView = UIImageView()
-    let expressionImageView = UIImageView()
-    let featureImageView = UIImageView()
-    let sayHiLabel = UILabel()
-    let pleaseLoveMeLabel = UILabel()
-    let nextButton = UIButton()
-    let popButton = UIButton()
-    let animationView = Animation.confetti1
-    let popBarButton = UIBarButtonItem()
+    private let shapeImageView = UIImageView()
+    private let expressionImageView = UIImageView()
+    private let featureImageView = UIImageView()
+    private let sayHiLabel = UILabel()
+    private let pleaseLoveMeLabel = UILabel()
+    private let nextButton = UIButton()
+    private let popButton = UIButton()
+    private let animationView = Animation.confetti1
+    private let popBarButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ final class ConfirmCharacterViewController: BaseViewController {
         }
     }
     
-    func postCharacterInfo(
+    private func postCharacterInfo(
         name: String,
         shape: Int,
         color: Int,

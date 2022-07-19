@@ -11,14 +11,14 @@ import SnapKit
 
 final class SelectShapeViewController: BaseViewController {
     
-    let characterLabel = UILabel()
-    let loadingBar = UIProgressView()
-    let titleLabel = UILabel()
-    let containerView = UIView()
-    let shapeImageView = UIImageView()
-    let expressionImageView = UIImageView()
-    let nextButton = UIButton()
-    let collectionView: UICollectionView = {
+    private let characterLabel = UILabel()
+    private let loadingBar = UIProgressView()
+    private let titleLabel = UILabel()
+    private let containerView = UIView()
+    private let shapeImageView = UIImageView()
+    private let expressionImageView = UIImageView()
+    private let nextButton = UIButton()
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20
@@ -26,7 +26,7 @@ final class SelectShapeViewController: BaseViewController {
         return cv
     }()
     
-    var cellImageList = [Image.navyShapeCircle, Image.navyShapeCloud, Image.navyShapeSharpEar, Image.navyShapeBread, Image.navyShapeRoundEar, Image.navyShapeJjang]
+    private var cellImageList = [Image.navyShapeCircle, Image.navyShapeCloud, Image.navyShapeSharpEar, Image.navyShapeBread, Image.navyShapeRoundEar, Image.navyShapeJjang]
     
     override func viewDidLoad() {
         super.viewDidLoad()

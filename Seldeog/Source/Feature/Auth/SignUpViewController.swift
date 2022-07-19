@@ -14,34 +14,34 @@ import Then
 
 final class SignUpViewController: BaseViewController {
     
-    let signUpLabel = UILabel()
-    let idImageView = UIImageView()
-    let idTextField = UITextField()
-    let idTextFieldLineView = UIView()
-    let checkExistenceButton = UIButton()
-    let passwordImageView = UIImageView()
-    let passwordTextField = UITextField()
-    let passwordTextFieldLineView = UIView()
-    let checkPasswordValidView = UIImageView()
-    let passwordConfirmImageView = UIImageView()
-    let passwordConfirmTextField = UITextField()
-    let passwordConfirmTextFieldLineView = UIView()
-    let checkPasswordSameView = UIImageView()
-    let signUpButton = UIButton()
-    let signInContainerView = UIView()
-    let signInLabel = UILabel()
-    let signInLineView = UIView()
-    let signInButton = UIButton()
-    let dismissButton = UIButton()
-    let copyRightLabel = UILabel()
-    let attributes = [
+    private let signUpLabel = UILabel()
+    private let idImageView = UIImageView()
+    private let idTextField = UITextField()
+    private let idTextFieldLineView = UIView()
+    private let checkExistenceButton = UIButton()
+    private let passwordImageView = UIImageView()
+    private let passwordTextField = UITextField()
+    private let passwordTextFieldLineView = UIView()
+    private let checkPasswordValidView = UIImageView()
+    private let passwordConfirmImageView = UIImageView()
+    private let passwordConfirmTextField = UITextField()
+    private let passwordConfirmTextFieldLineView = UIView()
+    private let checkPasswordSameView = UIImageView()
+    private let signUpButton = UIButton()
+    private let signInContainerView = UIView()
+    private let signInLabel = UILabel()
+    private let signInLineView = UIView()
+    private let signInButton = UIButton()
+    private let dismissButton = UIButton()
+    private let copyRightLabel = UILabel()
+    private let attributes = [
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 20, family: .bold)
     ]
 
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
-    var isIDValid: Bool = false
+    private var isIDValid: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ final class SignUpViewController: BaseViewController {
         }
     }
     
-    func checkValidate() {
+    private func checkValidate() {
         let idText = idTextField.rx.text.orEmpty.distinctUntilChanged()
         let passwordText = passwordTextField.rx.text.orEmpty.distinctUntilChanged()
         let passwordConfirmText = passwordConfirmTextField.rx.text.orEmpty.distinctUntilChanged()
@@ -116,7 +116,7 @@ final class SignUpViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    func validatePassword(text: String) -> Bool {
+    private func validatePassword(text: String) -> Bool {
         if text.count < 8 {
             return false
         } else {
@@ -124,7 +124,7 @@ final class SignUpViewController: BaseViewController {
         }
     }
     
-    func checkExistence() {
+    private func checkExistence() {
         guard let id = self.idTextField.text else { return }
         checkIDValid(id: id) { data in
             if data.success {
@@ -136,7 +136,7 @@ final class SignUpViewController: BaseViewController {
         }
     }
     
-    func signUp() {
+    private func signUp() {
         guard let id = self.idTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         
@@ -149,7 +149,7 @@ final class SignUpViewController: BaseViewController {
         }
     }
 
-    func checkIDValid(
+    private func checkIDValid(
         id: String,
         completion: @escaping (AuthResponse) -> Void
     ) {
@@ -165,7 +165,7 @@ final class SignUpViewController: BaseViewController {
         }
     }
 
-    func postSignUp(
+    private func postSignUp(
         id: String,
         password: String,
         completion: @escaping (AuthResponse) -> Void

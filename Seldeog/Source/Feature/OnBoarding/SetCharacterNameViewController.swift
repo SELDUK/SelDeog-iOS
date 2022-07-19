@@ -11,18 +11,18 @@ import SnapKit
 
 final class SetCharacterNameViewController: BaseViewController {
     
-    let characterLabel = UILabel()
-    let loadingBar = UIProgressView()
-    let titleLabel = UILabel()
-    let shapeImageView = UIImageView()
-    let expressionImageView = UIImageView()
-    let featureImageView = UIImageView()
-    let startQuotationMarkLabel = UILabel()
-    let finishQuotationMarkLabel = UILabel()
-    let nameTextField = UITextField()
-    let nextButton = UIButton()
-    let popButton = UIButton()
-    let popBarButton = UIBarButtonItem()
+    private let characterLabel = UILabel()
+    private let loadingBar = UIProgressView()
+    private let titleLabel = UILabel()
+    private let shapeImageView = UIImageView()
+    private let expressionImageView = UIImageView()
+    private let featureImageView = UIImageView()
+    private let startQuotationMarkLabel = UILabel()
+    private let finishQuotationMarkLabel = UILabel()
+    private let nameTextField = UITextField()
+    private let nextButton = UIButton()
+    private let popButton = UIButton()
+    private let popBarButton = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()

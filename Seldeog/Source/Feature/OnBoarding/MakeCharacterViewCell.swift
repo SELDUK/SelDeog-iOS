@@ -32,16 +32,16 @@ class MakeCharacterViewCell: UICollectionViewCell {
         }
     }
 
-    func setLayouts() {
+    private func setLayouts() {
         setViewHierarchy()
         setConstraints()
     }
 
-    func setViewHierarchy() {
+    private func setViewHierarchy() {
         contentView.addSubview(cellImageView)
     }
 
-    func setConstraints() {
+    private func setConstraints() {
         cellImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()

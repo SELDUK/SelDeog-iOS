@@ -10,14 +10,14 @@ import UIKit
 
 class SettingNextCell: UITableViewCell {
 
-    let settingIconImageView = UIImageView()
+    private let settingIconImageView = UIImageView()
     
-    let cellTitleLabel = UILabel().then {
+    private let cellTitleLabel = UILabel().then {
         $0.font = UIFont.nanumPen(size: 20, family: .bold)
         $0.textColor = .black
     }
 
-    let nextImageView = UIImageView().then {
+    private let nextImageView = UIImageView().then {
         $0.image = Image.arrowRightIcon
     }
 
@@ -50,11 +50,11 @@ class SettingNextCell: UITableViewCell {
         cellTitleLabel.text = title
     }
 
-    func setViewHierarchy() {
+    private func setViewHierarchy() {
         contentView.addSubviews(settingIconImageView, cellTitleLabel, nextImageView)
     }
 
-    func setConstraints() {
+    private func setConstraints() {
         settingIconImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)

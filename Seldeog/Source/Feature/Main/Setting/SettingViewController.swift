@@ -10,11 +10,11 @@ import SnapKit
 
 final class SettingViewController: BaseViewController {
     
-    let titleLabel = UILabel()
-    let lineView = UIView()
-    let tableView = UITableView()
-    let baseTabBarView = BaseTabBarView()
-    let settingInfoList: [SettingInfo] = [SettingInfo(settingIcon: Image.guideIcon, settingTitle: "GUIDE"),
+    private let titleLabel = UILabel()
+    private let lineView = UIView()
+    private let tableView = UITableView()
+    private let baseTabBarView = BaseTabBarView()
+    private let settingInfoList: [SettingInfo] = [SettingInfo(settingIcon: Image.guideIcon, settingTitle: "GUIDE"),
                                           SettingInfo(settingIcon: Image.logoutIcon, settingTitle: "LOG OUT"),
                                           SettingInfo(settingIcon: Image.informationIcon, settingTitle: "APP VERSION")]
 

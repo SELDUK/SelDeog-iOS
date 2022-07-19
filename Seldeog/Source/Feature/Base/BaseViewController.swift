@@ -40,5 +40,16 @@ class BaseViewController: UIViewController {
         alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
     }
+    
+    func setAlertConfirmAndCancel(message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.navigationController?.popViewController(animated: false)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
 
 }

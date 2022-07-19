@@ -5,7 +5,7 @@
 //  Created by 권준상 on 2022/03/30.
 //
 
-import UIKit
+import UIKit.UIButton
 
 final class ValidateButton: UIButton {
     override var isSelected: Bool {

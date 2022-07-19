@@ -15,15 +15,15 @@ protocol AboutMeButtonProtocol {
 }
 
 final class AboutMeViewController: BaseViewController {
-    let titleLabel = UILabel()
-    let writeButton = UIButton()
-    let lineView = UIView()
-    let countLabel = UILabel()
-    let newFilterLabel = UILabel()
-    let newFilterButton = UIButton()
-    let tableView = UITableView()
-    let baseTabBarView = BaseTabBarView()
-    var featureList: [MyFeatures] = []
+    private let titleLabel = UILabel()
+    private let writeButton = UIButton()
+    private let lineView = UIView()
+    private let countLabel = UILabel()
+    private let newFilterLabel = UILabel()
+    private let newFilterButton = UIButton()
+    private let tableView = UITableView()
+    private let baseTabBarView = BaseTabBarView()
+    private var featureList: [MyFeatures] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ final class AboutMeViewController: BaseViewController {
         }
     }
     
-    func getFeatureList(
+    private func getFeatureList(
         order: String,
         completion: @escaping (AboutMeResponse) -> Void
     ) {
@@ -76,7 +76,7 @@ final class AboutMeViewController: BaseViewController {
             }
     }
     
-    func deleteFeature(
+    private func deleteFeature(
         usrChrDictIdx: Int,
         completion: @escaping (UserResponse) -> Void
     ) {
@@ -264,7 +264,7 @@ extension AboutMeViewController {
 
     }
 
-    func setAlertConfirmAndCancel(index: Int, message: String) {
+    private func setAlertConfirmAndCancel(index: Int, message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
             self.deleteFeature(usrChrDictIdx: index)

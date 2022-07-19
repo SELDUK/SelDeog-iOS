@@ -14,27 +14,27 @@ final class GuideMainViewController: BaseViewController {
         configure()
     }
     
-    lazy var vc1: UIViewController = {
+    private lazy var vc1: UIViewController = {
         let vc = GuideWithImageViewController(image: Image.guide1)
         return vc
     }()
     
-    lazy var vc2: UIViewController = {
+    private lazy var vc2: UIViewController = {
         let vc = GuideWithImageViewController(image: Image.guide2)
         return vc
     }()
     
-    lazy var vc3: UIViewController = {
+    private lazy var vc3: UIViewController = {
         let vc = GuideWithImageViewController(image: Image.guide3)
         return vc
     }()
     
-    lazy var vc4: UIViewController = {
+    private lazy var vc4: UIViewController = {
         let vc = GuideWithButtonViewController(image: Image.guide4)
         return vc
     }()
     
-    lazy var dataViewControllers: [UIViewController] = {
+    private lazy var dataViewControllers: [UIViewController] = {
         return [vc1, vc2, vc3, vc4]
     }()
     

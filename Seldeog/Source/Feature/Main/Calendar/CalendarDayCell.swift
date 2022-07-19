@@ -133,11 +133,11 @@ open class CalendarDayCell: UICollectionViewCell {
         self.eventsCount = 0
     }
 
-    let characterBackView = UIView().then {
+    private let characterBackView = UIView().then {
         $0.backgroundColor = .white
     }
 
-    let characterImageView = UIImageView()
+    private let characterImageView = UIImageView()
 
     let textLabel = UILabel().then {
         $0.textAlignment = .center
@@ -145,7 +145,7 @@ open class CalendarDayCell: UICollectionViewCell {
         $0.textColor = .white
     }
     
-    let textBackView = UIView().then {
+    private let textBackView = UIView().then {
         $0.backgroundColor = .white
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 5.5
@@ -161,7 +161,7 @@ open class CalendarDayCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
 
-    func setLayout() {
+    private func setLayout() {
         self.addSubviews(
             textBackView,
             characterBackView)

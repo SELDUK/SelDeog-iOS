@@ -11,28 +11,28 @@ import SnapKit
 
 final class ModifyComplimentViewController: BaseViewController {
     
-    let commentLabel = UILabel()
-    let commentTextView = UITextView()
-    let wordCountLabel = UILabel()
-    let tagLabel = UILabel()
-    let tag1ImageView = UIImageView()
-    let tag1TextField = UITextField()
-    let tag1WordCountLabel = UILabel()
-    let separateView1 = UIView()
-    let tag2ImageView = UIImageView()
-    let tag2TextField = UITextField()
-    let tag2WordCountLabel = UILabel()
-    let separateView2 = UIView()
-    let registerButton = UIButton()
-    let popButton = UIButton()
-    let attributes = [
+    private let commentLabel = UILabel()
+    private let commentTextView = UITextView()
+    private let wordCountLabel = UILabel()
+    private let tagLabel = UILabel()
+    private let tag1ImageView = UIImageView()
+    private let tag1TextField = UITextField()
+    private let tag1WordCountLabel = UILabel()
+    private let separateView1 = UIView()
+    private let tag2ImageView = UIImageView()
+    private let tag2TextField = UITextField()
+    private let tag2WordCountLabel = UILabel()
+    private let separateView2 = UIView()
+    private let registerButton = UIButton()
+    private let popButton = UIButton()
+    private let attributes = [
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 15, family: .bold)
     ]
-    var previousComment: String
-    var previousTag1: String?
-    var previousTag2: String?
-    var commentIndex: Int
+    private var previousComment: String
+    private var previousTag1: String?
+    private var previousTag2: String?
+    private var commentIndex: Int
     
     init(previousComment: String, previousTag1: String? = nil, previousTag2: String? = nil, commentIndex: Int) {
         self.previousComment = previousComment
@@ -73,7 +73,7 @@ final class ModifyComplimentViewController: BaseViewController {
         }
     }
     
-    func putComment(
+    private func putComment(
         usrChrIdx: Int,
         usrChrCmtIdx: Int,
         comment: String,
@@ -287,17 +287,6 @@ extension ModifyComplimentViewController {
             $0.height.equalTo(80)
             $0.bottom.equalToSuperview()
         }
-    }
-    
-    func setAlertConfirmAndCancel(message: String) {
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
-            self.navigationController?.popViewController(animated: false)
-        }
-        let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
     }
     
     @objc func textFieldDidChange(_ sender: UITextField) {

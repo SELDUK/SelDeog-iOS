@@ -14,30 +14,30 @@ import Then
 
 final class SignInViewController: BaseViewController {
     
-    let signInLabel = UILabel()
-    let warningLabel = UILabel()
-    let idImageView = UIImageView()
-    let idTextField = UITextField()
-    let idTextFieldLineView = UIView()
-    let passwordImageView = UIImageView()
-    let passwordTextField = UITextField()
-    let passwordTextFieldLineView = UIView()
-    let autoLoginButton = UIButton()
-    let autoLoginLabel = UILabel()
-    let signUpContainerView = UIView()
-    let signUpLabel = UILabel()
-    let signUpLineView = UIView()
-    let signUpButton = UIButton()
-    let signInButton = UIButton()
-    let dismissButton = UIButton()
-    let copyRightLabel = UILabel()
-    let attributes = [
+    private let signInLabel = UILabel()
+    private let warningLabel = UILabel()
+    private let idImageView = UIImageView()
+    private let idTextField = UITextField()
+    private let idTextFieldLineView = UIView()
+    private let passwordImageView = UIImageView()
+    private let passwordTextField = UITextField()
+    private let passwordTextFieldLineView = UIView()
+    private let autoLoginButton = UIButton()
+    private let autoLoginLabel = UILabel()
+    private let signUpContainerView = UIView()
+    private let signUpLabel = UILabel()
+    private let signUpLineView = UIView()
+    private let signUpButton = UIButton()
+    private let signInButton = UIButton()
+    private let dismissButton = UIButton()
+    private let copyRightLabel = UILabel()
+    private let attributes = [
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.nanumPen(size: 20, family: .bold)
     ]
-    var isCharacterExist: Bool = false
+    private var isCharacterExist: Bool = false
     
-    var isButtonActivate: Bool = false {
+    private var isButtonActivate: Bool = false {
         didSet {
             isButtonActivate ? activateUI() : deactivateUI()
         }
@@ -106,7 +106,7 @@ final class SignInViewController: BaseViewController {
         }
     }
     
-    func postSignIn(
+    private func postSignIn(
         id: String,
         password: String,
         completion: @escaping (AuthResponse) -> Void
@@ -359,7 +359,7 @@ extension SignInViewController {
         
     }
     
-    @objc func textFieldDidChange() {
+    @objc private func textFieldDidChange() {
         if idTextField.text != "", passwordTextField.text != "" {
             isButtonActivate = true
         } else {

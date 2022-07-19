@@ -12,10 +12,10 @@ import SnapKit
 class DatePickerViewController: UIViewController {
     
     var dateDelegate: CalendarViewController?
-    let datePicker = MonthYearPickerView()
-    let titleLabel = UILabel()
-    let confirmButton = UIButton()
-    var dateString: String?
+    private let datePicker = MonthYearPickerView()
+    private let titleLabel = UILabel()
+    private let confirmButton = UIButton()
+    private var dateString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ extension DatePickerViewController: PanModalPresentable {
 
 extension DatePickerViewController {
     
-    func setProperties() {
+    private func setProperties() {
         
         view.do {
             $0.backgroundColor = .white
@@ -72,16 +72,16 @@ extension DatePickerViewController {
         }
     }
     
-    func setLayouts() {
+    private func setLayouts() {
         setViewHierarchy()
         setConstraints()
     }
     
-    func setViewHierarchy() {
+    private func setViewHierarchy() {
         view.addSubviews(datePicker, titleLabel, confirmButton)
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(-10)
@@ -99,7 +99,7 @@ extension DatePickerViewController {
         }
     }
     
-    @objc func sendDate() {
+    @objc private func sendDate() {
         dismiss(animated: true) {
             let selectedDate = self.dateString?.toDateTime()
             self.dateDelegate?.setCalendarDate(date: selectedDate ?? Date())

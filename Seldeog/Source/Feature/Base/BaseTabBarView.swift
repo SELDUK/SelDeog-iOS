@@ -29,7 +29,7 @@ final class BaseTabBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setProperties() {
+    private func setProperties() {
         stackView.do {
             $0.backgroundColor = .black
             $0.axis = .horizontal
@@ -76,17 +76,17 @@ final class BaseTabBarView: UIView {
         }
     }
     
-    func setLayouts() {
+    private func setLayouts() {
         setViewHierarchy()
         setConstraints()
     }
     
-    func setViewHierarchy() {
+    private func setViewHierarchy() {
         addSubview(stackView)
         stackView.addArrangedSubviews(calendarButton, selfLoveButton, aboutMeButton, settingButton)
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

@@ -12,11 +12,11 @@ import Then
 
 final class StartSignInViewController: BaseViewController {
     
-    let logoView = UIView()
-    let logoLabel = UILabel()
-    let signInButton = UIButton()
-    let signUpButton = UIButton()
-    let copyRightLabel = UILabel()
+    private let logoView = UIView()
+    private let logoLabel = UILabel()
+    private let signInButton = UIButton()
+    private let signUpButton = UIButton()
+    private let copyRightLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

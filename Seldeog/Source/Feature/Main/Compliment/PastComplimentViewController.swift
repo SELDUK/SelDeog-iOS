@@ -12,21 +12,21 @@ import Kingfisher
 
 final class PastComplimentViewController: BaseViewController {
     
-    let todayLabel = UILabel()
-    let myCharacterImageView = UIImageView()
-    let lineView = UIImageView()
-    let dismissButton = UIButton()
-    let checkImageView = UIImageView()
-    let collectionView: UICollectionView = {
+    private let todayLabel = UILabel()
+    private let myCharacterImageView = UIImageView()
+    private let lineView = UIImageView()
+    private let dismissButton = UIButton()
+    private let checkImageView = UIImageView()
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 5
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200), collectionViewLayout: layout)
         return cv
     }()
-    let baseTabBarView = BaseTabBarView()
-    var commentsList: [UserCharacterComment] = []
-    var date: String
+    private let baseTabBarView = BaseTabBarView()
+    private var commentsList: [UserCharacterComment] = []
+    private var date: String
     
     
     init(date: String) {
@@ -69,7 +69,7 @@ final class PastComplimentViewController: BaseViewController {
         }
     }
     
-    func getPastComplimentList(
+    private func getPastComplimentList(
         date: String,
         completion: @escaping (ComplimentListResponse) -> Void
     ) {

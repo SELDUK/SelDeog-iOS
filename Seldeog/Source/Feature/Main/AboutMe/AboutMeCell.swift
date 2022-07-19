@@ -11,15 +11,16 @@ import Then
 
 final class AboutMeCell: UITableViewCell {
     
-    let cellView = UIView()
-    let cellIndexLabel = UILabel()
-    let featureLabel = UILabel()
-    let lineView = UIView()
-    let dateLabel = UILabel()
-    let modifyButton = UIButton()
-    let deleteButton = UIButton()
-    var serverIndex: Int?
-    var cellIndex: Int?
+    private let cellView = UIView()
+    private let cellIndexLabel = UILabel()
+    private let featureLabel = UILabel()
+    private let lineView = UIView()
+    private let dateLabel = UILabel()
+    private let modifyButton = UIButton()
+    private let deleteButton = UIButton()
+    private var serverIndex: Int?
+    private var cellIndex: Int?
+    
     var buttonDelegate: CommentButtonProtocol?
 
     public func setCellIndex(index: Int) {

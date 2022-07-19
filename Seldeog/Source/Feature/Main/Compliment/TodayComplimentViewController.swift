@@ -16,21 +16,21 @@ protocol CommentButtonProtocol {
 
 final class TodayComplimentViewController: BaseViewController {
     
-    let todayLabel = UILabel()
-    let myCharacterImageView = UIImageView()
-    let writeButton = UIButton()
-    let lineView = UIImageView()
-    let dismissButton = UIButton()
-    let checkImageView = UIImageView()
-    let collectionView: UICollectionView = {
+    private let todayLabel = UILabel()
+    private let myCharacterImageView = UIImageView()
+    private let writeButton = UIButton()
+    private let lineView = UIImageView()
+    private let dismissButton = UIButton()
+    private let checkImageView = UIImageView()
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 5
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200), collectionViewLayout: layout)
         return cv
     }()
-    let baseTabBarView = BaseTabBarView()
-    var commentsList: [UserCharacterComment] = []
+    private let baseTabBarView = BaseTabBarView()
+    private var commentsList: [UserCharacterComment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,7 @@ final class TodayComplimentViewController: BaseViewController {
         }
     }
     
-    func getTodayComplimentList(
+    private func getTodayComplimentList(
         date: String,
         completion: @escaping (ComplimentListResponse) -> Void
     ) {
@@ -95,7 +95,7 @@ final class TodayComplimentViewController: BaseViewController {
         }
     }
     
-    func deleteComment(
+    private func deleteComment(
         usrChrIdx: Int,
         usrChrCmtIdx: Int,
         completion: @escaping (UserResponse) -> Void
@@ -303,7 +303,7 @@ extension TodayComplimentViewController {
         
     }
     
-    func setAlertConfirmAndCancel(index: Int, message: String) {
+    private func setAlertConfirmAndCancel(index: Int, message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
             self.deleteCommentIndex(usrChrCmtIdx: index)

@@ -9,7 +9,7 @@ import UIKit
 
 class SelectColorCell: UICollectionViewCell {
     
-    let cellImageView = UIImageView()
+    private let cellImageView = UIImageView()
 
     public func setImage(image: UIImage) {
         cellImageView.image = image
@@ -32,16 +32,16 @@ class SelectColorCell: UICollectionViewCell {
         }
     }
 
-    func setLayouts() {
+    private func setLayouts() {
         setViewHierarchy()
         setConstraints()
     }
 
-    func setViewHierarchy() {
+    private func setViewHierarchy() {
         contentView.addSubview(cellImageView)
     }
 
-    func setConstraints() {
+    private func setConstraints() {
         cellImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()

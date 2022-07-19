@@ -11,12 +11,13 @@ import Then
 
 final class PastComplimentWithOneTagCell: UICollectionViewCell {
     
-    let cellIndexLabel = UILabel()
-    let complimentLabel = UILabel()
-    let lineView = UIView()
+    private let cellIndexLabel = UILabel()
+    private let complimentLabel = UILabel()
+    private let lineView = UIView()
+    private var commentIndex: Int?
+    private var cellIndex: Int?
+    
     let tag1View = HashTagView()
-    var commentIndex: Int?
-    var cellIndex: Int?
 
     public func setCellIndex(index: Int) {
         cellIndexLabel.text = "0\(index)"

@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     
-    func toDateTime() -> Date? { //"yyyy-MM-dd HH:mm:ss"
+    func toDateTime() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(identifier: "KST")

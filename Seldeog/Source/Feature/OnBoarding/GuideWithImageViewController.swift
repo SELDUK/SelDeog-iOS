@@ -11,7 +11,7 @@ import SnapKit
 
 final class GuideWithImageViewController: UIViewController {
     
-    let backgroundImageView = UIImageView()
+    private let backgroundImageView = UIImageView()
 
     init(image: UIImage) {
         self.backgroundImageView.image = image

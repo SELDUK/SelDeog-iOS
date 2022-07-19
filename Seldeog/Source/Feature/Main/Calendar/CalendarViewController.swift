@@ -28,25 +28,25 @@ final class CalendarViewController: BaseViewController {
         $0.font = UIFont.nanumPen(size: 15, family: .bold)
     }
     
-    var monthLabel = UILabel().then {
+   var monthLabel = UILabel().then {
         $0.textColor = .black
         $0.font = UIFont.nanumPen(size: 35, family: .bold)
     }
     
-    let selectMonthButton = UIButton().then {
+    private let selectMonthButton = UIButton().then {
         $0.setImage(Image.arrowDownIcon, for: .normal)
     }
     
-    let blackBackgroundView = UIView().then {
+    private let blackBackgroundView = UIView().then {
         $0.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
     
-    let calendarTabBarView = CalendarTabBarView()
-    let selectColorView = SelectColorView()
-    var calendarView: CalendarView!
-    var datePicker = UIDatePicker()
+    private let calendarTabBarView = CalendarTabBarView()
+    private let selectColorView = SelectColorView()
+    private var calendarView: CalendarView!
+    private var datePicker = UIDatePicker()
     
-    lazy var numberOfWeeks: Int = Date.numberOfWeeksInMonth(Date())
+    private lazy var numberOfWeeks: Int = Date.numberOfWeeksInMonth(Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,7 +189,7 @@ final class CalendarViewController: BaseViewController {
         }
     }
     
-    func getTodayComplimentList(
+    private func getTodayComplimentList(
         date: String,
         completion: @escaping (ComplimentListResponse) -> Void
     ) {
@@ -217,7 +217,7 @@ final class CalendarViewController: BaseViewController {
         }
     }
     
-    func makeTodayCharacter(
+    private func makeTodayCharacter(
         color: Int,
         completion: @escaping (UserResponse) -> Void
     ) {
@@ -235,7 +235,7 @@ final class CalendarViewController: BaseViewController {
         }
     }
     
-    func getCharacterForCalendar(date: String) {
+    private func getCharacterForCalendar(date: String) {
         UserRepository.shared.getCharacterForCalendar(date: date) { [weak self] result in
             switch result {
             case .success(let response):
